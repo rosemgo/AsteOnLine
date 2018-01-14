@@ -1,0 +1,28 @@
+package it.unisannio.tsw.rosariogoglia.dbUtil;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.junit.Test;
+
+public class DatabaseUtilTest {
+
+	@Test
+	public void testGetConnection() throws ClassNotFoundException, SQLException, IOException {
+//		Connection con = ConnectionPoolTomcat.getConnection();
+//		assertEquals(con.getCatalog(), "ecommerce");
+		
+		
+		Connection con = null;
+		con = ConnectionPoolTomcat.getConnection();
+
+		assertEquals(con.getCatalog(), "ecommerce");
+		
+		
+		
+	}
+
+}

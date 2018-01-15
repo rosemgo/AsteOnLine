@@ -75,5 +75,8 @@ public interface UtenteRegistrato {
 	public void clonaUtente(UtenteRegistrato utente);
 	
 	public String toString();
+	
+	public boolean cambioComune();
+	
 
 }

@@ -241,6 +241,12 @@ public class UtenteRegistratoImpl implements UtenteRegistrato {
 				+ " " + this.numContoCorrente + " " + this.tipologiaCliente);
 	}
 
+	
+	public boolean cambioComune() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 }

@@ -1,7 +1,5 @@
 package it.unisannio.sweng.rosariogoglia.dao;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 

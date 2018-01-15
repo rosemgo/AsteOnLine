@@ -2,7 +2,7 @@ package it.unisannio.sweng.rosariogoglia.dao;
 
 
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
-import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
+
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -5,24 +5,25 @@ import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
-
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
-
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
-
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
-
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
+import it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
+
+
+import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.ImmagineDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.model.Immagine;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -175,7 +176,11 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				logger.debug("prodotto caricato: " + prodotto.toString());
 				System.out.println("PRODOTTO CARICATO");
 				
-											
+				ImmagineDao dao2 = new ImmagineDaoMysqlJdbc();
+				List<Immagine> immagini = dao2.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione")); //prelevo tutte le immagine dell'inserzione
+				logger.debug("immagini caricate");
+				System.out.println("IMMAGINI CARICATE");
+				
 				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
 				inserzione.setTitolo(rs.getString("inserzione.titolo"));
 				inserzione.setDescrizione(rs.getString("inserzione.descrizione"));
@@ -192,7 +197,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				inserzione.setVenditore(venditore);
 				inserzione.setIdProdotto(idProdotto);
 				inserzione.setProdotto(prodotto);
-				
+				inserzione.setImmagini(immagini); //carico le immagini
 				
 				logger.debug("inserzione caricata: " + inserzione.getIdInserzione() + " " + inserzione.getTitolo());
 			}
@@ -216,6 +221,80 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	}
 	
 
-
+	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in getInserzioneByIdSenzaListe");
+		Inserzione inserzione = null;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
+						"WHERE (inserzione.idinserzione = ?)";
+		
+	
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("select inserzione" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				inserzione = new InserzioneImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+				UtenteRegistrato acquirente = null;
+				if(idAcquirente != 0){ //lo 0 equivale al null
+					 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+				}
+				logger.debug("idAcquirente: " + idAcquirente);
+				
+				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+				UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
+				
+				
+				ProdottoDao dao1 = new ProdottoDaoMysqlJdbc();
+				int idProdotto = rs.getInt("prodotto.idprodotto");
+				Prodotto prodotto = dao1.getProdottoById(idProdotto); //ho l'intero prodotto
+				logger.debug("prodotto caricato: " + prodotto.toString());
+				
+								
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setDescrizione(rs.getString("inserzione.descrizione"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				inserzione.setIdAcquirente(idAcquirente); //se l'acquirente è null, L' IDACQUIRENTE VIENE VISTO COME 0
+				inserzione.setAcquirente(acquirente); 
+				
+				inserzione.setIdVenditore(idVenditore);
+				inserzione.setVenditore(venditore);
+				inserzione.setIdProdotto(idProdotto);
+				inserzione.setProdotto(prodotto);				
+				
+				logger.debug("inserzione caricata: " + inserzione.getIdInserzione() + " " + inserzione.getTitolo());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				rs.close();
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			}
+		}		
+		return inserzione;
+	}
 	
 }

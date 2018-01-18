@@ -3,26 +3,17 @@ package it.unisannio.sweng.rosariogoglia.daoImpl;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
-
-
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
-
-
 import it.unisannio.sweng.rosariogoglia.modelImpl.ComuneImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
-
-
-
-
-
-
-
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
+
+
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -32,24 +23,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1141,12 +1114,42 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
+	public Integer getNumeroUtenti() throws ClassNotFoundException, IOException{
+		logger.debug("in getNumeroUtenti");
+		Integer numUtenti = 0;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM utente_registrato ";
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query : " + pstmt.toString());
+			rs = pstmt.executeQuery();
+					
+			if(rs.next()){
+				numUtenti = rs.getInt(1);				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return numUtenti;
+	}
 	
-	
-	
-	
-
-
 	
 
 }

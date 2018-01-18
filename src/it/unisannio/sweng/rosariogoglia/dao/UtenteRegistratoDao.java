@@ -12,38 +12,16 @@ public interface UtenteRegistratoDao {
 
 	
 	/**
-	 * Restituisce l'utente corrispondente all'id passato come paramentro
-	 * @param idUtente
-	 * @return l'utente
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
-	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente) throws ClassNotFoundException, IOException;
-	
-	
-	/**
-	 * Restituisce l'utente corrispondente alla mail passata come paramentro
-	 * 
-	 * @param eMail
-	 * 
-	 * @return l'utente corrispondente alla mail passata come paramentro
+	 * Verifico se l'inserzione passata come parametro è già osservata dall'utente passato come parametro
+	 * @param idUtenteRegistrato
+	 * @param idInserzione
+	 * @return
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail) throws ClassNotFoundException, IOException;
-	
-	/**
-	 * Restituisce l'utente corrispondente al nick passato come paramentro.
-	 * 
-	 * @param idUtente
-	 * @return l'utente
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	public UtenteRegistrato getUtenteRegistratoByNick(String nick) throws ClassNotFoundException, IOException;
-		
-	
+	public Boolean checkInserzioneOsservataByIdUtente(Integer idUtenteRegistrato, Integer idInserzione) throws ClassNotFoundException, IOException;
+
+
 	/**
 	 * Inserisce un nuovo utente nel database.
 	 * @param utente
@@ -54,6 +32,19 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer insertUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, IOException, SQLException;
 	
+	/**
+	 * Questo metodo effettua un inserimento nella tabella utente_registrato_osserva_inserzione, quando un utente osserva un'inserzione.
+	 * 
+	 * @param utente
+	 * @param inserzione
+	 * @return il numero di righe inserite(ossia 1)
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione) throws ClassNotFoundException, IOException;
+
+
 	/**
 	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
 	 * non risulta più abilitato alle funzioni di un utente registrato
@@ -140,17 +131,28 @@ public interface UtenteRegistratoDao {
 	public Integer updatePassword(String nick, String psw) throws SQLException, ClassNotFoundException, IOException;
 	
 	/**
-	 * Questo metodo effettua un inserimento nella tabella utente_registrato_osserva_inserzione, quando un utente osserva un'inserzione.
+	 * Restituisce l'utente corrispondente alla mail passata come paramentro
 	 * 
-	 * @param utente
-	 * @param inserzione
-	 * @return il numero di righe inserite(ossia 1)
+	 * @param eMail
+	 * 
+	 * @return l'utente corrispondente alla mail passata come paramentro
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail) throws ClassNotFoundException, IOException;
+
+
+	/**
+	 * Restituisce l'utente corrispondente all'id passato come paramentro
+	 * @param idUtente
+	 * @return l'utente
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione) throws ClassNotFoundException, IOException;
-	
+	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente) throws ClassNotFoundException, IOException;
+
+
 	/**
 	 * Questo metodo crea una lista delle inserzioni osservate da un utente passato come parametro
 	 * 
@@ -178,16 +180,6 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer getNumeroInserzioniOsservateByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException;
 	
-	/**
-	 * Verifico se l'inserzione passata come parametro è già osservata dall'utente passato come parametro
-	 * @param idUtenteRegistrato
-	 * @param idInserzione
-	 * @return
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	public Boolean checkInserzioneOsservataByIdUtente(Integer idUtenteRegistrato, Integer idInserzione) throws ClassNotFoundException, IOException;
-			
 	/**
 	 * Visualizza tutti i dati relativi alle inserzioni(acquistate) dell'acquirente
 	 * 
@@ -232,9 +224,7 @@ public interface UtenteRegistratoDao {
 	 * @throws ClassNotFoundException 
 	 */
 	public List<Inserzione> getInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException;
-	
-
-	
+		
 	/**
 	 * Ottiene tutti i nickname degli utenti presenti nel database
 	 * 
@@ -244,5 +234,24 @@ public interface UtenteRegistratoDao {
 	 */
 	public List<String> getNick() throws ClassNotFoundException, IOException;
 	
+	/**
+	 * Visualizza il numero delgli utenti presenti nel db
+	 * 
+	 * @return numero totale utenti
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer getNumeroUtenti() throws ClassNotFoundException, IOException;
+
+
+	/**
+	 * Restituisce l'utente corrispondente al nick passato come paramentro.
+	 * 
+	 * @param idUtente
+	 * @return l'utente
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public UtenteRegistrato getUtenteRegistratoByNick(String nick) throws ClassNotFoundException, IOException;
 	
 }

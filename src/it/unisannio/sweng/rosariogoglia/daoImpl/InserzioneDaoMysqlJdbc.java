@@ -238,13 +238,15 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
+			
 			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
 						"WHERE (inserzione.idinserzione = ?)";
 		
-				
+	
+			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, idInserzione);
 			logger.debug("select inserzione" + pstmt.toString());
@@ -305,5 +307,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}		
 		return inserzione;
 	}
+
 	
 }

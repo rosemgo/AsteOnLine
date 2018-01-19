@@ -10,10 +10,6 @@ import it.unisannio.sweng.rosariogoglia.model.Produttore;
 
 public interface CategoriaDao {
 
-	public Categoria getCategoriaByIdConnectionPool(Integer idCategoria);
-		
-	public Categoria getCategoriaByIdPoolTomcat(Integer idCategoria);
-		
 	
 	/**
 	 * 

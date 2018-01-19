@@ -18,7 +18,7 @@ public interface CategoriaDao {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Categoria> getCategorie();
+	public List<Categoria> getCategorie() throws ClassNotFoundException, IOException;
 	
 	/**
 	 * 
@@ -28,23 +28,27 @@ public interface CategoriaDao {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public Categoria getCategoriaById (Integer idCategoria);
+	public Categoria getCategoriaById (Integer idCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Dato il nome della categoria, la restituisce se presente, altrimenti restiruisce null
 	 * @param nomeCategoria
 	 * @return restituisce la categoria se presente, altrimenti restiruisce null
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Categoria getCategoriaByNome (String nomeCategoria);
+	public Categoria getCategoriaByNome (String nomeCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
 	 * 
 	 * @param idCategoria
 	 * @return la lista dei produttori non ancora associati alla categoria
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 * 
 	 */
-	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria);
+	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Il metodo è utilizzato per associare un produttore ad una categoria effettuanfo un'inserimento nella tabella categoria_has_produttore
@@ -53,8 +57,10 @@ public interface CategoriaDao {
 	 * @param IdProduttore
 	 * 
 	 * @return 1 se l'inserimento è andato a buon fine, -1 in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore);
+	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore) throws ClassNotFoundException, IOException;
 		
 	
 	/**
@@ -64,8 +70,10 @@ public interface CategoriaDao {
 	 * @param idProduttore
 	 *
 	 * @return 1 se la cancellazione è andato a buon fine, -1 in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Integer deleteCategoriaHasProduttore(Integer idCategoria, Integer idProduttore);
+	public Integer deleteCategoriaHasProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException;
 		
 	
 	/**
@@ -73,8 +81,10 @@ public interface CategoriaDao {
 	 * 
 	 * @param categoria
 	 * @return l'id della categoria inserita
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertCategoria (Categoria categoria);
+	public Integer insertCategoria (Categoria categoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * 
@@ -84,7 +94,7 @@ public interface CategoriaDao {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public Integer updateCategoria (Categoria categoria);
+	public Integer updateCategoria (Categoria categoria) throws ClassNotFoundException, IOException;
 
 	/**
 	 * Elimina dal db la categoria identificata dall'id passato come parametro
@@ -92,16 +102,20 @@ public interface CategoriaDao {
 	 * @param idCategoria
 	 * 
 	 * @return 1 se la cancellazione è andata a buon fine, -1 in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Integer deleteCategoria(Integer idCategoria);
+	public Integer deleteCategoria(Integer idCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Controlla se è possibile eliminare una categoria. Per essere eliminata è necessario che non ci siano inserzioni con prodotti ad essa associati
 	 * 
 	 * @param idCategoria
 	 * @return true se è possibile eliminare la categoria, false se non è possibile
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkDeleteCategoria(Integer idCategoria);
+	public boolean checkDeleteCategoria(Integer idCategoria) throws ClassNotFoundException, IOException;
 		
 	/**
 	 * Controlla se l'associazione Categoria-Produttore sia già presente nel db
@@ -109,7 +123,9 @@ public interface CategoriaDao {
 	 * @param idCategoria
 	 * @param idProduttore
 	 * @return true in caso l'associazione sia presente, false in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore);
+	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException;
 		
 }

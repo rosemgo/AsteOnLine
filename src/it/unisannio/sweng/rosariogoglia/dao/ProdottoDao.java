@@ -27,6 +27,29 @@ public interface ProdottoDao {
 	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException;
 
 
+	/**
+	 * Inserimento prodotto nel database
+	 * 
+	 * @param prodotto
+	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
+	 */
+	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+	
+	
+	
+	/**
+	 * Effettua l'associazione tra un prodotto e una parola chiave.
+	 * @param idProdotto
+	 * @param IdKeyword
+	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+	
 	
 
 }

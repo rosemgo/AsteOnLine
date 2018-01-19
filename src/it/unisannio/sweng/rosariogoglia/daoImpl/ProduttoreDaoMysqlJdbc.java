@@ -36,8 +36,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		try {
 			
 			connection = DatabaseUtil.getConnection();
-		
-		
+				
 			String sql = "SELECT * FROM produttore ORDER BY nome ASC ";
 			pstmt = connection.prepareStatement(sql);
 			
@@ -211,8 +210,6 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return listaProduttori;
 			
 	}
-	
-	
 	
 	
 	public Integer insertProduttore(Produttore produttore) throws ClassNotFoundException, IOException{

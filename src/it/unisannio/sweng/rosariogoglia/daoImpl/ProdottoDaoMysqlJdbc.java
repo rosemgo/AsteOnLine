@@ -477,10 +477,127 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 
 	
 
+public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundException, IOException{
+		
+		boolean result = true;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM inserzione, prodotto " +
+					"WHERE prodotto.idprodotto = inserzione.prodotto_idprodotto " +
+					"AND idprodotto = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProdotto);
+			logger.debug("Check Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = false;
+			}
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 	
+	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException{
+		logger.debug("in checkProdottoBelongCategoriaProduttore");
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			
+			
+			String sql = "SELECT * FROM prodotto " +
+					"WHERE idprodotto = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, idProdotto);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				int idCategoriaProdotto = rs.getInt("categoria_idcategoria");
+				int idProduttoreProdotto = rs.getInt("produttore_idproduttore");
+				
+				if((idCategoria == idCategoriaProdotto) && (idProduttore == idProduttoreProdotto)){
+					result = true;
+				}
+										
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}
 	
-
-
+	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM prodotto_has_keyword " +
+					"WHERE prodotto_idprodotto = ? " +
+					"AND keyword_idkeyword = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProdotto);
+			pstmt.setInt(2, idKeyword);
+			logger.debug("Check Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = true;
+			}
+						
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 	
 	
 }

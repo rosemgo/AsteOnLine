@@ -50,6 +50,40 @@ public interface ProdottoDao {
 	 */
 	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
 	
+	/**
+	 * Utilizzato per effettuare un controllo al momento dell'inserimento dell'inserzione. Controlla se il prodotto scelto corrisponde alla categoria e al produttore scelti.
+	 * 
+	 * @param idProdotto
+	 * @param idCategoria
+	 * @param idProduttore
+	 * @return true se l'inserimento è corretto
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException;
+	
+	/**
+	 * Controlla se è possibile eliminare un prodotto. Per essere eliminato è necessario che non ci siano inserzioni relative ad esso
+	 * 
+	 * @param idProdotto
+	 * @return true se è possibile eliminare il prodotto, false se non è possibile
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundException, IOException;
+	
+	/**
+	 * Controllo se la parola chiave è effettivamente associato al prodotto. 
+	 * 
+	 * @param idProdotto
+	 * @param idKeyword
+	 * @return true se la parola chiave è associata al prodotto, false in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+	
+	
 	
 
 }

@@ -35,7 +35,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
 	
 	public CategoriaDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("C:/Users/Rosario/git//WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
 	public List<Categoria> getCategorie() throws ClassNotFoundException, IOException{

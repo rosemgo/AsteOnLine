@@ -17,6 +17,9 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ImmagineDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
+import it.unisannio.sweng.rosariogoglia.dao.OffertaDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.OffertaDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.model.Offerta;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -132,7 +135,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		try {
 			
 			connection = DatabaseUtil.getConnection();
-					
+		
 			
 			String sql = "SELECT * FROM inserzione " +
 						"WHERE (inserzione.idinserzione = ?)";
@@ -181,6 +184,11 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				logger.debug("immagini caricate");
 				System.out.println("IMMAGINI CARICATE");
 				
+				OffertaDao dao3 = new OffertaDaoMysqlJdbc();
+				List<Offerta> listaOfferte = dao3.getOfferteByIdInserzione(idInserzione);
+				logger.debug("offerte caricate: ");
+				System.out.println("OFFERTE CARICATE");
+								
 				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
 				inserzione.setTitolo(rs.getString("inserzione.titolo"));
 				inserzione.setDescrizione(rs.getString("inserzione.descrizione"));
@@ -198,6 +206,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				inserzione.setIdProdotto(idProdotto);
 				inserzione.setProdotto(prodotto);
 				inserzione.setImmagini(immagini); //carico le immagini
+				inserzione.setOfferte(listaOfferte); //carico tutte le offerte
+				
 				
 				logger.debug("inserzione caricata: " + inserzione.getIdInserzione() + " " + inserzione.getTitolo());
 			}
@@ -234,8 +244,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
 						"WHERE (inserzione.idinserzione = ?)";
 		
-	
-			
+				
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, idInserzione);
 			logger.debug("select inserzione" + pstmt.toString());

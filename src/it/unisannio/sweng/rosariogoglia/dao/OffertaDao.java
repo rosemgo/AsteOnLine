@@ -23,5 +23,24 @@ public interface OffertaDao {
 	 */
 	public Integer deleteOffertaByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 	
+	/**
+	 * @param idOfferta
+	 * @return Restituisce l'oggetto offerta corrispondente all' id passato come paramentro
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Offerta getOffertaByIdOfferta(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException;	
 	
+	/**
+	 * Restituisce una lista di offerte relative ad un'inserzione, indicata dal parametro idInserzione
+	 * 
+	 * @param idInserzione
+	 * @return lista di offerte relative all'inserzione
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException;	
+
 }

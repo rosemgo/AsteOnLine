@@ -295,14 +295,10 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 				e.printStackTrace();
 			}
 		}
-		
-		
+				
 		return listaOfferte;
 	}
 
-	
-
-	
 	
 	
 }

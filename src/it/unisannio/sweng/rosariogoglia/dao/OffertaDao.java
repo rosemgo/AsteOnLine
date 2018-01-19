@@ -8,8 +8,25 @@ import java.util.List;
 
 public interface OffertaDao {
 	
+	/**
+	 * Inserisce un'offerta
+	 * 
+	 * @param offerta
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public Integer insertOfferta(Offerta offerta) throws ClassNotFoundException, IOException;
 	
+	/**
+	 * Cancella offerta specifica
+	 * 
+	 * @param offerta
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public Integer deleteOfferta(Offerta offerta) throws SQLException, ClassNotFoundException, IOException;
 	
 	/**

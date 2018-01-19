@@ -6,6 +6,9 @@ import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 
 
 
+
+import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -51,6 +54,31 @@ public interface InserzioneDao {
 	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 	
 	
-			
+	/**
+	 * Ottiene i titoli di tutte le inserzioni. Utilizzato per l'autocompletamento nella ricerca inserzioni per titoli
+	 * @return una lista con tutti i titoli delle inserzioni
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public List<String> getTitoli() throws ClassNotFoundException, IOException;
+	
+	/**
+	 * Questo metodo restituisce una lista di utenti che osservano l'inserzione identificata dal parametro idInserzione
+	 * 
+	 * @param idInserzione
+	 * @return lista di utente registrati
+	 */
+	public List<UtenteRegistrato> getUtentiRegistratiOsservanoByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
+	
+	
+	/**
+	 * Ricerca l'inserzioni in base alla parola chiave e all'id della categoria
+	 * 
+	 * @param keyword
+	 * @param idCategoria
+	 * @return lista contenente le inserzioni corrispondenti
+	 */
+	public List<Inserzione> ricercaInserzioni (String keyword, Integer idCategoria);
+	
 	
 }

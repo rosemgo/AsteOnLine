@@ -8,9 +8,7 @@ import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 
 public interface UtenteRegistratoDao {
-	
-
-	
+		
 	/**
 	 * Verifico se l'inserzione passata come parametro è già osservata dall'utente passato come parametro
 	 * @param idUtenteRegistrato
@@ -317,6 +315,14 @@ public interface UtenteRegistratoDao {
 	public boolean controlloNick(String nickName) throws ClassNotFoundException, IOException;
 	
 	
-	
+	/**
+	 * Il metodo viene utilizzato per prelevare dal db tutte le aste(inserzioni) a cui l'utente sta partecipando
+	 * 
+	 * @param idUtente
+	 * @return la lista delle aste corrente a cui l'utente partecipa
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException;
 	
 }

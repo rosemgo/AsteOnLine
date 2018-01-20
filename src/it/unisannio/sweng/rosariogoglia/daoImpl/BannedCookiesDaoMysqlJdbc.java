@@ -1,6 +1,10 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
-
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
@@ -129,7 +133,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	
 	
 	
-	public boolean checkUtenteRegistratoBanned(Integer idUtente){
+	public boolean checkUtenteRegistratoBanned(Integer idUtente) throws ClassNotFoundException, IOException{
 		logger.info("in checkUtenteRegistratoBanned");
 		
 		boolean result = false;

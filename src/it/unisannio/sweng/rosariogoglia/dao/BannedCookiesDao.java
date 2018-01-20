@@ -1,5 +1,7 @@
 package it.unisannio.sweng.rosariogoglia.dao;
 
+import java.io.IOException;
+
 import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 
 /**
@@ -16,8 +18,10 @@ public interface BannedCookiesDao {
 	 * 
 	 * @param idUtente
 	 * @return true se l'utente è bannato, false in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkUtenteRegistratoBanned(Integer idUtente);
+	public boolean checkUtenteRegistratoBanned(Integer idUtente) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Rimuovere un utente bannata dalla lista degli utenti bannati

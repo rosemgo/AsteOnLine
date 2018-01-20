@@ -1536,6 +1536,156 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return numeroInserzioni;
 	}
 	
+	public List<UtenteRegistrato> getUtenti() throws ClassNotFoundException, SQLException, IOException {
+		logger.debug("in getUtenti");
+		List<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+					
+			UtenteRegistrato utenteReg = null;
+			
+			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
+						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
+						 "AND " + 
+						 "comune.provincia_idprovincia = provincia.idprovincia ";
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query : " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				utenteReg = new UtenteRegistratoImpl();
+				Comune comune = new ComuneImpl();
+				Provincia provincia = new ProvinciaImpl();
+				
+				
+				comune.setIdComune(rs.getInt("comune.idcomune"));
+				comune.setNomeComune(rs.getString("comune.nome_comune"));
+				comune.setIdProvincia(rs.getInt("comune.provincia_idprovincia"));
+				logger.debug("comune: " + comune.getNomeComune());
+				
+				provincia.setIdProvincia(rs.getInt("provincia.idprovincia"));
+				provincia.setNomeProvincia(rs.getString("provincia.nome_provincia"));
+				logger.debug("provincia: " + provincia.getNomeProvincia());
+				
+				comune.setProvincia(provincia);
+				
+				utenteReg.setIdUtente(rs.getInt("idutente"));
+				utenteReg.setNick(rs.getString("nick"));
+				utenteReg.setNome(rs.getString("nome"));
+				utenteReg.setCognome(rs.getString("cognome"));
+				utenteReg.setPassword(rs.getString("password"));
+				utenteReg.seteMail(rs.getString("e_mail"));
+				utenteReg.setCodiceFiscale(rs.getString("codice_fiscale"));
+				utenteReg.setNumContoCorrente(rs.getString("n_conto_corrente"));
+				utenteReg.setIndirizzo(rs.getString("indirizzo"));
+				utenteReg.setCap(rs.getString("cap"));
+				utenteReg.setTelefono(rs.getString("telefono"));
+				utenteReg.setTipologiaCliente(rs.getString("tipologia_cliente"));
+				utenteReg.setDataRegistrazione(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data_registrazione")));
+				utenteReg.setFlagAbilitato(rs.getBoolean("flag_abilitato"));
+				utenteReg.setIdComune(rs.getInt("comune_idcomune"));
+				utenteReg.setComune(comune);
+				
+				logger.debug("(" + utenteReg.getIdUtente() + ", " + utenteReg.getNome() + ")");	
+				
+				listaUtenti.add(utenteReg);
+				
+			}
+			
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			rs.close();
+			pstmt.close();
+			connection.close();
+		}
+		
+		return listaUtenti;
+	}
+	
+	public boolean isUtenteAbilitato(String nick){
+		logger.debug("in isUtenteAbilitato");
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM utente_registrato " +
+					"WHERE nick = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result = rs.getBoolean("flag_abilitato");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente)  {
+		logger.debug("in isUtenteRegistrato");
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			
+			String sql = "SELECT * FROM utente_registrato " +
+					"WHERE codice_fiscale = ? " +
+					"AND " +
+					"tipologia_cliente = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, codiceFiscale);
+			pstmt.setString(2, tipologiaUtente);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = true;
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
 	
 	
 	

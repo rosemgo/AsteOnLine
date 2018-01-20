@@ -1540,5 +1540,4 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	
 }

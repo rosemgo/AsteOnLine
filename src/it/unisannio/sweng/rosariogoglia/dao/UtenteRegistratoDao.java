@@ -361,6 +361,34 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException;
 	
+	public List<UtenteRegistrato> getUtenti();
+	
+	/**
+	 * Controlla se l'utente è abilitato alle funzioni di utente registrato
+	 * 
+	 * @param nick
+	 * 
+	 * @return true se l'utente è abilitato
+	 * 
+	 */
+	public boolean isUtenteAbilitato(String nick);
+	
+	/**
+	 * Controlla se l'utente è già registrato nel database
+	 * 
+	 * @param codiceFiscale
+	 * @param tipologiaUtente
+	 * 
+	 * @return true se l'utente si è già registrato
+	 * 
+	 */
+	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente);
+	
+	
+	
+	
+	
+	
 	
 }
 

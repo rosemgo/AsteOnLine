@@ -326,3 +326,4 @@ public interface UtenteRegistratoDao {
 	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException;
 	
 }
+

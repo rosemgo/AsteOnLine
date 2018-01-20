@@ -16,6 +16,17 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -29,6 +40,8 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.ProduttoreImpl;
 import it.unisannio.sweng.rosariogoglia.dao.KeywordDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Keyword;
+import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
+
 
 public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 
@@ -562,6 +575,64 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		
 	}
 	
+	
+	
+
+	public Integer deleteProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException{
+		logger.info("Eliminazione Prodotto: (" + prodotto.getIdProdotto()+ ")");
+		Integer deletedRows =-1;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+						
+			// prima si elimina dalla tabella prodotto_has_keyword
+			String sql = "DELETE FROM prodotto_has_keyword WHERE (prodotto_idprodotto = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, prodotto.getIdProdotto());
+			logger.debug("Delete Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+		
+			
+			sql = "DELETE FROM prodotto WHERE (idprodotto = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, prodotto.getIdProdotto());
+			logger.debug("Delete Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			logger.info("Prodotto Eliminato");
+			
+	
+		} catch (SQLException  e1) {
+			// Service Exception con messaggio di errore in pagina
+			e1.printStackTrace();
+			logger.debug("Rollback in cancellazione prodotto");
+			try {
+				connection.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}
+		return deletedRows;
+	}
+	
+	
+	
 	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
 		boolean result = false;
 		Connection connection = null;
@@ -598,6 +669,253 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		}
 		return result;
 	}
+
+	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
+		logger.debug("in deleteProdottoHasKeyword");
+		Integer deleteRow = -1;
+		Connection connection = null; 
+		PreparedStatement pstmt = null;
+		try {
+			
+				connection = DatabaseUtil.getConnection();
+				connection.setAutoCommit(false);
+							
+				String sql = "DELETE FROM prodotto_has_keyword WHERE prodotto_idprodotto = ? AND keyword_idkeyword = ?";
+				pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				pstmt.setInt(1, idProdotto);
+				pstmt.setInt(2, idKeyword);
+				logger.debug("Delete Query: " + pstmt.toString());
+				try{
+					deleteRow = pstmt.executeUpdate();
+				}catch (Exception e) {
+					logger.debug("Disassociazione prodotto-keyword non riuscito!!!");
+				}	
+				if(deleteRow == 1){
+					logger.info("Cancellazione prodotto_has_keyword (" + idProdotto + ", " + idKeyword+ ")");
+					connection.commit();
+				}
+				
+							
+		} catch (SQLException  e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+				logger.debug("Rollback in inserimento prodotto_has_keyword");
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}			
+		}
+		finally{
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
+			
+		}
+	
+		return deleteRow;
+	}
+	
+	
+	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto) throws ClassNotFoundException, IOException{
+		logger.debug("in getKeywordMancantiByIdProdotto");
+		List<Keyword> keywordList = new ArrayList<Keyword>();
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM keyword WHERE keyword.idkeyword " +
+					"NOT IN " +
+					"(SELECT keyword.idkeyword FROM prodotto, keyword, prodotto_has_keyword " +
+					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND prodotto.idprodotto = ?) ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProdotto);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				Keyword keyword = new KeywordImpl();
+				keyword.setIdKeyword(rs.getInt("keyword.idkeyword"));
+				keyword.setKeyword(rs.getString("keyword.keyword"));
+				keywordList.add(keyword);
+				logger.debug(" Aggiunta keyword (" + keyword.getIdKeyword() + ", " + keyword.getKeyword() + ")");
+				
+			}
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return keywordList;
+	}
+
+	/**
+	 * 
+	 * //Le keyword già assegnate ad un prodotto non possono essere modificate ma si possono solo cancellare o aggiungerne altre
+	 */
+	public Integer updateProdotto(Prodotto prodotto){
+		logger.debug("in updateProdotto");
+		logger.info("Aggiornamento Prodotto: (" + prodotto.getIdProdotto() + ", " + prodotto.getNome() + ", " + prodotto.getIdProduttore() + ", " + prodotto.getIdCategoria() + ")");
+		Integer uptadedRows = -1;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+					
+			
+				String sql1 = "INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) "
+						+ "VALUES (?, ?)";
+				
+				if((prodotto.getKeywordsList() != null) && (prodotto.getKeywordsList().size() > 0)){
+					
+					Integer keywordIdKey = -1;
+					KeywordDao keyDao = new KeywordDaoMysqlJdbc();
+					
+					for (int i = 0; i < prodotto.getKeywordsList().size(); i++) {
+		
+						Keyword keyword = keyDao.getKeywordByWord(prodotto.getKeywordsList().get(i).getKeyword());
+		
+						if (keyword != null) {
+							logger.debug("La parola è presente nel database");
+							keywordIdKey = keyword.getIdKeyword();
+						} 
+						else{
+							logger.debug("La parola NON è presente nel database");
+							keywordIdKey = keyDao.insertKeyword(prodotto.getKeywordsList().get(i));
+						}
+						if(prodotto.getKeywordsList().get(i).getIdKeyword() == null) {
+							prodotto.getKeywordsList().get(i).setIdKeyword(keywordIdKey); // setto l'id della parola chiave
+							logger.debug("Ho settato l'idkeyword: " + keywordIdKey   + " nella lista delle keyword del prodotto");
+						}
+	
+						//aggiorniamo l'associazione idprodotto e idkeyword
+						logger.debug("aggiorniamo l'associazione idprodotto e idkeyword");
+						pstmt = connection.prepareStatement(sql1);
+						pstmt.setInt(1, prodotto.getIdProdotto());
+						pstmt.setInt(2, keywordIdKey);
+						logger.debug("Insert Query: " + pstmt.toString());
+						int insertRows = pstmt.executeUpdate(); // viene effettuato l'associazione tra l'idProdotto e l'idKeyword nella tabella prodotto_has_keyword
+						logger.debug("Numero di righe inserite: " + insertRows);
+					}
+				}
+	
+				String sql2 = "UPDATE  prodotto SET nome=?, produttore_idproduttore=?, categoria_idcategoria=? WHERE idprodotto=?";
+	
+				pstmt = connection.prepareStatement(sql2);
+				pstmt.setString(1, prodotto.getNome());
+				pstmt.setInt(2, prodotto.getIdProduttore());
+				pstmt.setInt(3, prodotto.getIdCategoria());
+				pstmt.setInt(4, prodotto.getIdProdotto());
+				logger.debug("Update Query:" + pstmt.toString());
+				uptadedRows = pstmt.executeUpdate();
+	
+				
+				connection.commit();
+				logger.info("Prodotto Aggiornato");
+
+		}catch (ClassNotFoundException | SQLException | IOException  e1) {
+			
+			e1.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			logger.debug("Roolback in aggiornamento prodotto");
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return uptadedRows;
+	}
+
+	public Integer updateNomeProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException {
+		logger.debug("in updateProdotto");
+		Integer uptadedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql2 = "UPDATE prodotto SET nome=? WHERE idprodotto=?";
+	
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setString(1, prodotto.getNome());
+			pstmt.setInt(2, prodotto.getIdProdotto());
+			logger.debug("Update Query:" + pstmt.toString());
+			uptadedRows = pstmt.executeUpdate();
+	
+			
+			connection.commit();
+			logger.info("Prodotto Aggiornato");
+	
+		}catch (SQLException  e1) {
+			e1.printStackTrace();
+	
+			try {
+				connection.rollback();
+				logger.debug("Roolback in aggiornamento prodotto"); 
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
+				}
+			}
+		}
+		return uptadedRows;
+	}
+	
+	
+	
+	
 	
 	
 }

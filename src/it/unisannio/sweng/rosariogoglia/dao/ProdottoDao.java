@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
+import it.unisannio.sweng.rosariogoglia.model.Keyword;
 
 public interface ProdottoDao {
 	
@@ -83,7 +84,56 @@ public interface ProdottoDao {
 	 */
 	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
 	
+	/**
+	 * Effettua la disassociazione tra un prodotto e una parola chiave.
+	 * 	
+	 * @param idProdotto
+	 * @param idKeyword
+	 * @return 1 in caso di corretta cancellazione, -1 in caso di fallimento
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+		
+	/**
+	 * Cancellazione di un prodotto dal database
+	 * 
+	 * @param prodotto
+	 * @return 1 in caso di corretta cancellazione, -1 in caso di fallimento
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer deleteProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
 	
+	
+	/**
+	 * Visualizza tutte le parole chiavi presenti nel database ma non ancora associate al prodotto che viene passato come parametro
+	 * 
+	 * @param idProdotto
+	 * @return tutte le parole chiavi non ancora associate al prodotto
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto) throws ClassNotFoundException, IOException;
+	
+	/**
+	 * Modifica caratteristiche di un prodotto già presente nel database
+	 *  
+	 * @param prodotto
+	 * @return
+	 */
+	public Integer updateProdotto(Prodotto prodotto);
+	
+	/**
+	 * Utilizzato per aggiornare il nome del prodotto
+	 * 
+	 * @param prodotto
+	 * @return 1 in caso di aggiornamento riuscito, -1 in caso contrario
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer updateNomeProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+		
 	
 
 }

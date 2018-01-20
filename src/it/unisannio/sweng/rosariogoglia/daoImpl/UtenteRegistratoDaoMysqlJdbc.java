@@ -1313,5 +1313,41 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return result;
 	}
 
+	public boolean controlloNick(String nickName) throws ClassNotFoundException, IOException{
+		logger.debug("in controlloNick");
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+		
+			String sql = "SELECT * FROM utente_registrato " +
+				"WHERE nick = ?";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, nickName);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
 	
 }

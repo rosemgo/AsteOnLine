@@ -1234,4 +1234,48 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 	
+	public boolean controllaProdottiScaduti(String nick) throws ClassNotFoundException, IOException {
+		logger.debug("In controllaProdottiScaduti");
+		
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM utente_registrato, inserzione " +
+					"WHERE inserzione.venditore_utente_registrato_idutente = utente_registrato.idutente " +
+					"AND " +
+					"(inserzione.stato = 'scaduta') " +
+					"AND " +
+					"nick = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = true; 
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+
+
+	
 }

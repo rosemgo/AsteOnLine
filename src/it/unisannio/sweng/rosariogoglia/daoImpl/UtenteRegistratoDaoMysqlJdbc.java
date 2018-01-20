@@ -13,7 +13,7 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
 
-
+import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,9 +23,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -39,7 +36,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-	
+
 	
 	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente) throws ClassNotFoundException, IOException{
 		logger.debug("in getUtenteRegistratoById");
@@ -1150,6 +1147,91 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return numUtenti;
 	}
 	
-	
+	public UtenteRegistrato checkUtente(String userName) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in checkUtente");
+		UtenteRegistrato utenteReg = null;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM utente_registrato " +
+					"WHERE nick = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, userName);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				utenteReg = new UtenteRegistratoImpl();
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				utenteReg = dao.getUtenteRegistratoById(rs.getInt("idutente"));
+							
+				logger.debug("(" + utenteReg.getIdUtente() + ", " + utenteReg.getNome() + ")");	
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return utenteReg;
+	}
 
+
+
+	public boolean controllaPagamenti(String nick) throws ClassNotFoundException, IOException {
+		logger.debug("In controllaPagamenti");
+		
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM utente_registrato, inserzione " +
+					"WHERE inserzione.acquirente_utente_registrato_idutente = utente_registrato.idutente " +
+					"AND " +
+					"inserzione.stato = 'aggiudicata' " +
+					"AND " +
+					"nick = ? ";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = true; 
+		
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	
 }

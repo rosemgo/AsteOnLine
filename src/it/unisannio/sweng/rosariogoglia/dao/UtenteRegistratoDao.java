@@ -325,42 +325,5 @@ public interface UtenteRegistratoDao {
 	 */
 	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException;
 	
-	
-	/**
-	 * Visualizza il numero delle inserzioni pubblicate dall'utente passato come parametro
-	 * 
-	 * @param idUtenteRegistrato
-	 * 
-	 * @return il numero delle inserzioni
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	public Integer getNumeroInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException;
-	
-	
-	
-	/**
-	 * Visualizza il numero delle inserzioni pubblicate dall'utente cercate per titolo
-	 * 
-	 * @param idUtenteRegistrato
-	 * @param titoloInserzione
-	 * @return il numero delle inserzioni con quel titolo
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	public Integer getNumeroLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione) throws ClassNotFoundException, IOException;
-	
-	
-	/**
-	 * Visualizza il numero delle aste a cui l'utente, passato come parametro, sta partecipando
-	 * 
-	 * @param idUtenteRegistrato
-	 * @return numero inserzioni
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException;
-	
-	
 }
 

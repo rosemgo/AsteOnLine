@@ -1277,5 +1277,41 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 
+	public boolean controlloeMail(String eMail) throws ClassNotFoundException, IOException{
+		logger.debug("in controlloeMail");
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+		
+			String sql = "SELECT * FROM utente_registrato " +
+				"WHERE e_mail = ?";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, eMail);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = true;
+						
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	
 }

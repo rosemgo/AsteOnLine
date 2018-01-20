@@ -254,4 +254,68 @@ public interface UtenteRegistratoDao {
 	 */
 	public UtenteRegistrato getUtenteRegistratoByNick(String nick) throws ClassNotFoundException, IOException;
 	
+	
+	/**
+	 * Ricerca nel database l'utente corrispondente al nickname passato come parametro, e se presente lo restituisce. 
+	 * 
+	 * @param nickName identificativo dell'utente.
+	 * @return restituisce l'utente se il nick è esistente, null altrimenti.
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public UtenteRegistrato checkUtente(String nickName) throws ClassNotFoundException, SQLException, IOException;
+	
+	/**
+	 * Controlla se l'utente definito da nick ha delle inserzioni aggiudicate da pagare
+	 * 
+	 * @param nick
+	 * 
+	 * @return true se l'utente ha almeno un' inserzione aggiudicata da pagare
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean controllaPagamenti(String nick) throws ClassNotFoundException, IOException;
+	
+	
+	/**
+	 * Controlla se l'utente definito da nick ha delle inserzioni scadute
+	 * 
+	 * @param nick
+	 * 
+	 * @return true se l'utente venditore ha almeno un'inserzione che è scaduta e quindi può cancellarla oppure ripubblicarla
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean controllaProdottiScaduti(String nick) throws ClassNotFoundException, IOException;
+	
+	
+	/**
+	 * Controlla se la mail è già presente nel db.
+	 * 
+	 * @param nickName identificativo dell'utente.
+	 * @return restituisce true se il nick è esistente, false altrimenti.
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * 
+	 * 
+	 */
+	public boolean controlloeMail(String eMail) throws ClassNotFoundException, IOException;
+	
+	
+	/**
+	 * Controlla se il nick è già presente nel db.
+	 * 
+	 * @param nickName identificativo dell'utente.
+	 * @return restituisce true se il nick è esistente, false altrimenti.
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * 
+	 * 
+	 */
+	public boolean controlloNick(String nickName) throws ClassNotFoundException, IOException;
+	
+	
+	
+	
 }

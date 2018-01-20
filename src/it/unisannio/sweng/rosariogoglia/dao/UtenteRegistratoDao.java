@@ -278,6 +278,7 @@ public interface UtenteRegistratoDao {
 	public boolean controllaPagamenti(String nick) throws ClassNotFoundException, IOException;
 	
 	
+	
 	/**
 	 * Controlla se l'utente definito da nick ha delle inserzioni scadute
 	 * 

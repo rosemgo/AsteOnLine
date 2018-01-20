@@ -1313,6 +1313,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return result;
 	}
 
+	
 	public boolean controlloNick(String nickName) throws ClassNotFoundException, IOException{
 		logger.debug("in controlloNick");
 		boolean result = false;

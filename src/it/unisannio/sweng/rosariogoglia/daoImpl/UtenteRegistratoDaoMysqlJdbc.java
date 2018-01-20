@@ -17,6 +17,8 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 
 
+
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -1610,7 +1612,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return listaUtenti;
 	}
 	
-	public boolean isUtenteAbilitato(String nick){
+	public boolean isUtenteAbilitato(String nick) throws ClassNotFoundException, IOException{
 		logger.debug("in isUtenteAbilitato");
 		boolean result = false;
 		
@@ -1647,7 +1649,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return result;
 	}
 	
-	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente)  {
+	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente) throws ClassNotFoundException, IOException  {
 		logger.debug("in isUtenteRegistrato");
 		boolean result = false;
 		

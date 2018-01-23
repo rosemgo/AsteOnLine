@@ -11,23 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Prova
+ * Servlet che fa il redirect alla pagine index del sito
  */
 
 
 public class ServletIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
-	
-	
-	//IN QUESTO MODO E' POSSIBILE EFFETTUARE IL REDIRECT ALLA SERVLETINDEX DA QUALUNQUE ALTRA SERVLET(ES SERVLETLOGIN)
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		doGet(request, response);
-		
-	}
-	
 	
     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

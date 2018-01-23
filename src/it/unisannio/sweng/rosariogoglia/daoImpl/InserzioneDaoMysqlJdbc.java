@@ -12,8 +12,6 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
-
-
 import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ImmagineDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
@@ -490,13 +488,171 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 	}
 	return listaInserzioni;
 }
+
+
+public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException{
+	logger.debug("in ordinaInserzioniPopolari");
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+	Connection connection;
+			
+	connection = DatabaseUtil.getConnection();
+	
+	PreparedStatement  pstmt;
+
+	String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
+			"FROM inserzione, utente_registrato_osserva_inserzione " +
+			"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
+			"AND inserzione.stato = 'in asta' " +
+			"GROUP BY inserzione_idinserzione " +
+			"ORDER BY numoss DESC, inserzione.idinserzione ASC ";
 	
 	
+	pstmt = connection.prepareStatement(sql);
+	ResultSet rs = pstmt.executeQuery();
+	
+	while(rs.next()){
+		
+		
+		Inserzione inserzione;
+		inserzione = new InserzioneImpl();
+
+		inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+		inserzione.setTitolo(rs.getString("inserzione.titolo"));
+		inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+		inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+		inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+		
+		System.out.println("visualizza l'inserzione: " + inserzione.getTitolo());
+		
+		listaInserzioni.add(inserzione);
+			
+	}
+
+	
+	rs.close();
+	pstmt.close();
+	connection.close();
+	
+	return listaInserzioni;
+}
+
+
+public List<Inserzione> ricercaTopInserzioniPopolari(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
+	
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
+	Connection connection = null;
+	ResultSet rs = null;
+	PreparedStatement  pstmt = null;
+	
+	try {
+		//connection = DatabaeUtil.getConnection();
+		
+		connection = DatabaseUtil.getConnection();
+		
+		System.out.println("connection: " + connection.toString());
+		
+		
+		
+		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
+				"FROM inserzione, utente_registrato_osserva_inserzione " +
+				"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
+				"AND inserzione.stato = 'in asta' " +
+				"GROUP BY inserzione_idinserzione " +
+				"ORDER BY numoss DESC, inserzione.idinserzione ASC " +
+				"LIMIT " + numInserzioni;
+		
+		pstmt = connection.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		Inserzione inserzione;
+		ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+		
+		while(rs.next()){
+			inserzione = new InserzioneImpl();
+
+			inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+			inserzione.setTitolo(rs.getString("inserzione.titolo"));
+			inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+			inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+			inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				
+			inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+				
+			listaInserzioni.add(inserzione);
+				
+		}
+				
+		connection.close();
+		
+	
+	} catch (ClassNotFoundException	| IOException | SQLException e) {
+		e.printStackTrace();
+	}
+	
+	finally{
+		rs.close();
+		pstmt.close();
+		connection.close();
+	}
+	
+	return listaInserzioni;
+}
 	
 	
+public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
+	logger.debug("in ricercaTopInserzioniChiusura");
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
+	Connection connection = null;
+	ResultSet rs = null;
+	PreparedStatement  pstmt = null;
+	try {
+		connection = DatabaseUtil.getConnection();
+		
+		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
+				"WHERE (( DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0 ) OR ( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 )) " +
+				"ORDER BY inserzione.data_scadenza ASC " +
+				"LIMIT " + numInserzioni;
+		
+		pstmt = connection.prepareStatement(sql);
+		logger.debug("Select Query:" + pstmt.toString());
+		
+		rs = pstmt.executeQuery();
+	
+		Inserzione inserzione;
+		ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+
+		while(rs.next()){
+				inserzione = new InserzioneImpl();
+				
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+			
+				inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+				
+				listaInserzioni.add(inserzione);	
+				
+		}
+		
+		logger.debug("inserzioni in scadenza caricate");
+	
+	} catch (ClassNotFoundException	| IOException | SQLException e) {
+		e.printStackTrace();
+	}
+	
+	finally{
+		rs.close();
+		pstmt.close();
+		connection.close();
+	}
+	return listaInserzioni;
+	
+}
 	
 	
-	
+
 	
 	
 }

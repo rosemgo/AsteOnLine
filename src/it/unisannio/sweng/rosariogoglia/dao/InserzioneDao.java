@@ -79,6 +79,21 @@ public interface InserzioneDao {
 	 * @return lista contenente le inserzioni corrispondenti
 	 */
 	public List<Inserzione> ricercaInserzioni (String keyword, Integer idCategoria);
+
+
+
+
+	public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException;
+
+
+
+
+	public List<Inserzione> ricercaTopInserzioniPopolari(int i) throws ClassNotFoundException, SQLException, IOException;
+
+
+
+
+	public List<Inserzione> ricercaTopInserzioniChiusura(int i) throws ClassNotFoundException, SQLException, IOException;
 	
 	
 }

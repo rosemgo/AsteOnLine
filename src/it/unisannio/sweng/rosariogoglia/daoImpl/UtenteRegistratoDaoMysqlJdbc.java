@@ -42,7 +42,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 
 	
-	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente) throws ClassNotFoundException, IOException{
+	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente){
 		logger.debug("in getUtenteRegistratoById");
 		
 		UtenteRegistrato utenteReg = null;
@@ -123,7 +123,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail) throws ClassNotFoundException, IOException{
+	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail){
 		logger.debug("in getUtenteRegistratoByeMail");
 		
 		UtenteRegistrato utenteReg = null;
@@ -206,7 +206,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public UtenteRegistrato getUtenteRegistratoByNick(String nick) throws ClassNotFoundException, IOException{
+	public UtenteRegistrato getUtenteRegistratoByNick(String nick){
 		logger.debug("in getUtenteRegistratoByNick");
 		
 		UtenteRegistrato utenteReg = null;
@@ -284,7 +284,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer insertUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, IOException, SQLException{
+	public Integer insertUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws SQLException{
 		logger.info("in insertRegistrato");
 		Integer utenteIdKey = -1;
 		Connection connection = null;
@@ -359,7 +359,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	 * @throws ClassNotFoundException 
 	 * @throws SQLException 
 	 */
-	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, IOException, SQLException {
+	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws SQLException {
 		logger.info("in deleteRegistrato");
 		Integer updatedRows = -1;
 		
@@ -399,7 +399,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 	
-	public Integer updateUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, IOException, SQLException {
+	public Integer updateUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws SQLException {
 		logger.debug("In updateUtenteRegistrato");
 		Integer updatedRows = -1;
 		Connection connection = null;
@@ -502,7 +502,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer updateStatoUtente(Integer idUtente, Boolean flagAbilitato) throws ClassNotFoundException, IOException{
+	public Integer updateStatoUtente(Integer idUtente, Boolean flagAbilitato){
 		logger.debug("in updateUtente");
 		Integer updatedRows = -1;
 		
@@ -592,7 +592,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer updateAbilitazioneUtente(String nick, boolean flagAbilitato) throws ClassNotFoundException, IOException{
+	public Integer updateAbilitazioneUtente(String nick, boolean flagAbilitato){
 		logger.debug("in updateAbilitazioneUtente");
 		Integer updatedRows = -1;
 		
@@ -692,7 +692,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione) throws ClassNotFoundException, IOException{
+	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione){
 		logger.debug("in Insert osserva inserzione");
 	
 		int insertRow = -1;
@@ -742,7 +742,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 
 	
 	
-	public List<Inserzione> getInserzioniOsservateByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException{
+	public List<Inserzione> getInserzioniOsservateByIdUtente(Integer idUtente){
 		logger.debug("in getInserzioniOsservateByIdUtente");
 		List<Inserzione> listaInserzioniOsservate = new ArrayList<Inserzione>();
 		
@@ -797,7 +797,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 
 	
 	
-	public Integer getNumeroInserzioniOsservateByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException{
+	public Integer getNumeroInserzioniOsservateByIdUtente(Integer idUtente){
 		logger.debug("in getNumeroInserzioniOsservateByIdUtente");
 		Integer numeroInserzioni = 0;
 		
@@ -841,7 +841,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Boolean checkInserzioneOsservataByIdUtente(Integer idUtenteRegistrato, Integer idInserzione) throws ClassNotFoundException, IOException{
+	public Boolean checkInserzioneOsservataByIdUtente(Integer idUtenteRegistrato, Integer idInserzione){
 		logger.debug("in checkInserzioneOsservataByIdUtente");
 		Boolean result = false;
 		
@@ -887,7 +887,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	public List<Inserzione> getInserzioniByIdUtenteAcquirente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException {
+	public List<Inserzione> getInserzioniByIdUtenteAcquirente(Integer idUtenteRegistrato) {
 		logger.debug("in getInserzioniByIdUtenteAcquirente");
 		
 		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
@@ -935,7 +935,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public List<Inserzione> getInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException {
+	public List<Inserzione> getInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato) {
 		logger.debug("in getInserzioniAggiudicateByIdUtenteAcquirente");
 		
 		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
@@ -986,7 +986,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	public Integer getNumeroInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException {
+	public Integer getNumeroInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato) {
 		logger.debug("in getLimitInserzioniAggiudicateByIdUtenteAcquirente");
 		
 		Integer numeroInserzioni = 0;
@@ -1032,7 +1032,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public List<Inserzione> getInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException {
+	public List<Inserzione> getInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato) {
 		logger.debug("in getInserzioniByIdUtenteVenditore");
 			
 			List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
@@ -1080,7 +1080,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 		
-	public List<String> getNick() throws ClassNotFoundException, IOException{
+	public List<String> getNick(){
 		logger.debug("in getNick");
 		List<String> listaNick = new ArrayList<String>();
 		
@@ -1115,7 +1115,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer getNumeroUtenti() throws ClassNotFoundException, IOException{
+	public Integer getNumeroUtenti(){
 		logger.debug("in getNumeroUtenti");
 		Integer numUtenti = 0;
 		
@@ -1197,7 +1197,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 
 
 
-	public boolean controllaPagamenti(String nick) throws ClassNotFoundException, IOException {
+	public boolean controllaPagamenti(String nick) {
 		logger.debug("In controllaPagamenti");
 		
 		boolean result = false;
@@ -1238,7 +1238,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 	
-	public boolean controllaProdottiScaduti(String nick) throws ClassNotFoundException, IOException {
+	public boolean controllaProdottiScaduti(String nick) {
 		logger.debug("In controllaProdottiScaduti");
 		
 		boolean result = false;
@@ -1281,7 +1281,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 
-	public boolean controlloeMail(String eMail) throws ClassNotFoundException, IOException{
+	public boolean controlloeMail(String eMail){
 		logger.debug("in controlloeMail");
 		boolean result = false;
 		
@@ -1318,7 +1318,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 
 	
-	public boolean controlloNick(String nickName) throws ClassNotFoundException, IOException{
+	public boolean controlloNick(String nickName){
 		logger.debug("in controlloNick");
 		boolean result = false;
 		
@@ -1355,7 +1355,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente) throws ClassNotFoundException, IOException{
+	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente){
 		logger.debug("in getMieAsteInCorsoByIdUtente");
 		
 		List<Inserzione> listaAste = new ArrayList<Inserzione>();
@@ -1408,7 +1408,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 	}
 	
-	public Integer getNumeroInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException{
+	public Integer getNumeroInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato){
 		logger.debug("in numeroLeMieiInserzioni");
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -1448,7 +1448,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
-	public Integer getNumeroLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione) throws ClassNotFoundException, IOException {
+	public Integer getNumeroLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione) {
 		logger.debug("in getNumeroLeMieInserzioniPerTitolo");
 		
 		Integer numeroInserzioni = 0;
@@ -1493,7 +1493,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato) throws ClassNotFoundException, IOException{
+	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato){
 		logger.debug("in numeroLeMieiInserzioni");
 		int numeroInserzioni = 0;
 		
@@ -1612,7 +1612,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return listaUtenti;
 	}
 	
-	public boolean isUtenteAbilitato(String nick) throws ClassNotFoundException, IOException{
+	public boolean isUtenteAbilitato(String nick){
 		logger.debug("in isUtenteAbilitato");
 		boolean result = false;
 		
@@ -1649,7 +1649,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return result;
 	}
 	
-	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente) throws ClassNotFoundException, IOException  {
+	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente)  {
 		logger.debug("in isUtenteRegistrato");
 		boolean result = false;
 		

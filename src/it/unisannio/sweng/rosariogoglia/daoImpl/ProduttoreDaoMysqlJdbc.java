@@ -12,6 +12,7 @@ import java.util.List;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProduttoreImpl;
@@ -76,7 +77,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return listaProduttori;
 	}
 		
-	public Produttore getProduttoreById(Integer idProduttore) throws ClassNotFoundException, IOException{
+	public Produttore getProduttoreById(Integer idProduttore){
 		logger.debug("in getProduttoreById");
 		Produttore produttore = null;
 		
@@ -119,7 +120,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 
 	
-	public Produttore getProduttoreByNome(String nomeProduttore) throws ClassNotFoundException, IOException {
+	public Produttore getProduttoreByNome(String nomeProduttore) {
 		Produttore produttore = null;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
@@ -158,7 +159,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return produttore;
 	}
 
-	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria) throws ClassNotFoundException, IOException{
+	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriByIdCategoria");
 		
 		Connection connection = null;
@@ -212,7 +213,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 	
 	
-	public Integer insertProduttore(Produttore produttore) throws ClassNotFoundException, IOException{
+	public Integer insertProduttore(Produttore produttore){
 		logger.debug("in insertProduttore");
 		
 		Integer autoincrementKey = -1;
@@ -225,7 +226,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 			connection = ConnectionPoolTomcat.getConnection();
 			
-			//connection = ConnectionPoolTomcat.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			//connection = DatabaseUtil.getConnection(); // utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			
 			connection.setAutoCommit(false);
 		
 			String sql = "INSERT INTO produttore (nome, website) VALUES (?, ?)";
@@ -278,7 +280,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 
 	
-	public boolean checkDeleteProduttore(Integer idProduttore) throws ClassNotFoundException, IOException{
+	public boolean checkDeleteProduttore(Integer idProduttore){
 		
 		boolean result = true;
 		Connection connection = null;
@@ -319,7 +321,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return result;
 	}
 	
-	public Integer deleteProduttore(Integer idProduttore) throws ClassNotFoundException, IOException {
+	public Integer deleteProduttore(Integer idProduttore) {
 		logger.info("Eliminazione Produttore: (" + idProduttore + ")");
 		Integer deletedRows = -1;
 		
@@ -372,7 +374,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 
 
-	public Integer updateProduttore(Produttore produttore) throws ClassNotFoundException, IOException{
+	public Integer updateProduttore(Produttore produttore){
 		logger.debug("in updateProduttore");
 		Integer uptadedRows = -1;
 		

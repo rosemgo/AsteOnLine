@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface KeywordDao {
 
-	public List<Keyword> getKeywords() throws ClassNotFoundException, IOException;
+	public List<Keyword> getKeywords();
 	
-	public Keyword getKeywordById(Integer id) throws ClassNotFoundException, IOException;
+	public Keyword getKeywordById(Integer id);
 	
 	/**
 	 * 
@@ -20,7 +20,7 @@ public interface KeywordDao {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public Keyword getKeywordByWord(String key) throws ClassNotFoundException, IOException;
+	public Keyword getKeywordByWord(String key);
 	
 	/**
 	 * 
@@ -42,13 +42,13 @@ public interface KeywordDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public int insertListaKeyword(List<Keyword> keywords) throws ClassNotFoundException, IOException;
+	public int insertListaKeyword(List<Keyword> keywords);
 		
 	
 	public int insertKeyword(String keyword) throws ClassNotFoundException, SQLException, IOException;
 	
-	public int deleteKeyword(Integer idKeyword) throws ClassNotFoundException, IOException;
+	public int deleteKeyword(Integer idKeyword);
 	
-	public int updateKeyword(Keyword keyword) throws ClassNotFoundException, IOException;
+	public int updateKeyword(Keyword keyword);
 	
 }

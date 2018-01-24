@@ -22,25 +22,16 @@ import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
-
-
 import it.unisannio.sweng.rosariogoglia.utility.ControlloScadenzaAste;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.sql.DataSource;
-
 
 
 /**
@@ -88,28 +79,6 @@ public class ServletInizializzazione extends HttpServlet {
 		System.out.println("COMUNI CARICATI");
 			
 		ServletContext context = this.getServletConfig().getServletContext();
-				
-// Queste righe non servono perchè nelle servlet ottengo la connessione utilizzando la classe ConnectionPoolTomcat, in realta basterebbe solo prelevare la risorsa data source dal contesto e definire la connessione.
-// connection = context.getAttribute("dataSource").getConnection(); 
-//PER UTILIZZARE QUESTE RIGHE AVREI DOVUTO PASSARE AI METODI DAO LA CONNESSIONE COME PARAMETRO!!! DATO CHE I METODI DAO, NELLA MIA APP CREANO DA SOLI LA CONNESSIONE E' NECESSARIO UTILIZZARE LA CLASSE ConnectionPoolTomcat
-/*		Context initContext;
-		Connection conn = null;
-		DataSource ds = null;
-		try {
-
-			initContext = new InitialContext(); // creiamo il context per accedere al servizio dei nomi
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/AsteOnLine");
-			
-			context.setAttribute("dataSource", ds); //metto il dataSource nel contesto, in modo tale da richiamarlo quando serve per ottenere la connessione
-			//conn = ds.getConnection();
-
-			// System.out.println("connection: " + conn);
-
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-*/	
 		
 		/* 
 		 * Setto nel contesto dell'applicazione la lista categorie":
@@ -153,12 +122,7 @@ public class ServletInizializzazione extends HttpServlet {
 		 * tale variabile stabilisce quando il sito è off-line(all'inizio la settiamo ON-LINE, sarà l'amministratore a mettere il sito OFF-LINE)
 		 */
 		context.setAttribute("inManutenzione", inManutenzione);
-		
-		
-		
-//		ControlloScadenzaAste csa = new ControlloScadenzaAste();
-//		csa.start();
-		
+
 		
 		//CREO UN SISTEMA DI AGGIORNAMENTO DELLO STATO DELLE ASTE DI TUTTO IL DB NEL MOMENTO IN CUI AVVIENE LA SCADENZA!!!
 		Inserzione inserzione = new InserzioneImpl();

@@ -133,7 +133,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public Integer insertImmagine(Immagine immagine) throws ClassNotFoundException, IOException {
+	public Integer insertImmagine(Immagine immagine) {
 		logger.debug("in insert immagine");
 		Integer immagineIdKey = -1;
 		Connection connection = null;
@@ -210,7 +210,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 	}
 	
 	
-	public Integer deleteImmagine(Immagine immagine) throws ClassNotFoundException, IOException{
+	public Integer deleteImmagine(Immagine immagine){
 		logger.debug("in deleteImmagine");		
 		int deletedRow = -1;
 		Connection connection = null;
@@ -256,7 +256,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		return deletedRow;
 	}
 	
-	public Integer deleteImmagineByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException{
+	public Integer deleteImmagineByIdInserzione(Integer idInserzione){
 		logger.debug("in deleteImmagineByIdInserzione");		
 		int deletedRow = -1;
 		Connection connection = null;

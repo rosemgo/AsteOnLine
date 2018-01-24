@@ -26,7 +26,7 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
 	}
 
-	public List<Provincia> getProvince() throws ClassNotFoundException, IOException {
+	public List<Provincia> getProvince() {
 		logger.debug("in getProvincie");
 		
 		List<Provincia> listaProvince = new ArrayList<Provincia>();

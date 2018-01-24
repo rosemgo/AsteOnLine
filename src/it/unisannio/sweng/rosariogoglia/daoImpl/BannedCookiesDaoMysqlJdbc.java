@@ -135,7 +135,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	
 	
 	
-	public boolean checkUtenteRegistratoBanned(Integer idUtente) throws ClassNotFoundException, IOException{
+	public boolean checkUtenteRegistratoBanned(Integer idUtente){
 		logger.info("in checkUtenteRegistratoBanned");
 		
 		boolean result = false;

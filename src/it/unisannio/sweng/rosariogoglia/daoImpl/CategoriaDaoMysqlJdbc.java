@@ -14,10 +14,12 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Categoria;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
 import it.unisannio.sweng.rosariogoglia.modelImpl.CategoriaImpl;
@@ -34,7 +36,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		DOMConfigurator.configure("C:/Users/Rosario/git//WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-	public List<Categoria> getCategorie() throws ClassNotFoundException, IOException{
+	public List<Categoria> getCategorie(){
 		logger.debug("in getCategorie");
 		Connection connection = null;
 		Statement stmt = null;
@@ -88,7 +90,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	
 	
 		
-	public Categoria getCategoriaById(Integer idCategoria) throws ClassNotFoundException, IOException{
+	public Categoria getCategoriaById(Integer idCategoria){
 		logger.debug("in getCategoriaById");
 		Categoria categoria = null;
 		
@@ -135,7 +137,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	}
 	
 	
-	public Categoria getCategoriaByNome(String nomeCategoria) throws ClassNotFoundException, IOException{
+	public Categoria getCategoriaByNome(String nomeCategoria){
 		logger.debug("in getCategoriaByNome");
 		Categoria categoria = null;
 		Connection connection = null;
@@ -178,7 +180,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 	}
 
-	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria) throws ClassNotFoundException, IOException{
+	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriMancanti");
 		
 		List<Produttore> listaProduttori = new ArrayList<>();
@@ -237,7 +239,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 	}
 
-	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore) throws ClassNotFoundException, IOException{
+	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore){
 		logger.debug("in insertCategoriaHasProduttore");
 		Integer insertRow = -1;
 		Connection connection = null; 
@@ -291,7 +293,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return insertRow;
 	}
 
-	public Integer deleteCategoriaHasProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException{
+	public Integer deleteCategoriaHasProduttore(Integer idCategoria, Integer idProduttore){
 		logger.debug("in deleteCategoriaHasProduttore");
 				
 		Integer deletedRows = -1;
@@ -349,7 +351,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return deletedRows;		
 	}
 
-	public Integer insertCategoria (Categoria categoria) throws ClassNotFoundException, IOException{
+	public Integer insertCategoria (Categoria categoria){
 		logger.debug("in insertCategoria");
 		Integer autoincrementKey = -1;		
 		Connection connection = null;
@@ -358,7 +360,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		try {
 				
 			connection = ConnectionPoolTomcat.getConnection();
-			//connection = ConnectionPoolTomcat.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			
+			//connection = DatabaseUtil.getConnection(); //utilizzato in caso di caricamento categorie al primo avvio, con il Test
 				
 			connection.setAutoCommit(false);
 			
@@ -411,7 +414,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	
 	}
 
-	public Integer updateCategoria(Categoria categoria) throws ClassNotFoundException, IOException{
+	public Integer updateCategoria(Categoria categoria){
 		logger.debug("in updateCategoria");
 		Integer uptadedRows = -1;
 		Connection connection = null;
@@ -454,7 +457,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return uptadedRows;
 	}
 
-	public Integer deleteCategoria(Integer idCategoria) throws ClassNotFoundException, IOException{
+	public Integer deleteCategoria(Integer idCategoria){
 		logger.debug("in deleteCategoria");
 		Integer deletedRows = -1;
 		Connection connection = null;
@@ -526,7 +529,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return deletedRows;		
 	}
 
-public boolean checkDeleteCategoria(Integer idCategoria) throws ClassNotFoundException, IOException{
+public boolean checkDeleteCategoria(Integer idCategoria){
 		
 		boolean result = true;
 		Connection connection = null;
@@ -570,7 +573,7 @@ public boolean checkDeleteCategoria(Integer idCategoria) throws ClassNotFoundExc
 		return result;
 	}
 
-public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException{
+public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore){
 	boolean result = false;
 	Connection connection = null;
 	ResultSet rs = null;

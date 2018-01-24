@@ -34,9 +34,9 @@ public interface ImmagineDao {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertImmagine(Immagine immagine) throws ClassNotFoundException, IOException;
+	public Integer insertImmagine(Immagine immagine);
 
-	public Integer deleteImmagine(Immagine immagine) throws ClassNotFoundException, IOException;
+	public Integer deleteImmagine(Immagine immagine);
 	
 	/**
 	 * Cancella tutte le immagini relative ad un'inserzione
@@ -46,7 +46,7 @@ public interface ImmagineDao {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer deleteImmagineByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException;
+	public Integer deleteImmagineByIdInserzione(Integer idInserzione);
 	
 	
 	

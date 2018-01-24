@@ -26,7 +26,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 	
 
-	public List<Keyword> getKeywords() throws ClassNotFoundException, IOException {
+	public List<Keyword> getKeywords() {
 		logger.debug("in getKeywords");
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
 		
@@ -68,7 +68,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
-	public Keyword getKeywordById(Integer id) throws ClassNotFoundException, IOException {
+	public Keyword getKeywordById(Integer id) {
 		logger.debug("in getKeywordById");
 		Keyword keyword = null;
 		
@@ -107,7 +107,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
-	public Keyword getKeywordByWord(String key) throws ClassNotFoundException, IOException {
+	public Keyword getKeywordByWord(String key) {
 		logger.debug("in getKeywordByWord: " + key);
 		Keyword keyword = null;
 		Connection connection = null;
@@ -192,7 +192,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//connection = ConnectionPoolTomcat.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
 		
 		connection = ConnectionPoolTomcat.getConnection();
 		connection.setAutoCommit(false);
@@ -225,7 +225,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	
 
 
-	public int insertListaKeyword(List<Keyword> keywords) throws ClassNotFoundException, IOException{
+	public int insertListaKeyword(List<Keyword> keywords){
 		logger.debug("in insertListaKeyword");
 		Integer autoincrementKey = -1;
 		
@@ -311,7 +311,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 	
 	
-	public int deleteKeyword(Integer idKeyword) throws ClassNotFoundException, IOException{
+	public int deleteKeyword(Integer idKeyword){
 		logger.debug("in deleteKeyword");
 		Integer deletedRows = -1;	
 		Connection connection = null;
@@ -367,7 +367,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
-	public int updateKeyword(Keyword keyword) throws ClassNotFoundException, IOException{
+	public int updateKeyword(Keyword keyword){
 		logger.debug("in updateKeyword");
 		Integer uptadedRows = -1;
 		Connection connection = null;

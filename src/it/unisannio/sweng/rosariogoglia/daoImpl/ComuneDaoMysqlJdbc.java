@@ -71,7 +71,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		return comune;
 	}
 	
-	public List<Comune> getComuni() throws ClassNotFoundException, IOException{
+	public List<Comune> getComuni(){
 		logger.debug("in getComuni");
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -127,7 +127,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 	}
 	
 	
-	public List<Comune> getComuniByIdProvincia(Integer idProvincia) throws ClassNotFoundException, IOException{
+	public List<Comune> getComuniByIdProvincia(Integer idProvincia){
 		logger.debug("In getComuniByIdProvincia");
 		List<Comune> listaComuni = new ArrayList<Comune>();
 		Comune comune = null;

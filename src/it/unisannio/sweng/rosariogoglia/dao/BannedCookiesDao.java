@@ -21,7 +21,7 @@ public interface BannedCookiesDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkUtenteRegistratoBanned(Integer idUtente) throws ClassNotFoundException, IOException;
+	public boolean checkUtenteRegistratoBanned(Integer idUtente);
 	
 	/**
 	 * Rimuovere un utente bannata dalla lista degli utenti bannati

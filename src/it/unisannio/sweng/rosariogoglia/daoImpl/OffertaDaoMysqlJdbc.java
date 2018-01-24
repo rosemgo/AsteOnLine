@@ -36,7 +36,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-	public Integer insertOfferta(Offerta offerta) throws ClassNotFoundException, IOException{
+	public Integer insertOfferta(Offerta offerta){
 		logger.debug("in insertOfferta");			
 		int offertaIdKey = -1;
 		Connection connection = null;
@@ -233,7 +233,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 
 	
 
-	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException {
+	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) {
 		logger.debug("in getOffertaById");		
 		List<Offerta> listaOfferte = new ArrayList<Offerta>();
 		Connection connection = null;

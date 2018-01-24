@@ -25,7 +25,7 @@ public interface InserzioneDao {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public List<Inserzione> getInserzioni() throws ClassNotFoundException, IOException;
+	public List<Inserzione> getInserzioni();
 		
 
 	
@@ -60,7 +60,7 @@ public interface InserzioneDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<String> getTitoli() throws ClassNotFoundException, IOException;
+	public List<String> getTitoli();
 	
 	/**
 	 * Questo metodo restituisce una lista di utenti che osservano l'inserzione identificata dal parametro idInserzione
@@ -105,7 +105,7 @@ public interface InserzioneDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws ClassNotFoundException, IOException;
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione);
 	
 	
 	

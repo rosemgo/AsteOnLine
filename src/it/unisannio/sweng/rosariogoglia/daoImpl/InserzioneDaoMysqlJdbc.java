@@ -41,7 +41,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	}
 
 	
-	public List<Inserzione> getInserzioni() throws ClassNotFoundException, IOException {
+	public List<Inserzione> getInserzioni() {
 		logger.debug("in getInserzioni");
 		
 		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
@@ -343,7 +343,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		return listaUtentiRegistrati;
 }	
 
-public List<String> getTitoli() throws ClassNotFoundException, IOException{
+public List<String> getTitoli(){
 	logger.debug("in getTitoli");
 	List<String> listaTitoli = new ArrayList<String>();
 	Connection connection = null;
@@ -651,7 +651,7 @@ public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws C
 }
 	
 	
-public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws ClassNotFoundException, IOException{
+public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione){
 	logger.debug("in updateStatoInserzione");
 	Integer updatedRows = -1;
 	

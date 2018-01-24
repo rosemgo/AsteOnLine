@@ -1,0 +1,105 @@
+package it.unisannio.sweng.rosariogoglia.utility;
+
+import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.model.Inserzione;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.Vector;
+
+
+
+public class ControlloScadenzaAste extends Thread{
+
+	
+	private Inserzione inserzione;
+	private long tempoAttesa; //sarebbe la differenza tra la data di scadenza e la data odierna. In pratica il thread di aggiornamento stato dell'inserzione si attiva nel momento in cui l'inserzione scade
+	
+	private static Vector<Integer> listaInserzioni = new Vector<Integer>();
+	
+	public ControlloScadenzaAste(Inserzione inserzione, long tempoAttesa) {
+		this.inserzione = inserzione;
+		this.tempoAttesa = tempoAttesa;
+	}
+
+
+	@SuppressWarnings("static-access")
+	public void run(){
+		
+			
+//			int posizione = -1;
+//			
+//			for(int i=0; i<this.listaInserzioni.size(); i++){
+//				if(listaInserzioni.get(i) == this.inserzione.getIdInserzione()){
+//					posizione = i;
+//				}
+//			}
+//			if(posizione == -1){
+//				listaInserzioni.add(this.inserzione.getIdInserzione());
+//				posizione = this.listaInserzioni.indexOf(this.inserzione.getIdInserzione());
+//			}
+		
+		
+			if(!this.listaInserzioni.contains(this.inserzione.getIdInserzione())){
+				this.listaInserzioni.add(this.inserzione.getIdInserzione());
+				System.out.println("la lista non conteneva l'inserzione, ora è stata aggiunta");
+			}
+			
+			int posizioneIdInserzione = this.listaInserzioni.indexOf(this.inserzione.getIdInserzione());
+			System.out.println("posizione nel vettore: " + posizioneIdInserzione);
+			
+			System.out.println("id inserzione: " + this.inserzione.getIdInserzione());
+			
+			
+			//CONTROLLARE SCADENZA ASTE DI TUTTO IL DB!!!
+			InserzioneDao dao = new InserzioneDaoMysqlJdbc();		
+						
+			System.out.println("attendo prima di avviare il thread");
+			
+			//se l'inserzione non ancora è scaduta è necessario aspettare la scadenza e poi avviarne il thread, nel caso fosse già scaduta bisogna effettuare direttamente l'aggiornamento
+			if(this.tempoAttesa > 0){
+							
+				//Integer idInserzione = this.inserzione.getIdInserzione();
+				
+				
+				try {
+					Thread.sleep(this.tempoAttesa);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+											
+			}
+				
+				String statoInserzione = this.inserzione.getStato();
+				
+				//solo un thread alla volta può effettuare operazione con lo stesso idinserzione (quindi sulla stessa RISORSA!!!)
+				synchronized (this.listaInserzioni.get(posizioneIdInserzione)) {
+							
+							
+						/*Se non c'è nessun acquirente l'idacquirente sarà 0*/
+						if(this.inserzione.getIdAcquirente() == 0){
+							statoInserzione = "scaduta";
+						}
+						else{
+							statoInserzione = "aggiudicata";
+						}
+							
+						//Esegue l'aggiornamento dell'inserzione nel database
+						dao.updateStatoInserzione(statoInserzione, this.inserzione.getIdInserzione());
+						
+						/*
+						 * INSERIRE L'INVIO DELLA MAIL PER GLI UTENTI
+						 */
+												
+						System.out.println("STATO ASTE AGGIORNATO dal thread con sincro");
+					}
+				
+				}
+					
+			
+		}	
+	
+
+	

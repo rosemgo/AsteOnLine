@@ -1,0 +1,207 @@
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@12645c5e: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@3df9b42c: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@54f28c1f: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: null
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:328] - La parola NON è presente nel database
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:190] - in insertKeyword
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:204] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@2823796f: INSERT INTO keyword (keyword) VALUES ('smartphone')
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@d737301: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: null
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:328] - La parola NON è presente nel database
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:190] - in insertKeyword
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:204] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@3c200d0: INSERT INTO keyword (keyword) VALUES ('cellulare')
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@2c306dfe: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:360] - righe inserite: 1
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:368] - id del prodotto è: 2
+2018-01-19 18:30:26 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:379] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@6aa71b2e: INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) VALUES (2, 13)
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:379] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@e99fb6: INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) VALUES (2, 14)
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:386] - Inserimento Prodotto (2, Samsung Galaxy Next33)
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@183a9d7f: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@36bf7795: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:30:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@5de8256f: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@40982531: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@696be535: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 13)
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: smartphone
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@7fcd72ca: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 14)
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: cellulare
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@5366f936: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:390] - Rollback in inserimento prodotto
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:391] - Prodotto già presente
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@2c61514f: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@58363f95: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:33:29 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-19 18:34:07 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@472a9389: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@771d3de3: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@1b451725: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 13)
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: smartphone
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@408629d1: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 14)
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: cellulare
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@18020b52: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:390] - Rollback in inserimento prodotto
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:391] - Prodotto già presente
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@6220ac02: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@4ede45aa: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:34:08 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@12645c5e: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@3df9b42c: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@54f28c1f: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 13)
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: smartphone
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@2823796f: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 14)
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: cellulare
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@2e3540ce: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:390] - Rollback in inserimento prodotto
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:391] - Prodotto già presente
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@4efce9a2: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@62afc459: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:43:09 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@33f1ca93: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@44b1d518: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@2a9530a5: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 13)
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: smartphone
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@92b6d53: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 14)
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: cellulare
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@d737301: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:390] - Rollback in inserimento prodotto
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:391] - Prodotto già presente
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@2921304c: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@51887c71: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:43:41 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:143] - in getCategoriaByNome
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:157] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@472a9389: SELECT * FROM categoria WHERE nome = 'Audio e TV'
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:134] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@771d3de3: SELECT * FROM produttore WHERE (nome = 'Apple')
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: smartphone
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@1b451725: SELECT * FROM keyword WHERE (keyword = 'smartphone')
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 13)
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: smartphone
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:111] - in getKeywordByWord: cellulare
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:123] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@408629d1: SELECT * FROM keyword WHERE (keyword = 'cellulare')
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:126] - creo la nuova parola
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:131] - Keyword recuperata: ( 14)
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc:147] - Il ritorno è: cellulare
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:321] - Dopo il controllo
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:324] - La parola è presente nel database
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:350] - Inseriamo il prodotto
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:353] - Nome prodotto: Samsung Galaxy Next33
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:355] - id produttore: 5
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:357] - id categoria: 5
+2018-01-19 18:48:27 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:358] - Insert Query: com.mysql.jdbc.JDBC4PreparedStatement@18020b52: INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) VALUES ('Samsung Galaxy Next33', 5, 5)
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:390] - Rollback in inserimento prodotto
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:391] - Prodotto già presente
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:412] - Connection chiusa
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:106] - in getProdottoById: 1
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:121] - Select Query ProdottoById: SELECT * FROM prodotto WHERE prodotto.idprodotto = 1
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:96] - in getCategoriaById
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:111] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@6220ac02: SELECT * FROM categoria WHERE (idcategoria = 5) 
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:118] - categoria: 5 Audio e TV
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:80] - in getProduttoreById
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@4ede45aa: SELECT * FROM produttore WHERE (idproduttore = 1) 
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
+2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)

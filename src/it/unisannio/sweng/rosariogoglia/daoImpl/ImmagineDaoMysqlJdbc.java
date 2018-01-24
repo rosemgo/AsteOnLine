@@ -14,9 +14,11 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
@@ -35,7 +37,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		Immagine immagine = null;
 		Connection connection;
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 			
 		
 		String sql = "SELECT *  FROM immagine " + "WHERE idimmagine = ?";
@@ -89,7 +91,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		
 		Connection connection;
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 				
 		PreparedStatement pstmt;
 		
@@ -139,7 +141,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO immagine (inserzione_idinserzione, foto) " +
@@ -214,7 +216,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null; 
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		    connection.setAutoCommit(false);
 			
 			String sql = "DELETE * FROM immagine WHERE idimmagine = ? ";
@@ -260,7 +262,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE * FROM immagine WHERE inserzione_idinserzione = ? ";

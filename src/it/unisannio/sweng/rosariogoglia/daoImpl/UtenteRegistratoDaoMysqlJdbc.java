@@ -2,7 +2,7 @@ package it.unisannio.sweng.rosariogoglia.daoImpl;
 
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
@@ -52,7 +52,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
@@ -133,7 +133,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;	
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 							
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
@@ -214,7 +214,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 					
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
@@ -291,7 +291,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "INSERT INTO utente_registrato (nick, nome, cognome, password, e_mail, codice_fiscale, n_conto_corrente, indirizzo, cap, telefono, tipologia_cliente, data_registrazione, comune_idcomune, flag_abilitato)" +
@@ -367,7 +367,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET (flagAbilitato = ?) WHERE (idutente = ?)";
@@ -405,7 +405,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET nick = ?, nome = ?, cognome = ?, password = ?, e_mail = ?, codice_fiscale = ?, n_conto_corrente = ?, indirizzo = ?, cap = ?, telefono = ?, tipologia_cliente = ?, data_registrazione = ?, flag_abilitato = ?, comune_idcomune = ? " +
@@ -460,7 +460,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {	
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET nome = ?, cognome = ?, codice_fiscale = ?, e_mail = ?, n_conto_corrente = ?, indirizzo = ?, cap = ?, telefono = ?, comune_idcomune = ? " +
@@ -509,7 +509,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE idutente = ?";
@@ -559,7 +559,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET tipologia_cliente = ? WHERE nick = ?";
@@ -601,7 +601,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		try{
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE nick = ?";
@@ -656,7 +656,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET password = ? " +
@@ -700,7 +700,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		try{
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO utente_registrato_osserva_inserzione (utente_registrato_idutente, inserzione_idinserzione) VALUES (?, ?) ";
@@ -751,7 +751,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			Inserzione inserzione;
@@ -806,7 +806,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 	
 			
 			String sql = "SELECT COUNT(*) FROM utente_registrato_osserva_inserzione " +
@@ -850,7 +850,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			connection.setAutoCommit(false);
 			
@@ -898,7 +898,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 					
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE acquirente_utente_registrato_idutente = ? ";
@@ -945,7 +945,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 					
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE (inserzione.stato = 'aggiudicata' OR inserzione.stato = 'pagata') " +
@@ -995,7 +995,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
@@ -1043,7 +1043,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			ResultSet rs = null;
 			try {
 				
-				connection = DatabaseUtil.getConnection();
+				connection = ConnectionPoolTomcat.getConnection();
 						
 				String sql = "SELECT * FROM inserzione " +
 						"WHERE venditore_utente_registrato_idutente = ? ";
@@ -1088,7 +1088,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 						
 			String sql = "SELECT DISTINCT(nick) FROM utente_registrato";
 			pstmt = connection.prepareStatement(sql);
@@ -1123,7 +1123,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM utente_registrato ";
 			
@@ -1159,7 +1159,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato " +
 					"WHERE nick = ?";
@@ -1205,7 +1205,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, inserzione " +
 					"WHERE inserzione.acquirente_utente_registrato_idutente = utente_registrato.idutente " +
@@ -1247,7 +1247,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, inserzione " +
 					"WHERE inserzione.venditore_utente_registrato_idutente = utente_registrato.idutente " +
@@ -1289,7 +1289,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			String sql = "SELECT * FROM utente_registrato " +
 				"WHERE e_mail = ?";
@@ -1326,7 +1326,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			String sql = "SELECT * FROM utente_registrato " +
 				"WHERE nick = ?";
@@ -1366,7 +1366,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT DISTINCT * FROM inserzione, offerta " +
 					"WHERE inserzione.idinserzione = offerta.inserzione_idinserzione " +
@@ -1415,7 +1415,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		int numeroInserzioni = 0;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE venditore_utente_registrato_idutente = ? ";
@@ -1457,7 +1457,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE venditore_utente_registrato_idutente = ? " +
@@ -1502,7 +1502,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, offerta " +
 					"WHERE inserzione.idinserzione = offerta.inserzione_idinserzione " +
@@ -1545,7 +1545,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 					
 			UtenteRegistrato utenteReg = null;
 			
@@ -1621,7 +1621,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato " +
 					"WHERE nick = ? ";
@@ -1657,7 +1657,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			
 			String sql = "SELECT * FROM utente_registrato " +

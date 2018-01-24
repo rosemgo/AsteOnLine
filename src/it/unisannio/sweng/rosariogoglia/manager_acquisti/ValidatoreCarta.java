@@ -21,7 +21,7 @@ public class ValidatoreCarta {
 	    	printString(numero);
            
 	    	
-            //applico l'algoritmo di lhun
+            //applico l'algoritmo di Luhn
 	    	
 	    	//1- Raddoppio tutte le cifre in posizione pari partendo da destra (oppure partendo da sinistra raddoppio le cifre in posizione dispari)
 	    	for(int i=0; i<16; i=i+2){

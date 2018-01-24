@@ -11,7 +11,7 @@ import java.util.List;
 
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProduttoreImpl;
@@ -35,7 +35,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 				
 			String sql = "SELECT * FROM produttore ORDER BY nome ASC ";
 			pstmt = connection.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 						
 			String sql = "SELECT * FROM produttore WHERE (idproduttore = ?) ";
 			pstmt = connection.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE (nome = ?)";
 						
@@ -169,7 +169,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		List<Produttore> listaProduttori = new ArrayList<Produttore>();
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM produttore, categoria_has_produttore " +
 					"WHERE produttore.idproduttore = categoria_has_produttore.produttore_idproduttore " +
@@ -223,9 +223,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
-			//connection = DatabaseUtil.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			//connection = ConnectionPoolTomcat.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
 			connection.setAutoCommit(false);
 		
 			String sql = "INSERT INTO produttore (nome, website) VALUES (?, ?)";
@@ -286,7 +286,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, produttore, prodotto " +
 					"WHERE produttore.idproduttore = prodotto.produttore_idproduttore " +
@@ -327,7 +327,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 				
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 				
 					
@@ -379,7 +379,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE produttore SET nome = ?, website = ? WHERE idproduttore = ?";

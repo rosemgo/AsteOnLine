@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import it.unisannio.sweng.rosariogoglia.dao.ComuneDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ComuneImpl;
@@ -32,7 +32,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM comune, provincia " +
 					"WHERE comune.provincia_idprovincia = provincia.idprovincia " +
@@ -79,7 +79,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		List<Comune> listaComuni = new ArrayList<Comune>();
 
 		try {
-				connection = DatabaseUtil.getConnection();
+				connection = ConnectionPoolTomcat.getConnection();
 			
 				Comune comune = null;
 				
@@ -137,7 +137,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 						
 			String sql = "SELECT * FROM comune, provincia " +
 					"WHERE comune.provincia_idprovincia = provincia.idprovincia " +

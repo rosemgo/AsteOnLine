@@ -14,14 +14,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 
-
-
-
-
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Categoria;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
 import it.unisannio.sweng.rosariogoglia.modelImpl.CategoriaImpl;
@@ -46,7 +42,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		List<Categoria> listaCategorie = new ArrayList<Categoria>();
 		try {
 						
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			stmt = connection.createStatement();
 			
@@ -102,7 +98,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
 			
@@ -148,7 +144,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			String sql = "SELECT * FROM categoria WHERE nome = ?";
 			
@@ -193,7 +189,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		try {
 		
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE idproduttore " +
 					"NOT IN " +
@@ -250,7 +246,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		try {
 			
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 		
 			
@@ -304,7 +300,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		try {
 		
 				
-				connection = DatabaseUtil.getConnection();
+				connection = ConnectionPoolTomcat.getConnection();
 				connection.setAutoCommit(false);
 							
 				String sql = "DELETE FROM categoria_has_produttore WHERE categoria_idcategoria = ? AND produttore_idproduttore= ?";
@@ -361,8 +357,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		ResultSet rs = null;	
 		try {
 				
-			connection = DatabaseUtil.getConnection();
-			//connection = DatabaseUtil.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
 				
 			connection.setAutoCommit(false);
 			
@@ -422,7 +418,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		PreparedStatement  pstmt = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE categoria SET nome = ? WHERE idcategoria = ?";
@@ -465,7 +461,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		PreparedStatement pstmt = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			/*Innanzi tutto elimino tutti i prodotti associati alla categoria da eliminare*/
@@ -538,7 +534,7 @@ public boolean checkDeleteCategoria(Integer idCategoria) throws ClassNotFoundExc
 		PreparedStatement pstmt = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
 					"WHERE categoria.idcategoria = prodotto.categoria_idcategoria " +
@@ -580,7 +576,7 @@ public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer
 	ResultSet rs = null;
 	PreparedStatement pstmt = null;
 	try {
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		
 		String sql = "SELECT * FROM categoria_has_produttore " +
 				"WHERE categoria_idcategoria = ? " +

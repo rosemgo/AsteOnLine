@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import it.unisannio.sweng.rosariogoglia.dao.KeywordDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Keyword;
 import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
 
@@ -34,7 +34,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			String query = "SELECT * FROM keyword ORDER BY keyword ASC";
 			
 			pstmt = connection.prepareStatement(query);
@@ -76,7 +76,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE (idkeyword = ?)";
 			pstmt = connection.prepareStatement(sql);
@@ -114,7 +114,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE (keyword = ?)";
 			
@@ -156,7 +156,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 			
 		String sql = "SELECT * FROM prodotto, keyword, prodotto_has_keyword " +
 					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
@@ -192,9 +192,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//connection = DatabaseUtil.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		//connection = ConnectionPoolTomcat.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		connection.setAutoCommit(false);
 				
 						
@@ -233,7 +233,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			for(int i=0; i<keywords.size(); i++){
@@ -317,7 +317,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM prodotto_has_keyword WHERE (keyword_idkeyword = ?)";
@@ -373,7 +373,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			if(keyword.getIdKeyword() != null){

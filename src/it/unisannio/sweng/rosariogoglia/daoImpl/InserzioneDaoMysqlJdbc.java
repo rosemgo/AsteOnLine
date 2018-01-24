@@ -1,6 +1,6 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
@@ -51,7 +51,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM inserzione ";
 						
@@ -132,7 +132,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			
 			String sql = "SELECT * FROM inserzione " +
@@ -237,7 +237,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
@@ -313,7 +313,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 	
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		connection.setAutoCommit(false);
 					
 		UtenteRegistrato utente;
@@ -351,7 +351,7 @@ public List<String> getTitoli() throws ClassNotFoundException, IOException{
 	ResultSet rs = null;
 
 	try {
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 					
 		String sql = "SELECT DISTINCT(titolo) FROM inserzione";
 		pstmt = connection.prepareStatement(sql);
@@ -391,7 +391,7 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 
 	try {
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 			
 		String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto, keyword, prodotto_has_keyword " +
 				"WHERE " +
@@ -494,7 +494,7 @@ public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException
 	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
 	Connection connection;
 			
-	connection = DatabaseUtil.getConnection();
+	connection = ConnectionPoolTomcat.getConnection();
 	
 	PreparedStatement  pstmt;
 
@@ -546,7 +546,7 @@ public List<Inserzione> ricercaTopInserzioniPopolari(int numInserzioni) throws C
 	try {
 		//connection = DatabaeUtil.getConnection();
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		
 		System.out.println("connection: " + connection.toString());
 		
@@ -605,7 +605,7 @@ public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws C
 	ResultSet rs = null;
 	PreparedStatement  pstmt = null;
 	try {
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		
 		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
 				"WHERE (( DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0 ) OR ( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 )) " +
@@ -658,7 +658,7 @@ public Integer updateStatoInserzione(String statoInserzione, Integer idInserzion
 	Connection connection = null;
 	PreparedStatement  pstmt = null;
 	try {			
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 		connection.setAutoCommit(false);
 		
 		String sql = "UPDATE inserzione SET stato = ? " +

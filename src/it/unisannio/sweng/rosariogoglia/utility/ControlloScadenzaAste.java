@@ -1,6 +1,7 @@
 package it.unisannio.sweng.rosariogoglia.utility;
 
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 
@@ -9,14 +10,24 @@ import java.util.Vector;
 
 import javax.mail.MessagingException;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+
 public class ControlloScadenzaAste extends Thread{
 
+	Logger logger = Logger.getLogger(ControlloScadenzaAste.class);
 	
 	private Inserzione inserzione;
 	private long tempoAttesa; //sarebbe la differenza tra la data di scadenza e la data odierna. In pratica il thread di aggiornamento stato dell'inserzione si attiva nel momento in cui l'inserzione scade
 	
 	private static Vector<Integer> listaInserzioni = new Vector<Integer>();
 	
+		
+	public ControlloScadenzaAste() {
+		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+	}
+
+
 	public ControlloScadenzaAste(Inserzione inserzione, long tempoAttesa) {
 		this.inserzione = inserzione;
 		this.tempoAttesa = tempoAttesa;
@@ -125,11 +136,12 @@ public class ControlloScadenzaAste extends Thread{
 						   	
 						    try{
 						    	
-						    	System.out.println("INVIO LA MAIL ORA");	
+						      System.out.println("INVIO LA MAIL ORA");	
 						      MailUtility.sendMail(mailVenditore, mittente, oggetto, testoVenditore);
-						     
+						      
 						      MailUtility.sendMail(mailAcquirente, mittente, oggetto, testoAcquirente);
 						      
+						      logger.debug("Mail inviata correttamente sia al venditore che all'acquirente");
 						    }
 						    catch (MessagingException exc){
 						    	

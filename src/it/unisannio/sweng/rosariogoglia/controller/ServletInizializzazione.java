@@ -167,8 +167,38 @@ public class ServletInizializzazione extends HttpServlet {
 		/* Prelevo tutte le aste nel database */
 		List<Inserzione> listaInserzioni = dao.getInserzioni();
 		System.out.println("PRELEVIAMO LA LISTA INSERZIONI");
-	
-
+		
+		/*
+		 *  Per ogni prodotto controlla che sia in asta e che la data di fine asta sia minore di quella attuale
+		 *  In tal caso aggiorna lo stato del prodotto ad aggiudicato (se c'è un acquirente) o scaduto (se non c'è un acquirente) 
+		 */
+		for(int i=0; i<listaInserzioni.size(); i++){
+			
+			inserzione = listaInserzioni.get(i);
+		
+			Date fineAsta = inserzione.getDataScadenza();
+			Date odierna = new Date();
+			
+			Calendar c = Calendar.getInstance();
+			c.setTime(fineAsta);
+			
+			Calendar cOggi = Calendar.getInstance();
+			
+			long millisecond1 = c.getTimeInMillis();
+			long millisecond2 = cOggi.getTimeInMillis();
+			
+			long tempoAttesa = millisecond1 - millisecond2;
+			System.out.println("inserzione " + i + " tempo attesa " + tempoAttesa + " ms");
+			
+			
+			//AVVIO UN THREAD PER OGNI INSERZIONE PRESENTE NEL DB. IL THREAD SI ATTIVA NEL MOMENTO IN CUI L'ASTA SCADE ED EFFETTUA L'AGGIORNAMENTO DELLO STATO DELL'INSERZIONE.
+			//QUESTA STESSA OPERAZIONE VA FATTA OGNI VOLTA CHE SI INSERISCE UN INSERZIONE
+			ControlloScadenzaAste csa = new ControlloScadenzaAste(inserzione, tempoAttesa);		
+			csa.start();
+			
+		
+		}
+		
 		
     	
     }

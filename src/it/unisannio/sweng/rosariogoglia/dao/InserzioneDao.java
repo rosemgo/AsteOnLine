@@ -96,4 +96,23 @@ public interface InserzioneDao {
 	public List<Inserzione> ricercaTopInserzioniChiusura(int i) throws ClassNotFoundException, SQLException, IOException;
 	
 	
+	/**
+	 * Il metodo aggiorna lo stato dell'inserzione
+	 * 
+	 * @param statoInserzione
+	 * @param idInserzione
+	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws ClassNotFoundException, IOException;
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

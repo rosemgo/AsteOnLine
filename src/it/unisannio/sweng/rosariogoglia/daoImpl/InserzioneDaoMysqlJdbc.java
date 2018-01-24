@@ -1,6 +1,5 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
-
 import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
@@ -652,7 +651,51 @@ public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws C
 }
 	
 	
+public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws ClassNotFoundException, IOException{
+	logger.debug("in updateStatoInserzione");
+	Integer updatedRows = -1;
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	try {			
+		connection = DatabaseUtil.getConnection();
+		connection.setAutoCommit(false);
+		
+		String sql = "UPDATE inserzione SET stato = ? " +
+				"WHERE idinserzione = ? ";
+		
+		pstmt = connection.prepareStatement(sql);
+		
+		pstmt.setString(1, statoInserzione);
+		pstmt.setInt(2, idInserzione);
+		
+		logger.debug("Update Query:" + pstmt.toString());
+		updatedRows = pstmt.executeUpdate();
+		
+		connection.commit();
+		logger.info("Inserzione Aggiornata");
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally {
 
+		if (connection != null) {
+
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+
+				e.printStackTrace();
+			}
+
+		}
+	}
+	return updatedRows;
+}
 	
 	
 }

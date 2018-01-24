@@ -4,10 +4,10 @@ import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 
-
 import java.util.Date;
 import java.util.Vector;
 
+import javax.mail.MessagingException;
 
 public class ControlloScadenzaAste extends Thread{
 
@@ -25,20 +25,6 @@ public class ControlloScadenzaAste extends Thread{
 
 	@SuppressWarnings("static-access")
 	public void run(){
-		
-			
-//			int posizione = -1;
-//			
-//			for(int i=0; i<this.listaInserzioni.size(); i++){
-//				if(listaInserzioni.get(i) == this.inserzione.getIdInserzione()){
-//					posizione = i;
-//				}
-//			}
-//			if(posizione == -1){
-//				listaInserzioni.add(this.inserzione.getIdInserzione());
-//				posizione = this.listaInserzioni.indexOf(this.inserzione.getIdInserzione());
-//			}
-		
 		
 			if(!this.listaInserzioni.contains(this.inserzione.getIdInserzione())){
 				this.listaInserzioni.add(this.inserzione.getIdInserzione());
@@ -116,6 +102,44 @@ public class ControlloScadenzaAste extends Thread{
 						// Esegue l'aggiornamento dell'inserzione nel database
 						dao.updateStatoInserzione(statoInserzione, this.inserzione.getIdInserzione());
 						
+						//in seguito all'aggiornamento, se l'inserzione è stata aggiudicata invio la mail.
+						if(statoInserzione.equals("aggiudicata")){
+							//posso inviare la mail all'utente acquirente e all'utente venditore
+							
+							System.out.println("INVIO MAIL DI CONFERMA VENDITA");
+						
+							
+							String mittente = "amministrazione@asteonline.com";
+						    String mailVenditore = this.inserzione.getVenditore().geteMail();
+						    String mailAcquirente = this.inserzione.getAcquirente().geteMail();
+						    String oggetto = "ASTEONLINE: INSERZIONE AGGIUDICATA!!!";
+						    String testoVenditore = ("" + '\n' +'\n' + "Siamo lieti di comunicarti che la tua inserzione è stata venduta!!! " + '\n' + '\n' + '\n' +
+						    		"Inserzione: " + inserzione.toString() + '\n' + '\n' + '\n' +
+						    		"Acquirente: " + inserzione.getAcquirente().toString() + '\n' + '\n' + '\n' +
+						    		"Accedi direttamente al sito dal link sottostante e... Buon AsteOnline!!!" + '\n' + '\n' + '\n' +
+						    		"                    http://localhost:8080/AsteOnLine/index");
+						    String testoAcquirente = ("" + '\n' +'\n' + "Siamo lieti di comunicarti sei il vincitore dell'asta: " + '\n' + '\n' + '\n' +
+						    		inserzione.toString() + '\n' + '\n' + '\n'+
+						    		"Accedi direttamente al sito dal link sottostante e... Buon AsteOnline!!!" + '\n' + '\n' + '\n' +
+						    		"                    http://localhost:8080/AsteOnLine/index");
+						   	
+						    try{
+						    	
+						    	System.out.println("INVIO LA MAIL ORA");	
+						      MailUtility.sendMail(mailVenditore, mittente, oggetto, testoVenditore);
+						     
+						      MailUtility.sendMail(mailAcquirente, mittente, oggetto, testoAcquirente);
+						      
+						    }
+						    catch (MessagingException exc){
+						    	
+						    	//INSERIRE L'ECCEZIONE!!! MESSAGGIO DI ERRORE!!!
+						    	System.out.println("errore invio mail");
+						    	
+						    }
+								
+						}
+									
 						System.out.println("STATO ASTE AGGIORNATO dal thread con sincro");
 					}
 				

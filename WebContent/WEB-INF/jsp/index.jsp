@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01z Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,7 +13,7 @@
 </head>
 
 <%-- Include all the required script tags --%>
-
+<jsp:include page="/WEB-INF/includes/ajaxscripts.jsp"/>
 
 
 <body>
@@ -163,7 +163,13 @@
 				</form>
 				
 				<!--  INSERIRE AJAX TAG PER L'AUTOCOMPLETAMENTO-->
-				
+				<ajax:autocomplete
+						source="autoKeyword"
+						target="autoKeyword"
+						baseUrl="${contextPath}/autocompleteKeyword.ajax"
+						parameters="keywordPrefix={autoKeyword}"
+						className="autocompletamentokey"
+						minimumCharacters = "1"/>
 				
 				
 				

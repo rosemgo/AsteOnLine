@@ -48,7 +48,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	Logger logger = Logger.getLogger(ProdottoDaoMysqlJdbc.class);
 	
 	public ProdottoDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
 	public List<Prodotto> getProdotti() {

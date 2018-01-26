@@ -37,7 +37,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	Logger logger = Logger.getLogger(InserzioneDaoMysqlJdbc.class);
 	
 	public InserzioneDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
 	

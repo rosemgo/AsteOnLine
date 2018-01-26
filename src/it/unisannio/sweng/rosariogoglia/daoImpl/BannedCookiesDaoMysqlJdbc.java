@@ -21,10 +21,9 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	Logger logger = Logger.getLogger(BannedCookiesDaoMysqlJdbc.class);
 	
 	public BannedCookiesDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-
 	public Integer insertBannedCookies(BannedCookies cookie){
 		logger.info("in insertBannedCookies");
 		Integer autoincrementKey = -1;

@@ -23,7 +23,7 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
 	
 	public ComuneDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
 	public Comune getComuneById(int idComune) throws ClassNotFoundException, SQLException, IOException {

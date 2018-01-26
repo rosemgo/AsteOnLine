@@ -23,7 +23,7 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 	Logger logger = Logger.getLogger(ProvinciaDaoMysqlJdbc.class);
 	
 	public ProvinciaDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
 	public List<Provincia> getProvince() {

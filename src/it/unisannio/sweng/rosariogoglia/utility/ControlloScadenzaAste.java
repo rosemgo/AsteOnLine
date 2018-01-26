@@ -24,7 +24,7 @@ public class ControlloScadenzaAste extends Thread{
 	
 		
 	public ControlloScadenzaAste() {
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
 

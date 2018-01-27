@@ -205,3 +205,4 @@
 2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:93] - Select Query:com.mysql.jdbc.JDBC4PreparedStatement@4ede45aa: SELECT * FROM produttore WHERE (idproduttore = 1) 
 2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc:117] - produttore: 1 Samsung www.samsung.com
 2018-01-19 18:48:28 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc:147] - (1, Smart Tv Samsung UHD44)
+2018-01-26 19:22:11 DEBUG [it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc:141] - in getCategoriaByNome

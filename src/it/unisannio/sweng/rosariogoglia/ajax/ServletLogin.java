@@ -12,6 +12,8 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 //import it.unisannio.sweng.rosariogoglia.utility.MD5;
 
+import it.unisannio.sweng.rosariogoglia.utility.MD5;
+
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -45,8 +47,7 @@ public class ServletLogin extends HttpServlet {
 		/* prelevo i dati utente dal form login */
 		String nick = request.getParameter("nick");
 		String password = request.getParameter("password");
-
-		
+	
 	
 		//cripto la password tramite l'algoritmo MD5 per vedere se corrisponde con quella nel db 
 		MD5 md5 = new MD5();
@@ -65,8 +66,7 @@ public class ServletLogin extends HttpServlet {
 		try {
 			
 			utente = utenteDao.checkUtente(nick);
-			
-			
+						
 			if(utente == null){ //in questo caso è sbagliato il nickname
 				request.setAttribute("messaggio", "LOGIN ERRATO: nickname non esistente");
 				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
@@ -89,7 +89,7 @@ public class ServletLogin extends HttpServlet {
 						request.getRequestDispatcher("/amministrazione").forward(request, response);
 				
 					}
-				
+		
 				
 			}
 			else if(!utente.checkPassword(passwordCrypted)) { //in questo caso è sbagliata la password

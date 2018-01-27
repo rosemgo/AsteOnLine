@@ -1,14 +1,11 @@
 package it.unisannio.sweng.rosariogoglia.ajax;
 
-import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
+
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
-import it.unisannio.sweng.rosariogoglia.manager_acquisti.ValidatoreCarta;
-import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
-import it.unisannio.sweng.rosariogoglia.modelImpl.BannedCookiesImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
+import it.unisannio.sweng.rosariogoglia.utility.MD5;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
 
 import java.io.IOException;
@@ -17,7 +14,6 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -271,7 +267,12 @@ public class ServletRegistrazione extends HttpServlet {
 			UtenteRegistrato utenteReg = new UtenteRegistratoImpl();
 			
 			//cripto la password tramite l'algoritmo MD5
-			
+			MD5 md5 = new MD5();
+			try {
+				password = md5.md5(password);
+			} catch (NoSuchAlgorithmException e1) {
+				e1.printStackTrace();
+			}
 			
 			//converto la stringa idComuneS in intero
 			Integer idComune = Integer.parseInt(request.getParameter("comune"));

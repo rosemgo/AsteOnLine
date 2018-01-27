@@ -47,10 +47,16 @@ public class ServletLogin extends HttpServlet {
 		String password = request.getParameter("password");
 
 		
-/*
- * 		CRIPTARE PASSWORD		
+	
+		//cripto la password tramite l'algoritmo MD5 per vedere se corrisponde con quella nel db 
+		MD5 md5 = new MD5();
+		String passwordCrypted = "";
+		try {
+			passwordCrypted = md5.md5(password);
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
 		
-*/		
 		UtenteRegistrato utente = new UtenteRegistratoImpl();
 		UtenteRegistratoDao utenteDao = new UtenteRegistratoDaoMysqlJdbc();
 		
@@ -86,8 +92,7 @@ public class ServletLogin extends HttpServlet {
 				
 				
 			}
-			//SOSTITUIRE CON PASSWORD
-			else if(!utente.checkPassword(password)) { //in questo caso è sbagliata la password
+			else if(!utente.checkPassword(passwordCrypted)) { //in questo caso è sbagliata la password
 				request.setAttribute("messaggio", "LOGIN ERRATO: password errata");
 				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 			}

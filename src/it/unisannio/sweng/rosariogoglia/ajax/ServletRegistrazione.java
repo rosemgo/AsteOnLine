@@ -1,9 +1,14 @@
 package it.unisannio.sweng.rosariogoglia.ajax;
 
 
+import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.manager_acquisti.ValidatoreCarta;
+import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
+import it.unisannio.sweng.rosariogoglia.modelImpl.BannedCookiesImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 import it.unisannio.sweng.rosariogoglia.utility.MD5;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
@@ -295,8 +300,35 @@ public class ServletRegistrazione extends HttpServlet {
 			try {
 				utenteDao.insertUtenteRegistrato(utenteReg);
 				logger.info(new Date()+": L'utente " + utenteReg.getNick() + " ha effettuato la registrazione con successo");			
-						
-			
+				
+				ValidatoreCarta vd = new ValidatoreCarta();
+				
+				/*effettuo un controllo per stabilire la validità della carta di credito*/
+				if(vd.isCodiceCorretto(numContoCorrente)){
+					messaggio="Congratulazioni!!! Registrazione avvenuta con successo: ora puoi effettuare il login!!!";
+					request.setAttribute("messaggio", messaggio);
+					request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+				}
+				else{
+										
+					//BANNO L'UTENTE IN SEGUITO AL SECONDO TENTATIVO ERRATO DI INSERIMENTO CODICE CARTA
+					BannedCookiesDao daoBC = new BannedCookiesDaoMysqlJdbc();
+					BannedCookies cookie = new BannedCookiesImpl();
+					
+					cookie.setIdUtenteBannato(utenteReg.getIdUtente()); //possiamo fare il getIdUtente() sull'utenteReg appena inserito perchè il metodo insertUtenteRegistrato() setta automaticamente l'idutente in seguito all'inserimento
+					
+					/*Come cookie utilizzo la mail dell'utente, in modo tale da essere sempre un valore univoco!*/
+					cookie.setCookie(eMail);
+					
+					daoBC.insertBannedCookies(cookie);
+					
+					System.out.println("utente bannato");
+					
+					request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+				}
+				
+				
+				
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

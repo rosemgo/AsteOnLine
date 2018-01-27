@@ -323,7 +323,8 @@ public class ServletRegistrazione extends HttpServlet {
 					daoBC.insertBannedCookies(cookie);
 					
 					System.out.println("utente bannato");
-					
+					messaggio="Registrazione avvenuta parzialmente: CARTA DI CREDITO NON VALIDA!!! </br> L'UTENTE E' STATO BANNATO!!! </br> Modificare i propri dati con una carta di credito valida, per eliminare il Ban ed essere un utente abilitato totalmente a tutti i servizi!";
+					request.setAttribute("messaggio", messaggio);
 					request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 				}
 				

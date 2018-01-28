@@ -1,4 +1,4 @@
-package it.unisannio.sweng.rosariogoglia.ajax;
+package it.unisannio.sweng.rosariogoglia.controller;
 
 
 import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;

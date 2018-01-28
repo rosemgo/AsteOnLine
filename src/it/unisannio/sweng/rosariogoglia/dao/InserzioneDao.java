@@ -109,8 +109,14 @@ public interface InserzioneDao {
 	
 	
 	
-	
-	
+	/**
+	 * Inserimento dell'inserzione nel database
+	 * 
+	 * @param inserzione
+	 * @return 
+	 * @throws SQLException 
+	 */
+	public Integer insertInserzione(Inserzione inserzione) throws SQLException;
 	
 	
 	

@@ -25,6 +25,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -696,6 +697,110 @@ public Integer updateStatoInserzione(String statoInserzione, Integer idInserzion
 	}
 	return updatedRows;
 }
+
+
+public Integer insertInserzione(Inserzione inserzione) throws SQLException{
+	logger.info("Inserimento Inserzione");
+	Integer inserzioneIdKey = -1;
+	Connection connection = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		connection = ConnectionPoolTomcat.getConnection();
+		connection.setAutoCommit(false);
+					
+		String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+					
+		logger.debug("Inseriamo l' inserzione");
+		pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setString(1, inserzione.getTitolo());
+		pstmt.setString(2, inserzione.getDescrizione());
+		pstmt.setDouble(3, inserzione.getPrezzoIniziale());
+		pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
+		pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
+		pstmt.setString(6, inserzione.getStato());
+		//pstmt.setInt(7, inserzione.getIdAcquirente()); l'acquirente viene impostato automaticamente a null nel db
+		pstmt.setInt(7, inserzione.getIdVenditore());
+		pstmt.setInt(8, inserzione.getIdProdotto());
+		logger.debug("Insert Query: " + pstmt.toString());
+		
+		int insertRows = pstmt.executeUpdate();
+		logger.debug("righe inserite: "+ insertRows);
+		
+		if(insertRows == 1){
+			rs = pstmt.getGeneratedKeys();
+			if(rs.next()){
+				inserzioneIdKey = rs.getInt(1);
+			}
+		}
+		inserzione.setIdInserzione(inserzioneIdKey);
+		logger.debug("id dell' inserzione è: " + inserzioneIdKey);
+		
+		connection.commit();
+							
+		Integer immagineIdKey = -1;
+		
+		//effettuare controllo per vedere se la lista immagine è vuota
+		if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
+		
+			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+		//	Immagine immagine = new ImmagineImpl();
+			
+			for(int i=0; i<inserzione.getImmagini().size(); i++){
+				
+				logger.debug("nella lista immagini");
+				
+			//	immagine = inserzione.getImmagini().get(i); //prendo l'immagine. NB se salvo l'immagine in una variabile immagine, e faccio delle modifiche, dove saranno apportate tali modifiche? solo sull'immagine o sull'arrayList?
+				
+			//	immagine.setIdInserzione(inserzioneIdKey); //setto l'idinserzione relativo all' immagine
+				
+				inserzione.getImmagini().get(i).setIdInserzione(inserzioneIdKey); 
+				
+				logger.debug("idinserzione nell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione());
+				logger.debug(inserzione.getImmagini().get(i).getFoto());
+				
+				System.out.println("IN INSERIMENTO IMMAGINE: " + inserzione.getImmagini().get(i).getFoto());
+				
+				immagineIdKey = dao.insertImmagine(inserzione.getImmagini().get(i)); //inserisco l'immagine!!!
+				
+				inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
+				
+				logger.debug("id dell' immagine è: " + immagineIdKey);
+				
+				System.out.println("id dell' immagine è: " + immagineIdKey);
+				
+			}
+			
+			connection.commit();
+			
+		}
+					
+		logger.debug("Inserimento inserzione (" + inserzioneIdKey + ", " + inserzione.getTitolo() + ")");
 	
+		
+	}	
+	finally {
+
+		if (connection != null) {
+
+			try {
+				if(rs != null)
+					rs.close();
+				
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	return inserzioneIdKey;
+}	
 	
 }

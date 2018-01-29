@@ -119,6 +119,15 @@ public interface InserzioneDao {
 	public Integer insertInserzione(Inserzione inserzione) throws SQLException;
 	
 	
-	
+	/**
+	 * Aggiornamento di un'inserzione precedentemente inserita
+	 * 
+	 * @param inserzione
+	 * @return
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
 	
 }

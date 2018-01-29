@@ -19,6 +19,7 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.OffertaDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Offerta;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProdottoImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
+import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -803,4 +804,92 @@ public Integer insertInserzione(Inserzione inserzione) throws SQLException{
 	return inserzioneIdKey;
 }	
 	
+public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
+	logger.debug("in updateInserzione");
+	logger.info("Aggiornamento Inserzione: (" + inserzione.getIdInserzione()+ ", " + inserzione.getTitolo() + ", " + inserzione.getDescrizione() +")");
+	Integer updatedRows = -1;
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	try {
+		connection = ConnectionPoolTomcat.getConnection();
+		
+		connection.setAutoCommit(false);
+		
+		String sql = "DELETE FROM immagine WHERE (immagine.inserzione_idinserzione = ?) ";
+	
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, inserzione.getIdInserzione());
+		logger.debug("Query di cancellazione" + pstmt.toString());
+		int deletedRows = pstmt.executeUpdate();
+		logger.debug("righe cancellate" + deletedRows);
+		
+		connection.commit();
+		
+		//inseriamo le immagine aggiornate
+		if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
+			
+			Integer immagineIdKey = -1;
+			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+			Immagine immagine = new ImmagineImpl();
+			
+			for(int i=0; i<inserzione.getImmagini().size(); i++){
+				System.out.println("id inserzione dell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione() );
+				if(inserzione.getImmagini().get(i).getIdInserzione() == 0){ //se l'id dell'inserzione relativa all'immagine è uguale a 0(perchè essendo un int non può essere null) dobbiamo settarla con l'id dell'inserzione aggiornata
+					inserzione.getImmagini().get(i).setIdInserzione(inserzione.getIdInserzione()); //setto l'idinserzione relativo all' immagine
+					logger.debug("Ho settato l'idimmagine: " + inserzione.getIdInserzione() + " nella lista delle immagini dell'inserzione");
+				}
+				immagine = inserzione.getImmagini().get(i);
+				
+				immagineIdKey = dao.insertImmagine(immagine);
+				logger.debug("id dell' immagine è: " + immagineIdKey);
+				
+				inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
+				
+			}	
+		}
+		
+		sql = "UPDATE inserzione SET titolo = ?, descrizione = ?, prezzo_iniziale = ?, prezzo_aggiornato = ?, data_scadenza = ?, stato = ?, venditore_utente_registrato_idutente = ?, prodotto_idprodotto = ? " +
+				"WHERE idinserzione = ? ";
+			
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, inserzione.getTitolo());
+		pstmt.setString(2, inserzione.getDescrizione());
+		pstmt.setDouble(3, inserzione.getPrezzoIniziale());
+		pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
+		pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
+		pstmt.setString(6, inserzione.getStato());
+		//pstmt.setInt(7, inserzione.getIdAcquirente()); non mettiamo l'id utente perchè deve essere inserito come null, non come 0, altrimenti il db da errore perchè 0 non corrisponde all'id di nessun utente
+		pstmt.setInt(7, inserzione.getIdVenditore());
+		pstmt.setInt(8, inserzione.getIdProdotto());
+		pstmt.setInt(9, inserzione.getIdInserzione());
+		logger.debug("Update Query:" + pstmt.toString());
+		updatedRows = pstmt.executeUpdate();
+	
+		
+		connection.commit();
+		logger.info("Inserzione Aggiornata");
+	
+	}
+
+	finally {
+
+		if (connection != null){
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+	return updatedRows;
+}
+
+
+
+
+
 }

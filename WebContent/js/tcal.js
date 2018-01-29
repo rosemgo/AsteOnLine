@@ -3,6 +3,9 @@
 // License: Public Domain... You're welcome.
 
 // default settins - this structure can be moved in separate file in multilangual applications
+//funzioni javascripst per il funzionamento del calendario
+
+
 var A_TCALCONF = {
 	'cssprefix'  : 'tcal',
 	'months'     : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

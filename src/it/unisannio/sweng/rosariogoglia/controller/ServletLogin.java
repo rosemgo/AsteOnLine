@@ -119,8 +119,7 @@ public class ServletLogin extends HttpServlet {
 				
 				session.setAttribute("utente", utente); //metto l'utente in sessione!!!
 				
-					
-					String pagina = (String) session.getAttribute("pagina");
+				String pagina = (String) session.getAttribute("pagina");
 					
 					if(session.getAttribute("pagina") != null){
 						

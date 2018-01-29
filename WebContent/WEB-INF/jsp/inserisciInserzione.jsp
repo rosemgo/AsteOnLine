@@ -160,8 +160,7 @@
     					<p>
     						<input name="prezzoIniziale" type="text" maxlength="7" id="campoTesto"/>
     					</p>
-    					
-    					
+    					    					
     					
     					<p>Data scadenza*</p>
     					<p>

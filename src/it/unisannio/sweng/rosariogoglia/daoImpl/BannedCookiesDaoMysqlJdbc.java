@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 
 import org.apache.log4j.Logger;
@@ -21,10 +21,9 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	Logger logger = Logger.getLogger(BannedCookiesDaoMysqlJdbc.class);
 	
 	public BannedCookiesDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-
 	public Integer insertBannedCookies(BannedCookies cookie){
 		logger.info("in insertBannedCookies");
 		Integer autoincrementKey = -1;
@@ -34,7 +33,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		PreparedStatement pstmt = null;		
 		try{
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
+			
 			connection.setAutoCommit(false);
 							
 			String sql = "INSERT INTO banned_cookies (idutentebannato, cookie) VALUES (?, ?)";
@@ -93,7 +93,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			
 		try{
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
+			
 			connection.setAutoCommit(false);
 							
 			String sql = "DELETE FROM banned_cookies WHERE idutentebannato = ?";
@@ -133,14 +134,14 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	
 	
 	
-	public boolean checkUtenteRegistratoBanned(Integer idUtente) throws ClassNotFoundException, IOException{
+	public boolean checkUtenteRegistratoBanned(Integer idUtente){
 		logger.info("in checkUtenteRegistratoBanned");
 		
 		boolean result = false;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM banned_cookies " +
 					"WHERE idutentebannato = ? ";

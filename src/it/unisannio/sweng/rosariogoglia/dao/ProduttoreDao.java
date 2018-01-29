@@ -10,16 +10,16 @@ public interface ProduttoreDao {
 	
 	public List<Produttore> getProduttori();
 	
-	public Produttore getProduttoreById(Integer idProduttore) throws ClassNotFoundException, IOException;
+	public Produttore getProduttoreById(Integer idProduttore);
 	
-	public Produttore getProduttoreByNome (String nomeProduttore) throws ClassNotFoundException, IOException;
+	public Produttore getProduttoreByNome (String nomeProduttore);
 		
 		
-	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria) throws ClassNotFoundException, IOException;
+	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria);
 		
-	public Integer insertProduttore (Produttore produttore) throws ClassNotFoundException, IOException;
+	public Integer insertProduttore (Produttore produttore);
 	
-	public Integer deleteProduttore (Integer idProduttore) throws ClassNotFoundException, IOException;
+	public Integer deleteProduttore (Integer idProduttore);
 
 	/**
 	 * Aggiornamento produttore
@@ -29,7 +29,7 @@ public interface ProduttoreDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer updateProduttore(Produttore produttore) throws ClassNotFoundException, IOException;
+	public Integer updateProduttore(Produttore produttore);
 		
 	
 	/**
@@ -40,7 +40,7 @@ public interface ProduttoreDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkDeleteProduttore(Integer idProduttore) throws ClassNotFoundException, IOException;
+	public boolean checkDeleteProduttore(Integer idProduttore);
 	
 	
 	

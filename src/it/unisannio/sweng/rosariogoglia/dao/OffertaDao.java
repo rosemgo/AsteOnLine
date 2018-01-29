@@ -16,7 +16,7 @@ public interface OffertaDao {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public Integer insertOfferta(Offerta offerta) throws ClassNotFoundException, IOException;
+	public Integer insertOfferta(Offerta offerta);
 	
 	/**
 	 * Cancella offerta specifica
@@ -58,6 +58,6 @@ public interface OffertaDao {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException;	
+	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione);	
 
 }

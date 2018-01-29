@@ -10,7 +10,7 @@ public interface ProvinciaDao {
 	
 	public Provincia getProvinciaById(Integer idProvincia) throws ClassNotFoundException, SQLException, IOException;
 	
-	public List<Provincia> getProvince() throws ClassNotFoundException, IOException;
+	public List<Provincia> getProvince();
 		
 	
 }

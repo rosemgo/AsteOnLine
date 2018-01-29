@@ -15,7 +15,7 @@ public interface ProdottoDao {
 	
 	public List<Prodotto> getProdottiByIdProduttore(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException;
 	
-	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException;
+	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore);
 			
 	/**
 	 * Dato il nome di un prodotto, restituisce l'intero prodotto
@@ -25,7 +25,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException;
+	public Prodotto getProdottoByName(String nomeProdotto);
 
 
 	/**
@@ -37,7 +37,7 @@ public interface ProdottoDao {
 	 * @throws ClassNotFoundException 
 	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
 	 */
-	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+	public Integer insertProdotto(Prodotto prodotto);
 	
 	
 	
@@ -49,7 +49,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 	
 	/**
 	 * Utilizzato per effettuare un controllo al momento dell'inserimento dell'inserzione. Controlla se il prodotto scelto corrisponde alla categoria e al produttore scelti.
@@ -61,7 +61,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException;
+	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore);
 	
 	/**
 	 * Controlla se è possibile eliminare un prodotto. Per essere eliminato è necessario che non ci siano inserzioni relative ad esso
@@ -71,7 +71,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundException, IOException;
+	public boolean checkDeleteProdotto(Integer idProdotto);
 	
 	/**
 	 * Controllo se la parola chiave è effettivamente associato al prodotto. 
@@ -82,7 +82,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 	
 	/**
 	 * Effettua la disassociazione tra un prodotto e una parola chiave.
@@ -93,7 +93,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException;
+	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 		
 	/**
 	 * Cancellazione di un prodotto dal database
@@ -103,7 +103,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer deleteProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+	public Integer deleteProdotto(Prodotto prodotto);
 	
 	
 	/**
@@ -114,7 +114,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto) throws ClassNotFoundException, IOException;
+	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto);
 	
 	/**
 	 * Modifica caratteristiche di un prodotto già presente nel database
@@ -132,7 +132,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer updateNomeProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+	public Integer updateNomeProdotto(Prodotto prodotto);
 		
 	
 

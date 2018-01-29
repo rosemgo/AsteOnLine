@@ -13,7 +13,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 import it.unisannio.sweng.rosariogoglia.dao.ComuneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProvinciaDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
@@ -23,10 +23,10 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 	Logger logger = Logger.getLogger(ProvinciaDaoMysqlJdbc.class);
 	
 	public ProvinciaDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
-	public List<Provincia> getProvince() throws ClassNotFoundException, IOException {
+	public List<Provincia> getProvince() {
 		logger.debug("in getProvincie");
 		
 		List<Provincia> listaProvince = new ArrayList<Provincia>();
@@ -35,7 +35,7 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			Provincia provincia = null;
 			String sql = "SELECT * FROM provincia " +
@@ -89,7 +89,7 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		
 			String sql = "SELECT * FROM provincia " +
 					"WHERE idprovincia = ? ";

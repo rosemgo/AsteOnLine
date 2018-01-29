@@ -30,7 +30,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Categoria;
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
@@ -48,7 +48,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	Logger logger = Logger.getLogger(ProdottoDaoMysqlJdbc.class);
 	
 	public ProdottoDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
 	public List<Prodotto> getProdotti() {
@@ -60,7 +60,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 								
 			stmt = connection.createStatement();
 			String query = "SELECT * FROM prodotto ORDER BY nome ASC";
@@ -95,7 +95,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				logger.debug("(" + prodotto.getIdProdotto() + ", " + prodotto.getNome() + ")");
 			}
 					
-		} catch (ClassNotFoundException | SQLException | IOException  e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
@@ -124,8 +124,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = DatabaseUtil.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
+			
 			
 			stmt = connection.createStatement();
 			String query = "SELECT * FROM prodotto " +
@@ -161,7 +161,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				
 			}
 						
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally{
@@ -170,7 +170,6 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				stmt.close();
 				connection.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -190,8 +189,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		String sql = "SELECT * FROM prodotto " +
 				"WHERE prodotto.produttore_idproduttore = ? ";
 				
-		connection = DatabaseUtil.getConnection();
-		//connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
+		
 			
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, idProduttore);
@@ -215,7 +214,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return listaProdotti;
 	}
 
-	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException{
+	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore){
 		logger.debug("in getProdottiByIdCategoriaByIdProduttore");
 		Prodotto prodotto;
 		List<Prodotto> listaProdotti = new ArrayList<Prodotto>();
@@ -225,7 +224,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM prodotto " +
 				"WHERE produttore_idproduttore = ? " +
@@ -265,7 +264,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	}
 	
 
-	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException{
+	public Prodotto getProdottoByName(String nomeProdotto){
 		logger.debug("in getProdottiByName");
 		Prodotto prodotto = null;
 		
@@ -274,7 +273,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		
 		try{
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM prodotto WHERE nome = ?";
 			
@@ -311,14 +310,14 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException {
+	public Integer insertProdotto(Prodotto prodotto) {
 		logger.info("in insertProdotto");
 		Integer productIdKey = -1;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			try{
@@ -430,7 +429,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 
 
 	
-	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
+	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
 		logger.debug("in insertProdottoHasKeyword");
 		Integer insertRow = -1;
 		Connection connection = null;
@@ -439,7 +438,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 		try {
 			
-				connection = DatabaseUtil.getConnection();
+				connection = ConnectionPoolTomcat.getConnection();
 				connection.setAutoCommit(false);
 							
 				String sql = "INSERT INTO prodotto_has_keyword(prodotto_idprodotto, keyword_idkeyword) VALUES (?, ?)";
@@ -490,14 +489,14 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 
 	
 
-public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundException, IOException{
+public boolean checkDeleteProdotto(Integer idProdotto){
 		
 		boolean result = true;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, prodotto " +
 					"WHERE prodotto.idprodotto = inserzione.prodotto_idprodotto " +
@@ -527,7 +526,7 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		return result;
 	}
 	
-	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore) throws ClassNotFoundException, IOException{
+	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore){
 		logger.debug("in checkProdottoBelongCategoriaProduttore");
 		boolean result = false;
 		Connection connection = null;
@@ -536,7 +535,7 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		
 		try {
 			
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			
 			String sql = "SELECT * FROM prodotto " +
@@ -578,13 +577,13 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 	
 	
 
-	public Integer deleteProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException{
+	public Integer deleteProdotto(Prodotto prodotto){
 		logger.info("Eliminazione Prodotto: (" + prodotto.getIdProdotto()+ ")");
 		Integer deletedRows =-1;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			// prima si elimina dalla tabella prodotto_has_keyword
@@ -633,13 +632,13 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 	
 	
 	
-	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
+	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
 		boolean result = false;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM prodotto_has_keyword " +
 					"WHERE prodotto_idprodotto = ? " +
@@ -670,14 +669,14 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		return result;
 	}
 
-	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword) throws ClassNotFoundException, IOException{
+	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
 		logger.debug("in deleteProdottoHasKeyword");
 		Integer deleteRow = -1;
 		Connection connection = null; 
 		PreparedStatement pstmt = null;
 		try {
 			
-				connection = DatabaseUtil.getConnection();
+				connection = ConnectionPoolTomcat.getConnection();
 				connection.setAutoCommit(false);
 							
 				String sql = "DELETE FROM prodotto_has_keyword WHERE prodotto_idprodotto = ? AND keyword_idkeyword = ?";
@@ -721,7 +720,7 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 	}
 	
 	
-	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto) throws ClassNotFoundException, IOException{
+	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto){
 		logger.debug("in getKeywordMancantiByIdProdotto");
 		List<Keyword> keywordList = new ArrayList<Keyword>();
 		
@@ -730,7 +729,7 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		ResultSet rs = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE keyword.idkeyword " +
 					"NOT IN " +
@@ -782,7 +781,7 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		PreparedStatement  pstmt = null;
 		
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 					
 			
@@ -863,14 +862,14 @@ public boolean checkDeleteProdotto(Integer idProdotto) throws ClassNotFoundExcep
 		return uptadedRows;
 	}
 
-	public Integer updateNomeProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException {
+	public Integer updateNomeProdotto(Prodotto prodotto) {
 		logger.debug("in updateProdotto");
 		Integer uptadedRows = -1;
 		
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql2 = "UPDATE prodotto SET nome=? WHERE idprodotto=?";

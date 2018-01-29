@@ -11,8 +11,8 @@ public interface ComuneDao {
 	
 	public Comune getComuneById(int idComune) throws ClassNotFoundException, SQLException, IOException;
 	
-	public List<Comune> getComuni() throws ClassNotFoundException, IOException;
+	public List<Comune> getComuni();
 	
-	public List<Comune> getComuniByIdProvincia(Integer idProvincia) throws ClassNotFoundException, IOException;
+	public List<Comune> getComuniByIdProvincia(Integer idProvincia);
 	
 }

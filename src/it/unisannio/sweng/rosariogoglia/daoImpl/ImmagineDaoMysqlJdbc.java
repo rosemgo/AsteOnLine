@@ -14,9 +14,11 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
@@ -27,7 +29,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
 	
 	public ImmagineDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 
 	public Immagine getImmagineById(Integer idImmagine) throws ClassNotFoundException, SQLException, IOException {
@@ -35,7 +37,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		Immagine immagine = null;
 		Connection connection;
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 			
 		
 		String sql = "SELECT *  FROM immagine " + "WHERE idimmagine = ?";
@@ -89,7 +91,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		
 		Connection connection;
 		
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 				
 		PreparedStatement pstmt;
 		
@@ -131,7 +133,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public Integer insertImmagine(Immagine immagine) throws ClassNotFoundException, IOException {
+	public Integer insertImmagine(Immagine immagine) {
 		logger.debug("in insert immagine");
 		Integer immagineIdKey = -1;
 		Connection connection = null;
@@ -139,7 +141,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO immagine (inserzione_idinserzione, foto) " +
@@ -208,13 +210,13 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 	}
 	
 	
-	public Integer deleteImmagine(Immagine immagine) throws ClassNotFoundException, IOException{
+	public Integer deleteImmagine(Immagine immagine){
 		logger.debug("in deleteImmagine");		
 		int deletedRow = -1;
 		Connection connection = null;
 		PreparedStatement pstmt = null; 
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 		    connection.setAutoCommit(false);
 			
 			String sql = "DELETE * FROM immagine WHERE idimmagine = ? ";
@@ -254,13 +256,13 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		return deletedRow;
 	}
 	
-	public Integer deleteImmagineByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException{
+	public Integer deleteImmagineByIdInserzione(Integer idInserzione){
 		logger.debug("in deleteImmagineByIdInserzione");		
 		int deletedRow = -1;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE * FROM immagine WHERE inserzione_idinserzione = ? ";

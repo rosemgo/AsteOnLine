@@ -25,7 +25,7 @@ public interface InserzioneDao {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public List<Inserzione> getInserzioni() throws ClassNotFoundException, IOException;
+	public List<Inserzione> getInserzioni();
 		
 
 	
@@ -60,7 +60,7 @@ public interface InserzioneDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<String> getTitoli() throws ClassNotFoundException, IOException;
+	public List<String> getTitoli();
 	
 	/**
 	 * Questo metodo restituisce una lista di utenti che osservano l'inserzione identificata dal parametro idInserzione
@@ -79,6 +79,55 @@ public interface InserzioneDao {
 	 * @return lista contenente le inserzioni corrispondenti
 	 */
 	public List<Inserzione> ricercaInserzioni (String keyword, Integer idCategoria);
+
+
+
+
+	public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException;
+
+
+
+
+	public List<Inserzione> ricercaTopInserzioniPopolari(int i) throws ClassNotFoundException, SQLException, IOException;
+
+
+
+
+	public List<Inserzione> ricercaTopInserzioniChiusura(int i) throws ClassNotFoundException, SQLException, IOException;
 	
+	
+	/**
+	 * Il metodo aggiorna lo stato dell'inserzione
+	 * 
+	 * @param statoInserzione
+	 * @param idInserzione
+	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione);
+	
+	
+	
+	/**
+	 * Inserimento dell'inserzione nel database
+	 * 
+	 * @param inserzione
+	 * @return 
+	 * @throws SQLException 
+	 */
+	public Integer insertInserzione(Inserzione inserzione) throws SQLException;
+	
+	
+	/**
+	 * Aggiornamento di un'inserzione precedentemente inserita
+	 * 
+	 * @param inserzione
+	 * @return
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
 	
 }

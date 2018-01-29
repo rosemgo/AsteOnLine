@@ -20,7 +20,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.OffertaDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
+import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.Offerta;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
@@ -33,16 +33,16 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 	Logger logger = Logger.getLogger(OffertaDaoMysqlJdbc.class);
 	
 	public OffertaDaoMysqlJdbc (){
-		DOMConfigurator.configure("C:/Users/Rosario/git/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
 	}
 	
-	public Integer insertOfferta(Offerta offerta) throws ClassNotFoundException, IOException{
+	public Integer insertOfferta(Offerta offerta){
 		logger.debug("in insertOfferta");			
 		int offertaIdKey = -1;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 					
 			String sql = "INSERT INTO offerta(somma, data, utente_registrato_idutente, inserzione_idinserzione) VALUES (?, ?, ?, ?) ";
@@ -100,7 +100,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM offerta WHERE idofferta = ? ";
@@ -144,7 +144,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = DatabaseUtil.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
@@ -189,7 +189,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		connection = DatabaseUtil.getConnection();
+		connection = ConnectionPoolTomcat.getConnection();
 			
 		String sql = "SELECT * FROM offerta " +
 				"WHERE idofferta = ? ";
@@ -233,7 +233,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 
 	
 
-	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) throws ClassNotFoundException, IOException {
+	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) {
 		logger.debug("in getOffertaById");		
 		List<Offerta> listaOfferte = new ArrayList<Offerta>();
 		Connection connection = null;
@@ -241,7 +241,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		ResultSet rs = null;
 		try {
 			
-			    connection = DatabaseUtil.getConnection();
+			    connection = ConnectionPoolTomcat.getConnection();
 				
 				
 				String sql = "SELECT * FROM offerta " +

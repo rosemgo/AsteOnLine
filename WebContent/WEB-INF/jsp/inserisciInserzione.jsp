@@ -5,49 +5,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head> <LINK REL="SHORTCUT ICON" href="favicon.ico">
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Aste On Line - Inserimento Inserzione</title>
 <meta name="" content="">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 
-
 <%-- Include all the required script tags --%>
 <jsp:include page="/WEB-INF/includes/ajaxscripts.jsp"/>
 
 
-
-<!-- <link rel="stylesheet" type="text/css" href="css/jquery.datepick.css">  -->
-<!-- <script type="text/javascript" src="js/jquery.datepick.js"></script> -->
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
-
-<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" /> -->
-<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> -->
-<!-- <link rel="stylesheet" href="/resources/demos/style.css" /> -->
-
-<!-- <script type="text/javascript"> -->
-	
-<!--  	var $j = jQuery.noConflict(); -->
-	
-<!--  	$j(function() { -->
-<!--  		$j( "#datepicker" ).datepicker(); -->
-<!-- 	}); -->
-	
-<!-- </script> -->
-
-
+<!-- Css e funzione javascript per il funzionamento del calendario -->
 <link href="css/tcal.css" type="text/css" rel="stylesheet">
 <script src="js/tcal.js" type="text/javascript"> </script>
-
-
-
-
 
 </head>
 
 
 <body>
-
 
 <div class="container">
 
@@ -169,7 +144,9 @@
 								<option selected="selected" value="0"> Seleziona un produttore </option> 
 						</select>
   						</p>
-  						    					   					
+  						
+    					
+    					
     					
     					<p>Titolo</p>
     					<p>
@@ -183,6 +160,8 @@
     					<p>
     						<input name="prezzoIniziale" type="text" maxlength="7" id="campoTesto"/>
     					</p>
+    					
+    					
     					
     					<p>Data scadenza*</p>
     					<p>
@@ -241,12 +220,6 @@
 
 
 </div>
-
-
-	
-
-
-
 
 
 </body>

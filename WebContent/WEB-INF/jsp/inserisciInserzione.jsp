@@ -145,7 +145,12 @@
 						</select>
   						</p>
   						
-    					
+    					<ajax:select
+						    baseUrl="${contextPath}/cercaproduttori.ajax"
+						    source="categoria"
+						    target="produttore"
+						    parameters="categoria={categoria}"/>
+    			
     					
     					
     					<p>Titolo</p>

@@ -150,7 +150,19 @@
 						    source="categoria"
 						    target="produttore"
 						    parameters="categoria={categoria}"/>
-    			
+    				
+    					
+    					<ajax:select
+						    baseUrl="${contextPath}/cercaprodotti.ajax"
+						    source="produttore"
+						    target="prodotto"
+						    parameters="produttore={produttore},categoria={categoria}"/>
+    				
+    					<ajax:select
+						    baseUrl="${contextPath}/cercaprodotti.ajax"
+						    source="categoria"
+						    target="prodotto"
+						    parameters=""/>
     					
     					
     					<p>Titolo</p>

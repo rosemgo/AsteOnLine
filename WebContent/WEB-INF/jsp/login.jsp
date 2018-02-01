@@ -11,8 +11,30 @@
 </head>
 
 
-<!-- inserire il codice javascript per far ruotare le immagini pubblicitarie -->
 
+<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+  setInterval(rotateImage, 4000);
+  var images = new Array('immagini/bannerAsteOnLine.jpg', 'immagini/pubblicita.png', 'immagini/bannerPubblicitari/italiapubblicita.png');
+  var index = 1;
+ 
+  function rotateImage() {
+    $('.big-img img').fadeOut('slow', function () {
+      $(this).attr('src', images[index]);
+      $(this).fadeIn('slow', function () {
+        if (index == images.length - 1) {
+          index = 0;
+        } else {
+          index++;
+        }
+      });
+    });
+  }
+});
+
+</script>
 
 <body>
 

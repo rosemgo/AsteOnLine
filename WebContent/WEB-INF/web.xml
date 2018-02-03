@@ -10,8 +10,7 @@
    <listener>
     <listener-class>it.unisannio.sweng.rosariogoglia.listener.ContextInitializer</listener-class>
   </listener>
- 
- 
+  
  <display-name>AsteOnLine</display-name>
   <welcome-file-list>
     <welcome-file></welcome-file>

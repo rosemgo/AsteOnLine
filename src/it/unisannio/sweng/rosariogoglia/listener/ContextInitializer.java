@@ -49,8 +49,7 @@ public class ContextInitializer implements ServletContextListener {
 		}
     	
     */	
-    	/* In questo modo viene preparato il log4j 
-    	 */
+    	/* In questo modo viene preparato il log4j ad ogni avvio di Tomcat*/
         ServletContext context = sce.getServletContext();
         String log4jConfigFile = context.getInitParameter("log4j-config-location");
         String fullPath = context.getRealPath("") + File.separator + log4jConfigFile;

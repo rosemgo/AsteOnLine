@@ -11,7 +11,7 @@
   <servlet>
     <display-name>index</display-name>
     <servlet-name>index</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletIndex</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletIndex</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>index</servlet-name>
@@ -21,7 +21,7 @@
  <servlet>
     <display-name>ServletLogin</display-name>
     <servlet-name>ServletLogin</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLogin</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletLogin</servlet-name>
@@ -31,7 +31,7 @@
   <servlet>
     <display-name>ServletLogout</display-name>
     <servlet-name>ServletLogout</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLogout</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletLogout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletLogout</servlet-name>
@@ -41,7 +41,7 @@
   <servlet>
    <display-name>ServletRegistrazione</display-name>
     <servlet-name>ServletRegistrazione</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletRegistrazione</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRegistrazione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletRegistrazione</servlet-name>
@@ -51,7 +51,7 @@
   <servlet>
     <display-name>ServletInizializzazione</display-name>
     <servlet-name>ServletInizializzazione</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletInizializzazione</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletInizializzazione</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -65,7 +65,7 @@
   <servlet>
     <display-name>ServletInserisciInserzione</display-name>
     <servlet-name>ServletInserisciInserzione</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletInserisciInserzione</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletInserisciInserzione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletInserisciInserzione</servlet-name>
@@ -76,7 +76,7 @@
 <servlet>
     <display-name>ServletModificaInserzione</display-name>
     <servlet-name>ServletModificaInserzione</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletModificaInserzione</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletModificaInserzione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletModificaInserzione</servlet-name>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+ 
+ 
+ 
+ <display-name>AsteOnLine</display-name>
+  <welcome-file-list>
+    <welcome-file></welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <display-name>index</display-name>
+    <servlet-name>index</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+
+ <servlet>
+    <display-name>ServletLogin</display-name>
+    <servlet-name>ServletLogin</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogin</servlet-name>
+    <url-pattern>/ServletLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletLogout</display-name>
+    <servlet-name>ServletLogout</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogout</servlet-name>
+    <url-pattern>/ServletLogout</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+   <display-name>ServletRegistrazione</display-name>
+    <servlet-name>ServletRegistrazione</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletRegistrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrazione</servlet-name>
+    <url-pattern>/ServletRegistrazione</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <display-name>ServletInizializzazione</display-name>
+    <servlet-name>ServletInizializzazione</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletInizializzazione</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInizializzazione</servlet-name>
+    <url-pattern>/ServletInizializzazione</url-pattern>
+  </servlet-mapping>
+ 
+
+  
+ 
+  <servlet>
+    <display-name>ServletInserisciInserzione</display-name>
+    <servlet-name>ServletInserisciInserzione</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletInserisciInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInserisciInserzione</servlet-name>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+  </servlet-mapping>
+ 
+ 
+<servlet>
+    <display-name>ServletModificaInserzione</display-name>
+    <servlet-name>ServletModificaInserzione</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletModificaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModificaInserzione</servlet-name>
+    <url-pattern>/ServletModificaInserzione</url-pattern>
+  </servlet-mapping> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</web-app>

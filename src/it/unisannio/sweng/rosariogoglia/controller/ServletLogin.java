@@ -144,7 +144,7 @@ public class ServletLogin extends HttpServlet {
 							}
 							
 						}
-						else{ //se la pagina in sessione è osserva inserzione devo mandarla alla pagina dettagli inserzione
+						else{ //se invece la pagina in sessione è "osserva inserzione" devo mandarla alla pagina dettagli inserzione
 							
 							if(utente.getIdUtente() == inserzione.getIdVenditore()){
 								request.setAttribute("messaggio", "Benvenuto " + utente.getNick() + "!!! Utilizza il menù in alto per navigare nel sito e... buon AsteOnline!!! <br /> <br /> Non è possibile effettuare offerte oppure osservare una propria inserzione!!!");
@@ -155,12 +155,15 @@ public class ServletLogin extends HttpServlet {
 								request.getRequestDispatcher("/WEB-INF/jsp/errore.jsp").forward(request, response);
 							}
 							else{
+								//sostituire con ServletOsservaInserzione se voglio far inserire direttamente l'inserzione tra quelle osservate
 								request.getRequestDispatcher("/ServletDettagliInserzione").forward(request, response);
+								
 							}
 								
 							
 						}
 						
+						//andrebbe tolto se voglio far osservare subito l'inserzione
 						
 						session.removeAttribute("pagina");
 						System.out.println("RIMUOVO DALLA SESSIONE LA PAGINA");

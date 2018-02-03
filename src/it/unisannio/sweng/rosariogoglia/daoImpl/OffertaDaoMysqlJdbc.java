@@ -32,9 +32,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 	
 	Logger logger = Logger.getLogger(OffertaDaoMysqlJdbc.class);
 	
-	public OffertaDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+
 	
 	public Integer insertOfferta(Offerta offerta){
 		logger.debug("in insertOfferta");			

@@ -24,9 +24,6 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 
 	Logger logger = Logger.getLogger(ProduttoreDaoMysqlJdbc.class);
 	
-	public ProduttoreDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
 
 	
 	public List<Produttore> getProduttori(){

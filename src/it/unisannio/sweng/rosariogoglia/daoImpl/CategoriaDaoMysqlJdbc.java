@@ -32,9 +32,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 
 	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
 	
-	public CategoriaDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+	
 	
 	public List<Categoria> getCategorie(){
 		logger.debug("in getCategorie");

@@ -21,9 +21,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 
 	Logger logger = Logger.getLogger(KeywordDaoMysqlJdbc.class);
 	
-	public KeywordDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+
 	
 
 	public List<Keyword> getKeywords() {

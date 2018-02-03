@@ -26,11 +26,9 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 
 public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 
-	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
+	Logger logger = Logger.getLogger(ImmagineDaoMysqlJdbc.class);
 	
-	public ImmagineDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+	
 
 	public Immagine getImmagineById(Integer idImmagine) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getImmagineById");

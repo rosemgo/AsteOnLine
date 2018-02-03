@@ -47,12 +47,11 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 
 	Logger logger = Logger.getLogger(ProdottoDaoMysqlJdbc.class);
 	
-	public ProdottoDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
 	
 	public List<Prodotto> getProdotti() {
 		logger.debug("in getProdotti");
+		logger.info("INFO: in getProdotti");
+		
 		List<Prodotto> listaProdotti = new ArrayList<Prodotto>();
 		
 		Connection connection = null;

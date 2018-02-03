@@ -35,11 +35,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	Logger logger = Logger.getLogger(UtenteRegistratoDaoMysqlJdbc.class);
-		
-	public UtenteRegistratoDaoMysqlJdbc(){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
-	
+			
 
 	
 	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente){

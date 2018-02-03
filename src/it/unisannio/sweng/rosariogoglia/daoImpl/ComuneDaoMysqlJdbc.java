@@ -20,11 +20,9 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
 
 public class ComuneDaoMysqlJdbc implements ComuneDao{
 
-	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
+	Logger logger = Logger.getLogger(ComuneDaoMysqlJdbc.class);
 	
-	public ComuneDaoMysqlJdbc (){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+
 
 	public Comune getComuneById(int idComune) throws ClassNotFoundException, SQLException, IOException {
 		Comune comune = null;

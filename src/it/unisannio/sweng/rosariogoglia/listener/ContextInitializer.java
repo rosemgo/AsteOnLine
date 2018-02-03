@@ -57,7 +57,9 @@ public class ContextInitializer implements ServletContextListener {
         System.out.println("Stampo il realpath: " + context.getRealPath(""));
         PropertyConfigurator.configure(fullPath);
         
-         
+        System.setProperty("rootPath", context.getRealPath("/"));
+        System.out.println("Stampo il realpath: " + context.getRealPath("/"));
+        
         
     }
 

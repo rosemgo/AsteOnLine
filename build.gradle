@@ -51,3 +51,8 @@ dependencies {
 // context where tomcat is deployed, by defautl localhost:8080/
 tomcatRun.contextPath = '/'
 tomcatRunWar.contextPath = '/'
+
+
+war {
+    from (project(':AsteOnLine').file('build/resources/main'))
+}

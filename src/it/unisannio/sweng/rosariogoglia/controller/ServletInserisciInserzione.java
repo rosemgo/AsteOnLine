@@ -14,7 +14,6 @@ import it.unisannio.sweng.rosariogoglia.utility.Utility;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,7 +34,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.apache.tomcat.util.http.fileupload.FileItemStream;
 
 
 /**

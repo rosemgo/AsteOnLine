@@ -26,8 +26,9 @@
          Class name for the official MySQL Connector/J driver is com.mysql.jdbc.Driver.
          -->
 
-<!-- url: The JDBC connection url for connecting to your MySQL database.
-         -->
+<!-- url: The JDBC connection url for connecting to your MySQL database.     -->
+<!-- Risorsa per il Database su TOMCAT WINDOWS, in quanto la password è diversa ed è admin -->
+<!-- 
  <Resource name="jdbc/AsteOnLine" 
   			auth="Container" 
   			type="javax.sql.DataSource"
@@ -38,9 +39,9 @@
             password="root" 
             driverClassName="com.mysql.jdbc.Driver"
             url="jdbc:mysql://localhost:3306/ecommerce?autoReconnect=true"/>
-
+-->
 <!-- Risorsa per il NAS-ROSHOME, in quanto la password è diversa ed è admin -->
-<!-- 
+ 
 <Resource name="jdbc/AsteOnLine" 
               auth="Container"
               type="javax.sql.DataSource" 
@@ -52,6 +53,6 @@
               maxActive="10" 
               maxIdle="4"/>
  
-  -->
+
    
 </Context>

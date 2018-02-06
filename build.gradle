@@ -53,6 +53,6 @@ tomcatRun.contextPath = '/'
 tomcatRunWar.contextPath = '/'
 
 
-war {
-    from (project(':AsteOnLine').file('build/resources/main'))
-}
+//war {
+//    from (project(':AsteOnLine').file('build/resources/main'))
+//}

@@ -37,20 +37,21 @@ sourceSets {
 
 // dependencies to run on tomcat, are mandatory for tomcat plugin
 dependencies {
-    def tomcatVersion = '7.0.57'
+   // def tomcatVersion = '7.0.57'
+  /*
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
     }
-    
+   */ 
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
     
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/
-tomcatRun.contextPath = '/'
-tomcatRunWar.contextPath = '/'
+//tomcatRun.contextPath = '/'
+//tomcatRunWar.contextPath = '/'
 
 
 //war {

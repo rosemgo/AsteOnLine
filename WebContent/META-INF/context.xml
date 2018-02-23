@@ -46,7 +46,7 @@
               auth="Container"
               type="javax.sql.DataSource" 
               username="root" 
-              password="admin"
+              password="root"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/ecommerce?autoReconnect=true"
               validationQuery="select 1"

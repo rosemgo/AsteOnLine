@@ -399,6 +399,15 @@ public interface UtenteRegistratoDao {
 	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente);
 	
 	
-	
+	/**
+	 * Visualizza le inserzioni caricate dall'utente, passato come parametro, relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
+	 * 
+	 * @param idUtenteRegistrato
+	 * @param limiteInf
+	 * @param numInserzioniPagina
+	 * @return le inserzioni comprese in un intervallo specifico
+	 */
+	public List<Inserzione> getLimitInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato, Integer limiteInf,  Integer numInserzioniPagina);
+
 }
 

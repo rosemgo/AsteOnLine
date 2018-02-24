@@ -888,6 +888,254 @@ public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundExcep
 
 
 
+public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserzioniPerPagina) {
+	logger.debug("in getLimitAsteInCorso");
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+	Inserzione inserzione;
+	Prodotto prodotto;
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet rs = null;
+	try {
+		connection = ConnectionPoolTomcat.getConnection();
+								
+		String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+				"WHERE " +
+				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+				"AND " +
+				"categoria.idcategoria = prodotto.categoria_idcategoria " +
+				"AND " +
+				"inserzione.stato = 'in asta' " +
+				"LIMIT ?, ?";
+
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, limiteInf);
+		pstmt.setInt(2, numInserzioniPerPagina);
+		logger.debug("Select Query:" + pstmt.toString());
+		rs = pstmt.executeQuery();
+			
+		while(rs.next()){	
+							
+				inserzione = new InserzioneImpl();
+				prodotto = new ProdottoImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+				UtenteRegistrato acquirente = null;
+				if(idAcquirente != 0){ //lo 0 equivale al null
+					 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+				}
+				logger.debug("idAcquirente: " + idAcquirente);
+				
+				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+				UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
+				
+				
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				inserzione.setIdVenditore(idVenditore);
+				inserzione.setVenditore(venditore);
+				inserzione.setIdAcquirente(idAcquirente);
+				inserzione.setAcquirente(acquirente);
+				
+				
+				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+				inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+				inserzione.setProdotto(prodotto);
+				
+				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setImmagini(listaImmagini);
+									
+				listaInserzioni.add(inserzione);
+				
+			}
+		
+	} catch (SQLException | ClassNotFoundException | IOException e) {
+		e.printStackTrace();
+	}
+	finally{
+		try {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return listaInserzioni;
+	
+}
+
+
+
+
+public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPagina){
+	logger.debug("in getLimitInserzioni");
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+	Inserzione inserzione;
+	Prodotto prodotto;
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet rs = null;
+	
+	try {
+		
+		connection = ConnectionPoolTomcat.getConnection();
+		
+		String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+				"WHERE " +
+				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+				"AND " +
+				"categoria.idcategoria = prodotto.categoria_idcategoria " +
+				"LIMIT ?, ?";
+
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, limiteInf);
+		pstmt.setInt(2, numInserzioniPagina);
+		logger.debug("Select Query:" + pstmt.toString());
+		rs = pstmt.executeQuery();
+							
+			
+		while(rs.next()){	
+							
+				inserzione = new InserzioneImpl();
+				prodotto = new ProdottoImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+				UtenteRegistrato acquirente = null;
+				if(idAcquirente != 0){ //lo 0 equivale al null
+					 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+				}
+				logger.debug("idAcquirente: " + idAcquirente);
+				
+				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+				UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
+				
+				
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				inserzione.setIdVenditore(idVenditore);
+				inserzione.setVenditore(venditore);
+				inserzione.setIdAcquirente(idAcquirente);
+				inserzione.setAcquirente(acquirente);
+				
+				
+				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+				inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+				inserzione.setProdotto(prodotto);
+				
+				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setImmagini(listaImmagini);
+									
+				listaInserzioni.add(inserzione);
+				
+			}
+				
+		
+	} catch (SQLException | ClassNotFoundException | IOException e) {
+		e.printStackTrace();
+	}
+	finally{
+		try {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return listaInserzioni;
+}
+
+
+
+public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer numInserzioniPerPagina){
+	logger.debug("in ricercaTopInserzioniChiusura");
+	
+	List<Inserzione> listaInserzioni = null; 
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet rs = null;
+	try{
+		connection = ConnectionPoolTomcat.getConnection();
+				
+		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
+				"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
+				"OR " +
+				"( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 ) " +
+				"ORDER BY inserzione.data_scadenza ASC " +
+				"LIMIT ?, ?";
+		
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, limiteInf);
+		pstmt.setInt(2, numInserzioniPerPagina);
+		logger.debug("Select Query:" + pstmt.toString());
+		
+		rs = pstmt.executeQuery();
+	
+		if(rs.next()){
+			
+			listaInserzioni = new ArrayList<Inserzione>();
+			
+			Inserzione inserzione;
+			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+			do{
+				inserzione = new InserzioneImpl();
+				
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				
+				inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+								
+				listaInserzioni.add(inserzione);	
+				
+			}while(rs.next());
+		
+		}
+						
+	} catch (SQLException | ClassNotFoundException | IOException e) {
+		e.printStackTrace();
+	}
+	finally{
+		try {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	logger.debug("inserzioni in scadenza caricate");
+	
+	return listaInserzioni;
+	
+	
+}
+
+
+
+
 
 
 }

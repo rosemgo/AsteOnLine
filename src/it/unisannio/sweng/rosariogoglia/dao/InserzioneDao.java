@@ -130,4 +130,35 @@ public interface InserzioneDao {
 	 */
 	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
 	
+	/**
+	 * Visualizza le inserzioni in asta relative ad un intervallo 
+	 * 
+	 * @param limiteInf
+	 * @param numInserzioniPerPagina
+	 * 
+	 * @return inserzioni relative ad un intervallo specifico
+	 */
+	public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserzioniPerPagina);
+		
+	
+	/**
+	 * Visualizza le inserzioni relative ad un intervallo 
+	 * 
+	 * @param limiteInf
+	 * @param numInserzioniPerPagina
+	 * 
+	 * @return inserzioni relative ad un intervallo specifico
+	 */
+	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPerPagina);
+		
+	/**
+	 * Visualizza le inserzioni in chiusura relative ad un intervallo
+	 * 
+	 * @param limiteInf
+	 * @param numInserzioniPerPagina
+	 * @return inserzioni relative ad un intervallo specifico
+	 */
+	public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer numInserzioniPerPagina);
+		
+	
 }

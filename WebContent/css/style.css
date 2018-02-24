@@ -127,3 +127,384 @@
 	font-size: 14px;
 	text-align: center;
 }
+
+
+
+.centralBoxOperations{
+	float:left; 
+	height:100%; 
+	width: 850px; 
+/* 	background-color: #ffffff; */
+}
+
+.centralBoxLogin {
+	height: auto;
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-size: large;	
+	margin-bottom: 100px;
+	border: medium groove #666;
+	margin-top: 30px;
+}
+
+.centralBoxRisultatiProdotti {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: auto;
+	width: 840px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 100px;
+	margin-top: 30px;
+	border: medium groove #666;
+	padding-left: 2.5px;
+	padding-right: 2.5px;
+	padding-bottom: 20px;
+	
+}
+
+.centralBoxOfferta{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: auto;
+	width: 840px;
+	margin-right: auto;
+	margin-bottom: 100px;
+	margin-left: auto;
+	margin-top: 30px;
+	border: medium groove #666;
+	padding-bottom: 20px;
+}
+
+.centralBoxText {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: large;
+	font-weight: bold;
+	height: auto;
+	width: 704px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 100px;
+	border: medium groove #666;
+	text-indent: 20px;
+/* 	padding-bottom: 80px; */
+}
+
+.centralBoxTextInserzione {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: large;
+	font-weight: bold;
+	height: auto;
+	width: 800px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 100px;
+	border: medium groove #666;
+/* 	text-indent: 20px; */
+	padding-bottom: 80px;
+}
+
+
+.rightBox{
+	float: right;
+	height: 200px;
+	width: 400px;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	border: medium groove #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.leftBox {
+	float: left;
+	height: 200px;
+	width: 400px;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	border: medium groove #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#logo{
+	float:left;
+}
+
+
+a#logo{
+	float:left;
+	background: url('../immagini/logo.png'); /* .. perchè il percorso parte dalla posizione del file css, quindi dobbiamo prima tornare indietro, e poi andare in immagini */
+	width: 300px; 
+	height: 80px;
+}
+
+
+
+#inserzionePopolare1{
+	float:left;
+	width:196.25px;
+	height:205px;
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px; 
+	margin-bottom:2.5px; 
+	background-color:#ffffff; 
+	border : 1px solid Black;
+}
+
+#inserzionePopolare1:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzionePopolare2{
+	float:left; 
+	width:197.5px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px;
+	margin-left:2.5px; 
+	margin-bottom:2.5px; 
+	background-color:#ffffff;
+	border : 1px solid Black;	
+}
+
+#inserzionePopolare2:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzionePopolare3{
+	float:left; 
+	width:196.25px;
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-left:2.5px; 
+	margin-bottom:2.5px;
+	background-color:#FFFFFF;
+	border : 1px solid Black;
+	
+}
+#inserzionePopolare3:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzionePopolare4{
+	float:left; 
+	width:196.25px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-top:2.5px; 
+	margin-right:2.5px;  
+	background-color:#ffffff;
+	border : 1px solid Black;
+}
+
+#inserzionePopolare4:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzionePopolare5{
+	float:left; 
+	width:197.5px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px; 
+	margin-left:2.5px; 
+	margin-top:2.5px; 
+	background-color:#ffffff;
+	border : 1px solid Black;
+	
+}
+
+#inserzionePopolare5:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzionePopolare6{
+	float:left; 
+	width:196.25px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-left:2.5px; 
+	margin-top:2.5px; 
+	background-color:#ffffff;
+	border : 1px solid Black;
+}
+
+#inserzionePopolare6:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+#inserzioneInChiusura1{
+	float:left; 
+	width:152px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px;  
+	margin-bottom:2.5px; 
+	background-color:#ffffff; 
+	border : 1px solid Black;
+}
+
+#inserzioneInChiusura1:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzioneInChiusura2{
+	float:left; 
+	width:152px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px; 
+	margin-left:2.5px; 
+	margin-bottom:2.5px;
+	background-color:#ffffff;
+	border : 1px solid Black;	
+}
+
+#inserzioneInChiusura2:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzioneInChiusura3{
+	float:left; 
+	width:152px; 
+	height:205px;
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px; 
+	margin-left:2.5px; 
+	margin-bottom:2.5px;
+	background-color:#ffffff;
+	border : 1px solid Black;
+	
+}
+#inserzioneInChiusura3:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzioneInChiusura4{
+	float:left; 
+	width:152px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px; 
+	margin-left:2.5px;
+	margin-bottom:2.5px;  
+	background-color:#ffffff;
+	border: 1px solid Black;
+}
+
+#inserzioneInChiusura4:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inserzioneInChiusura5{
+	float:left;  
+	width:152px; 
+	height:205px; 
+	padding: 9px 4px 9px 4px; 
+	margin-left:2.5px; 
+	margin-bottom: 2.5px;
+	background-color:#ffffff;
+	border : 1px solid Black;
+	
+}
+
+#inserzioneInChiusura5:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+
+
+#inserzione{
+	float:left;
+	width:193.75px; /* invece di 193.25 perchè abbiamo il bordo di 1px */
+	height:205px;
+	padding: 9px 4px 9px 4px; 
+	margin-right:2.5px;
+	margin-left:2.5px; 
+	margin-top:2.5px;
+	margin-bottom:2.5px;
+	background-color:#ffffff; 
+	border : 1px solid Black;
+}
+
+#inserzione:hover{
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+#inserzioneTitolo{
+	float:left; 
+	text-align:center; 
+	width:100%; 
+	height:20px;
+	font-size: normal;
+	font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+}
+
+#inserzioneImmagine{
+	float:left; 
+	width:100%; 
+	height:122.5px; 
+	padding: 2.5px 0px 0px 0px; 
+}
+
+#inserzionePrezzo{
+	float:left; 
+	width:100%; 
+	height:60px;
+}
+
+#bottone {
+	font-size: large;
+	font-weight: bold;
+	color: #333;
+	border:thin solid #666;
+	background-color: #CCC;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: 30px;
+	width: 120px;
+}
+
+
+#bottone1 {
+	font-size: large;
+	font-weight: bold;
+	color: #333;
+	border:thin solid #666;
+	background-color: #CCC;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: 30px;
+	width: 170px;
+}
+

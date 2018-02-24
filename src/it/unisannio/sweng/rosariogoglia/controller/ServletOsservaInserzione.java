@@ -88,6 +88,8 @@ public class ServletOsservaInserzione extends HttpServlet {
 					}
 					
 					
+					
+					
 				}
 				else{
 					String messaggio="Non è possibile osservare o effettuare offerte per una propria inserzione!!!";

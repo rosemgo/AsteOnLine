@@ -11,6 +11,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
@@ -20,11 +22,14 @@ import org.apache.log4j.PropertyConfigurator;
 @WebListener
 public class ContextInitializer implements ServletContextListener {
 
+	
+	private Logger logger;
     /**
      * Default constructor. 
      */
     public ContextInitializer() {
         // TODO Auto-generated constructor stub
+    	   	
     }
 
 	/**
@@ -33,6 +38,8 @@ public class ContextInitializer implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 
     	Context initContext;
+    	   	
+    	
     	
    /*     DataSource ds = null;
         try {
@@ -71,6 +78,17 @@ public class ContextInitializer implements ServletContextListener {
      */
     public void contextDestroyed(ServletContextEvent arg0) {
         // TODO Auto-generated method stub
+    	
+    	if(LogManager.class.getClassLoader().equals(this.getClass().getClassLoader())){
+    			logger.info("Log4j was loaded by application classloader; shutting down.");
+    			LogManager.shutdown();
+    	}
+    	else{
+    		logger.info("Log4j was loaded by some other ClassLoader; not shutting down.");
+    	}
+    	
+    	
     }
 	
 }
+

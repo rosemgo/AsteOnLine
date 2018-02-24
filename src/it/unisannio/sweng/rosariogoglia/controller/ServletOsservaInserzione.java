@@ -87,6 +87,8 @@ public class ServletOsservaInserzione extends HttpServlet {
 						session.setAttribute("messaggioOsservazione", "Osservazione non riuscita!!!");
 					}
 					
+					/*in seguito all'inserimento nel db dell'inserzione osservata, invio il controllo alla servletInserzioniOsservate che si occupa della visualizzazione */
+					request.getRequestDispatcher("/ServletInserzioniOsservate").forward(request, response);
 					
 					
 					

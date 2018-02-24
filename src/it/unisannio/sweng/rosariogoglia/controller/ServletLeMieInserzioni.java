@@ -34,7 +34,7 @@ public class ServletLeMieInserzioni extends HttpServlet {
 		doGet(request, response);
 			
 	}
-		
+	
 	
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -77,7 +77,7 @@ public class ServletLeMieInserzioni extends HttpServlet {
 			
 			Integer numeroPagine;
 			/*Se il rapporto tra il numero di inserzioni e il numero di inserzioni da visualizzare per pagina è un numero intero, otteniamo direttamente dalla divisione il numero di pagine necessarie per visualizzare tutte le inserzioni
-			 * Se il rapporto è dispari bisogna fare la stessa divisione ed aggiungere una pagina, necessaria per visualizzare le restanti inserzioni
+			 *Se il rapporto è dispari bisogna fare la stessa divisione ed aggiungere una pagina, necessaria per visualizzare le restanti inserzioni
 			 */
 			if((numeroInserzioni % numeroInserzioniPerPagina) == 0){
 				numeroPagine = numeroInserzioni / numeroInserzioniPerPagina;

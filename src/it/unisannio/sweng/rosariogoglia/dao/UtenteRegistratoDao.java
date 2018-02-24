@@ -409,5 +409,16 @@ public interface UtenteRegistratoDao {
 	 */
 	public List<Inserzione> getLimitInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato, Integer limiteInf,  Integer numInserzioniPagina);
 
+	
+	/**
+	 * Visualizza le inserzioni osservate relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
+	 * @param idUtente
+	 * @return
+	 */
+	public List<Inserzione> getLimitInserzioniOsservateByIdUtente(Integer idUtente, Integer limiteInf, Integer numeroInserzioniPagina);
+		
+
+	
+	
 }
 

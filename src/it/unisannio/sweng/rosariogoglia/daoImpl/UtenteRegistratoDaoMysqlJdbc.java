@@ -20,6 +20,7 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -1736,4 +1737,60 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			return listaIntervalloInserzioni;
 		}
 	
+	
+	public List<Inserzione> getLimitInserzioniOsservateByIdUtente(Integer idUtente, Integer limiteInf, Integer numeroInserzioniPagina){
+		logger.debug("in getLimitInserzioniOsservateByIdUtente");
+		List<Inserzione> listaInserzioniOsservate = new ArrayList<Inserzione>();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			//connection = DatabaseUtil.getConnection();
+			
+			Inserzione inserzione;
+			
+			String sql = "SELECT * FROM utente_registrato_osserva_inserzione " +
+					"WHERE utente_registrato_osserva_inserzione.utente_registrato_idutente = ? " +
+					"ORDER BY inserzione_idinserzione DESC " +
+					"LIMIT ?,? "; 
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idUtente);
+			pstmt.setInt(2, limiteInf);
+			pstmt.setInt(3, numeroInserzioniPagina);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				inserzione = new InserzioneImpl();
+				
+				InserzioneDao dao = new InserzioneDaoMysqlJdbc();
+				inserzione = dao.getInserzioneById(rs.getInt("inserzione_idinserzione"));
+				
+				listaInserzioniOsservate.add(inserzione);
+				logger.debug("inserzione aggiunta alla lista");
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioniOsservate;
+	}
+	
+
+
 }

@@ -1,0 +1,129 @@
+.container {
+	background-color:#ffffff;
+	width:1000px; 
+	height:auto;  /* sarebbe nella schermata principale 1005px */ 
+ 	position:absolute; 
+	left:50%; 
+	margin:0px 0px 0px -500px;
+}
+
+.containerContatti {
+	background-color:#ffffff; 
+	width:1000px; 
+	height:90%;  /* sarebbe nella schermata principale 1005px */ 
+ 	position:absolute; 
+	left:50%; 
+	margin:0px 0px 0px -500px;
+}
+
+.header{
+/* 	background-color:#DDDDDD;  */
+	background: -moz-linear-gradient(#DDDDDD, #ffffff ); 
+	background: -webkit-linear-gradient(#DDDDDD, #ffffff); 
+	width:100%; 
+	height:80px; 
+	padding: 0px 0px 0px 0px;
+}
+
+.centralBox{
+	background-color:#ffffff; 
+	width:100%;
+	height:auto;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: medium;
+	font-weight: bold;
+}
+
+.centralBoxContatti{
+	background-color:#ffffff; 
+	width:100%;
+	height:100%;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: medium;
+	font-weight: bold;
+}
+
+
+.loginAlto{
+	float:right; 
+	padding: 0px 15px 0px 0px;
+}
+
+.menuUtente{
+	float:right; 
+	padding: 0px 5px 0px 0px; 
+	background-image: url();
+}
+
+.siteMenu{
+	float:left; 
+	width:850px; 
+	height:80px ; 
+	padding:0px 0px 0px 0px; 
+	background-color:#ffffff;
+}
+
+.searchBar{
+	float:left; 
+	width:830px; 
+	height:25px;
+	background-color:#d2d0d0; 
+	padding: 10px 10px 10px 10px;
+}
+
+.boxInserzioniScorrevoli{
+	float:left; 
+	width:200px; 
+	height:495px; 
+	margin-top: 5px ; 
+	background: -moz-linear-gradient(#ffffff, #917c4d);
+	background: -webkit-linear-gradient(#ffffff, #917c4d);  
+/* 	background-color: #f5f5f5; */
+}
+.boxAstePopolari{
+	float:left; 
+	width:650px; 
+	height:500px; 
+	background-color:#ffffff; 
+}
+
+.boxAsteInChiusura{
+	float:left; 
+	width:850px; 
+	height:270px;
+	background-color:#ffffff;
+}
+
+
+.asteInCorso{
+	float:left; 
+	width:850px; 
+	height:auto;
+	background-color:#ffffff;
+}
+
+
+.footer{
+	float:left;
+	width:100%; 
+	height:25px; 
+/* 	background-color:#d2d0d0; */
+	background: -moz-linear-gradient(#ffffff, #DDDDDD 60%); 
+	background: -webkit-linear-gradient(#ffffff, #DDDDDD 60%); 
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	padding-top: 10px;
+	display: inherit;
+	font-size: 14px;
+	text-align: center;
+}

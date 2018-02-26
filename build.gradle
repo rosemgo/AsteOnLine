@@ -28,18 +28,15 @@ repositories {
 
 // Set source directory
 sourceSets {
+        //percorso di compilazione 
         main {
             java {
                 srcDir 'src'
             }
         }
         
- /*       test {
-	        java {
-	            //srcDirs = ["test"]  // Note @Peter's comment below
-	        }
-    	}
-  */      
+       
+        
     }
 
 // dependencies to run on tomcat, are mandatory for tomcat plugin
@@ -52,9 +49,11 @@ dependencies {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
     }
    */ 
+    
+    //dipendendenza librerie
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
      
-     testCompile "junit:junit:4.11"
+    
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/
@@ -62,6 +61,7 @@ dependencies {
 //tomcatRunWar.contextPath = '/'
 
 
+//creazione documentazione java
 javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile

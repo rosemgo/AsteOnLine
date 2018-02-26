@@ -33,6 +33,13 @@ sourceSets {
                 srcDir 'src'
             }
         }
+        
+ /*       test {
+	        java {
+	            //srcDirs = ["test"]  // Note @Peter's comment below
+	        }
+    	}
+  */      
     }
 
 // dependencies to run on tomcat, are mandatory for tomcat plugin
@@ -46,12 +53,19 @@ dependencies {
     }
    */ 
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
-    
+     
+     testCompile "junit:junit:4.11"
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/
 //tomcatRun.contextPath = '/'
 //tomcatRunWar.contextPath = '/'
+
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
 
 
 //war {

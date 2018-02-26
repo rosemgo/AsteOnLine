@@ -35,7 +35,12 @@ sourceSets {
             }
         }
         
-       
+        //lanciare test automaticamente con gradle
+        test {
+	        java {
+	            srcDirs = ["test"]  
+	        }
+    	}
         
     }
 
@@ -53,7 +58,7 @@ dependencies {
     //dipendendenza librerie
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
      
-    
+     testCompile "junit:junit:4.11"
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/

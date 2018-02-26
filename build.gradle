@@ -10,16 +10,23 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'com.bmuschko.tomcat'
+//apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'findbugs'
+
+
+
 
 // JDK version source compatibility
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
+
 // project version
 //version = '1.0'
 // War file name
 war.baseName = 'AsteOnLine'
+
 // Web directory, this overrides the default value "webapp"
 project.webAppDirName = 'WebContent'
+
 
 repositories {
     mavenLocal()
@@ -35,6 +42,7 @@ sourceSets {
             }
         }
         
+
         //lanciare test automaticamente con gradle
         test {
 	        java {
@@ -73,6 +81,64 @@ javadoc {
 }
 
 
+//ignora gli errori di findbugs facendo completare la build
+findbugs {
+   ignoreFailures = true
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile('config/xsl/findbugs-custom.xsl')
+    }
+}
+
+
+
+
 //war {
 //    from (project(':AsteOnLine').file('build/resources/main'))
 //}
+
+
+
+
+/*
+task customFindbugs(type: FindBugs) {
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "low"
+    classes = files("$project.buildDir/intermediates/classes")
+
+    // Use this only if you want exclude some errors
+    excludeFilter = file("$rootProject.rootDir/config/findbugs/exclude.xml")
+
+   // source = fileTree('src/main/java/')
+    classpath = files()
+
+    reports {
+        xml.enabled = false
+        xml.withMessages = true
+        html.enabled = !xml.isEnabled()
+        xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
+        html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
+    }
+}
+
+build.dependsOn customFindbugs
+*/
+
+
+/*
+task checkFindBugsReport << {
+   def xmlReport = findbugsMain.reports.xml
+   def slurped = new XmlSlurper().parse(xmlReport.destination)
+   def bugsFound = slurped.BugInstance.size()
+   if (bugsFound > 0) {
+      throw new GradleException("$bugsFound FindBugs rule violations were found. See the report at: $xmlReport.destination")
+   }
+}
+
+findbugsMain.finalizedBy checkFindBugsReport
+*/

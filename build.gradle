@@ -87,11 +87,23 @@ findbugs {
 }
 
 tasks.withType(FindBugs) {
-    reports {
+  /*  reports {
         xml.enabled false
         html.enabled true
-        html.stylesheet resources.text.fromFile('config/xsl/findbugs-custom.xsl')
+        html.stylesheet resources.text.fromFile('$rootProject.rootDir/config/findbugs/xsl/findbugs-custom.xsl')
     }
+   */
+    
+    reports {
+        xml.enabled = false
+        xml.withMessages = true
+        html.enabled true
+        //html.enabled = !xml.isEnabled()
+        xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
+        html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
+    }
+    
+    
 }
 
 

@@ -163,7 +163,7 @@ import java.util.HashMap;
 		/**
 		 * Verifica la presenza di caratteri speciali nella stringa
 		 * 
-		 * @param input Stringa da controllare
+		 * @param str Stringa da controllare
 		 * 
 		 * @return true se nella stringa è presente un carattere speciale, altrimenti false
 		 */
@@ -239,7 +239,7 @@ import java.util.HashMap;
 		/**
 		 * Converte una data Calender in una dataSql, e la restituisce.
 		 * 
-		 * @param utilData
+		 * @param c
 		 * 
 		 * @return sqlData
 		 */		
@@ -255,7 +255,7 @@ import java.util.HashMap;
 		/**
 		 * Converte una dataUtil in una dataSql, e la restituisce.
 		 * 
-		 * @param utilData
+		 * @param utilDate
 		 * 
 		 * @return sqlData
 		 */		
@@ -299,8 +299,8 @@ import java.util.HashMap;
 		/**
 		 * Converte una data dataUtil in una Timestamp, e la restituisce
 		 * 
-		 * @param dataTimestamp
-		 * @return utilDate
+		 * @param utilDate
+		 * @return data espressa in formato TimeStamp
 		 */
 		public static Timestamp convertitoreDataUtilToTimestamp(java.util.Date utilDate){
 		    

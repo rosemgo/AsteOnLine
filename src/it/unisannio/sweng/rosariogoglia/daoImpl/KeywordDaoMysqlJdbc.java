@@ -14,6 +14,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 import it.unisannio.sweng.rosariogoglia.dao.KeywordDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Keyword;
 import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
 
@@ -105,7 +106,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
-	public Keyword getKeywordByWord(String key) {
+	public Keyword getKeywordByWord(String key) throws ClassNotFoundException, IOException {
 		logger.debug("in getKeywordByWord: " + key);
 		Keyword keyword = null;
 		Connection connection = null;
@@ -113,6 +114,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		ResultSet rs = null;
 		try {
 			connection = ConnectionPoolTomcat.getConnection();
+			
 			
 			String sql = "SELECT * FROM keyword WHERE (keyword = ?)";
 			

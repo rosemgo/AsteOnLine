@@ -27,10 +27,16 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
+
+
+
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Categoria;
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.Produttore;
@@ -263,7 +269,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	}
 	
 
-	public Prodotto getProdottoByName(String nomeProdotto){
+	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException{
 		logger.debug("in getProdottiByName");
 		Prodotto prodotto = null;
 		
@@ -309,14 +315,15 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertProdotto(Prodotto prodotto) {
+	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException {
 		logger.info("in insertProdotto");
 		Integer productIdKey = -1;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			try{

@@ -25,7 +25,7 @@ public interface ProdottoDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Prodotto getProdottoByName(String nomeProdotto);
+	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException;
 
 
 	/**
@@ -37,17 +37,16 @@ public interface ProdottoDao {
 	 * @throws ClassNotFoundException 
 	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
 	 */
-	public Integer insertProdotto(Prodotto prodotto);
+	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
 	
 	
 	
 	/**
 	 * Effettua l'associazione tra un prodotto e una parola chiave.
+	 * 
 	 * @param idProdotto
-	 * @param IdKeyword
+	 * @param idKeyword
 	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 	
@@ -58,8 +57,6 @@ public interface ProdottoDao {
 	 * @param idCategoria
 	 * @param idProduttore
 	 * @return true se l'inserimento è corretto
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore);
 	
@@ -68,8 +65,6 @@ public interface ProdottoDao {
 	 * 
 	 * @param idProdotto
 	 * @return true se è possibile eliminare il prodotto, false se non è possibile
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkDeleteProdotto(Integer idProdotto);
 	
@@ -79,8 +74,6 @@ public interface ProdottoDao {
 	 * @param idProdotto
 	 * @param idKeyword
 	 * @return true se la parola chiave è associata al prodotto, false in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 	
@@ -90,8 +83,6 @@ public interface ProdottoDao {
 	 * @param idProdotto
 	 * @param idKeyword
 	 * @return 1 in caso di corretta cancellazione, -1 in caso di fallimento
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword);
 		
@@ -100,8 +91,6 @@ public interface ProdottoDao {
 	 * 
 	 * @param prodotto
 	 * @return 1 in caso di corretta cancellazione, -1 in caso di fallimento
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer deleteProdotto(Prodotto prodotto);
 	
@@ -111,26 +100,22 @@ public interface ProdottoDao {
 	 * 
 	 * @param idProdotto
 	 * @return tutte le parole chiavi non ancora associate al prodotto
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto);
 	
 	/**
 	 * Modifica caratteristiche di un prodotto già presente nel database
 	 *  
-	 * @param prodotto
-	 * @return
+	 * @param prodotto da aggiornare
+	 * @return 1 in caso di aggiornamento riuscito, -1 in caso contrario
 	 */
 	public Integer updateProdotto(Prodotto prodotto);
 	
 	/**
 	 * Utilizzato per aggiornare il nome del prodotto
 	 * 
-	 * @param prodotto
+	 * @param prodotto da aggiornare
 	 * @return 1 in caso di aggiornamento riuscito, -1 in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer updateNomeProdotto(Prodotto prodotto);
 		

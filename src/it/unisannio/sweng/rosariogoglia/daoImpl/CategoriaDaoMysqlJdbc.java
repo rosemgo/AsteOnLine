@@ -15,6 +15,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc;
@@ -135,7 +136,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	}
 	
 	
-	public Categoria getCategoriaByNome(String nomeCategoria){
+	public Categoria getCategoriaByNome(String nomeCategoria) {
 		logger.debug("in getCategoriaByNome");
 		Categoria categoria = null;
 		Connection connection = null;
@@ -145,7 +146,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		try {
 			
 			connection = ConnectionPoolTomcat.getConnection();
-		
+			
+			
 			String sql = "SELECT * FROM categoria WHERE nome = ?";
 			
 			pstmt = connection.prepareStatement(sql);

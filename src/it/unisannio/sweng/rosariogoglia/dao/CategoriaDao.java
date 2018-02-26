@@ -14,9 +14,6 @@ public interface CategoriaDao {
 	/**
 	 * 
 	 * @return tutte le categorie censite dal sistema
-	 * @throws IOException 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
 	 */
 	public List<Categoria> getCategorie();
 	
@@ -24,9 +21,6 @@ public interface CategoriaDao {
 	 * 
 	 * @param idCategoria è l'id della categoria da caricare
 	 * @return la categoria con id uguale ad idCategoria. E' null se non c'è una categoria con tale id
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 * @throws IOException
 	 */
 	public Categoria getCategoriaById (Integer idCategoria);
 	
@@ -37,16 +31,13 @@ public interface CategoriaDao {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Categoria getCategoriaByNome (String nomeCategoria);
+	public Categoria getCategoriaByNome (String nomeCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
 	 * 
 	 * @param idCategoria
 	 * @return la lista dei produttori non ancora associati alla categoria
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 * 
 	 */
 	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria);
 	
@@ -57,8 +48,6 @@ public interface CategoriaDao {
 	 * @param IdProduttore
 	 * 
 	 * @return 1 se l'inserimento è andato a buon fine, -1 in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore);
 		
@@ -70,8 +59,6 @@ public interface CategoriaDao {
 	 * @param idProduttore
 	 *
 	 * @return 1 se la cancellazione è andato a buon fine, -1 in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer deleteCategoriaHasProduttore(Integer idCategoria, Integer idProduttore);
 		
@@ -81,8 +68,6 @@ public interface CategoriaDao {
 	 * 
 	 * @param categoria
 	 * @return l'id della categoria inserita
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer insertCategoria (Categoria categoria);
 	
@@ -90,10 +75,7 @@ public interface CategoriaDao {
 	 * 
 	 * @param categoria da aggiornare (id è sempre lo stesso, cambia il nome)
 	 * @return categoria 1 se la categoria è stata aggiornata, 0 altrimenti
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
+	  */
 	public Integer updateCategoria (Categoria categoria);
 
 	/**
@@ -102,8 +84,6 @@ public interface CategoriaDao {
 	 * @param idCategoria
 	 * 
 	 * @return 1 se la cancellazione è andata a buon fine, -1 in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer deleteCategoria(Integer idCategoria);
 	
@@ -112,9 +92,7 @@ public interface CategoriaDao {
 	 * 
 	 * @param idCategoria
 	 * @return true se è possibile eliminare la categoria, false se non è possibile
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
+	  */
 	public boolean checkDeleteCategoria(Integer idCategoria);
 		
 	/**
@@ -123,8 +101,6 @@ public interface CategoriaDao {
 	 * @param idCategoria
 	 * @param idProduttore
 	 * @return true in caso l'associazione sia presente, false in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore);
 		

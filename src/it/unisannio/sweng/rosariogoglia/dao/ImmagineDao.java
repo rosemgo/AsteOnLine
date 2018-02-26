@@ -30,9 +30,6 @@ public interface ImmagineDao {
 		
 	/** 
 	 * @return l'id dell' immagine inserita
-	 * @throws IOException 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer insertImmagine(Immagine immagine);
 
@@ -42,9 +39,6 @@ public interface ImmagineDao {
 	 * Cancella tutte le immagini relative ad un'inserzione
 	 * @param idInserzione
 	 * @return numero di righe cancellate
-	 * @throws IOException 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer deleteImmagineByIdInserzione(Integer idInserzione);
 	

@@ -19,12 +19,8 @@ public interface InserzioneDao {
 	/**
 	 * Questo metodo carica tutte le inserzioni presenti nel database
 	 * 
-	 * @param idInserzione
 	 * @return restituisce l'inserzione
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
+     */
 	public List<Inserzione> getInserzioni();
 		
 
@@ -34,10 +30,7 @@ public interface InserzioneDao {
 	 * Questo metodo carica l'intera inserzione con la lista immagini e la lista di offerte
 	 * @param idInserzione
 	 * @return restituisce l'inserzione
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
+	  */
 	public Inserzione getInserzioneById(Integer idInserzione);
 	
 
@@ -57,8 +50,6 @@ public interface InserzioneDao {
 	/**
 	 * Ottiene i titoli di tutte le inserzioni. Utilizzato per l'autocompletamento nella ricerca inserzioni per titoli
 	 * @return una lista con tutti i titoli delle inserzioni
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public List<String> getTitoli();
 	
@@ -67,6 +58,9 @@ public interface InserzioneDao {
 	 * 
 	 * @param idInserzione
 	 * @return lista di utente registrati
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
 	 */
 	public List<UtenteRegistrato> getUtentiRegistratiOsservanoByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 	
@@ -82,17 +76,40 @@ public interface InserzioneDao {
 
 
 
-
+	/**
+	 * Ordina le inserzioni in base al numero di osservazioni (utenti che osservano un'inserzione)
+	 * 
+	 * @return Lista di inserzioni ordinate
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException;
 
 
 
-
+	/**
+	 * Ordina le inserzioni in base al numero di osservazioni (utenti che osservano un'inserzione)
+	 * 
+	 * @param i, indica il numero delle inserzioni più popolari richieste
+	 * @return Lista di inserzioni ordinate
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<Inserzione> ricercaTopInserzioniPopolari(int i) throws ClassNotFoundException, SQLException, IOException;
 
 
 
-
+	/**
+	 * Ricerca le inserzioni la cui data di scadenza è più prossima.
+	 *  
+	 * @param i, indica il numero delle inserzioni in scadenza richieste
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<Inserzione> ricercaTopInserzioniChiusura(int i) throws ClassNotFoundException, SQLException, IOException;
 	
 	
@@ -101,9 +118,7 @@ public interface InserzioneDao {
 	 * 
 	 * @param statoInserzione
 	 * @param idInserzione
-	 * @return
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @return un intero che indica il numero di righe aggiornate
 	 */
 	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione);
 	
@@ -113,7 +128,7 @@ public interface InserzioneDao {
 	 * Inserimento dell'inserzione nel database
 	 * 
 	 * @param inserzione
-	 * @return 
+	 * @return un intero che indica il numero di righe inserite
 	 * @throws SQLException 
 	 */
 	public Integer insertInserzione(Inserzione inserzione) throws SQLException;
@@ -123,7 +138,7 @@ public interface InserzioneDao {
 	 * Aggiornamento di un'inserzione precedentemente inserita
 	 * 
 	 * @param inserzione
-	 * @return
+	 * @return un intero che indica il numero di righe aggiornate
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -135,7 +150,6 @@ public interface InserzioneDao {
 	 * 
 	 * @param limiteInf
 	 * @param numInserzioniPerPagina
-	 * 
 	 * @return inserzioni relative ad un intervallo specifico
 	 */
 	public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserzioniPerPagina);
@@ -146,7 +160,6 @@ public interface InserzioneDao {
 	 * 
 	 * @param limiteInf
 	 * @param numInserzioniPerPagina
-	 * 
 	 * @return inserzioni relative ad un intervallo specifico
 	 */
 	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPerPagina);

@@ -12,7 +12,7 @@ public interface ProduttoreDao {
 	
 	public Produttore getProduttoreById(Integer idProduttore);
 	
-	public Produttore getProduttoreByNome (String nomeProduttore);
+	public Produttore getProduttoreByNome (String nomeProduttore) throws ClassNotFoundException, IOException;
 		
 		
 	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria);
@@ -26,8 +26,6 @@ public interface ProduttoreDao {
 	 * 
 	 * @param produttore
 	 * @return 1 se l'aggiornamento è andato a buon fine, -1 altrimenti
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public Integer updateProduttore(Produttore produttore);
 		
@@ -37,8 +35,6 @@ public interface ProduttoreDao {
 	 * 
 	 * @param idProduttore
 	 * @return
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkDeleteProduttore(Integer idProduttore);
 	

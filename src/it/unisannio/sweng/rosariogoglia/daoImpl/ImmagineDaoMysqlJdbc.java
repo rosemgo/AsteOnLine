@@ -125,12 +125,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		return listaImmagini;
 	}
 	
-	/**
-	 * Metodo di inserimento immagine
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 */
-	
+		
 	public Integer insertImmagine(Immagine immagine) {
 		logger.debug("in insert immagine");
 		Integer immagineIdKey = -1;

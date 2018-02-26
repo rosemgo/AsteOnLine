@@ -12,9 +12,7 @@ public interface OffertaDao {
 	 * Inserisce un'offerta
 	 * 
 	 * @param offerta
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @return un intero che indica l'id dell'offerta inserita
 	 */
 	public Integer insertOfferta(Offerta offerta);
 	
@@ -22,7 +20,7 @@ public interface OffertaDao {
 	 * Cancella offerta specifica
 	 * 
 	 * @param offerta
-	 * @return
+	 * @return un intero che indica il numero delle righe cancellate
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -32,7 +30,7 @@ public interface OffertaDao {
 	/**
 	 * Cancella tutte le offerte relative ad un'inserzione
 	 * 
-	 * @param idOfferta
+	 * @param idInserzione
 	 * @return Restituisce il numero di righe cancellate
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -41,6 +39,8 @@ public interface OffertaDao {
 	public Integer deleteOffertaByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 	
 	/**
+	 * Metodo utilizzato per ottenere l'oggetto offerta relativo al suo id.
+	 * 
 	 * @param idOfferta
 	 * @return Restituisce l'oggetto offerta corrispondente all' id passato come paramentro
 	 * @throws IOException 
@@ -54,9 +54,6 @@ public interface OffertaDao {
 	 * 
 	 * @param idInserzione
 	 * @return lista di offerte relative all'inserzione
-	 * @throws IOException 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
 	 */
 	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione);	
 

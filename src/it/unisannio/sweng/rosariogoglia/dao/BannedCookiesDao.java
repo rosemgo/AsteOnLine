@@ -17,9 +17,7 @@ public interface BannedCookiesDao {
 	 * Verifica se l'utente con l'id passato come paramentro, è bannato o meno.
 	 * 
 	 * @param idUtente
-	 * @return true se l'utente è bannato, false in caso contrario
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @return un booleano settato a true se l'utente è bannato
 	 */
 	public boolean checkUtenteRegistratoBanned(Integer idUtente);
 	

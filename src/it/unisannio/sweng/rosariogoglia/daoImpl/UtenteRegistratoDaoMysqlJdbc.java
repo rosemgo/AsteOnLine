@@ -351,12 +351,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 	
 	
-	/**
-	 * eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 * @throws SQLException 
-	 */
+
+
+	// eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
 	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws SQLException {
 		logger.info("in deleteRegistrato");
 		Integer updatedRows = -1;
@@ -1747,7 +1744,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		try {
 			
 			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			
 			
 			Inserzione inserzione;
 			

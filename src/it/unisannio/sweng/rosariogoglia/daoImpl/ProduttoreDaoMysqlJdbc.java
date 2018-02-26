@@ -123,6 +123,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
+			
 			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE (nome = ?)";

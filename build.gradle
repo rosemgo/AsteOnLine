@@ -63,7 +63,6 @@ dependencies {
     
     //dipendendenza librerie
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
-     
      testCompile "junit:junit:4.11"
 }
 
@@ -79,7 +78,8 @@ javadoc {
 }
 
 
-//ignora gli errori di findbugs facendo completare la build
+//ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
+
 findbugs {
    ignoreFailures = true
 }

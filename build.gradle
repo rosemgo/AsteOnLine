@@ -14,8 +14,6 @@ apply plugin: 'war'
 apply plugin: 'findbugs'
 
 
-
-
 // JDK version source compatibility
 sourceCompatibility = 1.8
 
@@ -86,6 +84,7 @@ findbugs {
    ignoreFailures = true
 }
 
+
 tasks.withType(FindBugs) {
   /*  reports {
         xml.enabled false
@@ -107,6 +106,9 @@ tasks.withType(FindBugs) {
 }
 
 
+test {
+   ignoreFailures = true
+}
 
 
 //war {

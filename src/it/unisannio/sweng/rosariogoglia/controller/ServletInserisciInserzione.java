@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -104,6 +103,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 			try {
 									
 				/* Analizzo la richiesta ed elaboro la lista di elementi in essa contenuti */
+				@SuppressWarnings("unchecked")
 				List<FileItem> itemList = upload.parseRequest(request);
 					
 			

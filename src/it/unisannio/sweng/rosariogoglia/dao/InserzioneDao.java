@@ -80,11 +80,9 @@ public interface InserzioneDao {
 	 * Ordina le inserzioni in base al numero di osservazioni (utenti che osservano un'inserzione)
 	 * 
 	 * @return Lista di inserzioni ordinate
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
+	 * @throws SQLException 
 	 */
-	public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException;
+	public List<Inserzione> ordinaInserzioniPopolari() throws SQLException;
 
 
 
@@ -119,8 +117,9 @@ public interface InserzioneDao {
 	 * @param statoInserzione
 	 * @param idInserzione
 	 * @return un intero che indica il numero di righe aggiornate
+	 * @throws SQLException 
 	 */
-	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione);
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws SQLException;
 	
 	
 	
@@ -161,8 +160,9 @@ public interface InserzioneDao {
 	 * @param limiteInf
 	 * @param numInserzioniPerPagina
 	 * @return inserzioni relative ad un intervallo specifico
+	 * @throws SQLException 
 	 */
-	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPerPagina);
+	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPerPagina) throws SQLException;
 		
 	/**
 	 * Visualizza le inserzioni in chiusura relative ad un intervallo

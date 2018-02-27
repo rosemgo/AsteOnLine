@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 
 
 public class InserzioneDaoMysqlJdbc implements InserzioneDao {
@@ -105,10 +104,15 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			if (connection != null) {
 
 				try {
-					rs.close();
-					pstmt.close();
-					connection.setAutoCommit(true);
-					connection.close();
+					if(rs != null)
+						rs.close();
+					if(pstmt != null)
+						pstmt.close();
+					if(connection != null){
+						connection.close();
+						connection.setAutoCommit(true);
+					}
+					
 					logger.debug("Connection chiusa");
 				} catch (SQLException  e) {
 
@@ -216,9 +220,15 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -295,13 +305,18 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			e.printStackTrace();
 		}
 		finally {
-			if (connection!=null) {
-				rs.close();
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+			
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+				
 				logger.debug("Connection chiusa");
-			}
+			
 		}		
 		return inserzione;
 	}
@@ -336,9 +351,14 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 						
 		}
 	
-		rs.close();
-		pstmt.close();
-		connection.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
+		if(connection != null){
+			connection.close();
+		}
+		
 		
 		return listaUtentiRegistrati;
 }	
@@ -367,9 +387,14 @@ public List<String> getTitoli(){
 	}
 	finally{
 		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.close();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -408,7 +433,7 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 		
 		logger.debug(keyword);
 		
-		if(keyword != "" && keyword != null)
+		if(!keyword.equals("") && keyword != null)
 			sql = sql + " AND keyword.keyword LIKE ? ";
 		
 		if(idCategoria != 0)
@@ -418,12 +443,12 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 		
 		pstmt = connection.prepareStatement(sql);
 					
-		if(keyword != "" && keyword != null && idCategoria != 0){
+		if(!keyword.equals("") && keyword != null && idCategoria != 0){
 			System.out.println("ENTRO NEL PRIMO");
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setInt(2, idCategoria);
 		}
-		else if(keyword != "" && keyword != null ) {
+		else if(!keyword.equals("") && keyword != null ) {
 			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
 			pstmt.setString(1, "%" + keyword + "%");
 		}
@@ -478,9 +503,15 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 	}
 	finally{
 		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.close();
+				connection.setAutoCommit(true);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -489,48 +520,59 @@ public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 }
 
 
-public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException{
+public List<Inserzione> ordinaInserzioniPopolari() throws SQLException{
 	logger.debug("in ordinaInserzioniPopolari");
 	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
-	Connection connection;
+	Connection connection=null;
+	PreparedStatement pstmt = null;
+	
+	try {
+		
+		connection = ConnectionPoolTomcat.getConnection();
+		
+		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
+				"FROM inserzione, utente_registrato_osserva_inserzione " +
+				"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
+				"AND inserzione.stato = 'in asta' " +
+				"GROUP BY inserzione_idinserzione " +
+				"ORDER BY numoss DESC, inserzione.idinserzione ASC ";
+		
+		
+		pstmt = connection.prepareStatement(sql);
+	
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()){
 			
-	connection = ConnectionPoolTomcat.getConnection();
-	
-	PreparedStatement  pstmt;
-
-	String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
-			"FROM inserzione, utente_registrato_osserva_inserzione " +
-			"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
-			"AND inserzione.stato = 'in asta' " +
-			"GROUP BY inserzione_idinserzione " +
-			"ORDER BY numoss DESC, inserzione.idinserzione ASC ";
-	
-	
-	pstmt = connection.prepareStatement(sql);
-	ResultSet rs = pstmt.executeQuery();
-	
-	while(rs.next()){
-		
-		
-		Inserzione inserzione;
-		inserzione = new InserzioneImpl();
-
-		inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-		inserzione.setTitolo(rs.getString("inserzione.titolo"));
-		inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-		inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-		inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-		
-		System.out.println("visualizza l'inserzione: " + inserzione.getTitolo());
-		
-		listaInserzioni.add(inserzione);
 			
+			Inserzione inserzione;
+			inserzione = new InserzioneImpl();
+	
+			inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+			inserzione.setTitolo(rs.getString("inserzione.titolo"));
+			inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+			inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+			inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+			
+			System.out.println("visualizza l'inserzione: " + inserzione.getTitolo());
+			
+			listaInserzioni.add(inserzione);
+				
+		}
+				
+	} catch (SQLException e) {
+		e.printStackTrace();
 	}
-
 	
-	rs.close();
-	pstmt.close();
-	connection.close();
+	finally{
+		
+		if(pstmt != null)
+			pstmt.close();
+     	if(connection != null){
+			connection.close();
+		}
+		
+	}
 	
 	return listaInserzioni;
 }
@@ -589,9 +631,14 @@ public List<Inserzione> ricercaTopInserzioniPopolari(int numInserzioni) throws C
 	}
 	
 	finally{
-		rs.close();
-		pstmt.close();
-		connection.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
+		if(connection != null){
+			connection.close();
+		}
+		
 	}
 	
 	return listaInserzioni;
@@ -642,24 +689,32 @@ public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws C
 	}
 	
 	finally{
-		rs.close();
-		pstmt.close();
-		connection.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
+		if(connection != null){
+			connection.close();
+		}
+		
 	}
 	return listaInserzioni;
 	
 }
 	
 	
-public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione){
+public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws SQLException{
 	logger.debug("in updateStatoInserzione");
 	Integer updatedRows = -1;
 	
 	Connection connection = null;
 	PreparedStatement  pstmt = null;
 	try {			
+		
 		connection = ConnectionPoolTomcat.getConnection();
+		
 		connection.setAutoCommit(false);
+		
 		
 		String sql = "UPDATE inserzione SET stato = ? " +
 				"WHERE idinserzione = ? ";
@@ -679,20 +734,16 @@ public Integer updateStatoInserzione(String statoInserzione, Integer idInserzion
 		e.printStackTrace();
 	}
 	finally {
-
-		if (connection != null) {
-
-			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+		
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+				
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-
-				e.printStackTrace();
-			}
-
-		}
+		
 	}
 	return updatedRows;
 }
@@ -706,13 +757,16 @@ public Integer insertInserzione(Inserzione inserzione) throws SQLException{
 	ResultSet rs = null;
 	try {
 		connection = ConnectionPoolTomcat.getConnection();
+		
 		connection.setAutoCommit(false);
-					
+		
+							
 		String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 					
 		logger.debug("Inseriamo l' inserzione");
 		pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		
 		pstmt.setString(1, inserzione.getTitolo());
 		pstmt.setString(2, inserzione.getDescrizione());
 		pstmt.setDouble(3, inserzione.getPrezzoIniziale());
@@ -776,27 +830,23 @@ public Integer insertInserzione(Inserzione inserzione) throws SQLException{
 		}
 					
 		logger.debug("Inserimento inserzione (" + inserzioneIdKey + ", " + inserzione.getTitolo() + ")");
-	
-		
-	}	
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 	finally {
 
-		if (connection != null) {
-
-			try {
-				if(rs != null)
-					rs.close();
-				
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-
-				e.printStackTrace();
-			}
-
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
+		if(connection != null){
+			connection.close();
+			connection.setAutoCommit(true);
 		}
+				
+		logger.debug("Connection chiusa");
+
 	}
 
 	return inserzioneIdKey;
@@ -871,17 +921,14 @@ public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundExcep
 
 	finally {
 
-		if (connection != null){
-			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-
+		
+		if(pstmt != null)
+			pstmt.close();
+		if(connection != null){
+			connection.close();
+			connection.setAutoCommit(true);
 		}
+		
 	}
 	return updatedRows;
 }
@@ -963,9 +1010,15 @@ public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserz
 	}
 	finally{
 		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.close();
+				connection.setAutoCommit(true);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -977,7 +1030,7 @@ public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserz
 
 
 
-public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPagina){
+public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPagina) throws SQLException{
 	logger.debug("in getLimitInserzioni");
 	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
 	Inserzione inserzione;
@@ -1053,13 +1106,15 @@ public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzi
 		e.printStackTrace();
 	}
 	finally{
-		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.close();
+			}
+
 	}
 	return listaInserzioni;
 }
@@ -1119,9 +1174,14 @@ public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer nu
 	}
 	finally{
 		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.close();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,5 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +10,6 @@ import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 
 import com.mysql.jdbc.Statement;
 
@@ -55,7 +53,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 						
 		} catch (Exception e) {
 			try {
-				connection.rollback();
+				if(connection != null)
+					connection.rollback();
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();
@@ -66,10 +65,12 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			try {
 				if(rs != null)
 					rs.close();
-				
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();	
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -108,7 +109,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			
 		} catch (Exception e) {
 			try {
-				connection.rollback();
+				if(connection != null)
+					connection.rollback();
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();
@@ -117,9 +119,13 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();	
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}	
+				
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -157,8 +163,12 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.close();	
+				if(pstmt != null) 
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}	
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();

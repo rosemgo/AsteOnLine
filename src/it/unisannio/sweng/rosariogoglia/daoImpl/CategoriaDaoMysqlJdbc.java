@@ -1,7 +1,6 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
-
 
 
 
@@ -73,10 +70,14 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		finally{
 			try {
-				rs.close();
-				stmt.close();
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(stmt != null)
+					stmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -121,10 +122,14 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -166,10 +171,14 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -224,10 +233,14 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -277,11 +290,13 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				
-				pstmt.close();
-				
-				connection.setAutoCommit(true);
-				connection.close();
+								
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -334,10 +349,13 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 			if (connection != null) {
 
 				try {
-					pstmt.close();
-					connection.setAutoCommit(true);
 					
-					connection.close();
+					if(pstmt != null)
+						pstmt.close();
+					if(connection != null){
+						connection.setAutoCommit(true);
+						connection.close();	
+					}
 					logger.debug("Connection chiusa");
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -398,11 +416,14 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.setAutoCommit(true);
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -445,9 +466,13 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			} catch (SQLException  e) {
 				e.printStackTrace();
 			}			
@@ -517,9 +542,13 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -559,10 +588,14 @@ public boolean checkDeleteCategoria(Integer idCategoria){
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.setAutoCommit(true);
+					connection.close();	
+				}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -605,10 +638,14 @@ public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer
 	}
 	finally{
 		try {
-			rs.close();
-			pstmt.close();
-			
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.setAutoCommit(true);
+				connection.close();	
+			}
 		
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 
 import it.unisannio.sweng.rosariogoglia.dao.ComuneDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
@@ -61,9 +60,14 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 			e.printStackTrace();
 		}
 		finally{
-			rs.close();
-			pstmt.close();
-			connection.close();
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(connection != null){
+				connection.setAutoCommit(true);
+				connection.close();	
+			}
 		}
 	
 		return comune;
@@ -112,9 +116,13 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();	
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -171,9 +179,13 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();	
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

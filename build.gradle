@@ -77,21 +77,21 @@ javadoc {
     classpath = configurations.compile
 }
 
-
-//ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
-
-findbugs {
-   ignoreFailures = true
+/*
+findbugs{
+	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
+    
 }
+*/
 
 
 tasks.withType(FindBugs) {
-  /*  reports {
-        xml.enabled false
-        html.enabled true
-        html.stylesheet resources.text.fromFile('$rootProject.rootDir/config/findbugs/xsl/findbugs-custom.xsl')
-    }
-   */
+    
+    ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
+    
+    effort = "min"
+    reportLevel = "high"
+    
     
     reports {
         xml.enabled = false

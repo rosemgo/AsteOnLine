@@ -119,7 +119,7 @@ public interface InserzioneDao {
 	 * @return un intero che indica il numero di righe aggiornate
 	 * @throws SQLException 
 	 */
-	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws SQLException;
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione);
 	
 	
 	

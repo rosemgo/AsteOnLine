@@ -15,7 +15,7 @@ public class HomeBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private InserzioneDao inserzioneDao;
+	//private InserzioneDao inserzioneDao;
 	private List<Inserzione> listaInserzioniPopolari;
 	private List<Inserzione> listaTopInserzioniPopolari;
 	private List<Inserzione> listaTopInserzioniInScadenza;
@@ -27,7 +27,7 @@ public class HomeBean implements Serializable{
 		
 		// caricare inserzioni popolari
 		// caricare inserzioni in scadenza
-		inserzioneDao = new InserzioneDaoMysqlJdbc();
+		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 		listaInserzioniPopolari = inserzioneDao.ordinaInserzioniPopolari();
 		System.out.println("Più popolari");
 		listaTopInserzioniPopolari = inserzioneDao.ricercaTopInserzioniPopolari(6);

@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
-
-
 
 
 
@@ -120,16 +117,21 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			}				
 		}
 		finally{
-			if (connection!=null) {
-				try {
+			
+			try {
+				
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
+			
 		}	
 		logger.debug("offerta cancellata");
 		return deletedRow;
@@ -153,7 +155,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			deletedRow = pstmt.executeUpdate();
 			
 			connection.commit();
-			
+			logger.debug("offerta cancellata");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
@@ -175,7 +177,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 				logger.debug("Connection chiusa");
 			}
 		}	
-		logger.debug("offerta cancellata");
+		
 		return deletedRow;
 		
 	}
@@ -184,48 +186,77 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 	public Offerta getOffertaByIdOfferta(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getOffertaById");		
 		Offerta offerta = null;
-		Connection connection;
+		Connection connection=null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		connection = ConnectionPoolTomcat.getConnection();
+		try{
+			connection = ConnectionPoolTomcat.getConnection();
+				
+			String sql = "SELECT * FROM offerta " +
+					"WHERE idofferta = ? ";
 			
-		String sql = "SELECT * FROM offerta " +
-				"WHERE idofferta = ? ";
-		
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, idOfferta);
-		logger.debug("Select Query: " + pstmt.toString());
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idOfferta);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
 			
-			offerta = new OffertaImpl();
+			if(rs.next()){
+				
+				offerta = new OffertaImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				int idUtenteRegistrato = rs.getInt("utente_registrato_idutente");
+				UtenteRegistrato utente = dao.getUtenteRegistratoById(idUtenteRegistrato);
+						
+				InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
+				int idInserzione = rs.getInt("inserzione_idinserzione");
+				Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione);
+				
+				offerta.setIdOfferta(rs.getInt("idofferta"));
+				offerta.setSomma(rs.getDouble("somma"));
+				offerta.setData(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data")));
+				offerta.setIdUtenteRegistrato(rs.getInt("utente_registrato_idutente"));
+				offerta.setUtente(utente);
+				offerta.setIdInserzione(rs.getInt("inserzione_idinserzione"));
+				offerta.setInserzione(inserzione);
+				
+				logger.debug("offerta restituita: " + offerta.toString());
+				
+			}
+
 			
-			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-			int idUtenteRegistrato = rs.getInt("utente_registrato_idutente");
-			UtenteRegistrato utente = dao.getUtenteRegistratoById(idUtenteRegistrato);
-					
-			InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
-			int idInserzione = rs.getInt("inserzione_idinserzione");
-			Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione);
 			
-			offerta.setIdOfferta(rs.getInt("idofferta"));
-			offerta.setSomma(rs.getDouble("somma"));
-			offerta.setData(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data")));
-			offerta.setIdUtenteRegistrato(rs.getInt("utente_registrato_idutente"));
-			offerta.setUtente(utente);
-			offerta.setIdInserzione(rs.getInt("inserzione_idinserzione"));
-			offerta.setInserzione(inserzione);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+				logger.debug("Roolback in cancellazione inserzione");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}				
+		}
+				
+		finally{
 			
-			logger.debug("offerta caricata");	
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
+			
 			
 		}
-		rs.close();
-		pstmt.close();
 		
-		connection.close();
-		
-		logger.debug("offerta restituita: " + offerta.toString());		
+				
 		return offerta;
 	}
 
@@ -285,11 +316,17 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}

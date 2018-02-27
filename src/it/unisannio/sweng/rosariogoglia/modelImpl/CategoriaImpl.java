@@ -35,9 +35,12 @@ public class CategoriaImpl implements Categoria{
 		return(this.idCategoria + " " + this.nome);
 	}
 	
-	public boolean equals (Object nome){
+	//qui c'era Object nome come argomento
+	public boolean equals(String nome){
 		return this.nome.equals((String)nome);
 	}
+	
+
 	
 	private int idCategoria;
 	private String nome;

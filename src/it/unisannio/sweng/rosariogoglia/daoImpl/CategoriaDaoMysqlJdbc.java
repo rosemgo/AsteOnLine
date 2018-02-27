@@ -316,23 +316,23 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		PreparedStatement  pstmt = null;
 		try {
 		
-				
-				connection = ConnectionPoolTomcat.getConnection();
-				connection.setAutoCommit(false);
-							
 				String sql = "DELETE FROM categoria_has_produttore WHERE categoria_idcategoria = ? AND produttore_idproduttore= ?";
-				
-				pstmt = connection.prepareStatement(sql);
-				pstmt.setInt(1, idCategoria);
-				pstmt.setInt(2, idProduttore);
-				logger.debug("Delete Query:" + pstmt.toString());
-				
-				deletedRows = pstmt.executeUpdate();
-								
-				connection.commit();
-				
-				logger.info("Disassociazione Categoria id: (" + idCategoria + ")");
-				
+			
+				connection = ConnectionPoolTomcat.getConnection();
+				if(connection!=null){
+					connection.setAutoCommit(false);
+										
+					pstmt = connection.prepareStatement(sql);
+					pstmt.setInt(1, idCategoria);
+					pstmt.setInt(2, idProduttore);
+					logger.debug("Delete Query:" + pstmt.toString());
+					
+					deletedRows = pstmt.executeUpdate();
+									
+					connection.commit();
+					
+					logger.info("Disassociazione Categoria id: (" + idCategoria + ")");
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				try {
@@ -345,8 +345,6 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 			}
 			
 		finally {
-
-			if (connection != null) {
 
 				try {
 					
@@ -362,9 +360,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				}
 
 			}
-		}	
-			
-	
+		
 		
 		return deletedRows;		
 	}

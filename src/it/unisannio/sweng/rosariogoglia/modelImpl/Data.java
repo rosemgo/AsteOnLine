@@ -37,10 +37,16 @@ public class Data {
 		this.anno = anno;
 	}
 
-	public boolean equals(Data data){
-		return( this.giorno == data.getGiorno() &&
-				this.mese == data.getMese() &&
-				this.anno == data.getAnno());
+	
+	public boolean equals(Object data){
+		if (!(data instanceof Data))
+	        return false;
+		
+		if(this.giorno == ((Data) data).getGiorno() && this.mese == ((Data) data).getMese() && this.anno == ((Data) data).getAnno() )
+			return true;
+		
+		else
+			return false;
 	}
 	
 	public String toString(){

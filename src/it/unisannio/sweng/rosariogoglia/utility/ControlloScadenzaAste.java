@@ -5,6 +5,7 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
@@ -112,6 +113,7 @@ public class ControlloScadenzaAste extends Thread{
 							
 						// Esegue l'aggiornamento dell'inserzione nel database
 						dao.updateStatoInserzione(statoInserzione, this.inserzione.getIdInserzione());
+					
 						
 						//in seguito all'aggiornamento, se l'inserzione è stata aggiudicata invio la mail.
 						if(statoInserzione.equals("aggiudicata")){

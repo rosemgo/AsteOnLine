@@ -126,11 +126,11 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 	    System.out.println("RICEVO IL produttore: " + produttore);
 	    
 	   
-	    if(categoria == null || categoria == "" || categoria.equals("0")){
+	    if(categoria == null || categoria.equals("") || categoria.equals("0")){
 	    	categoria = "0";
 	    	produttore = "0";
 	    }
-	    if(produttore == null || produttore == "" || produttore.equals("0")){
+	    if(produttore == null || produttore.equals("") || produttore.equals("0")){
 	    	produttore = "0";
 	    	categoria = "0";
 	    }
@@ -150,13 +150,13 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 	       
 	    /*Prelevo dal context la tabella prodottiMap (nel caso in cui fosse stata modificata) e la utilizzo per avere la lista dei prodotti*/
 	    prodottoMap = (Map<String, String>) context.getAttribute("prodottiMap");
-		String listaProdotti = prodottoMap.get(keyMap.toString());
-	     
+	       
 	  
 	    if (prodottoMap == null) {
 	      return("");
-	    } else { 
-	      return(listaProdotti);
+	    } else {
+	    	String listaProdotti = prodottoMap.get(keyMap.toString());
+		    return(listaProdotti);
 	    }
 	         
 	  }

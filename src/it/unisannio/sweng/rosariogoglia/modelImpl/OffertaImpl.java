@@ -73,8 +73,8 @@ public class OffertaImpl implements Offerta{
 		return(this.idOfferta + " " + this.somma + " " + this.data.toString() + " " + this.inserzione.toString() + " " + this.utente.toString());
 	}
 	
-	public boolean equals(Object idOfferta){
-		return(this.idOfferta == (Integer)idOfferta);
+	public boolean equals(Integer idOfferta){
+		return(this.idOfferta.equals((Integer)idOfferta));
 	}
 	
 	private Integer idOfferta;

@@ -1,14 +1,11 @@
 package it.unisannio.sweng.rosariogoglia.controller;
 
-import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
-import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 //import it.unisannio.sweng.rosariogoglia.utility.MD5;
 
@@ -19,7 +16,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -119,4 +119,6 @@ public class ServletDettagliInserzione extends HttpServlet {
 		
 	}
 
+	
+	
 }

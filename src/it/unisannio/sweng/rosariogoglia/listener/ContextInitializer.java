@@ -1,15 +1,14 @@
 package it.unisannio.sweng.rosariogoglia.listener;
 
+
+
 import java.io.File;
 
 import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.sql.DataSource;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -23,13 +22,14 @@ import org.apache.log4j.PropertyConfigurator;
 public class ContextInitializer implements ServletContextListener {
 
 	
-	private Logger logger;
+	private Logger logger = Logger.getLogger(ContextInitializer.class);  	
+	
     /**
      * Default constructor. 
      */
     public ContextInitializer() {
         // TODO Auto-generated constructor stub
-    	   	
+    	
     }
 
 	/**
@@ -37,6 +37,7 @@ public class ContextInitializer implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent sce) {
 
+    	
     	Context initContext;
     	   	
     	

@@ -259,7 +259,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 							System.out.println("c: " + c.toString());
 							
 							//c.set(year, month, date, hourOfDay, minute, second); farsi dare anche l'orario di scadenza
-										
+							//oppure usare c.getTime() che aggiunge alla data impostata, l'orario attuale
 							dataFineAsta = c.getTime();
 							logger.debug("data fine asta creata: " + dataFineAsta);
 							
@@ -423,7 +423,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						//CREO IL THREAD DI VERIFICA SCADENZA ASTA IN SEGUITO ALL'INSERIMENTO
 						Date fineAsta = inserzione.getDataScadenza();
-						Date odierna = new Date();
+						//Date odierna = new Date();
 						
 						Calendar c = Calendar.getInstance();
 						c.setTime(fineAsta);

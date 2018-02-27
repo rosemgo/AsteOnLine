@@ -42,7 +42,7 @@ public class ProduttoreImpl implements Produttore{
 		return(this.idProduttore + " " + this.nome + " " + this.website);
 	}
 	
-	public boolean equals(Object nome){
+	public boolean equals(String nome){
 		return(this.nome.equals((String) nome));
 	}
 	

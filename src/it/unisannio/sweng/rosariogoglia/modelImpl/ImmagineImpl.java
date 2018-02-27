@@ -29,7 +29,7 @@ public class ImmagineImpl implements Immagine{
 		this.idInserzione = idInserzione;
 	}
 	
-	public boolean equals (Object foto){
+	public boolean equals (String foto){
 		return this.foto.equals((String)foto);
 	}
 	

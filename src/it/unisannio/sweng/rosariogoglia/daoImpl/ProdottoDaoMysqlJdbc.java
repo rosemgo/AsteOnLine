@@ -106,11 +106,17 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 		finally{
 			try {
-				rs.close();
-				stmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(stmt != null)
+					stmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 			
@@ -171,10 +177,17 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				stmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(stmt != null)
+					stmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 			
@@ -256,10 +269,17 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -300,10 +320,17 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -416,18 +443,19 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			e1.printStackTrace();
 		}		
 		finally {
-			if (connection!=null) {
-				try {
-					if(rs != null)
-						rs.close();
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}				
 		return productIdKey;
@@ -475,18 +503,19 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			
 		}
 		finally {
-			if (connection!=null) {
-				try {
-					if(rs != null)
-						rs.close();
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}	
 			
@@ -522,10 +551,17 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -569,10 +605,17 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -622,15 +665,18 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 			
 		finally {
-			if (connection!=null) {
-				try {
+			try {
+			
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		return deletedRows;
@@ -665,10 +711,17 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -713,9 +766,15 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
 			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
@@ -764,10 +823,17 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -845,7 +911,8 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			
 			e1.printStackTrace();
 			try {
-				connection.rollback();
+				if(connection!=null)
+					connection.rollback();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
@@ -853,16 +920,18 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			logger.debug("Roolback in aggiornamento prodotto");
 		}
 		finally {
-			if (connection!=null) {
-				try {
+			try {
+
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-					logger.debug("Connection chiusa");
-				} catch (SQLException  e) {
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
-				
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		return uptadedRows;
@@ -903,16 +972,18 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			
 		}
 		finally {
-			if (connection!=null) {
-				try {
+			try {
+			
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-					logger.debug("Connection chiusa");
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		return uptadedRows;

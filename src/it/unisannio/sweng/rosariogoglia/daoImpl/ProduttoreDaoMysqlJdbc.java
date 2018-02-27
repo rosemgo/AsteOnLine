@@ -62,11 +62,17 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -103,15 +109,21 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
-		
+		if(produttore!=null)
 		logger.debug("produttore: " + produttore.toString());
 		return produttore;
 	}
@@ -146,11 +158,17 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -197,11 +215,17 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -259,18 +283,19 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			if (connection!=null) {
-				try {
-					if(rs != null)
-						rs.close();
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -308,11 +333,17 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -355,16 +386,18 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			if (connection!=null) {
-				try {
+			try {
+				
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -403,16 +436,18 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			if (connection!=null) {
-				try {
+			try {
+				
+				if(pstmt != null)
 					pstmt.close();
-					connection.setAutoCommit(true);
+				if(connection != null){
 					connection.close();
-				} catch (SQLException  e) {
-					
-					e.printStackTrace();
+					connection.setAutoCommit(true);
 				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		logger.info("Aggiornamento Produttore: (" + produttore.getIdProduttore() + ", " + produttore.getNome() + ")");

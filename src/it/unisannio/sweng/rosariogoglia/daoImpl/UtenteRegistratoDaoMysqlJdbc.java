@@ -108,10 +108,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}	
@@ -183,22 +190,30 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				
 				logger.debug("(" + utenteReg.getIdUtente() + ", " + utenteReg.getNome() + ")");	
 			}
-			
+			if(utenteReg!=null)
+				logger.debug("utente registrato: " + utenteReg.toString());	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
 		
-		logger.debug("utente registrato: " + utenteReg.toString());	
+		
 			
 		return utenteReg;
 	}
@@ -270,10 +285,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -333,14 +355,19 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}	
 				
 		finally {
-			if (connection!=null) {
+			try {
 				if(rs != null)
 					rs.close();
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
 				logger.debug("Connection chiusa");
-				
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}	
 	
@@ -382,11 +409,18 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			connection.rollback();
 		}	
 		finally {
-			if (connection!=null) {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+			try {
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -433,11 +467,18 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			connection.rollback();
 		}		
 		finally {
-			if (connection!=null) {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+			try {
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -485,11 +526,18 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			connection.rollback();
 		}	
 		finally {
-			if (connection!=null) {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+			try {
+				
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
 				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -779,11 +827,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -824,10 +878,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -869,10 +930,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -918,10 +986,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -968,10 +1043,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1016,10 +1098,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1063,10 +1152,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 			finally{
 				try {
-					rs.close();
-					pstmt.close();
-					connection.close();
-				} catch (SQLException e) {
+					if(rs != null)
+						rs.close();
+					if(pstmt != null)
+						pstmt.close();
+					if(connection != null){
+						connection.close();
+						connection.setAutoCommit(true);
+					}
+							
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
 					e.printStackTrace();
 				}
 			}
@@ -1099,10 +1195,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1135,10 +1238,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1179,10 +1289,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1222,10 +1339,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1264,10 +1388,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1302,10 +1433,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1338,10 +1476,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1391,10 +1536,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1431,10 +1583,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1474,10 +1633,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}	
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1522,10 +1688,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1599,9 +1772,20 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			e.printStackTrace();
 		}
 		finally{
-			rs.close();
-			pstmt.close();
-			connection.close();
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return listaUtenti;
@@ -1634,10 +1818,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1673,10 +1864,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -1723,10 +1921,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 			finally{
 				try {
-					rs.close();
-					pstmt.close();
-					connection.close();
-				} catch (SQLException e) {
+					if(rs != null)
+						rs.close();
+					if(pstmt != null)
+						pstmt.close();
+					if(connection != null){
+						connection.close();
+						connection.setAutoCommit(true);
+					}
+							
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
 					e.printStackTrace();
 				}
 			}
@@ -1778,10 +1983,17 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+					connection.setAutoCommit(true);
+				}
+						
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
 				e.printStackTrace();
 			}
 		}

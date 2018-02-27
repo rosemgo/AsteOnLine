@@ -30,7 +30,7 @@ public class KeywordImpl implements Keyword{
 		this.keyword = keyword;
 	}
 	
-	public boolean equals (Object keyword){
+	public boolean equals (String keyword){
 		return this.keyword.equals((String)keyword);
 	}
 	

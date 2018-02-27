@@ -63,7 +63,7 @@ public class ServletCercaProduttori extends BaseAjaxServlet {
 //    HttpSession session = request.getSession(true);
 //    session.setAttribute("categoriaScelta", categoria);
       
-    if(categoria == null || categoria == ""){
+    if(categoria == null || categoria.equals("") ){
     	categoria = "0";
     }
   
@@ -72,18 +72,18 @@ public class ServletCercaProduttori extends BaseAjaxServlet {
     String listaproduttori;
     
    	produttoriMap = (Map<String, String>) context.getAttribute("produttoriMap");
-   	listaproduttori = produttoriMap.get(categoria);
+   	if(produttoriMap != null){
+   		listaproduttori = produttoriMap.get(categoria);
      
-   	if(listaproduttori == null || listaproduttori == "")
-   		listaproduttori = "Nessun produttore";
+   		if(listaproduttori == null || listaproduttori.equals("") )
+   			listaproduttori = "Nessun produttore";
    	
-    System.out.println("lista: " + listaproduttori);
-    
-    if (produttoriMap == null) {
+   		System.out.println("lista: " + listaproduttori);
+   		return(listaproduttori);
+   	}
+   	else{
       return("");
-    } else { 
-      return(listaproduttori);
-    }
+    } 
     
   }
   

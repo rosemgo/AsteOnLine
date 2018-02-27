@@ -37,8 +37,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 
 	Logger logger = Logger.getLogger(InserzioneDaoMysqlJdbc.class);
 	
-
-
+	
 	
 	public List<Inserzione> getInserzioni() {
 		logger.debug("in getInserzioni");
@@ -101,9 +100,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally {
 
-			if (connection != null) {
-
-				try {
+			try {
 					if(rs != null)
 						rs.close();
 					if(pstmt != null)
@@ -119,7 +116,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					e.printStackTrace();
 				}
 
-			}
 		}
 		
 		return listaInserzioni;
@@ -327,38 +323,45 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
-	
-		connection = ConnectionPoolTomcat.getConnection();
-		connection.setAutoCommit(false);
-					
-		UtenteRegistrato utente;
-		
-		String sql = "SELECT * FROM utente_registrato_osserva_inserzione " +
-				"WHERE inserzione_idinserzione = ? ";
-		
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, idInserzione);
-		logger.debug("Select Query: " + pstmt.toString());
-		rs = pstmt.executeQuery();
-		while(rs.next()){
-			
-			utente = new UtenteRegistratoImpl();
-			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-			utente = dao.getUtenteRegistratoById(rs.getInt("utente_registrato_idutente"));
-			
-			listaUtentiRegistrati.add(utente);
-			logger.debug("utente aggiunto alla lista");
+		try{
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
 						
+			UtenteRegistrato utente;
+			
+			String sql = "SELECT * FROM utente_registrato_osserva_inserzione " +
+					"WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				
+				utente = new UtenteRegistratoImpl();
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				utente = dao.getUtenteRegistratoById(rs.getInt("utente_registrato_idutente"));
+				
+				listaUtentiRegistrati.add(utente);
+				logger.debug("utente aggiunto alla lista");
+							
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	
-		if(rs != null)
-			rs.close();
-		if(pstmt != null)
-			pstmt.close();
-		if(connection != null){
-			connection.close();
+		finally{
+			try{
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null){
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
 		
 		return listaUtentiRegistrati;
 }	
@@ -703,7 +706,7 @@ public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws C
 }
 	
 	
-public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione) throws SQLException{
+public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione){
 	logger.debug("in updateStatoInserzione");
 	Integer updatedRows = -1;
 	
@@ -734,7 +737,7 @@ public Integer updateStatoInserzione(String statoInserzione, Integer idInserzion
 		e.printStackTrace();
 	}
 	finally {
-		
+			try {
 				if(pstmt != null)
 					pstmt.close();
 				if(connection != null){
@@ -743,7 +746,10 @@ public Integer updateStatoInserzione(String statoInserzione, Integer idInserzion
 				}
 				
 				logger.debug("Connection chiusa");
-		
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	return updatedRows;
 }

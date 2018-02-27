@@ -17,5 +17,6 @@ public interface Categoria {
 	public void setListaProduttori(List<Produttore> listaProduttori);
 	
 	public String toString();
+	
 
 }

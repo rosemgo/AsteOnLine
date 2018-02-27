@@ -4,7 +4,6 @@ import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
-import it.unisannio.sweng.rosariogoglia.utility.Utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,7 +92,7 @@ public class ServletLeMieInserzioni extends HttpServlet {
 			HashMap<Integer, Integer> indicizzazionePagine = new HashMap<Integer, Integer>();
 			
 			/* Verifico che il numero di pagine richieste per visualizzare le inserzioni sia uguale al numero precedente. Nel caso fosse così, non è necessario creare una nuova hash map, quindi prelevo dalla sessione quella precedentemente creata. */
-			if(numeroPagine != numPaginePrecedente){
+			if(!numeroPagine.equals(numPaginePrecedente)){
 				System.out.println("tabella nuova");
 				/*creo l'hasmap che sarà utilizzata per la corrispondenza pagina-numero tupla da cui iniziare il prelievo dal db*/
 				for(int i=1; i<=numeroPagine; i++){

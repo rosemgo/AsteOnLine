@@ -39,7 +39,7 @@ public class ServletOsservaInserzione extends HttpServlet {
 		Integer idInserzione;			
 		
 		//caso in cui si arriva alla servlet da qualunque clic su "osserva inserzione" in seguito all'effettuazione del login.(in pratica quando l'utente già è loggato)
-		if(idInserzioneString != null && idInserzioneString != ""){
+		if(idInserzioneString != null && !idInserzioneString.equals("")){
 			
 			idInserzione = Integer.parseInt(idInserzioneString);
 			inserzione = daoI.getInserzioneById(idInserzione);

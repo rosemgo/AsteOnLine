@@ -108,8 +108,7 @@
  
   					
   				<div class="centralBoxText">
-				  
-				
+				  			
 				  
 				  
 <!-- 				 <p>Date: <input type="text" id="datepicker" /></p> -->
@@ -120,6 +119,7 @@
    					 <h3 align="center">Inserisci i dati relativi all'inserzione</h3>
     				<p>&nbsp;</p>
     				
+  <!--Il form invia alla ServletInserisciInserzione dati sia di tipo immagini che di tipo testo -->  				
     				<form action="ServletInserisciInserzione" method="post" enctype="multipart/form-data">
     				    					
     					

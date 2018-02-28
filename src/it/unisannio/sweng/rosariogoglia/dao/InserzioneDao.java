@@ -173,5 +173,14 @@ public interface InserzioneDao {
 	 */
 	public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer numInserzioniPerPagina);
 		
+	/**
+	 * Il metodo aggiorna l'acquirente dell'inserzione e il prezzo in base all'ultima offerta fatta
+	 * 
+	 * @param idAcquirente
+	 * @param idInserzione
+	 * @param prezzoAggiornato
+	 * @return numero di righe aggiornate(1 se la modifica è avvenuta, -1 nel caso contrario)
+	 */
+	public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double prezzoAggiornato, Integer idInserzione);
 	
 }

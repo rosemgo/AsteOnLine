@@ -1200,6 +1200,53 @@ public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer nu
 }
 
 
+public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double prezzoAggiornato, Integer idInserzione){
+	logger.debug("in updateAcquirenteInserzione");
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	Integer updatedRows = -1;
+	
+	try {			
+		connection = ConnectionPoolTomcat.getConnection();
+		connection.setAutoCommit(false);
+		
+		String sql = "UPDATE inserzione SET acquirente_utente_registrato_idutente = ?, prezzo_aggiornato = ? " +
+				"WHERE idinserzione = ? ";
+		
+		pstmt = connection.prepareStatement(sql);
+		
+		pstmt.setInt(1, idAcquirente);
+		pstmt.setDouble(2, prezzoAggiornato);
+		pstmt.setInt(3, idInserzione);
+		
+		logger.debug("Update Query:" + pstmt.toString());
+		updatedRows = pstmt.executeUpdate();
+		
+		connection.commit();
+		
+		logger.info("Inserzione Aggiornata");
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally {
+		if (connection!=null) {
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
+
+	
+	return updatedRows;
+}
 
 
 

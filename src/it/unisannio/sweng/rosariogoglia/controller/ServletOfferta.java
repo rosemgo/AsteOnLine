@@ -38,7 +38,6 @@ public class ServletOfferta extends HttpServlet {
 	private static Vector<Integer> listaInserzioniOfferte = new Vector<Integer>();
 	
 	
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

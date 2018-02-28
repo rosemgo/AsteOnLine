@@ -41,11 +41,8 @@ import org.apache.log4j.xml.DOMConfigurator;
 //@WebServlet("/ServletInserisciProdotto")
 public class ServletInserisciInserzione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
 	
-	public ServletInserisciInserzione(){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}
+	Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -33,11 +33,9 @@ import org.apache.log4j.xml.DOMConfigurator;
 //@WebServlet("/ServletRegistrazione")
 public class ServletRegistrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = Logger.getLogger(ServletRegistrazione.class); 
+
+	Logger logger = Logger.getLogger(ServletRegistrazione.class); 
 	
-	public ServletRegistrazione(){
-		DOMConfigurator.configure("./WebContent/WEB-INF/log4jConfig.xml");
-	}      
 	
 	@SuppressWarnings("static-access")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

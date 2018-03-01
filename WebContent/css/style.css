@@ -873,6 +873,45 @@ nav li:last-child a {
 /* }		 */
 
 
+
+
+ul#gallery, ul#gallery li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+ul#gallery{
+	float:left;
+	width:300px;
+	height:375px;
+	padding-left: 50px;
+	padding-right: 50px;
+	position:relative;
+	background:#e1e1e1 url(../immagini/logo.png) no-repeat 50% 40%;
+}			
+ul#gallery li{
+	float:left;
+	display:inline;
+	margin-top:300px;
+	}								
+ul#gallery a span{
+	display:none;
+	}
+ul#gallery a:hover{
+	background:none;
+	z-index:100;
+	}	
+ul#gallery a:hover span{
+	position:absolute;
+	width:400px;
+	height:300px;
+	float:left;
+	top:0;
+	left:0;
+	display:block;
+	}	
+	
+	
 		
 #map-canvas{ 
 	height: 40%;

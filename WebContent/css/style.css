@@ -826,3 +826,57 @@ nav li:last-child a {
   
 }
 
+
+
+
+
+/* ul#gallery, ul#gallery li{ */
+/* 	margin:0; */
+/* 	padding:0; */
+/* 	list-style:none; */
+/* } */
+/* ul#gallery{ */
+/* 	margin-left:50px; */
+/* 	margin-right:auto; */
+/* }			 */
+/* ul#gallery li{ */
+/* 	float:left; */
+/* 	display:inline; */
+/* 	margin-right:5px; */
+/* }								 */
+/* ul#gallery a{ */
+/* display:inline; */
+/* 	position:relative; */
+/* }	 */
+/* ul#gallery a:hover{ */
+/* 	background:none; */
+/* 	z-index:100; */
+/* }	 */
+/* ul#gallery a span{ */
+/* 	display:none; */
+/* } */
+/* ul#gallery a:hover span{ */
+/* 	float:left; */
+/* 	display:block; */
+/* 	cursor:pointer; */
+/* } */
+/* ul#gallery a:hover em{ */
+/* 	display:none; */
+/* }				 */
+/* ul#gallery a img{ */
+/* 	border:1px solid #999; */
+/* 	padding:2px; */
+/* 	background:#fff; */
+/* }	 */
+/* ul#gallery a:hover img{ */
+/* 	border:1px solid #000; */
+/* }		 */
+
+
+		
+#map-canvas{ 
+	height: 40%;
+	width: 40%;
+}	
+	
+

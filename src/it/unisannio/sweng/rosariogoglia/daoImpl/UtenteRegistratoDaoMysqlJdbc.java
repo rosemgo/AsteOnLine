@@ -21,6 +21,7 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -2000,6 +2001,59 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return listaInserzioniOsservate;
 	}
 	
-
+	public List<Inserzione> getLimitInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato, Integer limiteInf, Integer numeroInserzioniPagina) {
+		logger.debug("in getLimitInserzioniAggiudicateByIdUtenteAcquirente");
+		
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		Inserzione inserzione;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			//connection = DatabaseUtil.getConnection();	
+				
+			String sql = "SELECT * FROM inserzione " +
+					"WHERE (inserzione.stato = 'aggiudicata' OR inserzione.stato = 'pagata') " +
+					"AND acquirente_utente_registrato_idutente = ? " +
+					"ORDER BY inserzione.data_scadenza DESC " +
+					"LIMIT ?,?";
+			
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idUtenteRegistrato);
+			pstmt.setInt(2, limiteInf);
+			pstmt.setInt(3, numeroInserzioniPagina);
+				
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				
+				inserzione = new InserzioneImpl();
+				InserzioneDao dao = new InserzioneDaoMysqlJdbc();
+				inserzione = dao.getInserzioneById(rs.getInt("idinserzione"));
+				
+				listaInserzioni.add(inserzione);
+				logger.debug("inserzione aggiunta alla lista");
+							
+			}
+		
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+		
+	}
 
 }

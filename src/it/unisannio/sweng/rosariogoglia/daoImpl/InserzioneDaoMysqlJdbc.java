@@ -1248,6 +1248,93 @@ public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double pr
 	return updatedRows;
 }
 
+public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria){
+	logger.debug("in getNumeroInserzioniCercate");
+	
+	Integer numeroInserzioni = 0;
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet rs = null;
+
+	try {
+	
+		connection = ConnectionPoolTomcat.getConnection();
+		
+		String condizioneKeyword = "";
+		if(keyword != "" && keyword != null)
+			condizioneKeyword = ", keyword, prodotto_has_keyword ";
+		
+		
+		String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, categoria, prodotto " + condizioneKeyword +
+				"WHERE " +
+				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+				"AND " +
+				"categoria.idcategoria = prodotto.categoria_idcategoria " +
+				"AND " +
+				"inserzione.stato = 'in asta' ";
+					
+		
+		logger.debug(keyword);
+		
+		if(keyword != "" && keyword != null)
+			sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND keyword.keyword LIKE ? ";
+		
+		if(idCategoria != 0)
+			sql = sql + " AND categoria.idcategoria = ? ";
+					
+		pstmt = connection.prepareStatement(sql);
+					
+/*		if(keyword != "" && keyword != null && idCategoria != 0){
+			System.out.println("ENTRO NEL PRIMO");
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, idCategoria);
+		}
+		else if(keyword != "" && keyword != null ) {
+			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
+			pstmt.setString(1, "%" + keyword + "%");
+		}
+		else if(idCategoria != 0){
+			System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
+			pstmt.setInt(1, idCategoria);
+		}
+*/		
+		int i = 1;
+		
+		if(keyword != "" && keyword != null){
+			pstmt.setString(i,  "%" + keyword + "%");
+			i++;
+		}
+		if(idCategoria != 0){
+			pstmt.setInt(i, idCategoria);
+			i++;
+		}	
+		
+		logger.debug("Select Query:" + pstmt.toString());
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally{
+		try {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+		return numeroInserzioni;
+		
+}
+
 
 
 

@@ -183,4 +183,15 @@ public interface InserzioneDao {
 	 */
 	public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double prezzoAggiornato, Integer idInserzione);
 	
+	
+	/**
+	 * Visualizza il numero delle inserzioni ottenute in seguito ad una ricerca
+	 * 
+	 * @param keyword
+	 * @param idCategoria
+	 * 
+	 * @return numero totale delle inserzioni trovate filtrate per keyword e idCategoria
+	 */
+	public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria);
+	
 }

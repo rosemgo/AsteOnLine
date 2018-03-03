@@ -194,4 +194,18 @@ public interface InserzioneDao {
 	 */
 	public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria);
 	
+	
+	/**
+	 * Visualizza le inserzioni relative ad un intervallo specifico(utilizzato nella paginazione delle inserzioni) in seguito ad una ricerca filtrata per keyword e idCategoria
+	 * 
+	 * @param keyword
+	 * @param idCategoria
+	 * @param limiteInf
+	 * @param numInserzioniPagina
+	 * 
+	 * @return solo le inserzioni cercate relative ad un intervallo
+	 */
+	public List<Inserzione> ricercaLimitInserzioni(String keyword, Integer idCategoria, Integer limiteInf, Integer numInserzioniPagina);
+	
+	
 }

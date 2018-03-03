@@ -1336,6 +1336,151 @@ public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria){
 }
 
 
+/**
+ * se keyword=null significa che non bisogna filtrare per parola chiave.
+ * se categoria=0 significa che non bisogna filtrare per categoria.
+ */
+public List<Inserzione> ricercaLimitInserzioni(String keyword, Integer idCategoria, Integer limiteInf, Integer numInserzioniPagina){
+	logger.debug("in ricercaLimitInserzioni");
+	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+	
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet rs = null;
+
+	try {
+		
+		connection = ConnectionPoolTomcat.getConnection();
+		
+		
+		//AGGIUNGIAMO LA CONDIZIONE KEYWORD SOLO SE BISOGNA EFFETTUARE LA RICERCA ANCHE SU KEYWORD.
+		String condizioneKeyword = "";
+		if(keyword != "" && keyword != null)
+			condizioneKeyword = ", keyword, prodotto_has_keyword ";
+		
+		
+		String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto " + condizioneKeyword +
+				"WHERE " +
+				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+				"AND " +
+				"categoria.idcategoria = prodotto.categoria_idcategoria " +
+				"AND " +
+				"inserzione.stato = 'in asta' ";
+			
+		
+		logger.debug(keyword);
+		
+		if(keyword != "" && keyword != null)
+			sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND keyword.keyword LIKE ? ";
+		
+		if(idCategoria != 0)
+			sql = sql + " AND categoria.idcategoria = ? ";
+		
+		sql = sql + " GROUP BY idinserzione ORDER BY idinserzione DESC LIMIT ?,? ";
+		
+		pstmt = connection.prepareStatement(sql);
+					
+/*		if(keyword != "" && keyword != null && idCategoria != 0){
+			System.out.println("ENTRO NEL PRIMO");
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, idCategoria);
+			pstmt.setInt(3, limiteInf);
+			pstmt.setInt(4, numInserzioniPagina);
+		}
+		else if (keyword != "" && keyword != null) {
+			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, limiteInf);
+			pstmt.setInt(3, numInserzioniPagina);
+		}
+		else if(idCategoria != 0){
+			System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
+			pstmt.setInt(1, idCategoria);
+			pstmt.setInt(2, limiteInf);
+			pstmt.setInt(3, numInserzioniPagina);
+		}
+		else if((keyword == "" || keyword == null) && idCategoria == 0){
+			pstmt.setInt(1, limiteInf);
+			pstmt.setInt(2, numInserzioniPagina);
+		}
+*/
+		
+		
+		int i = 1;
+		
+		if(keyword != "" && keyword != null){
+			pstmt.setString(i,  "%" + keyword + "%");
+			i++;
+		}
+		if(idCategoria != 0){
+			pstmt.setInt(i, idCategoria);
+			i++;
+		}			
+		
+		pstmt.setInt(i, limiteInf);
+		i++;
+		pstmt.setInt(i, numInserzioniPagina);
+		i++;
+		
+		
+		logger.debug("Select Query:" + pstmt.toString());
+		rs = pstmt.executeQuery();
+		
+		if (rs.next()) { 
+					
+			listaInserzioni = new ArrayList<Inserzione>();
+
+			Inserzione inserzione;
+			Prodotto prodotto;
+			do{
+				
+				inserzione = new InserzioneImpl();
+				prodotto = new ProdottoImpl();
+				
+				
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+				inserzione.setProdotto(prodotto);
+				
+				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setImmagini(listaImmagini);
+									
+				
+				listaInserzioni.add(inserzione);
+				
+			}while(rs.next());	
+			
+		}
+		else{
+			logger.debug("Nessun risultato");
+		}
+		
+		
+	} catch (SQLException | ClassNotFoundException | IOException e) {
+		e.printStackTrace();
+	}
+	finally{
+		try {
+			rs.close();
+			pstmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return listaInserzioni;
+}
+
 
 
 }

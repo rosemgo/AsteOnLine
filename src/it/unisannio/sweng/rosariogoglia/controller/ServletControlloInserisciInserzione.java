@@ -1,12 +1,11 @@
 package it.unisannio.sweng.rosariogoglia.controller;
 
-import it.unisannio.tsw.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.tsw.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
-import it.unisannio.tsw.rosariogoglia.model.UtenteRegistrato;
+import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

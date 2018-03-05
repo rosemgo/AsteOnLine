@@ -1,15 +1,14 @@
 package it.unisannio.sweng.rosariogoglia.controller;
 
-import it.unisannio.tsw.rosariogoglia.dao.InserzioneDao;
-import it.unisannio.tsw.rosariogoglia.dao.UtenteRegistratoDao;
-import it.unisannio.tsw.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
-import it.unisannio.tsw.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
-import it.unisannio.tsw.rosariogoglia.model.Inserzione;
-import it.unisannio.tsw.rosariogoglia.model.UtenteRegistrato;
+import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.model.Inserzione;
+import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -75,9 +74,7 @@ public class ServletControlloModificaInserzione extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/jsp/errore.jsp").forward(request, response);
 		
 		}
-		
-		
-		
+				
 		
 	}
 

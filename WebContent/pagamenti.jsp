@@ -210,6 +210,7 @@ $(document).ready(function () {
 			<p align="center" >
 				<img alt="pubblicità" src="immagini/bannerAsteOnLine.jpg">
 			</p>
+			
 		</div>
 		<div style="clear:both;"></div>
 		

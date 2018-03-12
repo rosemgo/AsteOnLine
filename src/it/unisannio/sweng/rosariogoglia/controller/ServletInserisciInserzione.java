@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,14 +34,18 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 
+
 /**
  * Servlet implementation class ServletInserisciProdotto
  */
 //@WebServlet("/ServletInserisciProdotto")
 public class ServletInserisciInserzione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
 	
-	Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
+	public ServletInserisciInserzione(){
+		DOMConfigurator.configure("C:/Users/Rosario/workspaceTSW/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+	}
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -93,14 +96,13 @@ public class ServletInserisciInserzione extends HttpServlet {
 			 * Tale factory mantiene in memoria i FileItem di dimensioni minori di 10KB, per FileItem più grandi li memorizza nella directory temporanea del sistema.
 			 */
 			DiskFileItemFactory factory = new DiskFileItemFactory();
-			/* L'oggetto upload permette di analizzare la richiesta ed elaborare l'elenco di elementi dell'applicazione */
+			/* L'oggetto upload permette di analizzare la richiesta eD elaborare l'elenco di elementi dell'applicazione */
 			ServletFileUpload upload = new ServletFileUpload(factory);	
 	
 						
 			try {
 									
 				/* Analizzo la richiesta ed elaboro la lista di elementi in essa contenuti */
-				@SuppressWarnings("unchecked")
 				List<FileItem> itemList = upload.parseRequest(request);
 					
 			
@@ -234,39 +236,9 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						if(nomeCampoForm.equalsIgnoreCase("data_scadenza")){
 							
-							dataScadenza = valoreCampoForm;
-							System.out.println("data scadenza: " + dataScadenza);
-							
-							Integer mese = null;
-							Integer giorno = null;
-							Integer anno = null;
-							
-							StringTokenizer tokenizer = new StringTokenizer(dataScadenza, "/"); 
-							while(tokenizer.hasMoreTokens()){
-								mese = Integer.parseInt(tokenizer.nextToken());
-								System.out.println("mese: " + mese);
-								giorno = Integer.parseInt(tokenizer.nextToken());
-								System.out.println("giorno: " + giorno);
-								anno = Integer.parseInt(tokenizer.nextToken());
-								System.out.println("anno: " + anno);
-							}
-														
-							Calendar c = Calendar.getInstance();
-							c.set(anno, mese-1, giorno); //mese-1 perchè i mesi nel gregorianCalendar partono da 0
-							System.out.println("c: " + c.toString());
-							
-							//c.set(year, month, date, hourOfDay, minute, second); farsi dare anche l'orario di scadenza
-							//oppure usare c.getTime() che aggiunge alla data impostata, l'orario attuale
-							dataFineAsta = c.getTime();
-							logger.debug("data fine asta creata: " + dataFineAsta);
-							
-							//compariamo la data di fine asta con la data odierna
-							if(dataFineAsta.compareTo(Calendar.getInstance().getTime()) <= 0){
-								messaggio="Errore!!! Data non valida!!! ";
-								request.setAttribute("messaggio", messaggio);
-								request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
-								return;
-							}
+						/**
+						 * TROVARE UN MODO PER GESTIRE IL CARICAMENTO DELLE IMMAGINI
+						 */
 							
 							
 						}
@@ -349,8 +321,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 							System.out.println("NOME IMMAGINE: " + nomeFile );
 							System.out.println("CONTENUTO FIN: " + fin.toString());	
 							
-
-							
+												
 							//serve per gestire l'eccezione del item.write(fin);
 							try {
 							
@@ -384,11 +355,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 		/* Se non vengono catturate eccezioni procede nell'inserimento del prodotto */
 		if(prosegui){
 				
-//			Calendar dataFineC = Utility.creaDataFineAsta(dataScadenza);
-//			
-//			System.out.println(dataFineC);		
-//					
-//			Date dataFineAsta = dataFineC.getTime();
+
 			
 			Inserzione inserzione = new InserzioneImpl();
 			inserzione.setTitolo(titolo);
@@ -403,11 +370,6 @@ public class ServletInserisciInserzione extends HttpServlet {
 			
 			inserzione.setImmagini(listaImmagini);			
 			
-//			for(int i=0;i<listaImmagini.size();i++){
-//				System.out.println(listaImmagini.get(i).getFoto());
-//			}
-			
-			
 			InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 			try {
 					//inserisco l'inserzione
@@ -420,7 +382,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						//CREO IL THREAD DI VERIFICA SCADENZA ASTA IN SEGUITO ALL'INSERIMENTO
 						Date fineAsta = inserzione.getDataScadenza();
-						//Date odierna = new Date();
+						Date odierna = new Date();
 						
 						Calendar c = Calendar.getInstance();
 						c.setTime(fineAsta);
@@ -449,6 +411,9 @@ public class ServletInserisciInserzione extends HttpServlet {
 				} catch (SQLException e) {
 					messaggio="Errore !!! L'inserzione non è stato inserito correttamente !!!";
 					logger.warn(new Date()+ " " + messaggio);
+				} catch (ClassNotFoundException e) {
+					
+					e.printStackTrace();
 				}
 					
 		}

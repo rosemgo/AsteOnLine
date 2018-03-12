@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,22 +32,26 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
+//import org.apache.tomcat.util.http.fileupload.FileItem;
+//import org.apache.tomcat.util.http.fileupload.FileUploadException;
+//import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+//import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 
 /**
  * Servlet implementation class ServletInserisciProdotto
  */
-//@WebServlet("/ServletInserisciProdotto")
+@WebServlet("/ServletInserisciProdotto")
 public class ServletInserisciInserzione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
 	
-	public ServletInserisciInserzione(){
-		DOMConfigurator.configure("C:/Users/Rosario/workspaceTSW/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
-	}
+	Logger logger = Logger.getLogger(ServletInserisciInserzione.class); 
+	
+
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -96,24 +102,17 @@ public class ServletInserisciInserzione extends HttpServlet {
 			 * Tale factory mantiene in memoria i FileItem di dimensioni minori di 10KB, per FileItem più grandi li memorizza nella directory temporanea del sistema.
 			 */
 			DiskFileItemFactory factory = new DiskFileItemFactory();
-			/* L'oggetto upload permette di analizzare la richiesta eD elaborare l'elenco di elementi dell'applicazione */
+			/* L'oggetto upload permette di analizzare la richiesta e elaborare l'elenco di elementi dell'applicazione */
 			ServletFileUpload upload = new ServletFileUpload(factory);	
-	
-						
+			
 			try {
-									
-				/* Analizzo la richiesta ed elaboro la lista di elementi in essa contenuti */
+				/* Analizzo la richiesta e elaboro la lista di elementi in essa contenuti */
 				List<FileItem> itemList = upload.parseRequest(request);
-					
-			
-				logger.debug("creiamo la lista item");
-			
 				
+				logger.debug("creiamo la lista item");
 				
 				for(int i=0; i<itemList.size(); i++){
-					
 					FileItem item = itemList.get(i);
-					
 					
 					logger.debug("scorriamo ogni elemento");
 										
@@ -128,6 +127,9 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						nomeCampoForm = item.getFieldName(); //corrispondente all'attributo name=" " del form
 						valoreCampoForm = item.getString(); //corrispondente al valore inserito dall' utente nel form
+						
+					
+						
 						
 						if(nomeCampoForm.equals("categoria")){
 							
@@ -236,9 +238,39 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						if(nomeCampoForm.equalsIgnoreCase("data_scadenza")){
 							
-						/**
-						 * TROVARE UN MODO PER GESTIRE IL CARICAMENTO DELLE IMMAGINI
-						 */
+							dataScadenza = valoreCampoForm;
+							System.out.println("data scadenza: " + dataScadenza);
+							
+							Integer mese = null;
+							Integer giorno = null;
+							Integer anno = null;
+							
+							StringTokenizer tokenizer = new StringTokenizer(dataScadenza, "/"); 
+							while(tokenizer.hasMoreTokens()){
+								mese = Integer.parseInt(tokenizer.nextToken());
+								System.out.println("mese: " + mese);
+								giorno = Integer.parseInt(tokenizer.nextToken());
+								System.out.println("giorno: " + giorno);
+								anno = Integer.parseInt(tokenizer.nextToken());
+								System.out.println("anno: " + anno);
+							}
+														
+							Calendar c = Calendar.getInstance();
+							c.set(anno, mese-1, giorno); //mese-1 perchè i mesi nel gregorianCalendar partono da 0
+							System.out.println("c: " + c.toString());
+							
+							//c.set(year, month, date, hourOfDay, minute, second); farsi dare anche l'orario di scadenza
+										
+							dataFineAsta = c.getTime();
+							logger.debug("data fine asta creata: " + dataFineAsta);
+							
+							//compariamo la data di fine asta con la data odierna
+							if(dataFineAsta.compareTo(Calendar.getInstance().getTime()) <= 0){
+								messaggio="Errore!!! Data non valida!!! ";
+								request.setAttribute("messaggio", messaggio);
+								request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
+								return;
+							}
 							
 							
 						}
@@ -295,42 +327,25 @@ public class ServletInserisciInserzione extends HttpServlet {
 							}
 							
 							logger.debug("Creo un nuovo file nella directory specificata con il nome del file inserito nel form ");
-														
-							immagine = new ImmagineImpl();
 							
-							//poichè preleviamo più immagini devo creare un arrayList di immagini e settare il campo percorso
-							immagine.setFoto("immagini/inserzioni/" + nomeFile); //NON METTERE / ALL'INIZIO ALTRIMENTI NON FUNZIONA LA VISUALIZZAZIONE DELLA FOTO NEL DETTAGLIO INSERZIONE
-							listaImmagini.add(immagine);
-					
 							
-							if(listaImmagini.size() == 0){
-								logger.debug(" nessun immagine inserita ");
-								
-								messaggio="Errore !!! Devi inserire almeno un'immagine!!! ";
-								request.setAttribute("messaggio", messaggio);
-								request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
-								return;
-								
-							}
-												
-													
+							
 							/* Creo un nuovo file nella directory specificata con il nome del file inserito nel form */
-							File fin = new File(this.getServletContext().getRealPath("/immagini/inserzioni"), nomeFile);
-							item.write(fin);
-				
-							System.out.println("NOME IMMAGINE: " + nomeFile );
-							System.out.println("CONTENUTO FIN: " + fin.toString());	
+							File fin=new File( getServletContext().getRealPath("/immagini/inserzioni"), nomeFile);
 							
-												
-							//serve per gestire l'eccezione del item.write(fin);
 							try {
 							
-								//item.write(fin);
-									
-								System.out.println("SCRITTURA DEL FIN1: ");
-		
+								item.write(fin);
+								
+								immagine = new ImmagineImpl();
+								
+								//poichè preleviamo più immagini devo creare un arrayList di immagini e settare il campo percorso
+								immagine.setFoto("immagini/inserzioni/" + nomeFile);
+								listaImmagini.add(immagine);
+								
+								
 							}catch (Exception e) {
-								logger.warn(new Date()+" Scrittura file "+ nomeFile +" non eseguita correttamente !!!");
+								logger.warn(new Date()+" Scrittura file "+nomeFile+" non eseguita correttamente !!!");
 								messaggio="Errore inserimento Inserzione!!!";
 								prosegui=false;
 							}
@@ -338,6 +353,16 @@ public class ServletInserisciInserzione extends HttpServlet {
 						}
 											
 					}
+				}
+				
+				if(listaImmagini.size() == 0){
+					logger.debug(" nessun immagine inserita ");
+					
+					messaggio="Errore !!! Devi inserire almeno un' immagine!!! ";
+					request.setAttribute("messaggio", messaggio);
+					request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
+					return;
+					
 				}
 				
 				
@@ -355,7 +380,11 @@ public class ServletInserisciInserzione extends HttpServlet {
 		/* Se non vengono catturate eccezioni procede nell'inserimento del prodotto */
 		if(prosegui){
 				
-
+//			Calendar dataFineC = Utility.creaDataFineAsta(dataScadenza);
+//			
+//			System.out.println(dataFineC);		
+//					
+//			Date dataFineAsta = dataFineC.getTime();
 			
 			Inserzione inserzione = new InserzioneImpl();
 			inserzione.setTitolo(titolo);
@@ -369,6 +398,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 			inserzione.setIdProdotto(Integer.parseInt(prodotto));
 			
 			inserzione.setImmagini(listaImmagini);			
+			
 			
 			InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 			try {
@@ -426,5 +456,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 	}
 		
 }
+
+
 
 

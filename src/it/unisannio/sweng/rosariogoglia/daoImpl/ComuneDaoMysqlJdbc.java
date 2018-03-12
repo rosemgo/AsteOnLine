@@ -60,14 +60,9 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 			e.printStackTrace();
 		}
 		finally{
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.setAutoCommit(true);
-				connection.close();	
-			}
+			rs.close();
+			pstmt.close();
+			connection.close();
 		}
 	
 		return comune;
@@ -116,13 +111,9 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();	
-				}
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -179,13 +170,9 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();	
-				}
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

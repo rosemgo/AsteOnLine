@@ -20,6 +20,7 @@ import it.unisannio.sweng.rosariogoglia.model.Offerta;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProdottoImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
+import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -28,16 +29,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 
 
 public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 
 	Logger logger = Logger.getLogger(InserzioneDaoMysqlJdbc.class);
 	
-	
+	public InserzioneDaoMysqlJdbc (){
+		DOMConfigurator.configure("C:/Users/Rosario/workspaceTSW/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+	}
+
 	
 	public List<Inserzione> getInserzioni() {
 		logger.debug("in getInserzioni");
@@ -61,7 +67,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			while(rs.next()){
 				
 				inserzione = new InserzioneImpl();
-								
+				
+				
 				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
 				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
 				UtenteRegistrato acquirente = null;
@@ -100,28 +107,387 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally {
 
-			try {
-					if(rs != null)
-						rs.close();
-					if(pstmt != null)
-						pstmt.close();
-					if(connection != null){
-						connection.close();
-						connection.setAutoCommit(true);
-					}
-					
+			
+
+				try {
+					rs.close();
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
 					logger.debug("Connection chiusa");
 				} catch (SQLException  e) {
 
 					e.printStackTrace();
 				}
 
+			
 		}
 		
 		return listaInserzioni;
 	}
 	
 
+	public Integer getNumeroInserzioni() {
+		logger.debug("in getNumeroInserzioniCercate");
+		
+		Integer numeroInserzioni = 0;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+					
+			String sql = "SELECT COUNT(*) FROM inserzione ";
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
+		return numeroInserzioni;
+			
+	}
+
+
+	public Integer getNumeroAsteInCorso() {
+		logger.debug("in getNumeroAsteInCorso");
+		
+		Integer numeroInserzioni = 0;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+		
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM inserzione WHERE stato = 'in asta' ";
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+						
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return numeroInserzioni;
+			
+	}
+	
+	public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserzioniPerPagina) {
+		logger.debug("in getLimitAsteInCorso");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		Inserzione inserzione;
+		Prodotto prodotto;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+									
+			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"inserzione.stato = 'in asta' " +
+					"LIMIT ?, ?";
+	
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, limiteInf);
+			pstmt.setInt(2, numInserzioniPerPagina);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){	
+								
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+					Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+					UtenteRegistrato acquirente = null;
+					if(idAcquirente != 0){ //lo 0 equivale al null
+						 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+					}
+					logger.debug("idAcquirente: " + idAcquirente);
+					
+					int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+					UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					inserzione.setIdVenditore(idVenditore);
+					inserzione.setVenditore(venditore);
+					inserzione.setIdAcquirente(idAcquirente);
+					inserzione.setAcquirente(acquirente);
+					
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					listaInserzioni.add(inserzione);
+					
+				}
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+		
+	}
+	
+	
+	
+	
+	public Integer getNumeroAsteInChiusura() {
+		logger.debug("in getNumeroAsteInChiusura");
+		
+		Integer numeroInserzioni = 0;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+		
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM inserzione " +
+					"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
+					"OR " +
+					"( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 ) ";
+			
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+		return numeroInserzioni;
+	}
+	
+	
+	public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer numInserzioniPerPagina){
+		logger.debug("in ricercaTopInserzioniChiusura");
+		
+		List<Inserzione> listaInserzioni = null; 
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try{
+			connection = ConnectionPoolTomcat.getConnection();
+					
+			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
+					"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
+					"OR " +
+					"( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 ) " +
+					"ORDER BY inserzione.data_scadenza ASC " +
+					"LIMIT ?, ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, limiteInf);
+			pstmt.setInt(2, numInserzioniPerPagina);
+			logger.debug("Select Query:" + pstmt.toString());
+			
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()){
+				
+				listaInserzioni = new ArrayList<Inserzione>();
+				
+				Inserzione inserzione;
+				ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+				do{
+					inserzione = new InserzioneImpl();
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					
+					inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+									
+					listaInserzioni.add(inserzione);	
+					
+				}while(rs.next());
+			
+			}
+							
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		logger.debug("inserzioni in scadenza caricate");
+		
+		return listaInserzioni;
+		
+		
+	}
+	
+	
+	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPagina){
+		logger.debug("in getLimitInserzioni");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		Inserzione inserzione;
+		Prodotto prodotto;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"LIMIT ?, ?";
+	
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, limiteInf);
+			pstmt.setInt(2, numInserzioniPagina);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+								
+				
+			while(rs.next()){	
+								
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+					Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+					UtenteRegistrato acquirente = null;
+					if(idAcquirente != 0){ //lo 0 equivale al null
+						 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+					}
+					logger.debug("idAcquirente: " + idAcquirente);
+					
+					int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+					UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					inserzione.setIdVenditore(idVenditore);
+					inserzione.setVenditore(venditore);
+					inserzione.setIdAcquirente(idAcquirente);
+					inserzione.setAcquirente(acquirente);
+					
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					listaInserzioni.add(inserzione);
+					
+				}
+					
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+	}
+	
 	
 	
 	public Inserzione getInserzioneById(Integer idInserzione){
@@ -133,6 +499,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		try {
 			
 			connection = ConnectionPoolTomcat.getConnection();
+			//connection = DatabaseUtil.getConnection();
 		
 			
 			String sql = "SELECT * FROM inserzione " +
@@ -216,15 +583,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-				
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -234,7 +595,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		
 	}
 	
-
 	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getInserzioneByIdSenzaListe");
 		Inserzione inserzione = null;
@@ -242,7 +602,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
@@ -301,29 +660,24 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			e.printStackTrace();
 		}
 		finally {
-			
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-				
+			if (connection!=null) {
+				rs.close();
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
 				logger.debug("Connection chiusa");
-			
+			}
 		}		
 		return inserzione;
 	}
 
 	public List<UtenteRegistrato> getUtentiRegistratiOsservanoByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
-		logger.debug("in getUtentiRegistratiOsservanoByIdInserzione");
-		List<UtenteRegistrato> listaUtentiRegistrati = new ArrayList<UtenteRegistrato>();
-		Connection connection = null;
-		PreparedStatement  pstmt = null;
-		ResultSet rs = null;
-		try{
+			logger.debug("in getUtentiRegistratiOsservanoByIdInserzione");
+			List<UtenteRegistrato> listaUtentiRegistrati = new ArrayList<UtenteRegistrato>();
+			Connection connection = null;
+			PreparedStatement  pstmt = null;
+			ResultSet rs = null;
+		
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
@@ -346,193 +700,897 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				logger.debug("utente aggiunto alla lista");
 							
 			}
+		
+			rs.close();
+			pstmt.close();
+			connection.close();
+			
+			return listaUtentiRegistrati;
+	}	
+	
+	public List<String> getTitoli(){
+		logger.debug("in getTitoli");
+		List<String> listaTitoli = new ArrayList<String>();
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+						
+			String sql = "SELECT DISTINCT(titolo) FROM inserzione";
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			logger.debug("Select query: " + pstmt.toString());
+			
+			while(rs.next()){
+				listaTitoli.add(rs.getString("titolo"));
+			}
+							
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally{
-			try{
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-				}
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+		return listaTitoli;
+	}
+	
+	/**
+	 * se keyword=null significa che non bisogna filtrare per parola chiave.
+	 * se categoria=0 significa che non bisogna filtrare per categoria.
+	 */
+	public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
+		logger.debug("in ricercaInserzioni");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			
+			connection = ConnectionPoolTomcat.getConnection();
+				
+			String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto, keyword, prodotto_has_keyword " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND " +
+					"prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+					
+			
+			logger.debug(keyword);
+			
+			if(keyword != "" && keyword != null)
+				sql = sql + " AND keyword.keyword LIKE ? ";
+			
+			if(idCategoria != 0)
+				sql = sql + " AND categoria.idcategoria = ? ";
+			
+			sql = sql + " GROUP BY idinserzione ";
+			
+			pstmt = connection.prepareStatement(sql);
+						
+			if(keyword != "" && keyword != null && idCategoria != 0){
+				System.out.println("ENTRO NEL PRIMO");
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setInt(2, idCategoria);
+			}
+			else if(keyword != "" && keyword != null ) {
+				System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
+				pstmt.setString(1, "%" + keyword + "%");
+			}
+			else if(idCategoria != 0){
+				System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
+				pstmt.setInt(1, idCategoria);
+			}
+			
+			
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) { 
+						
+				listaInserzioni = new ArrayList<Inserzione>();
+	
+				Inserzione inserzione;
+				Prodotto prodotto;
+				do{
+					
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					
+					listaInserzioni.add(inserzione);
+					
+				}while(rs.next());	
+				
+			}
+			else{
+				logger.debug("Nessun risultato");
+			}
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+	}
+	
+	
+	public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria){
+		logger.debug("in getNumeroInserzioniCercate");
+		
+		Integer numeroInserzioni = 0;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+		
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String condizioneKeyword = "";
+			if(keyword != "" && keyword != null)
+				condizioneKeyword = ", keyword, prodotto_has_keyword ";
+			
+			
+			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, categoria, prodotto " + condizioneKeyword +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+						
+			
+			logger.debug(keyword);
+			
+			if(keyword != "" && keyword != null)
+				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+						"AND keyword.keyword LIKE ? ";
+			
+			if(idCategoria != 0)
+				sql = sql + " AND categoria.idcategoria = ? ";
+						
+			pstmt = connection.prepareStatement(sql);
+						
+	/*		if(keyword != "" && keyword != null && idCategoria != 0){
+				System.out.println("ENTRO NEL PRIMO");
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setInt(2, idCategoria);
+			}
+			else if(keyword != "" && keyword != null ) {
+				System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
+				pstmt.setString(1, "%" + keyword + "%");
+			}
+			else if(idCategoria != 0){
+				System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
+				pstmt.setInt(1, idCategoria);
+			}
+	*/		
+			int i = 1;
+			
+			if(keyword != "" && keyword != null){
+				pstmt.setString(i,  "%" + keyword + "%");
+				i++;
+			}
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}	
+			
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+			return numeroInserzioni;
+			
+	}
+	
+	
+	
+	/**
+	 * se keyword=null significa che non bisogna filtrare per parola chiave.
+	 * se categoria=0 significa che non bisogna filtrare per categoria.
+	 */
+	public List<Inserzione> ricercaLimitInserzioni(String keyword, Integer idCategoria, Integer limiteInf, Integer numInserzioniPagina){
+		logger.debug("in ricercaLimitInserzioni");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			
+			//AGGIUNGIAMO LA CONDIZIONE KEYWORD SOLO SE BISOGNA EFFETTUARE LA RICERCA ANCHE SU KEYWORD.
+			String condizioneKeyword = "";
+			if(keyword != "" && keyword != null)
+				condizioneKeyword = ", keyword, prodotto_has_keyword ";
+			
+			
+			String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto " + condizioneKeyword +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+				
+			
+			logger.debug(keyword);
+			
+			if(keyword != "" && keyword != null)
+				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+						"AND keyword.keyword LIKE ? ";
+			
+			if(idCategoria != 0)
+				sql = sql + " AND categoria.idcategoria = ? ";
+			
+			sql = sql + " GROUP BY idinserzione ORDER BY idinserzione DESC LIMIT ?,? ";
+			
+			pstmt = connection.prepareStatement(sql);
+						
+	/*		if(keyword != "" && keyword != null && idCategoria != 0){
+				System.out.println("ENTRO NEL PRIMO");
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setInt(2, idCategoria);
+				pstmt.setInt(3, limiteInf);
+				pstmt.setInt(4, numInserzioniPagina);
+			}
+			else if (keyword != "" && keyword != null) {
+				System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setInt(2, limiteInf);
+				pstmt.setInt(3, numInserzioniPagina);
+			}
+			else if(idCategoria != 0){
+				System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
+				pstmt.setInt(1, idCategoria);
+				pstmt.setInt(2, limiteInf);
+				pstmt.setInt(3, numInserzioniPagina);
+			}
+			else if((keyword == "" || keyword == null) && idCategoria == 0){
+				pstmt.setInt(1, limiteInf);
+				pstmt.setInt(2, numInserzioniPagina);
+			}
+	*/
+			
+			
+			int i = 1;
+			
+			if(keyword != "" && keyword != null){
+				pstmt.setString(i,  "%" + keyword + "%");
+				i++;
+			}
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}			
+			
+			pstmt.setInt(i, limiteInf);
+			i++;
+			pstmt.setInt(i, numInserzioniPagina);
+			i++;
+			
+			
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) { 
+						
+				listaInserzioni = new ArrayList<Inserzione>();
+	
+				Inserzione inserzione;
+				Prodotto prodotto;
+				do{
+					
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					
+					listaInserzioni.add(inserzione);
+					
+				}while(rs.next());	
+				
+			}
+			else{
+				logger.debug("Nessun risultato");
+			}
+			
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+	}
+	
+	
+	
+	public Integer getNumeroInserzioniRicercaAvanzata(String keyword, Integer idCategoria, String titolo, Double prezzoMin, Double prezzoMax){
+		logger.debug("in getNumeroInserzioniRicercaAvanzata");
+		
+		Integer numeroInserzioni = 0;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+	
+			String condizioneKeyword = "";
+			if(keyword != "" && keyword != null)
+				condizioneKeyword = ", keyword, prodotto_has_keyword ";
+			
+			
+			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, categoria, prodotto " + condizioneKeyword +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+						
+			
+			logger.debug(keyword);
+			
+			if(keyword != "" && keyword != null)
+				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+						"AND keyword.keyword LIKE ? ";
+			
+			
+			if(idCategoria != 0)
+				sql = sql + " AND categoria.idcategoria = ? ";
+
+			if(titolo != "" && titolo != null)
+				sql = sql + " AND inserzione.titolo LIKE ? ";
+			
+			if(prezzoMin != null)
+				sql = sql + " AND inserzione.prezzo_iniziale >= ? ";
+			
+			if(prezzoMax != null)
+				sql = sql + " AND inserzione.prezzo_iniziale <= ? AND inserzione.prezzo_aggiornato <= ?";
+			
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			
+			int i = 1;
+			
+			if(keyword != "" && keyword != null){
+				pstmt.setString(i,  "%" + keyword + "%");
+				i++;
+			}
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}
+			if(titolo != "" && titolo != null){
+				pstmt.setString(i, "%" + titolo + "%");
+				i++;
+			}			
+			if(prezzoMin != null){
+				pstmt.setDouble(i, prezzoMin);
+				i++;
+			}
+			if(prezzoMax != null){
+				pstmt.setDouble(i, prezzoMax);
+				i++;
+				pstmt.setDouble(i, prezzoMax);
+				i++;
+			}
+				
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		return listaUtentiRegistrati;
-}	
-
-public List<String> getTitoli(){
-	logger.debug("in getTitoli");
-	List<String> listaTitoli = new ArrayList<String>();
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-
-	try {
-		connection = ConnectionPoolTomcat.getConnection();
-					
-		String sql = "SELECT DISTINCT(titolo) FROM inserzione";
-		pstmt = connection.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		logger.debug("Select query: " + pstmt.toString());
-		
-		while(rs.next()){
-			listaTitoli.add(rs.getString("titolo"));
-		}
-						
-	} catch (SQLException e) {
-		e.printStackTrace();
+		return numeroInserzioni;
 	}
-	finally{
+	
+	
+	public List<Inserzione> ricercaAvanzataInserzioneLimitInserzioni(String keyword, Integer idCategoria, String titolo, Double prezzoMin, Double prezzoMax, Integer limiteInf, Integer numInserzioniPagina){
+		logger.debug("in ricercaLimitInserzioni");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
 		try {
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.close();
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String condizioneKeyword = "";
+			if(keyword != "" && keyword != null)
+				condizioneKeyword = ", keyword, prodotto_has_keyword ";
+			
+			
+			String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto " + condizioneKeyword +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+				
+			
+			logger.debug(keyword);
+			
+			if(keyword != "" && keyword != null)
+				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+						"AND keyword.keyword LIKE ? ";
+			
+			if(idCategoria != 0)
+				sql = sql + " AND categoria.idcategoria = ? ";
+			
+			if(titolo != "" && titolo != null)
+				sql = sql + " AND inserzione.titolo LIKE ? ";
+			
+			if(prezzoMin != null)
+				sql = sql + " AND inserzione.prezzo_iniziale >= ? ";
+			
+			if(prezzoMax != null)
+				sql = sql + " AND inserzione.prezzo_iniziale <= ? AND inserzione.prezzo_aggiornato <= ?";
+			
+						
+			sql = sql + " GROUP BY idinserzione ORDER BY idinserzione DESC LIMIT ?,? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			
+			int i = 1;
+			
+			if(keyword != "" && keyword != null){
+				pstmt.setString(i,  "%" + keyword + "%");
+				i++;
+			}
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}
+			if(titolo != "" && titolo != null){
+				pstmt.setString(i, "%" + titolo + "%");
+				i++;
+			}			
+			if(prezzoMin != null){
+				pstmt.setDouble(i, prezzoMin);
+				i++;
+			}
+			if(prezzoMax != null){
+				pstmt.setDouble(i, prezzoMax);
+				i++;
+				pstmt.setDouble(i, prezzoMax);
+				i++;
 			}
 			
+			pstmt.setInt(i, limiteInf);
+			i++;
+			pstmt.setInt(i, numInserzioniPagina);
+			i++;
+				
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) { 
+						
+				listaInserzioni = new ArrayList<Inserzione>();
+	
+				Inserzione inserzione;
+				Prodotto prodotto;
+				do{
+					
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					
+					listaInserzioni.add(inserzione);
+					
+				}while(rs.next());	
+				
+			}
+			else{
+				logger.debug("Nessun risultato");
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+			connection.close();
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+	}
+	
+	
+	public int getNumeroInserzioniRicercaAvanzataProdotto(Integer idCategoria, Integer idProduttore, Integer idProdotto){
+		logger.debug("in getNumeroInserzioniRicercaAvanzataProdotto");
+		
+		Integer numeroInserzioni = 0;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, prodotto " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+				
+			if(idCategoria != 0)
+				sql = sql + " AND prodotto.categoria_idcategoria = ? ";
+			
+			if(idProduttore != 0)
+				sql = sql + "AND prodotto.produttore_idproduttore = ? ";
+			
+			if(idProdotto != 0)
+				sql = sql + "AND prodotto.idprodotto = ? ";
+			
+		
+			pstmt = connection.prepareStatement(sql);
+			
+			
+			int i = 1;
+			
+			
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}
+			if(idProduttore != 0){
+				pstmt.setInt(i, idProduttore);
+				i++;
+			}
+			if(idProdotto != 0){
+				pstmt.setInt(i, idProdotto);
+				i++;
+			}
+		
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+			
+			rs.close();
+			pstmt.close();
+			connection.close();
+						
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}	
-	return listaTitoli;
-}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return numeroInserzioni;
+	}
 
-/**
- * se keyword=null significa che non bisogna filtrare per parola chiave.
- * se categoria=0 significa che non bisogna filtrare per categoria.
- */
-public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
-	logger.debug("in ricercaInserzioni");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+
+	public List<Inserzione> ricercaAvanzataInserzioneLimitProdotti(Integer idCategoria, Integer idProduttore, Integer idProdotto, Integer limiteInf, Integer numInserzioniPagina){
+		logger.debug("in ricercaAvanzataInserzioneLimitProdotti");
 	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-
-	try {
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
 		
-		connection = ConnectionPoolTomcat.getConnection();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+		
+			String sql = "SELECT * FROM inserzione, prodotto " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"inserzione.stato = 'in asta' ";
+				
+			if(idCategoria != 0)
+				sql = sql + " AND prodotto.categoria_idcategoria = ? ";
 			
-		String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto, keyword, prodotto_has_keyword " +
-				"WHERE " +
-				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
-				"AND " +
-				"categoria.idcategoria = prodotto.categoria_idcategoria " +
-				"AND " +
-				"prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
-				"AND " +
-				"prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
-				"AND " +
-				"inserzione.stato = 'in asta' ";
-				
+			if(idProduttore != 0)
+				sql = sql + "AND prodotto.produttore_idproduttore = ? ";
+			
+			if(idProdotto != 0)
+				sql = sql + "AND prodotto.idprodotto = ? ";
+			
+			
+			sql = sql + " ORDER BY idinserzione DESC LIMIT ?,? ";
 		
-		logger.debug(keyword);
-		
-		if(!keyword.equals("") && keyword != null)
-			sql = sql + " AND keyword.keyword LIKE ? ";
-		
-		if(idCategoria != 0)
-			sql = sql + " AND categoria.idcategoria = ? ";
-		
-		sql = sql + " GROUP BY idinserzione ";
-		
-		pstmt = connection.prepareStatement(sql);
-					
-		if(!keyword.equals("") && keyword != null && idCategoria != 0){
-			System.out.println("ENTRO NEL PRIMO");
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setInt(2, idCategoria);
-		}
-		else if(!keyword.equals("") && keyword != null ) {
-			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
-			pstmt.setString(1, "%" + keyword + "%");
-		}
-		else if(idCategoria != 0){
-			System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
-			pstmt.setInt(1, idCategoria);
-		}
-		
-		
-		logger.debug("Select Query:" + pstmt.toString());
-		rs = pstmt.executeQuery();
-		
-		if (rs.next()) { 
-					
-			listaInserzioni = new ArrayList<Inserzione>();
+			pstmt = connection.prepareStatement(sql);
+			
+			
+			int i = 1;
+			
+			
+			if(idCategoria != 0){
+				pstmt.setInt(i, idCategoria);
+				i++;
+			}
+			if(idProduttore != 0){
+				pstmt.setInt(i, idProduttore);
+				i++;
+			}
+			if(idProdotto != 0){
+				pstmt.setInt(i, idProdotto);
+				i++;
+			}
 
+			pstmt.setInt(i, limiteInf);
+			i++;
+			pstmt.setInt(i, numInserzioniPagina);
+			i++;
+			
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) { 
+						
+				listaInserzioni = new ArrayList<Inserzione>();
+	
+				Inserzione inserzione;
+				Prodotto prodotto;
+				do{
+					
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					
+					listaInserzioni.add(inserzione);
+					
+				}while(rs.next());	
+				
+			}
+			else{
+				logger.debug("Nessun risultato");
+			}
+					
+			
+						
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaInserzioni;
+	}
+	
+	
+	public List<Inserzione> ricercaTopInserzioniPopolari(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
+		
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
+		Connection connection = null;
+		ResultSet rs = null;
+		PreparedStatement  pstmt = null;
+		
+		try {
+			//connection = ConnectionPoolTomcat.getConnection();
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			System.out.println("connection: " + connection.toString());
+			
+			
+			
+			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
+					"FROM inserzione, utente_registrato_osserva_inserzione " +
+					"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
+					"AND inserzione.stato = 'in asta' " +
+					"GROUP BY inserzione_idinserzione " +
+					"ORDER BY numoss DESC, inserzione.idinserzione ASC " +
+					"LIMIT " + numInserzioni;
+			
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
 			Inserzione inserzione;
-			Prodotto prodotto;
-			do{
-				
+			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+			
+			while(rs.next()){
 				inserzione = new InserzioneImpl();
-				prodotto = new ProdottoImpl();
-				
-				
+
 				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
 				inserzione.setTitolo(rs.getString("inserzione.titolo"));
 				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
 				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
 				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				inserzione.setStato(rs.getString("inserzione.stato"));
-				
-				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
-				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
-				inserzione.setProdotto(prodotto);
-				
-				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
-				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setImmagini(listaImmagini);
-									
-				
+					
+				inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+					
 				listaInserzioni.add(inserzione);
-				
-			}while(rs.next());	
-			
-		}
-		else{
-			logger.debug("Nessun risultato");
-		}
-		
-	} catch (SQLException | ClassNotFoundException | IOException e) {
-		e.printStackTrace();
-	}
-	finally{
-		try {
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.close();
-				connection.setAutoCommit(true);
+					
 			}
+					
+			connection.close();
 			
-		} catch (SQLException e) {
+		
+		} catch (ClassNotFoundException	| IOException | SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	return listaInserzioni;
-}
-
-
-public List<Inserzione> ordinaInserzioniPopolari() throws SQLException{
-	logger.debug("in ordinaInserzioniPopolari");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
-	Connection connection=null;
-	PreparedStatement pstmt = null;
-	
-	try {
 		
+		finally{
+			rs.close();
+			pstmt.close();
+			connection.close();
+		}
+		
+		return listaInserzioni;
+	}
+	
+	
+	public List<Inserzione> ordinaInserzioniPopolari() throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in ordinaInserzioniPopolari");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
+		Connection connection;
+		
+		//connection = ConnectionPoolTomcat.getConnection();
+			
 		connection = ConnectionPoolTomcat.getConnection();
 		
+		PreparedStatement  pstmt;
+
 		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
 				"FROM inserzione, utente_registrato_osserva_inserzione " +
 				"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
@@ -542,7 +1600,6 @@ public List<Inserzione> ordinaInserzioniPopolari() throws SQLException{
 		
 		
 		pstmt = connection.prepareStatement(sql);
-	
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()){
@@ -550,7 +1607,7 @@ public List<Inserzione> ordinaInserzioniPopolari() throws SQLException{
 			
 			Inserzione inserzione;
 			inserzione = new InserzioneImpl();
-	
+
 			inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
 			inserzione.setTitolo(rs.getString("inserzione.titolo"));
 			inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
@@ -562,925 +1619,662 @@ public List<Inserzione> ordinaInserzioniPopolari() throws SQLException{
 			listaInserzioni.add(inserzione);
 				
 		}
-				
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	
-	finally{
-		
-		if(pstmt != null)
-			pstmt.close();
-     	if(connection != null){
-			connection.close();
-		}
-		
-	}
-	
-	return listaInserzioni;
-}
 
-
-public List<Inserzione> ricercaTopInserzioniPopolari(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
-	
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
-	Connection connection = null;
-	ResultSet rs = null;
-	PreparedStatement  pstmt = null;
-	
-	try {
-		//connection = DatabaeUtil.getConnection();
 		
-		connection = ConnectionPoolTomcat.getConnection();
-		
-		System.out.println("connection: " + connection.toString());
-		
-		
-		
-		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
-				"FROM inserzione, utente_registrato_osserva_inserzione " +
-				"WHERE (inserzione.idinserzione = utente_registrato_osserva_inserzione.inserzione_idinserzione) " +
-				"AND inserzione.stato = 'in asta' " +
-				"GROUP BY inserzione_idinserzione " +
-				"ORDER BY numoss DESC, inserzione.idinserzione ASC " +
-				"LIMIT " + numInserzioni;
-		
-		pstmt = connection.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		
-		Inserzione inserzione;
-		ImmagineDao dao = new ImmagineDaoMysqlJdbc();
-		
-		while(rs.next()){
-			inserzione = new InserzioneImpl();
-
-			inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-			inserzione.setTitolo(rs.getString("inserzione.titolo"));
-			inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-			inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-			inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				
-			inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
-				
-			listaInserzioni.add(inserzione);
-				
-		}
-				
+		rs.close();
+		pstmt.close();
 		connection.close();
 		
-	
-	} catch (ClassNotFoundException	| IOException | SQLException e) {
-		e.printStackTrace();
+		return listaInserzioni;
 	}
 	
-	finally{
-		if(rs != null)
-			rs.close();
-		if(pstmt != null)
-			pstmt.close();
-		if(connection != null){
-			connection.close();
-		}
-		
-	}
 	
-	return listaInserzioni;
-}
-	
-	
-public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
-	logger.debug("in ricercaTopInserzioniChiusura");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
-	Connection connection = null;
-	ResultSet rs = null;
-	PreparedStatement  pstmt = null;
-	try {
-		connection = ConnectionPoolTomcat.getConnection();
-		
-		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
-				"WHERE (( DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0 ) OR ( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 )) " +
-				"ORDER BY inserzione.data_scadenza ASC " +
-				"LIMIT " + numInserzioni;
-		
-		pstmt = connection.prepareStatement(sql);
-		logger.debug("Select Query:" + pstmt.toString());
-		
-		rs = pstmt.executeQuery();
-	
-		Inserzione inserzione;
-		ImmagineDao dao = new ImmagineDaoMysqlJdbc();
-
-		while(rs.next()){
-				inserzione = new InserzioneImpl();
-				
-				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setTitolo(rs.getString("inserzione.titolo"));
-				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+	public List<Inserzione> ricercaTopInserzioniChiusura(int numInserzioni) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in ricercaTopInserzioniChiusura");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
+		Connection connection = null;
+		ResultSet rs = null;
+		PreparedStatement  pstmt = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
 			
-				inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
+					"WHERE (( DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0 ) OR ( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 )) " +
+					"ORDER BY inserzione.data_scadenza ASC " +
+					"LIMIT " + numInserzioni;
+			
+			pstmt = connection.prepareStatement(sql);
+			logger.debug("Select Query:" + pstmt.toString());
+			
+			rs = pstmt.executeQuery();
+		
+			Inserzione inserzione;
+			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+
+			while(rs.next()){
+					inserzione = new InserzioneImpl();
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
 				
-				listaInserzioni.add(inserzione);	
-				
+					inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
+					
+					listaInserzioni.add(inserzione);	
+					
+			}
+			
+			logger.debug("inserzioni in scadenza caricate");
+		
+		} catch (ClassNotFoundException	| IOException | SQLException e) {
+			e.printStackTrace();
 		}
 		
-		logger.debug("inserzioni in scadenza caricate");
-	
-	} catch (ClassNotFoundException	| IOException | SQLException e) {
-		e.printStackTrace();
-	}
-	
-	finally{
-		if(rs != null)
+		finally{
 			rs.close();
-		if(pstmt != null)
 			pstmt.close();
-		if(connection != null){
 			connection.close();
 		}
+		return listaInserzioni;
 		
 	}
-	return listaInserzioni;
-	
-}
 	
 	
-public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione){
-	logger.debug("in updateStatoInserzione");
-	Integer updatedRows = -1;
+	public Integer getNumeroInserzioniPerTitolo(String titoloInserzione) {
+		logger.debug("in getNumeroInserzioniCercate");
+		
+		Integer numeroInserzioni = 0;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
 	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	try {			
 		
-		connection = ConnectionPoolTomcat.getConnection();
+		try {
 		
-		connection.setAutoCommit(false);
-		
-		
-		String sql = "UPDATE inserzione SET stato = ? " +
-				"WHERE idinserzione = ? ";
-		
-		pstmt = connection.prepareStatement(sql);
-		
-		pstmt.setString(1, statoInserzione);
-		pstmt.setInt(2, idInserzione);
-		
-		logger.debug("Update Query:" + pstmt.toString());
-		updatedRows = pstmt.executeUpdate();
-		
-		connection.commit();
-		logger.info("Inserzione Aggiornata");
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	finally {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM inserzione " +
+					"WHERE titolo LIKE ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, "%" + titoloInserzione + "%");
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		finally{
 			try {
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-				
-				logger.debug("Connection chiusa");
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}	
+		return numeroInserzioni;
+			
 	}
-	return updatedRows;
-}
-
-
-public Integer insertInserzione(Inserzione inserzione) throws SQLException{
-	logger.info("Inserimento Inserzione");
-	Integer inserzioneIdKey = -1;
-	Connection connection = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	try {
-		connection = ConnectionPoolTomcat.getConnection();
+	
+	public List<Inserzione> ricercaLimitInserzioniPerTitolo(String titoloInserzione, Integer limiteInf, Integer numInserzioni){
+		logger.debug("in ricercaInserzioniPerTitolo");
+		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>(); 
+		Inserzione inserzione;
+		Prodotto prodotto;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
 		
-		connection.setAutoCommit(false);
+			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+					"WHERE " +
+					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
+					"AND " +
+					"categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND titolo LIKE ? " +
+					"LIMIT ?, ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, "%" + titoloInserzione + "%");
+			pstmt.setInt(2, limiteInf);
+			pstmt.setInt(3, numInserzioni);
+			logger.debug("Select Query:" + pstmt.toString());
+			
+			rs = pstmt.executeQuery();
 		
-							
-		String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+			while(rs.next()){
+				
+					inserzione = new InserzioneImpl();
+					prodotto = new ProdottoImpl();
 					
-		logger.debug("Inseriamo l' inserzione");
-		pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		
-		pstmt.setString(1, inserzione.getTitolo());
-		pstmt.setString(2, inserzione.getDescrizione());
-		pstmt.setDouble(3, inserzione.getPrezzoIniziale());
-		pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
-		pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
-		pstmt.setString(6, inserzione.getStato());
-		//pstmt.setInt(7, inserzione.getIdAcquirente()); l'acquirente viene impostato automaticamente a null nel db
-		pstmt.setInt(7, inserzione.getIdVenditore());
-		pstmt.setInt(8, inserzione.getIdProdotto());
-		logger.debug("Insert Query: " + pstmt.toString());
-		
-		int insertRows = pstmt.executeUpdate();
-		logger.debug("righe inserite: "+ insertRows);
-		
-		if(insertRows == 1){
-			rs = pstmt.getGeneratedKeys();
-			if(rs.next()){
-				inserzioneIdKey = rs.getInt(1);
+					UtenteRegistratoDao daoU = new UtenteRegistratoDaoMysqlJdbc();
+					Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+					UtenteRegistrato acquirente = null;
+					if(idAcquirente != 0){ //lo 0 equivale al null
+						 acquirente = daoU.getUtenteRegistratoById(idAcquirente); 
+					}
+					logger.debug("idAcquirente: " + idAcquirente);
+					
+					int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+					UtenteRegistrato venditore = daoU.getUtenteRegistratoById(idVenditore);
+					
+					
+					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setTitolo(rs.getString("inserzione.titolo"));
+					inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+					inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+					inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+					inserzione.setStato(rs.getString("inserzione.stato"));
+					
+					inserzione.setIdVenditore(idVenditore);
+					inserzione.setVenditore(venditore);
+					inserzione.setIdAcquirente(idAcquirente);
+					inserzione.setAcquirente(acquirente);
+					
+					
+					ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+					prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
+					inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+					inserzione.setProdotto(prodotto);
+					
+					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
+					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
+					inserzione.setImmagini(listaImmagini);
+										
+					listaInserzioni.add(inserzione);
+					
+				}
+				
+			
+		} catch (SQLException | ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
-		inserzione.setIdInserzione(inserzioneIdKey);
-		logger.debug("id dell' inserzione è: " + inserzioneIdKey);
-		
-		connection.commit();
-							
-		Integer immagineIdKey = -1;
-		
-		//effettuare controllo per vedere se la lista immagine è vuota
-		if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
-		
-			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
-		//	Immagine immagine = new ImmagineImpl();
+		return listaInserzioni;
+				
+	}
+	
+	
+	
+	public Integer insertInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
+		logger.info("Inserimento Inserzione");
+		Integer inserzioneIdKey = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+						
+			String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+						
+			logger.debug("Inseriamo l' inserzione");
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, inserzione.getTitolo());
+			pstmt.setString(2, inserzione.getDescrizione());
+			pstmt.setDouble(3, inserzione.getPrezzoIniziale());
+			pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
+			pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
+			pstmt.setString(6, inserzione.getStato());
+			//pstmt.setInt(7, inserzione.getIdAcquirente()); l'acquirente viene impostato automaticamente a null nel db
+			pstmt.setInt(7, inserzione.getIdVenditore());
+			pstmt.setInt(8, inserzione.getIdProdotto());
+			logger.debug("Insert Query: " + pstmt.toString());
 			
-			for(int i=0; i<inserzione.getImmagini().size(); i++){
+			int insertRows = pstmt.executeUpdate();
+			logger.debug("righe inserite: "+ insertRows);
+			
+			if(insertRows == 1){
+				rs = pstmt.getGeneratedKeys();
+				if(rs.next()){
+					inserzioneIdKey = rs.getInt(1);
+				}
+			}
+			inserzione.setIdInserzione(inserzioneIdKey);
+			logger.debug("id dell' inserzione è: " + inserzioneIdKey);
+			
+			connection.commit();
+								
+			Integer immagineIdKey = -1;
+			
+			//effettuare controllo per vedere se la lista immagine è vuota
+			if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
+			
+				ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+			//	Immagine immagine = new ImmagineImpl();
 				
-				logger.debug("nella lista immagini");
+				for(int i=0; i<inserzione.getImmagini().size(); i++){
+					
+					logger.debug("nella lista immagini");
+					
+				//	immagine = inserzione.getImmagini().get(i); //prendo l'immagine. NB se salvo l'immagine in una variabile immagine, e faccio delle modifiche, dove saranno apportate tali modifiche? solo sull'immagine o sull'arrayList?
+					
+				//	immagine.setIdInserzione(inserzioneIdKey); //setto l'idinserzione relativo all' immagine
+					
+					inserzione.getImmagini().get(i).setIdInserzione(inserzioneIdKey); 
+					
+					logger.debug("idinserzione nell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione());
+					logger.debug(inserzione.getImmagini().get(i).getFoto());
+					
+					System.out.println("IN INSERIMENTO IMMAGINE: " + inserzione.getImmagini().get(i).getFoto());
+					
+					immagineIdKey = dao.insertImmagine(inserzione.getImmagini().get(i)); //inserisco l'immagine!!!
+					
+					inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
+					
+					logger.debug("id dell' immagine è: " + immagineIdKey);
+					
+					System.out.println("id dell' immagine è: " + immagineIdKey);
+					
+				}
 				
-			//	immagine = inserzione.getImmagini().get(i); //prendo l'immagine. NB se salvo l'immagine in una variabile immagine, e faccio delle modifiche, dove saranno apportate tali modifiche? solo sull'immagine o sull'arrayList?
-				
-			//	immagine.setIdInserzione(inserzioneIdKey); //setto l'idinserzione relativo all' immagine
-				
-				inserzione.getImmagini().get(i).setIdInserzione(inserzioneIdKey); 
-				
-				logger.debug("idinserzione nell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione());
-				logger.debug(inserzione.getImmagini().get(i).getFoto());
-				
-				System.out.println("IN INSERIMENTO IMMAGINE: " + inserzione.getImmagini().get(i).getFoto());
-				
-				immagineIdKey = dao.insertImmagine(inserzione.getImmagini().get(i)); //inserisco l'immagine!!!
-				
-				inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
-				
-				logger.debug("id dell' immagine è: " + immagineIdKey);
-				
-				System.out.println("id dell' immagine è: " + immagineIdKey);
+				connection.commit();
 				
 			}
+						
+			logger.debug("Inserimento inserzione (" + inserzioneIdKey + ", " + inserzione.getTitolo() + ")");
+		
+			
+		}	
+		finally {
+
+			if (connection != null) {
+
+				try {
+					if(rs != null)
+						rs.close();
+					
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+
+					e.printStackTrace();
+				}
+
+			}
+		}
+	
+		return inserzioneIdKey;
+	}
+	
+	
+	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in updateInserzione");
+		logger.info("Aggiornamento Inserzione: (" + inserzione.getIdInserzione()+ ", " + inserzione.getTitolo() + ", " + inserzione.getDescrizione() +")");
+		Integer updatedRows = -1;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			connection.setAutoCommit(false);
+			
+			String sql = "DELETE FROM immagine WHERE (immagine.inserzione_idinserzione = ?) ";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, inserzione.getIdInserzione());
+			logger.debug("Query di cancellazione" + pstmt.toString());
+			int deletedRows = pstmt.executeUpdate();
+			logger.debug("righe cancellate" + deletedRows);
 			
 			connection.commit();
 			
-		}
+			//inseriamo le immagine aggiornate
+			if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
+				
+				Integer immagineIdKey = -1;
+				ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+				Immagine immagine = new ImmagineImpl();
+				
+				for(int i=0; i<inserzione.getImmagini().size(); i++){
+					System.out.println("id inserzione dell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione() );
+					if(inserzione.getImmagini().get(i).getIdInserzione() == 0){ //se l'id dell'inserzione relativa all'immagine è uguale a 0(perchè essendo un int non può essere null) dobbiamo settarla con l'id dell'inserzione aggiornata
+						inserzione.getImmagini().get(i).setIdInserzione(inserzione.getIdInserzione()); //setto l'idinserzione relativo all' immagine
+						logger.debug("Ho settato l'idimmagine: " + inserzione.getIdInserzione() + " nella lista delle immagini dell'inserzione");
+					}
+					immagine = inserzione.getImmagini().get(i);
 					
-		logger.debug("Inserimento inserzione (" + inserzioneIdKey + ", " + inserzione.getTitolo() + ")");
-
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	finally {
-
-		if(rs != null)
-			rs.close();
-		if(pstmt != null)
-			pstmt.close();
-		if(connection != null){
-			connection.close();
-			connection.setAutoCommit(true);
-		}
-				
-		logger.debug("Connection chiusa");
-
-	}
-
-	return inserzioneIdKey;
-}	
-	
-public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
-	logger.debug("in updateInserzione");
-	logger.info("Aggiornamento Inserzione: (" + inserzione.getIdInserzione()+ ", " + inserzione.getTitolo() + ", " + inserzione.getDescrizione() +")");
-	Integer updatedRows = -1;
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	try {
-		connection = ConnectionPoolTomcat.getConnection();
-		
-		connection.setAutoCommit(false);
-		
-		String sql = "DELETE FROM immagine WHERE (immagine.inserzione_idinserzione = ?) ";
-	
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, inserzione.getIdInserzione());
-		logger.debug("Query di cancellazione" + pstmt.toString());
-		int deletedRows = pstmt.executeUpdate();
-		logger.debug("righe cancellate" + deletedRows);
-		
-		connection.commit();
-		
-		//inseriamo le immagine aggiornate
-		if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
-			
-			Integer immagineIdKey = -1;
-			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
-			Immagine immagine = new ImmagineImpl();
-			
-			for(int i=0; i<inserzione.getImmagini().size(); i++){
-				System.out.println("id inserzione dell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione() );
-				if(inserzione.getImmagini().get(i).getIdInserzione() == 0){ //se l'id dell'inserzione relativa all'immagine è uguale a 0(perchè essendo un int non può essere null) dobbiamo settarla con l'id dell'inserzione aggiornata
-					inserzione.getImmagini().get(i).setIdInserzione(inserzione.getIdInserzione()); //setto l'idinserzione relativo all' immagine
-					logger.debug("Ho settato l'idimmagine: " + inserzione.getIdInserzione() + " nella lista delle immagini dell'inserzione");
-				}
-				immagine = inserzione.getImmagini().get(i);
-				
-				immagineIdKey = dao.insertImmagine(immagine);
-				logger.debug("id dell' immagine è: " + immagineIdKey);
-				
-				inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
-				
-			}	
-		}
-		
-		sql = "UPDATE inserzione SET titolo = ?, descrizione = ?, prezzo_iniziale = ?, prezzo_aggiornato = ?, data_scadenza = ?, stato = ?, venditore_utente_registrato_idutente = ?, prodotto_idprodotto = ? " +
-				"WHERE idinserzione = ? ";
-			
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, inserzione.getTitolo());
-		pstmt.setString(2, inserzione.getDescrizione());
-		pstmt.setDouble(3, inserzione.getPrezzoIniziale());
-		pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
-		pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
-		pstmt.setString(6, inserzione.getStato());
-		//pstmt.setInt(7, inserzione.getIdAcquirente()); non mettiamo l'id utente perchè deve essere inserito come null, non come 0, altrimenti il db da errore perchè 0 non corrisponde all'id di nessun utente
-		pstmt.setInt(7, inserzione.getIdVenditore());
-		pstmt.setInt(8, inserzione.getIdProdotto());
-		pstmt.setInt(9, inserzione.getIdInserzione());
-		logger.debug("Update Query:" + pstmt.toString());
-		updatedRows = pstmt.executeUpdate();
-	
-		
-		connection.commit();
-		logger.info("Inserzione Aggiornata");
-	
-	}
-
-	finally {
-
-		
-		if(pstmt != null)
-			pstmt.close();
-		if(connection != null){
-			connection.close();
-			connection.setAutoCommit(true);
-		}
-		
-	}
-	return updatedRows;
-}
-
-
-
-public List<Inserzione> getLimitAsteInCorso(Integer limiteInf, Integer numInserzioniPerPagina) {
-	logger.debug("in getLimitAsteInCorso");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
-	Inserzione inserzione;
-	Prodotto prodotto;
-	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-	try {
-		connection = ConnectionPoolTomcat.getConnection();
-								
-		String sql = "SELECT * FROM inserzione, categoria, prodotto " +
-				"WHERE " +
-				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
-				"AND " +
-				"categoria.idcategoria = prodotto.categoria_idcategoria " +
-				"AND " +
-				"inserzione.stato = 'in asta' " +
-				"LIMIT ?, ?";
-
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, limiteInf);
-		pstmt.setInt(2, numInserzioniPerPagina);
-		logger.debug("Select Query:" + pstmt.toString());
-		rs = pstmt.executeQuery();
-			
-		while(rs.next()){	
-							
-				inserzione = new InserzioneImpl();
-				prodotto = new ProdottoImpl();
-				
-				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
-				UtenteRegistrato acquirente = null;
-				if(idAcquirente != 0){ //lo 0 equivale al null
-					 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
-				}
-				logger.debug("idAcquirente: " + idAcquirente);
-				
-				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
-				UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
-				
-				
-				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setTitolo(rs.getString("inserzione.titolo"));
-				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				inserzione.setStato(rs.getString("inserzione.stato"));
-				
-				inserzione.setIdVenditore(idVenditore);
-				inserzione.setVenditore(venditore);
-				inserzione.setIdAcquirente(idAcquirente);
-				inserzione.setAcquirente(acquirente);
-				
-				
-				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
-				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
-				inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
-				inserzione.setProdotto(prodotto);
-				
-				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
-				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setImmagini(listaImmagini);
-									
-				listaInserzioni.add(inserzione);
-				
+					immagineIdKey = dao.insertImmagine(immagine);
+					logger.debug("id dell' immagine è: " + immagineIdKey);
+					
+					inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
+					
+				}	
 			}
+			
+			sql = "UPDATE inserzione SET titolo = ?, descrizione = ?, prezzo_iniziale = ?, prezzo_aggiornato = ?, data_scadenza = ?, stato = ?, venditore_utente_registrato_idutente = ?, prodotto_idprodotto = ? " +
+					"WHERE idinserzione = ? ";
+				
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, inserzione.getTitolo());
+			pstmt.setString(2, inserzione.getDescrizione());
+			pstmt.setDouble(3, inserzione.getPrezzoIniziale());
+			pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
+			pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
+			pstmt.setString(6, inserzione.getStato());
+			//pstmt.setInt(7, inserzione.getIdAcquirente()); non mettiamo l'id utente perchè deve essere inserito come null, non come 0, altrimenti il db da errore perchè 0 non rissponde all'id di nessun utente
+			pstmt.setInt(7, inserzione.getIdVenditore());
+			pstmt.setInt(8, inserzione.getIdProdotto());
+			pstmt.setInt(9, inserzione.getIdInserzione());
+			logger.debug("Update Query:" + pstmt.toString());
+			updatedRows = pstmt.executeUpdate();
 		
-	} catch (SQLException | ClassNotFoundException | IOException e) {
-		e.printStackTrace();
-	}
-	finally{
-		try {
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.close();
-				connection.setAutoCommit(true);
+			
+			connection.commit();
+			logger.info("Inserzione Aggiornata");
+		
+		}
+	
+		finally {
+
+			if (connection != null){
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+
 			}
+		}
+		return updatedRows;
+	}
+
+	public Integer updateStatoInserzione(String statoInserzione, Integer idInserzione){
+		logger.debug("in updateStatoInserzione");
+		Integer updatedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		try {			
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "UPDATE inserzione SET stato = ? " +
+					"WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setString(1, statoInserzione);
+			pstmt.setInt(2, idInserzione);
+			
+			logger.debug("Update Query:" + pstmt.toString());
+			updatedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			logger.info("Inserzione Aggiornata");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	return listaInserzioni;
-	
-}
+		finally {
 
+			if (connection != null) {
 
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
 
-
-public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPagina) throws SQLException{
-	logger.debug("in getLimitInserzioni");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
-	Inserzione inserzione;
-	Prodotto prodotto;
-	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-	
-	try {
-		
-		connection = ConnectionPoolTomcat.getConnection();
-		
-		String sql = "SELECT * FROM inserzione, categoria, prodotto " +
-				"WHERE " +
-				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
-				"AND " +
-				"categoria.idcategoria = prodotto.categoria_idcategoria " +
-				"LIMIT ?, ?";
-
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, limiteInf);
-		pstmt.setInt(2, numInserzioniPagina);
-		logger.debug("Select Query:" + pstmt.toString());
-		rs = pstmt.executeQuery();
-							
-			
-		while(rs.next()){	
-							
-				inserzione = new InserzioneImpl();
-				prodotto = new ProdottoImpl();
-				
-				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
-				UtenteRegistrato acquirente = null;
-				if(idAcquirente != 0){ //lo 0 equivale al null
-					 acquirente = dao.getUtenteRegistratoById(idAcquirente); 
+					e.printStackTrace();
 				}
-				logger.debug("idAcquirente: " + idAcquirente);
-				
-				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
-				UtenteRegistrato venditore = dao.getUtenteRegistratoById(idVenditore);
-				
-				
-				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setTitolo(rs.getString("inserzione.titolo"));
-				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				inserzione.setStato(rs.getString("inserzione.stato"));
-				
-				inserzione.setIdVenditore(idVenditore);
-				inserzione.setVenditore(venditore);
-				inserzione.setIdAcquirente(idAcquirente);
-				inserzione.setAcquirente(acquirente);
-				
-				
-				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
-				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
-				inserzione.setIdProdotto(rs.getInt("prodotto.idprodotto"));
-				inserzione.setProdotto(prodotto);
-				
-				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
-				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setImmagini(listaImmagini);
-									
-				listaInserzioni.add(inserzione);
-				
+
 			}
-				
-		
-	} catch (SQLException | ClassNotFoundException | IOException e) {
-		e.printStackTrace();
-	}
-	finally{
-		
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.close();
-			}
-
-	}
-	return listaInserzioni;
-}
-
-
-
-public List<Inserzione> getLimitInserzioniChiusura(Integer limiteInf, Integer numInserzioniPerPagina){
-	logger.debug("in ricercaTopInserzioniChiusura");
-	
-	List<Inserzione> listaInserzioni = null; 
-	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-	try{
-		connection = ConnectionPoolTomcat.getConnection();
-				
-		String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
-				"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
-				"OR " +
-				"( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 ) " +
-				"ORDER BY inserzione.data_scadenza ASC " +
-				"LIMIT ?, ?";
-		
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, limiteInf);
-		pstmt.setInt(2, numInserzioniPerPagina);
-		logger.debug("Select Query:" + pstmt.toString());
-		
-		rs = pstmt.executeQuery();
-	
-		if(rs.next()){
-			
-			listaInserzioni = new ArrayList<Inserzione>();
-			
-			Inserzione inserzione;
-			ImmagineDao dao = new ImmagineDaoMysqlJdbc();
-			do{
-				inserzione = new InserzioneImpl();
-				
-				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setTitolo(rs.getString("inserzione.titolo"));
-				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				
-				inserzione.setImmagini(dao.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"))); 
-								
-				listaInserzioni.add(inserzione);	
-				
-			}while(rs.next());
-		
 		}
+		return updatedRows;
+	}
+	
+	public Integer updateRipubblicaInserzione(Double prezzoIniziale, Date dataScadenzaAsta, Integer idInserzione){
+		logger.debug("in updateRipubblicaInserzione");
+		Integer updatedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+			
+		try {			
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "UPDATE inserzione SET prezzo_iniziale = ?, data_scadenza = ?, stato = 'in asta' " +
+					"WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setDouble(1, prezzoIniziale);
+			pstmt.setTimestamp(2, Utility.convertitoreDataUtilToTimestamp(dataScadenzaAsta));
+			pstmt.setInt(3, idInserzione);
+			
+			logger.debug("Update Query:" + pstmt.toString());
+			updatedRows = pstmt.executeUpdate();
+			
+			
+			logger.info("Inserzione Aggiornata");
 						
-	} catch (SQLException | ClassNotFoundException | IOException e) {
-		e.printStackTrace();
-	}
-	finally{
-		try {
-			if(rs != null)
-				rs.close();
-			if(pstmt != null)
-				pstmt.close();
-			if(connection != null){
-				connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		finally {
+
+			if (connection != null) {
+
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+
 			}
+		}
+		return updatedRows;
+	}
+	
+	
+	public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double prezzoAggiornato, Integer idInserzione){
+		logger.debug("in updateAcquirenteInserzione");
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		Integer updatedRows = -1;
+		
+		try {			
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "UPDATE inserzione SET acquirente_utente_registrato_idutente = ?, prezzo_aggiornato = ? " +
+					"WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, idAcquirente);
+			pstmt.setDouble(2, prezzoAggiornato);
+			pstmt.setInt(3, idInserzione);
+			
+			logger.debug("Update Query:" + pstmt.toString());
+			updatedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			
+			logger.info("Inserzione Aggiornata");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+	
+		
+		return updatedRows;
 	}
-	logger.debug("inserzioni in scadenza caricate");
-	
-	return listaInserzioni;
 	
 	
-}
-
-
-public Integer updateAcquirenteOffertaInserzione(Integer idAcquirente, Double prezzoAggiornato, Integer idInserzione){
-	logger.debug("in updateAcquirenteInserzione");
-	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	Integer updatedRows = -1;
-	
-	try {			
-		connection = ConnectionPoolTomcat.getConnection();
-		connection.setAutoCommit(false);
+	public Integer deleteInserzione(Integer idInserzione){
+		logger.debug("In delete Inserzione");
 		
-		String sql = "UPDATE inserzione SET acquirente_utente_registrato_idutente = ?, prezzo_aggiornato = ? " +
-				"WHERE idinserzione = ? ";
+		Integer deletedRows = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+			
+	/*
+			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+			UtenteRegistrato venditore = dao.getUtenteRegistratoById(inserzione.getIdVenditore());
+						
+			
+	     	if( (inserzione.getIdAcquirente() == null && !venditore.isFlagAbilitato()) || 
+					(inserzione.getIdAcquirente() == null) &&){
+			
+	*/		
+			String sql = "DELETE FROM immagine WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Immagini cancellate: " + deletedRows);
+			
+			sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Offerte cancellate: " + deletedRows);
+			
+			//cancellare nella tabella utente_osserva_inserzione
+			sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Osservazioni cancellate: " + deletedRows);
+						
+			sql = "DELETE FROM inserzione WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			
+			logger.debug("inserzione cancellata");
 		
-		pstmt = connection.prepareStatement(sql);
-		
-		pstmt.setInt(1, idAcquirente);
-		pstmt.setDouble(2, prezzoAggiornato);
-		pstmt.setInt(3, idInserzione);
-		
-		logger.debug("Update Query:" + pstmt.toString());
-		updatedRows = pstmt.executeUpdate();
-		
-		connection.commit();
-		
-		logger.info("Inserzione Aggiornata");
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	finally {
-		if (connection!=null) {
+		} catch (SQLException e) {
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
+				connection.rollback();
+				logger.debug("Roolback in cancellazione inserzione");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
-			
 		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return deletedRows;
 	}
 
-	
-	return updatedRows;
-}
 
-public Integer getNumeroInserzioniCercate(String keyword, Integer idCategoria){
-	logger.debug("in getNumeroInserzioniCercate");
-	
-	Integer numeroInserzioni = 0;
-	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-
-	try {
-	
-		connection = ConnectionPoolTomcat.getConnection();
+	public Integer deleteInserzioneOsservata(Integer idInserzione, Integer idUtente){
+		logger.debug("In deleteInserzioneOsservata");
 		
-		String condizioneKeyword = "";
-		if(keyword != "" && keyword != null)
-			condizioneKeyword = ", keyword, prodotto_has_keyword ";
-		
-		
-		String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, categoria, prodotto " + condizioneKeyword +
-				"WHERE " +
-				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
-				"AND " +
-				"categoria.idcategoria = prodotto.categoria_idcategoria " +
-				"AND " +
-				"inserzione.stato = 'in asta' ";
-					
-		
-		logger.debug(keyword);
-		
-		if(keyword != "" && keyword != null)
-			sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
-					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
-					"AND keyword.keyword LIKE ? ";
-		
-		if(idCategoria != 0)
-			sql = sql + " AND categoria.idcategoria = ? ";
-					
-		pstmt = connection.prepareStatement(sql);
-					
-/*		if(keyword != "" && keyword != null && idCategoria != 0){
-			System.out.println("ENTRO NEL PRIMO");
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setInt(2, idCategoria);
-		}
-		else if(keyword != "" && keyword != null ) {
-			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
-			pstmt.setString(1, "%" + keyword + "%");
-		}
-		else if(idCategoria != 0){
-			System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
-			pstmt.setInt(1, idCategoria);
-		}
-*/		
-		int i = 1;
-		
-		if(keyword != "" && keyword != null){
-			pstmt.setString(i,  "%" + keyword + "%");
-			i++;
-		}
-		if(idCategoria != 0){
-			pstmt.setInt(i, idCategoria);
-			i++;
-		}	
-		
-		logger.debug("Select Query:" + pstmt.toString());
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
-			numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
-		}
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	finally{
+		Integer deletedRows = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
 		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
+			connection = ConnectionPoolTomcat.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? " +
+					"AND utente_registrato_idutente = ? ";
+			
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, idInserzione);
+			pstmt.setInt(2, idUtente);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			
 		} catch (SQLException e) {
-			e.printStackTrace();
+				e.printStackTrace();
+				try {
+					connection.rollback();
+					logger.debug("Roolback in cancellazione inserzione");
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}				
 		}
-	}	
-		return numeroInserzioni;
-		
-}
+		finally{
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}		
+			
+		return deletedRows;
+	}
 
-
-/**
- * se keyword=null significa che non bisogna filtrare per parola chiave.
- * se categoria=0 significa che non bisogna filtrare per categoria.
- */
-public List<Inserzione> ricercaLimitInserzioni(String keyword, Integer idCategoria, Integer limiteInf, Integer numInserzioniPagina){
-	logger.debug("in ricercaLimitInserzioni");
-	List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
 	
-	Connection connection = null;
-	PreparedStatement  pstmt = null;
-	ResultSet rs = null;
-
-	try {
-		
-		connection = ConnectionPoolTomcat.getConnection();
-		
-		
-		//AGGIUNGIAMO LA CONDIZIONE KEYWORD SOLO SE BISOGNA EFFETTUARE LA RICERCA ANCHE SU KEYWORD.
-		String condizioneKeyword = "";
-		if(keyword != "" && keyword != null)
-			condizioneKeyword = ", keyword, prodotto_has_keyword ";
-		
-		
-		String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto " + condizioneKeyword +
-				"WHERE " +
-				"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
-				"AND " +
-				"categoria.idcategoria = prodotto.categoria_idcategoria " +
-				"AND " +
-				"inserzione.stato = 'in asta' ";
-			
-		
-		logger.debug(keyword);
-		
-		if(keyword != "" && keyword != null)
-			sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
-					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
-					"AND keyword.keyword LIKE ? ";
-		
-		if(idCategoria != 0)
-			sql = sql + " AND categoria.idcategoria = ? ";
-		
-		sql = sql + " GROUP BY idinserzione ORDER BY idinserzione DESC LIMIT ?,? ";
-		
-		pstmt = connection.prepareStatement(sql);
-					
-/*		if(keyword != "" && keyword != null && idCategoria != 0){
-			System.out.println("ENTRO NEL PRIMO");
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setInt(2, idCategoria);
-			pstmt.setInt(3, limiteInf);
-			pstmt.setInt(4, numInserzioniPagina);
-		}
-		else if (keyword != "" && keyword != null) {
-			System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setInt(2, limiteInf);
-			pstmt.setInt(3, numInserzioniPagina);
-		}
-		else if(idCategoria != 0){
-			System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
-			pstmt.setInt(1, idCategoria);
-			pstmt.setInt(2, limiteInf);
-			pstmt.setInt(3, numInserzioniPagina);
-		}
-		else if((keyword == "" || keyword == null) && idCategoria == 0){
-			pstmt.setInt(1, limiteInf);
-			pstmt.setInt(2, numInserzioniPagina);
-		}
-*/
-		
-		
-		int i = 1;
-		
-		if(keyword != "" && keyword != null){
-			pstmt.setString(i,  "%" + keyword + "%");
-			i++;
-		}
-		if(idCategoria != 0){
-			pstmt.setInt(i, idCategoria);
-			i++;
-		}			
-		
-		pstmt.setInt(i, limiteInf);
-		i++;
-		pstmt.setInt(i, numInserzioniPagina);
-		i++;
-		
-		
-		logger.debug("Select Query:" + pstmt.toString());
-		rs = pstmt.executeQuery();
-		
-		if (rs.next()) { 
-					
-			listaInserzioni = new ArrayList<Inserzione>();
-
-			Inserzione inserzione;
-			Prodotto prodotto;
-			do{
-				
-				inserzione = new InserzioneImpl();
-				prodotto = new ProdottoImpl();
-				
-				
-				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setTitolo(rs.getString("inserzione.titolo"));
-				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
-				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
-				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
-				inserzione.setStato(rs.getString("inserzione.stato"));
-				
-				ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
-				prodotto = daoP.getProdottoById(rs.getInt("prodotto.idprodotto"));
-				inserzione.setProdotto(prodotto);
-				
-				ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
-				List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
-				inserzione.setImmagini(listaImmagini);
-									
-				
-				listaInserzioni.add(inserzione);
-				
-			}while(rs.next());	
-			
-		}
-		else{
-			logger.debug("Nessun risultato");
-		}
-		
-		
-	} catch (SQLException | ClassNotFoundException | IOException e) {
-		e.printStackTrace();
-	}
-	finally{
-		try {
-			rs.close();
-			pstmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	return listaInserzioni;
 }
 
-
-
-}

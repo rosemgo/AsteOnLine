@@ -68,6 +68,9 @@ public class ContextInitializer implements ServletContextListener {
         System.out.println("Stampo il realpath: " + context.getRealPath(""));
         PropertyConfigurator.configure(fullPath);
         
+        /*setto la proprietà rootPath in modo da poterla usare sempre nel sistema, e mi da il percorso in cui Tomcat deploya la mia applicazione
+         * in modod tale da poterla usare nel log4j.properties per la creazione del file di log*/
+       
         System.setProperty("rootPath", context.getRealPath("/"));
         System.out.println("Stampo il realpath: " + context.getRealPath("/"));
         

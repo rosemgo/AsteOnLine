@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.OffertaDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
@@ -23,6 +24,8 @@ import it.unisannio.sweng.rosariogoglia.model.Offerta;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 import it.unisannio.sweng.rosariogoglia.modelImpl.OffertaImpl;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
+import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 
 public class OffertaDaoMysqlJdbc implements OffertaDao{
 
@@ -117,21 +120,16 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			}				
 		}
 		finally{
-			
-			try {
-				
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
-			
 		}	
 		logger.debug("offerta cancellata");
 		return deletedRow;
@@ -155,7 +153,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			deletedRow = pstmt.executeUpdate();
 			
 			connection.commit();
-			logger.debug("offerta cancellata");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
@@ -177,7 +175,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 				logger.debug("Connection chiusa");
 			}
 		}	
-		
+		logger.debug("offerta cancellata");
 		return deletedRow;
 		
 	}
@@ -186,77 +184,48 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 	public Offerta getOffertaByIdOfferta(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getOffertaById");		
 		Offerta offerta = null;
-		Connection connection=null;
+		Connection connection;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		try{
-			connection = ConnectionPoolTomcat.getConnection();
-				
-			String sql = "SELECT * FROM offerta " +
-					"WHERE idofferta = ? ";
+		connection = ConnectionPoolTomcat.getConnection();
 			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idOfferta);
-			logger.debug("Select Query: " + pstmt.toString());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				
-				offerta = new OffertaImpl();
-				
-				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-				int idUtenteRegistrato = rs.getInt("utente_registrato_idutente");
-				UtenteRegistrato utente = dao.getUtenteRegistratoById(idUtenteRegistrato);
-						
-				InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
-				int idInserzione = rs.getInt("inserzione_idinserzione");
-				Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione);
-				
-				offerta.setIdOfferta(rs.getInt("idofferta"));
-				offerta.setSomma(rs.getDouble("somma"));
-				offerta.setData(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data")));
-				offerta.setIdUtenteRegistrato(rs.getInt("utente_registrato_idutente"));
-				offerta.setUtente(utente);
-				offerta.setIdInserzione(rs.getInt("inserzione_idinserzione"));
-				offerta.setInserzione(inserzione);
-				
-				logger.debug("offerta restituita: " + offerta.toString());
-				
-			}
-
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			try {
-				connection.rollback();
-				logger.debug("Roolback in cancellazione inserzione");
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}				
-		}
-				
-		finally{
-			
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-			
-			
-		}
+		String sql = "SELECT * FROM offerta " +
+				"WHERE idofferta = ? ";
 		
-				
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, idOfferta);
+		logger.debug("Select Query: " + pstmt.toString());
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			
+			offerta = new OffertaImpl();
+			
+			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+			int idUtenteRegistrato = rs.getInt("utente_registrato_idutente");
+			UtenteRegistrato utente = dao.getUtenteRegistratoById(idUtenteRegistrato);
+					
+			InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
+			int idInserzione = rs.getInt("inserzione_idinserzione");
+			Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione);
+			
+			offerta.setIdOfferta(rs.getInt("idofferta"));
+			offerta.setSomma(rs.getDouble("somma"));
+			offerta.setData(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data")));
+			offerta.setIdUtenteRegistrato(rs.getInt("utente_registrato_idutente"));
+			offerta.setUtente(utente);
+			offerta.setIdInserzione(rs.getInt("inserzione_idinserzione"));
+			offerta.setInserzione(inserzione);
+			
+			logger.debug("offerta caricata");	
+			
+		}
+		rs.close();
+		pstmt.close();
+		
+		connection.close();
+		
+		logger.debug("offerta restituita: " + offerta.toString());		
 		return offerta;
 	}
 
@@ -271,7 +240,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		try {
 			
 			    connection = ConnectionPoolTomcat.getConnection();
-				
+				//connection = DatabaseUtil.getConnection();
 				
 				String sql = "SELECT * FROM offerta " +
 						"WHERE offerta.inserzione_idinserzione = ? " +
@@ -316,23 +285,21 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-				
+		
+		
 		return listaOfferte;
 	}
+
+	
+
 
 	
 	

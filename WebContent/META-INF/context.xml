@@ -41,6 +41,8 @@
             url="jdbc:mysql://localhost:3306/ecommerce?autoReconnect=true"/>
 -->
 <!-- Risorsa per il NAS-ROSHOME, in quanto la password è diversa ed è admin -->
+
+<!-- Ho impostato la stessa password -->
  
 <Resource name="jdbc/AsteOnLine" 
               auth="Container"

@@ -17,12 +17,11 @@ import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Keyword;
 import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
+import it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc;
 
 public class KeywordDaoMysqlJdbc implements KeywordDao{
 
 	Logger logger = Logger.getLogger(KeywordDaoMysqlJdbc.class);
-	
-
 	
 
 	public List<Keyword> getKeywords() {
@@ -55,16 +54,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -101,16 +93,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -120,7 +105,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
-	public Keyword getKeywordByWord(String key) throws ClassNotFoundException, IOException {
+	public Keyword getKeywordByWord(String key) {
 		logger.debug("in getKeywordByWord: " + key);
 		Keyword keyword = null;
 		Connection connection = null;
@@ -128,7 +113,6 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		ResultSet rs = null;
 		try {
 			connection = ConnectionPoolTomcat.getConnection();
-			
 			
 			String sql = "SELECT * FROM keyword WHERE (keyword = ?)";
 			
@@ -151,16 +135,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
+				rs.close();
+				pstmt.close();
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -213,45 +190,33 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		//connection = DatabaseUtil.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		
+		connection = ConnectionPoolTomcat.getConnection();
+		connection.setAutoCommit(false);
+				
+						
 		String sql = "INSERT INTO keyword (keyword) VALUES (?)";
-		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
-			connection.setAutoCommit(false);
-								
-			
-			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			pstmt.setString(1, keyword.getKeyword());
-			logger.debug("Insert Query: " + pstmt.toString());
-			int insertStatus = pstmt.executeUpdate();
-			if (insertStatus==1){
-				rs = pstmt.getGeneratedKeys();
-				if (rs.next()) {
-			        autoincrementKey = rs.getInt(1);
-			    }
-			}
-			keyword.setIdKeyword(autoincrementKey);
-				
-				
-			connection.commit();
-			logger.info("Inserimento nuova keyword (" + autoincrementKey + ", " + keyword.getKeyword() + ")");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setString(1, keyword.getKeyword());
+		logger.debug("Insert Query: " + pstmt.toString());
+		int insertStatus = pstmt.executeUpdate();
+		if (insertStatus==1){
+			rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+		        autoincrementKey = rs.getInt(1);
+		    }
 		}
-		
-		if(rs != null)
-			rs.close();
-		if(pstmt != null)
-			pstmt.close();
-		if(connection != null){
-			connection.close();
-			connection.setAutoCommit(true);
-		}
-				
-		logger.debug("Connection chiusa");
-		
+		keyword.setIdKeyword(autoincrementKey);
+			
+		rs.close();
+		pstmt.close();
+			
+		connection.commit();
+		logger.info("Inserimento nuova keyword (" + autoincrementKey + ", " + keyword.getKeyword() + ")");
+			
+		connection.setAutoCommit(true);
+		connection.close();
 		
 		return autoincrementKey;
 	}
@@ -265,15 +230,13 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
-		String sql = "INSERT INTO keyword (keyword) VALUES (?)";
-		
 		try {
 			connection = ConnectionPoolTomcat.getConnection();
-			if(connection!=null)
-				connection.setAutoCommit(false);
+			connection.setAutoCommit(false);
 						
 			for(int i=0; i<keywords.size(); i++){
-							
+			
+				String sql = "INSERT INTO keyword (keyword) VALUES (?)";
 				pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, keywords.get(i).getKeyword());
 				logger.debug("Insert Query: " + pstmt.toString());
@@ -312,21 +275,21 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally {
 
+			if (connection != null) {
+
 				try {
 					if(rs != null)
 						rs.close();
-					if(pstmt != null)
-						pstmt.close();
-					if(connection != null){
-						connection.close();
-						connection.setAutoCommit(true);
-					}
-							
+					
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
 					logger.debug("Connection chiusa");
 				} catch (SQLException  e) {
 					e.printStackTrace();
 				}
-		
+
+			}
 		}
 		return autoincrementKey;
 	}
@@ -383,21 +346,18 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally {
 
+			if (connection != null) {
 				try {
 					
-					if(pstmt != null)
-						pstmt.close();
-					if(connection != null){
-						connection.close();
-						connection.setAutoCommit(true);
-					}
-							
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
 					logger.debug("Connection chiusa");
 				} catch (SQLException  e) {
 					e.printStackTrace();
 				}
 
-			
+			}
 		}
 		
 		return deletedRows;		
@@ -412,8 +372,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement  pstmt = null;
 		try {
 			connection = ConnectionPoolTomcat.getConnection();
-			if(connection!=null)
-				connection.setAutoCommit(false);
+			connection.setAutoCommit(false);
 			
 			if(keyword.getIdKeyword() != null){
 			
@@ -442,15 +401,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		finally{
 			if (connection!=null) {
 				try {
-					
-					if(pstmt != null)
-						pstmt.close();
-					if(connection != null){
-						connection.close();
-						connection.setAutoCommit(true);
-					}
-							
-					logger.debug("Connection chiusa");
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
 				} catch (SQLException  e) {
 					e.printStackTrace();
 				}

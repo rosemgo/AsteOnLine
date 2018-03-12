@@ -18,8 +18,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 	
 	Logger logger = Logger.getLogger(BannedCookiesDaoMysqlJdbc.class);
 	
-	
-	
+
 	public Integer insertBannedCookies(BannedCookies cookie){
 		logger.info("in insertBannedCookies");
 		Integer autoincrementKey = -1;
@@ -30,7 +29,6 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		try{
 			
 			connection = ConnectionPoolTomcat.getConnection();
-			
 			connection.setAutoCommit(false);
 							
 			String sql = "INSERT INTO banned_cookies (idutentebannato, cookie) VALUES (?, ?)";
@@ -53,8 +51,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 						
 		} catch (Exception e) {
 			try {
-				if(connection != null)
-					connection.rollback();
+				connection.rollback();
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();
@@ -65,12 +62,10 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			try {
 				if(rs != null)
 					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.setAutoCommit(true);
-					connection.close();	
-				}
+				
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();	
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -93,7 +88,6 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		try{
 			
 			connection = ConnectionPoolTomcat.getConnection();
-			
 			connection.setAutoCommit(false);
 							
 			String sql = "DELETE FROM banned_cookies WHERE idutentebannato = ?";
@@ -109,8 +103,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			
 		} catch (Exception e) {
 			try {
-				if(connection != null)
-					connection.rollback();
+				connection.rollback();
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();
@@ -119,13 +112,9 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		}
 		finally{
 			try {
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.setAutoCommit(true);
-					connection.close();	
-				}	
-				
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();	
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -163,12 +152,9 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		}
 		finally{
 			try {
-				if(pstmt != null) 
+				if(pstmt!= null)
 					pstmt.close();
-				if(connection != null){
-					connection.setAutoCommit(true);
-					connection.close();	
-				}	
+				connection.close();	
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -178,7 +164,9 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		
 		return result;
 	}
-
+	
+	
+	
 
 	
 	

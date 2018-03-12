@@ -17,6 +17,7 @@ import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
+import it.unisannio.sweng.rosariogoglia.daoImpl.ComuneDaoMysqlJdbc;
 
 public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 
@@ -123,6 +124,5 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 			}	
 		return provincia;
 	}
-
 	
 }

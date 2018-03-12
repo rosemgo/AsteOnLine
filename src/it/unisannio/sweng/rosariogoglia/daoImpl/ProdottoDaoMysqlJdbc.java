@@ -16,22 +16,6 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -47,6 +31,9 @@ import it.unisannio.sweng.rosariogoglia.dao.KeywordDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.KeywordDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Keyword;
 import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
+import it.unisannio.sweng.rosariogoglia.daoImpl.CategoriaDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc;
+import it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc;
 
 
 public class ProdottoDaoMysqlJdbc implements ProdottoDao{
@@ -56,8 +43,6 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	
 	public List<Prodotto> getProdotti() {
 		logger.debug("in getProdotti");
-		logger.info("INFO: in getProdotti");
-		
 		List<Prodotto> listaProdotti = new ArrayList<Prodotto>();
 		
 		Connection connection = null;
@@ -82,11 +67,16 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				categoria = dao.getCategoriaById(idCategoria);
 				
 				Produttore produttore = new ProduttoreImpl();
-				ProduttoreDao dao1 = (ProduttoreDao) new ProduttoreDaoMysqlJdbc();
+				ProduttoreDao dao1 = new ProduttoreDaoMysqlJdbc();
 				int idProduttore = rs.getInt("produttore_idproduttore");
 				produttore = dao1.getProduttoreById(idProduttore);
 				
-								
+				List<Keyword> keywordList = new ArrayList<Keyword>();
+				KeywordDao dao2 = new KeywordDaoMysqlJdbc();
+				int idProdotto = rs.getInt("idprodotto");
+				keywordList = dao2.getKeywordByIdProdotto(idProdotto);
+				
+				
 				prodotto.setIdProdotto(rs.getInt("prodotto.idprodotto"));
 				prodotto.setNome(rs.getString("prodotto.nome"));
 				prodotto.setIdCategoria(idCategoria);
@@ -94,29 +84,23 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				prodotto.setIdProduttore(idProduttore);
 				prodotto.setProduttore(produttore);
 				
-			
+				prodotto.setKeywordsList(keywordList); 
 							
 				listaProdotti.add(prodotto);
 				logger.debug("(" + prodotto.getIdProdotto() + ", " + prodotto.getNome() + ")");
 			}
 					
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException | IOException  e) {
 			e.printStackTrace();
 		}
 		
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(stmt != null)
-					stmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -136,7 +120,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		try {
 			
 			connection = ConnectionPoolTomcat.getConnection();
-			
+			//connection = DatabaseUtil.getConnection();
 			
 			stmt = connection.createStatement();
 			String query = "SELECT * FROM prodotto " +
@@ -154,11 +138,14 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				categoria = dao.getCategoriaById(idCategoria);
 				
 				Produttore produttore = new ProduttoreImpl();
-				ProduttoreDao dao1 = (ProduttoreDao) new ProduttoreDaoMysqlJdbc();
+				ProduttoreDao dao1 = new ProduttoreDaoMysqlJdbc();
 				int idProduttore = rs.getInt("produttore_idproduttore");
 				produttore = dao1.getProduttoreById(idProduttore);
 				
-							
+				List<Keyword> keywordList = new ArrayList<Keyword>();
+				KeywordDao dao2 = new KeywordDaoMysqlJdbc();
+				keywordList = dao2.getKeywordByIdProdotto(idProdotto);
+				
 				
 				prodotto.setIdProdotto(rs.getInt("prodotto.idprodotto"));
 				prodotto.setNome(rs.getString("prodotto.nome"));
@@ -167,27 +154,22 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				prodotto.setIdProduttore(idProduttore);
 				prodotto.setProduttore(produttore);
 				
-			
+				prodotto.setKeywordsList(keywordList); 
+				
 				logger.debug("(" + prodotto.getIdProdotto() + ", " + prodotto.getNome() + ")");
 				
 			}
 						
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(stmt != null)
-					stmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -208,7 +190,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				"WHERE prodotto.produttore_idproduttore = ? ";
 				
 		connection = ConnectionPoolTomcat.getConnection();
-		
+		//connection = DatabaseUtil.getConnection();
 			
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, idProduttore);
@@ -269,17 +251,10 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -289,7 +264,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	}
 	
 
-	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException{
+	public Prodotto getProdottoByName(String nomeProdotto){
 		logger.debug("in getProdottiByName");
 		Prodotto prodotto = null;
 		
@@ -320,37 +295,128 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return prodotto;
 	}
 
+	
+	
+	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto){
+		logger.debug("in getKeywordMancantiByIdProdotto");
+		List<Keyword> keywordList = new ArrayList<Keyword>();
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT * FROM keyword WHERE keyword.idkeyword " +
+					"NOT IN " +
+					"(SELECT keyword.idkeyword FROM prodotto, keyword, prodotto_has_keyword " +
+					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND prodotto.idprodotto = ?) ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProdotto);
+			logger.debug("Select Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				Keyword keyword = new KeywordImpl();
+				keyword.setIdKeyword(rs.getInt("keyword.idkeyword"));
+				keyword.setKeyword(rs.getString("keyword.keyword"));
+				keywordList.add(keyword);
+				logger.debug(" Aggiunta keyword (" + keyword.getIdKeyword() + ", " + keyword.getKeyword() + ")");
+				
+			}
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return keywordList;
+	}
+	
+	
+	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore){
+		logger.debug("in checkProdottoBelongCategoriaProduttore");
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			connection = ConnectionPoolTomcat.getConnection();
+			//connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM prodotto " +
+					"WHERE idprodotto = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, idProdotto);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				int idCategoriaProdotto = rs.getInt("categoria_idcategoria");
+				int idProduttoreProdotto = rs.getInt("produttore_idproduttore");
+				
+				if((idCategoria == idCategoriaProdotto) && (idProduttore == idProduttoreProdotto)){
+					result = true;
+				}
+										
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}
+
+	
 	/**
 	 * si presume che Categoria e Produttore associati siano già presenti nel DB!
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException {
+	public Integer insertProdotto(Prodotto prodotto) {
 		logger.info("in insertProdotto");
 		Integer productIdKey = -1;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseUtil.getConnection();
-			//connection = ConnectionPoolTomcat.getConnection();
+			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 						
 			try{
@@ -443,19 +509,18 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			e1.printStackTrace();
 		}		
 		finally {
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
+					if(rs != null)
+						rs.close();
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}				
 		return productIdKey;
@@ -503,28 +568,114 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			
 		}
 		finally {
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
+					if(rs != null)
+						rs.close();
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}	
 			
 		return insertRow;
 	}
-
 	
-
-public boolean checkDeleteProdotto(Integer idProdotto){
+	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionPoolTomcat.getConnection();
+			
+			String sql = "SELECT * FROM prodotto_has_keyword " +
+					"WHERE prodotto_idprodotto = ? " +
+					"AND keyword_idkeyword = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProdotto);
+			pstmt.setInt(2, idKeyword);
+			logger.debug("Check Query: " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = true;
+			}
+						
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
+		logger.debug("in deleteProdottoHasKeyword");
+		Integer deleteRow = -1;
+		Connection connection = null; 
+		PreparedStatement pstmt = null;
+		try {
+			
+				connection = ConnectionPoolTomcat.getConnection();
+				connection.setAutoCommit(false);
+							
+				String sql = "DELETE FROM prodotto_has_keyword WHERE prodotto_idprodotto = ? AND keyword_idkeyword = ?";
+				pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				pstmt.setInt(1, idProdotto);
+				pstmt.setInt(2, idKeyword);
+				logger.debug("Delete Query: " + pstmt.toString());
+				try{
+					deleteRow = pstmt.executeUpdate();
+				}catch (Exception e) {
+					logger.debug("Disassociazione prodotto-keyword non riuscito!!!");
+				}	
+				if(deleteRow == 1){
+					logger.info("Cancellazione prodotto_has_keyword (" + idProdotto + ", " + idKeyword+ ")");
+					connection.commit();
+				}
+				
+							
+		} catch (SQLException  e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+				logger.debug("Rollback in inserimento prodotto_has_keyword");
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}			
+		}
+		finally{
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			}
+			
+		}
+	
+		return deleteRow;
+	}
+	
+	
+	
+	public boolean checkDeleteProdotto(Integer idProdotto){
 		
 		boolean result = true;
 		Connection connection = null;
@@ -551,81 +702,17 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return result;
 	}
 	
-	public boolean checkProdottoBelongCategoriaProduttore(Integer idProdotto, Integer idCategoria, Integer idProduttore){
-		logger.debug("in checkProdottoBelongCategoriaProduttore");
-		boolean result = false;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			
-			connection = ConnectionPoolTomcat.getConnection();
-			
-			
-			String sql = "SELECT * FROM prodotto " +
-					"WHERE idprodotto = ? ";
-			
-			pstmt = connection.prepareStatement(sql);
-			
-			pstmt.setInt(1, idProdotto);
-			logger.debug("Select Query:" + pstmt.toString());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				
-				int idCategoriaProdotto = rs.getInt("categoria_idcategoria");
-				int idProduttoreProdotto = rs.getInt("produttore_idproduttore");
-				
-				if((idCategoria == idCategoriaProdotto) && (idProduttore == idProduttoreProdotto)){
-					result = true;
-				}
-										
-			}
-					
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally{
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-		
-	}
 	
-	
-	
-
 	public Integer deleteProdotto(Prodotto prodotto){
 		logger.info("Eliminazione Prodotto: (" + prodotto.getIdProdotto()+ ")");
 		Integer deletedRows =-1;
@@ -665,182 +752,20 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		}
 			
 		finally {
-			try {
-			
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}
 		return deletedRows;
 	}
 	
-	
-	
-	public boolean checkProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
-		boolean result = false;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
-			String sql = "SELECT * FROM prodotto_has_keyword " +
-					"WHERE prodotto_idprodotto = ? " +
-					"AND keyword_idkeyword = ?";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idProdotto);
-			pstmt.setInt(2, idKeyword);
-			logger.debug("Check Query: " + pstmt.toString());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				result = true;
-			}
-						
-		} catch (SQLException  e) {
-			e.printStackTrace();
-		}
-		finally{
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
-
-	public Integer deleteProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
-		logger.debug("in deleteProdottoHasKeyword");
-		Integer deleteRow = -1;
-		Connection connection = null; 
-		PreparedStatement pstmt = null;
-		try {
-			
-				connection = ConnectionPoolTomcat.getConnection();
-				connection.setAutoCommit(false);
-							
-				String sql = "DELETE FROM prodotto_has_keyword WHERE prodotto_idprodotto = ? AND keyword_idkeyword = ?";
-				pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				pstmt.setInt(1, idProdotto);
-				pstmt.setInt(2, idKeyword);
-				logger.debug("Delete Query: " + pstmt.toString());
-				try{
-					deleteRow = pstmt.executeUpdate();
-				}catch (Exception e) {
-					logger.debug("Disassociazione prodotto-keyword non riuscito!!!");
-				}	
-				if(deleteRow == 1){
-					logger.info("Cancellazione prodotto_has_keyword (" + idProdotto + ", " + idKeyword+ ")");
-					connection.commit();
-				}
-				
-							
-		} catch (SQLException  e) {
-			e.printStackTrace();
-			try {
-				connection.rollback();
-				logger.debug("Rollback in inserimento prodotto_has_keyword");
-			} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}			
-		}
-		finally{
-			try {
-				
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-			
-		}
-	
-		return deleteRow;
-	}
-	
-	
-	public List<Keyword> getKeywordMancantiByIdProdotto(Integer idProdotto){
-		logger.debug("in getKeywordMancantiByIdProdotto");
-		List<Keyword> keywordList = new ArrayList<Keyword>();
-		
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
-			String sql = "SELECT * FROM keyword WHERE keyword.idkeyword " +
-					"NOT IN " +
-					"(SELECT keyword.idkeyword FROM prodotto, keyword, prodotto_has_keyword " +
-					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
-					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
-					"AND prodotto.idprodotto = ?) ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idProdotto);
-			logger.debug("Select Query: " + pstmt.toString());
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				
-				Keyword keyword = new KeywordImpl();
-				keyword.setIdKeyword(rs.getInt("keyword.idkeyword"));
-				keyword.setKeyword(rs.getString("keyword.keyword"));
-				keywordList.add(keyword);
-				logger.debug(" Aggiunta keyword (" + keyword.getIdKeyword() + ", " + keyword.getKeyword() + ")");
-				
-			}
-			
-		} catch (SQLException  e) {
-			e.printStackTrace();
-		}
-		finally{
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return keywordList;
-	}
-
 	/**
 	 * 
 	 * //Le keyword già assegnate ad un prodotto non possono essere modificate ma si possono solo cancellare o aggiungerne altre
@@ -855,7 +780,9 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 		try {
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
-					
+			
+			
+		
 			
 				String sql1 = "INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) "
 						+ "VALUES (?, ?)";
@@ -911,8 +838,7 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			
 			e1.printStackTrace();
 			try {
-				if(connection!=null)
-					connection.rollback();
+				connection.rollback();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
@@ -920,22 +846,22 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			logger.debug("Roolback in aggiornamento prodotto");
 		}
 		finally {
-			try {
-
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
 				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
+				
 			}
 		}
 		return uptadedRows;
 	}
+	
+
 
 	public Integer updateNomeProdotto(Prodotto prodotto) {
 		logger.debug("in updateProdotto");
@@ -972,18 +898,16 @@ public boolean checkDeleteProdotto(Integer idProdotto){
 			
 		}
 		finally {
-			try {
-			
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}
 		return uptadedRows;

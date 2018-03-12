@@ -15,6 +15,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
 import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
@@ -23,13 +24,13 @@ import it.unisannio.sweng.rosariogoglia.model.Immagine;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
+import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 
 	Logger logger = Logger.getLogger(ImmagineDaoMysqlJdbc.class);
 	
 	
-
 	public Immagine getImmagineById(Integer idImmagine) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getImmagineById");
 		Immagine immagine = null;
@@ -125,7 +126,10 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		return listaImmagini;
 	}
 	
-		
+	/**
+	 * Metodo di inserimento immagine
+	 */
+	
 	public Integer insertImmagine(Immagine immagine) {
 		logger.debug("in insert immagine");
 		Integer immagineIdKey = -1;
@@ -298,6 +302,7 @@ public class ImmagineDaoMysqlJdbc implements ImmagineDao{
 		return deletedRow;
 	}
 
+	
 	
 	
 

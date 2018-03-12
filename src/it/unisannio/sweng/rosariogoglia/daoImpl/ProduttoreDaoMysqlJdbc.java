@@ -33,8 +33,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		try {
 			
+			//connection = DatabaseUtil.getConnection();
 			connection = ConnectionPoolTomcat.getConnection();
-				
+		
 			String sql = "SELECT * FROM produttore ORDER BY nome ASC ";
 			pstmt = connection.prepareStatement(sql);
 			
@@ -62,17 +63,11 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -109,21 +104,15 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		if(produttore!=null)
+		
 		logger.debug("produttore: " + produttore.toString());
 		return produttore;
 	}
@@ -135,7 +124,6 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			
 			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE (nome = ?)";
@@ -158,17 +146,11 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -215,17 +197,11 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -233,6 +209,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return listaProduttori;
 			
 	}
+	
+	
 	
 	
 	public Integer insertProduttore(Produttore produttore){
@@ -248,8 +226,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 			connection = ConnectionPoolTomcat.getConnection();
 			
-			//connection = DatabaseUtil.getConnection(); // utilizzato in caso di caricamento categorie al primo avvio, con il Test
-			
+			//connection = DatabaseUtil.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
 			connection.setAutoCommit(false);
 		
 			String sql = "INSERT INTO produttore (nome, website) VALUES (?, ?)";
@@ -283,19 +260,18 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
+					if(rs != null)
+						rs.close();
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}
 		
@@ -333,17 +309,11 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null){
-					connection.close();
-					connection.setAutoCommit(true);
-				}
-						
-				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -361,19 +331,46 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 				
-					
-			//cancello il produttore
-			String sql = "DELETE FROM produttore WHERE (idproduttore = ?)";
-					
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idProduttore);
-			logger.debug("Delete Query: " + pstmt.toString());
-			deletedRows = pstmt.executeUpdate();
 				
-			connection.commit();
+//				//prima si elimina dalla tabella prodotto_has_keyword
+//				String sql = "DELETE prodotto_has_keyword.* FROM prodotto_has_keyword, prodotto " +
+//						"WHERE " +
+//						"prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+//						"AND " +
+//						"prodotto.produttore_idproduttore = ?";
+//				pstmt = connection.prepareStatement(sql);
+//				pstmt.setInt(1, idProduttore);
+//				logger.debug("Delete Query: " + pstmt.toString());
+//				pstmt.executeUpdate();
+//				
+//				//cancello il prodotto
+//				sql = "DELETE FROM prodotto WHERE (produttore_idproduttore = ?)";
+//				pstmt = connection.prepareStatement(sql);
+//				pstmt.setInt(1, idProduttore);
+//				logger.debug("Delete Query: " + pstmt.toString());
+//				pstmt.executeUpdate();
+//				
+//				
+//				//cancello l'associazione categoria-produttore
+//				sql = "DELETE FROM categoria_has_produttore WHERE produttore_idproduttore = ?";
+//				
+//				pstmt = connection.prepareStatement(sql);
+//				pstmt.setInt(1, idProduttore);
+//				logger.debug("Delete Query:" + pstmt.toString());
+//				pstmt.executeUpdate();			
+//								
+				//cancello il produttore
+				String sql = "DELETE FROM produttore WHERE (idproduttore = ?)";
+					
+				pstmt = connection.prepareStatement(sql);
+				pstmt.setInt(1, idProduttore);
+				logger.debug("Delete Query: " + pstmt.toString());
+				deletedRows = pstmt.executeUpdate();
+				
+				connection.commit();
 				
 						
-			logger.info("Produttore Eliminato");
+				logger.info("Produttore Eliminato");
 			
 		} catch (SQLException  e) {
 			e.printStackTrace();
@@ -386,18 +383,16 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			try {
-				
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}
 		
@@ -436,18 +431,16 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 		}
 		finally {
-			try {
-				
-				if(pstmt != null)
+			if (connection!=null) {
+				try {
 					pstmt.close();
-				if(connection != null){
-					connection.close();
 					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
 				}
-						
 				logger.debug("Connection chiusa");
-			} catch (SQLException  e) {
-				e.printStackTrace();
 			}
 		}
 		logger.info("Aggiornamento Produttore: (" + produttore.getIdProduttore() + ", " + produttore.getNome() + ")");

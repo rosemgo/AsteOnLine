@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
+
 /**
  * Servlet implementation class ServletRegistrazione
  * Servlet che si occupa della registrazione di un nuovo utente
@@ -33,9 +34,11 @@ import org.apache.log4j.xml.DOMConfigurator;
 //@WebServlet("/ServletRegistrazione")
 public class ServletRegistrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	Logger logger = Logger.getLogger(ServletRegistrazione.class); 
+	static final Logger logger = Logger.getLogger(ServletRegistrazione.class); 
 	
+	public ServletRegistrazione(){
+		DOMConfigurator.configure("C:/Users/Rosario/workspaceTSW/AsteOnLine2/WebContent/WEB-INF/log4jConfig.xml");
+	}      
 	
 	@SuppressWarnings("static-access")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -321,13 +324,20 @@ public class ServletRegistrazione extends HttpServlet {
 					daoBC.insertBannedCookies(cookie);
 					
 					System.out.println("utente bannato");
+					
+					//DISABILITO ANCHE L'UTENTE
+//					utenteDao.updateAbilitazioneUtente(utenteReg.getNick(), false);
+										
 					messaggio="Registrazione avvenuta parzialmente: CARTA DI CREDITO NON VALIDA!!! </br> L'UTENTE E' STATO BANNATO!!! </br> Modificare i propri dati con una carta di credito valida, per eliminare il Ban ed essere un utente abilitato totalmente a tutti i servizi!";
 					request.setAttribute("messaggio", messaggio);
 					request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 				}
+							
 				
 				
+			} catch (ClassNotFoundException e) {
 				
+				e.printStackTrace();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

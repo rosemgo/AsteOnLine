@@ -71,12 +71,6 @@ public class ServletControlloRipubblicaInserzione extends HttpServlet {
 			request.setAttribute("messaggio", "Non è possibile modificare il prodotto: utente disabilitato dall'amministratore!!! Puoi soltanto rimuovere le inserzioni scaduti !!!");
 			request.getRequestDispatcher("/WEB-INF/jsp/errore.jsp").forward(request, response);
 		}
-			
-		
-		
-		
-		
-		
 		
 		
 	}

@@ -81,7 +81,7 @@
   </servlet-mapping>
  
  
-<servlet>
+  <servlet>
     <display-name>ServletModificaInserzione</display-name>
     <servlet-name>ServletModificaInserzione</servlet-name>
     <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletModificaInserzione</servlet-class>
@@ -92,9 +92,42 @@
   </servlet-mapping> 
  
  
+  <servlet>
+    <servlet-name>CercaComuni</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletCercaComuni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CercaComuni</servlet-name>
+    <url-pattern>/cercacomuni.ajax</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>CercaProduttori</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletCercaProduttori</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CercaProduttori</servlet-name>
+    <url-pattern>/cercaproduttori.ajax</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+    <servlet-name>CercaProdotti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletCercaProdotti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CercaProdotti</servlet-name>
+    <url-pattern>/cercaprodotti.ajax</url-pattern>
+  </servlet-mapping>
  
- 
- 
- 
+  <servlet>
+    <display-name>ServletDettagliInserzione</display-name>
+    <servlet-name>ServletDettagliInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletDettagliInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDettagliInserzione</servlet-name>
+    <url-pattern>/ServletDettagliInserzione</url-pattern>
+  </servlet-mapping>
  
 </web-app>

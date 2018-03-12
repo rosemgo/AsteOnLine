@@ -1,14 +1,15 @@
 package it.unisannio.sweng.rosariogoglia.controller;
 
+import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
+import it.unisannio.sweng.rosariogoglia.daoImpl.BannedCookiesDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
+import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
-//import it.unisannio.sweng.rosariogoglia.utility.MD5;
-
 import it.unisannio.sweng.rosariogoglia.utility.MD5;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +32,7 @@ public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;  
 
 	
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -43,8 +45,7 @@ public class ServletLogin extends HttpServlet {
 		/* prelevo i dati utente dal form login */
 		String nick = request.getParameter("nick");
 		String password = request.getParameter("password");
-	
-	
+		
 		//cripto la password tramite l'algoritmo MD5 per vedere se corrisponde con quella nel db 
 		MD5 md5 = new MD5();
 		String passwordCrypted = "";
@@ -62,7 +63,8 @@ public class ServletLogin extends HttpServlet {
 		try {
 			
 			utente = utenteDao.checkUtente(nick);
-						
+			
+			
 			if(utente == null){ //in questo caso è sbagliato il nickname
 				request.setAttribute("messaggio", "LOGIN ERRATO: nickname non esistente");
 				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
@@ -85,7 +87,7 @@ public class ServletLogin extends HttpServlet {
 						request.getRequestDispatcher("/amministrazione").forward(request, response);
 				
 					}
-		
+				
 				
 			}
 			else if(!utente.checkPassword(passwordCrypted)) { //in questo caso è sbagliata la password
@@ -115,7 +117,8 @@ public class ServletLogin extends HttpServlet {
 				
 				session.setAttribute("utente", utente); //metto l'utente in sessione!!!
 				
-				String pagina = (String) session.getAttribute("pagina");
+					
+					String pagina = (String) session.getAttribute("pagina");
 					
 					if(session.getAttribute("pagina") != null){
 						
@@ -140,7 +143,7 @@ public class ServletLogin extends HttpServlet {
 							}
 							
 						}
-						else{ //se invece la pagina in sessione è "osserva inserzione" devo mandarla alla pagina dettagli inserzione
+						else{ //se la pagina in sessione è osserva inserzione devo mandarla alla pagina dettagli inserzione
 							
 							if(utente.getIdUtente() == inserzione.getIdVenditore()){
 								request.setAttribute("messaggio", "Benvenuto " + utente.getNick() + "!!! Utilizza il menù in alto per navigare nel sito e... buon AsteOnline!!! <br /> <br /> Non è possibile effettuare offerte oppure osservare una propria inserzione!!!");
@@ -151,7 +154,7 @@ public class ServletLogin extends HttpServlet {
 								request.getRequestDispatcher("/WEB-INF/jsp/errore.jsp").forward(request, response);
 							}
 							else{
-								//sostituire con ServletOsservaInserzione se voglio far inserire direttamente l'inserzione tra quelle osservate
+								//sostituire con ServletOsseraInserzione per far osservare subito l'inserzione invece di mostrare i dettagli
 								request.getRequestDispatcher("/ServletDettagliInserzione").forward(request, response);
 								
 							}
@@ -159,7 +162,7 @@ public class ServletLogin extends HttpServlet {
 							
 						}
 						
-						//andrebbe tolto se voglio far osservare subito l'inserzione
+						//viene fatto, ma quando il controllo viene passato ad ServletControlloOfferta o ServletDettagliInserzione, queste 2 servlet vedono sia la pagina che l'idInserzione che erano in sessione, in quanto vengono rolte dalla sessione solo dopo che il controllo è passato ad una delle 2 servlet.
 						
 						session.removeAttribute("pagina");
 						System.out.println("RIMUOVO DALLA SESSIONE LA PAGINA");

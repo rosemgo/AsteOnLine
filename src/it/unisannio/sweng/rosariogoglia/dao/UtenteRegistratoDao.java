@@ -24,7 +24,7 @@ public interface UtenteRegistratoDao {
 	 * @return l'id dell'utente inserito, oppure -1 in caso di errore
 	 * @throws SQLException
 	 */
-	public Integer insertUtenteRegistrato(UtenteRegistrato utente)throws SQLException;
+	public Integer insertUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 	
 	/**
 	 * Questo metodo effettua un inserimento nella tabella utente_registrato_osserva_inserzione, quando un utente osserva un'inserzione.
@@ -39,15 +39,21 @@ public interface UtenteRegistratoDao {
 	/**
 	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
 	 * non risulta più abilitato alle funzioni di un utente registrato
+	 * 
 	 * @param utente
 	 * @return numero di righe cancellate
+	 * @throws ClassNotFoundException
 	 * @throws SQLException
+	 * @throws IOException
 	 */
-	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws SQLException;
+	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
+			
 	
-	
-	public Integer updateUtenteRegistrato(UtenteRegistrato utente) throws SQLException;
+	public Integer updateUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 
+	
+	
+	
 	/**
 	 * Modifica i dati dell'utente dato il nickname
 	 * 

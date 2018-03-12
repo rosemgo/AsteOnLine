@@ -11,7 +11,6 @@
 </head>
 
 
-
 <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -35,6 +34,9 @@ $(document).ready(function () {
 });
 
 </script>
+
+
+
 
 <body>
 
@@ -136,7 +138,7 @@ $(document).ready(function () {
 											          
 					     <input type="submit" value=" ACCEDI " id="bottone"></input>
 					     &nbsp;&nbsp;&nbsp;
-					     <input type="button" onclick ="location.href='registrazione.jsp';" value=" REGISTRATI " id="bottone" />
+					     <input type="button" onclick ="location.href='ServletRegistrazione';" value=" REGISTRATI " id="bottone" />
 					    </p>
 					</form>
 				    
@@ -165,7 +167,7 @@ $(document).ready(function () {
 	
 	<div class="footer">
 	 
-© 2018 - AsteOnLine edit by <a style="color:#0000FF;" href="https://www.facebook.com/ros.em.goo" target="_new">Rosario Emanuel Goglia</a> and <a style="color:#0000FF;" href="https://www.facebook.com/marco.belfiore.54?fref=ts" target="_new">Marco Belfiore</a>
+© 2018 - AsteOnLine edit by <a style="color:#0000FF;" href="http://www.facebook.com/rosario.goglia" target="_new">Rosario Emanuel Goglia</a> and <a style="color:#0000FF;" href="https://www.facebook.com/marco.belfiore.54?fref=ts" target="_new">Marco Belfiore</a>
 	 
 	</div>
 

@@ -15,6 +15,31 @@
 <%-- Include all the required script tags --%>
 <jsp:include page="/WEB-INF/includes/ajaxscripts.jsp"/>
 
+<!-- funzione per far ruotare le pubblicità, va in conflitto con il tag ajax autocomplete -->
+<!-- <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script> -->
+<!-- <script type="text/javascript"> -->
+
+<!-- $(document).ready(function () { -->
+<!--   setInterval(rotateImage, 4000); -->
+<!--   var images = new Array('immagini/bannerAsteOnLine.jpg', 'immagini/pubblicita.png', 'immagini/bannerPubblicitari/bettersoftware.png', 'immagini/bannerPubblicitari/lenovys.gif'); -->
+<!--   var index = 1; -->
+ 
+<!--   function rotateImage() { -->
+<!--     $('.big-img img').fadeOut('slow', function () { -->
+<!--       $(this).attr('src', images[index]); -->
+<!--       $(this).fadeIn('slow', function () { -->
+<!--         if (index == images.length - 1) { -->
+<!--           index = 0; -->
+<!--         } else { -->
+<!--           index++; -->
+<!--         } -->
+<!--       }); -->
+<!--     }); -->
+<!--   } -->
+<!-- }); -->
+
+<!-- </script> -->
+
 
 <body>
 
@@ -35,6 +60,7 @@
 					<div class="loginAlto">
 					<div style="width:100%">
 						
+						<!-- Mettere get se con post non funziona -->
 						<form action="ServletLogin" method="post">
 							<input type="hidden" name="" value="login">
 							<div style="float:left; width:150px; padding: 0px 5px 0px 0px;"> 
@@ -152,7 +178,7 @@
 						<select style="height:25px;" title="Seleziona una categoria per la ricerca" size="1" name="categoria">
 							<option selected="selected" value="0">Tutte le categorie</option> <!-- PER IL METODO RICERCA INSERZIONE, TUTTE LE CATEGORIE è 0 O NULL??? -->
 								<c:forEach items="${applicationScope.listaCategorie}" var="categoria" > 
-									<option value="${categoria.idCategoria}"> ${categoria.nome} </option> 
+									<option value="${categoria.idCategoria}"> ${categoria.nome} </option> <!-- COME INVIARE L'ID CATEGORIA ALLA SERVLET PER FARE LA RICERCA??? -->
 								</c:forEach>
 						</select>
 					</div>
@@ -162,7 +188,6 @@
 					
 				</form>
 				
-				<!--  INSERIRE AJAX TAG PER L'AUTOCOMPLETAMENTO-->
 				<ajax:autocomplete
 						source="autoKeyword"
 						target="autoKeyword"
@@ -606,7 +631,7 @@
 	
 	<div class="footer">
 	 	
-	 	© 2018 - AsteOnLine edit by <a style="color:#0000FF;" href="https://www.facebook.com/ros.em.goo" target="_new">Rosario Emanuel Goglia</a> and <a style="color:#0000FF;" href="https://www.facebook.com/marco.belfiore.54?fref=ts" target="_new">Marco Belfiore</a>
+	 	© 2013 - AsteOnLine edit by <a style="color:#0000FF;" href="http://www.facebook.com/rosario.goglia" target="_new">Rosario Emanuel Goglia</a> and <a style="color:#0000FF;" href="https://www.facebook.com/marco.belfiore.54?fref=ts" target="_new">Marco Belfiore</a>
 	 
 	</div>
 

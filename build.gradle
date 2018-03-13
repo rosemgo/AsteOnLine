@@ -108,8 +108,12 @@ tasks.withType(FindBugs) {
 
 test {
    ignoreFailures = true
-}
 
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
+    }               
+}
 
 //war {
 //    from (project(':AsteOnLine').file('build/resources/main'))

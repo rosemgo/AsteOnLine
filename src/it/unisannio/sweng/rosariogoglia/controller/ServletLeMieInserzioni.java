@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LeMieInserzioni
- * Servlet che si occupa della preparazione dei dati per la visualizzazione dlle inserzioni di un venditore
+ * Servlet che permette ad un utente venditore di visualizzare le inserzioni che ha messo in vendita.
  */
 
 

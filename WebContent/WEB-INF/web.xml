@@ -130,4 +130,30 @@
     <url-pattern>/ServletDettagliInserzione</url-pattern>
   </servlet-mapping>
  
+ 
+ <servlet>
+    <display-name>ServletAsteInChiusura</display-name>
+    <servlet-name>ServletAsteInChiusura</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletAsteInChiusura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAsteInChiusura</servlet-name>
+    <url-pattern>/ServletAsteInChiusura</url-pattern>
+  </servlet-mapping>
+  
+ 
+  <servlet>
+    <display-name>ServletAsteInCorso</display-name>
+    <servlet-name>ServletAsteInCorso</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletAsteInCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAsteInCorso</servlet-name>
+    <url-pattern>/ServletAsteInCorso</url-pattern>
+  </servlet-mapping>
+ 
+ 
+ 
+ 
+ 
 </web-app>

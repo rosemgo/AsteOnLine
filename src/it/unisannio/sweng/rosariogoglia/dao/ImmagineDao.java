@@ -12,6 +12,7 @@ public interface ImmagineDao {
 
 	/** 
 	 * @return l'immagine corrispondente all' id passato come parametro
+	 * 
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -33,6 +34,8 @@ public interface ImmagineDao {
 	 */
 	public Integer insertImmagine(Immagine immagine);
 
+	
+	
 	public Integer deleteImmagine(Immagine immagine);
 	
 	/**

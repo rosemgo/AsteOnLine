@@ -265,9 +265,6 @@ public interface InserzioneDao {
 	 * @return una lista con tutti i titoli delle inserzioni
 	 */
 	public List<String> getTitoli();
-
 	
-	
-			
 	
 }

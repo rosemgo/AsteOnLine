@@ -25,103 +25,12 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.CategoriaImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProduttoreImpl;
 
 
-
-
 public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 
 	Logger logger = Logger.getLogger(CategoriaDaoMysqlJdbc.class);
 	
 	
-	public Categoria getCategoriaByIdPoolTomcat(Integer idCategoria){
-		logger.debug("in getCategoriaByIdPoolTomcat");
 		
-		
-		Categoria categoria = null;
-		
-		Connection conn = ConnectionPoolTomcat.getConnection();
-				
-		System.out.println("la connessione è: " + conn.toString());
-					
-		PreparedStatement  pstmt;
-					
-		String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
-					
-			try {
-					pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setInt(1, idCategoria);
-				logger.debug("Select Query:" + pstmt.toString());
-				ResultSet rs = pstmt.executeQuery();
-				if (rs.next()){
-					categoria = new CategoriaImpl();
-					categoria.setIdCategoria(rs.getInt("idcategoria"));
-					categoria.setNome(rs.getString("nome"));
-					
-					logger.debug("categoria: " + categoria.toString());
-				}
-				rs.close();
-				pstmt.close();
-				
-				conn.close();
-				
-			} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			
-			
-		return categoria;
-	}
-	
-	
-	
-	
-	public Categoria getCategoriaByIdConnectionPool(Integer idCategoria){
-		logger.debug("in getCategoriaByIdConnectionPool");
-		Categoria categoria = null;
-		
-		Connection connection = null;
-		PreparedStatement  pstmt = null;
-		ResultSet rs = null;
-		
-			try {
-				connection = ConnectionPoolTomcat.getConnection();
-				
-				System.out.println("la connessione è: " + connection.toString());
-					
-					
-				String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
-					
-				pstmt = connection.prepareStatement(sql);
-				pstmt.setInt(1, idCategoria);
-				logger.debug("Select Query:" + pstmt.toString());
-				rs = pstmt.executeQuery();
-				if (rs.next()){
-					categoria = new CategoriaImpl();
-					categoria.setIdCategoria(rs.getInt("idcategoria"));
-					categoria.setNome(rs.getString("nome"));
-					
-					logger.debug("categoria: " + categoria.toString());
-				}
-									
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			finally{
-				try {
-					rs.close();
-					pstmt.close();
-					
-					connection.close();
-				
-				}catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		return categoria;
-	}
 	
 //	
 //	public List<Categoria> getCategorie(){
@@ -180,7 +89,6 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
-			//connection = ConnectionPoolTomcat.getConnection();
 			connection = ConnectionPoolTomcat.getConnection();
 			
 			String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";

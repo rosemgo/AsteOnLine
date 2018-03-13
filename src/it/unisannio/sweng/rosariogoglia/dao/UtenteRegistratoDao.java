@@ -52,7 +52,16 @@ public interface UtenteRegistratoDao {
 	public Integer updateUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 
 	
-	
+	/**
+	 * Visualizza le inserzioni caricate dall'utente, passato come parametro, e con parte del titolo, passato come parametro, relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
+	 * 
+	 * @param idUtenteRegistrato
+	 * @param limiteInf
+	 * @param numInserzioniPagina
+	 * @return le inserzioni comprese in un intervallo specifico
+	 */
+	public List<Inserzione> getLimitLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione, Integer limiteInf, Integer numInserzioniPagina);
+
 	
 	/**
 	 * Modifica i dati dell'utente dato il nickname
@@ -364,6 +373,28 @@ public interface UtenteRegistratoDao {
 	 */
 	public List<Inserzione> getLimitInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato, Integer limiteInf, Integer numeroInserzioniPagina);
 
-	
+			
+	/**
+	 * Restituisce gli utenti relativi ad un intervallo specifico(utilizzato nella paginazione)
+	 * 
+	 * @return lista utenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public List<UtenteRegistrato> getLimitUtenti(Integer limiteInf, Integer numUtentiPerPagina);
+
+
+	/**
+	 * Visualizza le aste a cui l'utente, passato come parametro, sta partecipando (utilizzato nella paginazione delle inserzioni)
+	 * 
+	 * @param idUtente
+	 * @param limiteInf
+	 * @param numInserzioniPagina
+	 * @return 
+	 */
+	public List<Inserzione> getLimitMieAsteInCorsoByIdUtente(Integer idUtente, Integer limiteInf, Integer numInserzioniPagina);
+
+
 }
 

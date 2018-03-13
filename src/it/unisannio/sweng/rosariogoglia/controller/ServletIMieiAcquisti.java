@@ -18,8 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletIMieiAcquisti
+ * Servlet che permette ad un utente registrato di visualizzare le inserzioni aggiudicate, e quindi gli acquisti fatti.
  */
+
 //@WebServlet("/ServletIMieiAcquisti")
 public class ServletIMieiAcquisti extends HttpServlet {
 	private static final long serialVersionUID = 1L;

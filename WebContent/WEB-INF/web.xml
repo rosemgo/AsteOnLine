@@ -151,9 +151,195 @@
     <servlet-name>ServletAsteInCorso</servlet-name>
     <url-pattern>/ServletAsteInCorso</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletControlloInserisciInserzione</display-name>
+    <servlet-name>ServletControlloInserisciInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloInserisciInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloInserisciInserzione</servlet-name>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletControlloModificaInserzione</display-name>
+    <servlet-name>ServletControlloModificaInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloModificaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloModificaInserzione</servlet-name>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+  </servlet-mapping>
  
+ <servlet>
+    <display-name>ServletControlloModificaDati</display-name>
+    <servlet-name>ServletControlloModificaDati</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloModificaDati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloModificaDati</servlet-name>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletControlloModificaPassword</display-name>
+    <servlet-name>ServletControlloModificaPassword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloModificaPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloModificaPassword</servlet-name>
+    <url-pattern>/ServletControlloModificaPassword</url-pattern>
+  </servlet-mapping>
  
+ <servlet>
+    <display-name>ServletControlloRipubblicaInserzione</display-name>
+    <servlet-name>ServletControlloRipubblicaInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloRipubblicaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloRipubblicaInserzione</servlet-name>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletControlloPagamento</display-name>
+    <servlet-name>ServletControlloPagamento</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletControlloPagamento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloPagamento</servlet-name>
+    <url-pattern>/ServletControlloPagamento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletControlloOfferta</display-name>
+    <servlet-name>ServletControlloOfferta</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloOfferta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControlloOfferta</servlet-name>
+    <url-pattern>/ServletControlloOfferta</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletDettagliUtente</display-name>
+    <servlet-name>ServletDettagliUtente</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletDettagliUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDettagliUtente</servlet-name>
+    <url-pattern>/ServletDettagliUtente</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletIMieiAcquisti</display-name>
+    <servlet-name>ServletIMieiAcquisti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletIMieiAcquisti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletIMieiAcquisti</servlet-name>
+    <url-pattern>/ServletIMieiAcquisti</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletInserzioniOsservate</display-name>
+    <servlet-name>ServletInserzioniOsservate</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletInserzioniOsservate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInserzioniOsservate</servlet-name>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>ServletLeMieInserzioni</display-name>
+    <servlet-name>ServletLeMieInserzioni</servlet-name>
+    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLeMieInserzioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLeMieInserzioni</servlet-name>
+    <url-pattern>/ServletLeMieInserzioni</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletMail</display-name>
+    <servlet-name>ServletMail</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletMail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletMail</servlet-name>
+    <url-pattern>/ServletMail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletModificaDati</display-name>
+    <servlet-name>ServletModificaDati</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletModificaDati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModificaDati</servlet-name>
+    <url-pattern>/ServletModificaDati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletOfferta</display-name>
+    <servlet-name>ServletOfferta</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletOfferta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletOfferta</servlet-name>
+    <url-pattern>/ServletOfferta</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletOsservaInserzione</display-name>
+    <servlet-name>ServletOsservaInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletOsservaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletOsservaInserzione</servlet-name>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletPagamento</display-name>
+    <servlet-name>ServletPagamento</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletPagamento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletPagamento</servlet-name>
+    <url-pattern>/ServletPagamento</url-pattern>
+  </servlet-mapping>
  
- 
+ <servlet>
+    <display-name>ServletRicercaAvanzataInserzione</display-name>
+    <servlet-name>ServletRicercaAvanzataInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRicercaAvanzataInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRicercaAvanzataInserzione</servlet-name>
+    <url-pattern>/ServletRicercaAvanzataInserzione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletRicercaAvanzataProdotto</display-name>
+    <servlet-name>ServletRicercaAvanzataProdotto</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRicercaAvanzataProdotto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRicercaAvanzataProdotto</servlet-name>
+    <url-pattern>/ServletRicercaAvanzataProdotto</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>ServletRicercaInserzioni</display-name>
+    <servlet-name>ServletRicercaInserzioni</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRicercaInserzioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRicercaInserzioni</servlet-name>
+    <url-pattern>/ServletRicercaInserzioni</url-pattern>
+  </servlet-mapping>
  
 </web-app>

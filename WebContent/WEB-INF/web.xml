@@ -341,5 +341,15 @@
     <servlet-name>ServletRicercaInserzioni</servlet-name>
     <url-pattern>/ServletRicercaInserzioni</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletModificaPassword</display-name>
+    <servlet-name>ServletModificaPassword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletModificaPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModificaPassword</servlet-name>
+    <url-pattern>/ServletModificaPassword</url-pattern>
+  </servlet-mapping>
  
 </web-app>

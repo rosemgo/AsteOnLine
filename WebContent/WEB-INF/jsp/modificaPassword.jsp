@@ -10,7 +10,6 @@
 <link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 
-<jsp:useBean id="homeBean" scope="session" class="it.unisannio.tsw.rosariogoglia.bean.HomeBean" />
 
 <body>
 

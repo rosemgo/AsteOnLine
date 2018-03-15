@@ -77,12 +77,6 @@ javadoc {
     classpath = configurations.compile
 }
 
-/*
-findbugs{
-	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
-    
-}
-*/
 
 
 tasks.withType(FindBugs) {
@@ -96,7 +90,7 @@ tasks.withType(FindBugs) {
     reports {
         xml.enabled = false
         xml.withMessages = true
-        html.enabled true
+        html.enabled = true
         //html.enabled = !xml.isEnabled()
         xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
         html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"

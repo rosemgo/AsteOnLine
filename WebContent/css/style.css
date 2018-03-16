@@ -919,7 +919,7 @@ ul#gallery a:hover span{
 .google-maps {
   float:left; 
   margin-left: 50px;
-  position: relative;
+  /* position: relative;*/
   padding-bottom: 75%; // Definisco l'aspect ratio
   height: 0;
   overflow: hidden;

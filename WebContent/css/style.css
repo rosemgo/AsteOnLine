@@ -915,8 +915,10 @@ ul#gallery a:hover span{
 	width: 40%;
 }	
 	
-	
+
 .google-maps {
+  float:left; 
+  margin-left: 50px;
   position: relative;
   padding-bottom: 75%; // Definisco l'aspect ratio
   height: 0;
@@ -926,7 +928,7 @@ ul#gallery a:hover span{
   position: absolute;
   top: 0;
   left: 0;
-  width: 100% !important;
-  height: 100% !important;
+  width: 40% !important;
+  height: 40% !important;
 }
-
+	

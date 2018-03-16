@@ -1,1 +1,4 @@
+# ignora TUTTI i file nella directory build
+# non è possibile includere nuovamente un file se la directory in cui
+# è contenuto viene ignorata
 /build

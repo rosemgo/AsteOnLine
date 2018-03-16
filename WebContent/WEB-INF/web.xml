@@ -352,4 +352,43 @@
     <url-pattern>/ServletModificaPassword</url-pattern>
   </servlet-mapping>
  
+ 
+  <servlet>
+    <display-name>ServletLeMieAste</display-name>
+    <servlet-name>ServletLeMieAste</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletLeMieAste</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLeMieAste</servlet-name>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+  </servlet-mapping>
+ 
+ 
+  <servlet>
+    <display-name>ServletRicercaLeMieInserzioniTitolo</display-name>
+    <servlet-name>ServletRicercaLeMieInserzioniTitolo</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRicercaLeMieInserzioniTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRicercaLeMieInserzioniTitolo</servlet-name>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+  </servlet-mapping> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </web-app>

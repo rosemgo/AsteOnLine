@@ -10,7 +10,7 @@
 .containerContatti {
 	background-color:#ffffff; 
 	width:1000px; 
-	height:90%;  /* sarebbe nella schermata principale 1005px */ 
+	height:auto;  /* sarebbe nella schermata principale 1005px */ 
  	position:absolute; 
 	left:50%; 
 	margin:0px 0px 0px -500px;

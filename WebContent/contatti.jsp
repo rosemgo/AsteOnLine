@@ -11,6 +11,7 @@
 </head>
 
 
+<!-- 
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4LDc9ZWLw5wAeIgn1TZLG8stdzldHINg&sensor=false">
 </script>
@@ -50,7 +51,7 @@
       google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-
+-->
 
 <body>
 
@@ -180,9 +181,13 @@
 					<img alt="Immagine pagamenti" src="immagini/contatti.jpg">
 				</p>				  				
 							
-				<div id="map-canvas" style="float:left; margin-left: 50px"></div>
-				
-				
+			<!--  	<div id="map-canvas" style="float:left; margin-left: 50px"></div> -->
+			
+			<div class="google-maps">				
+ 				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3003.1314016269926!2d14.637705900802615!3d41.17530110468682!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a479ee7644a41%3A0xc632c72ce4be643c!2sVia+Vennerici%2C+3B%2C+82038+Vitulano+BN!5e0!3m2!1sit!2sit!4v1521219506195" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+			</div>
+			
 				<div style="float:left; padding-left: 10px">
 								
 					<p>ROSBELF Company spa </br>

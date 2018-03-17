@@ -11,7 +11,9 @@ public interface ImmagineDao {
 	
 
 	/** 
-	 * @return l'immagine corrispondente all' id passato come parametro
+	 * Questo metodo visualizza l'immagine avente l'id passato come parametro
+	 * 
+	 * @return L'immagine corrispondente all' id passato come parametro
 	 * 
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -20,9 +22,12 @@ public interface ImmagineDao {
 	public Immagine getImmagineById(Integer idImmagine) throws ClassNotFoundException, SQLException, IOException;
 	
 	/**
+	 * Questo metodo carica tutte le immagini dell'inserzione avente l'id passato come parametro
 	 * 
 	 * @param idInserzione
-	 * @return Dato l'id di un'inserzione ne restituisce tutte le immagini associate a quell'inserzione
+	 * 
+	 * @return Restituisce tutte le immagini associate ad un'inserzione
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws IOException
@@ -30,18 +35,28 @@ public interface ImmagineDao {
 	public List<Immagine> getImmaginiByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 		
 	/** 
+	 * Questo metodo inserisce un'immagine nel database
+	 * 
 	 * @return l'id dell' immagine inserita
 	 */
 	public Integer insertImmagine(Immagine immagine);
 
-	
+	/**
+	 * Questo metodo elimina un'immagine dal database
+	 * 
+	 * @param immagine
+	 * 
+	 * @return Restituisce il numero di righe eliminate dal database,se l'eliminazione fallisce restituisce -1
+	 */
 	
 	public Integer deleteImmagine(Immagine immagine);
 	
 	/**
 	 * Cancella tutte le immagini relative ad un'inserzione
+	 * 
 	 * @param idInserzione
-	 * @return numero di righe cancellate
+	 * 
+	 * @return Numero di righe cancellate
 	 */
 	public Integer deleteImmagineByIdInserzione(Integer idInserzione);
 	

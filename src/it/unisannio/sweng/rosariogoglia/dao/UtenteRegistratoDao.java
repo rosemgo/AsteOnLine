@@ -11,17 +11,22 @@ public interface UtenteRegistratoDao {
 		
 	/**
 	 * Verifico se l'inserzione passata come parametro è già osservata dall'utente passato come parametro
+	 * 
 	 * @param idUtenteRegistrato
 	 * @param idInserzione
-	 * @return
+	 * 
+	 * @return True se l'inserzione è già osservata dall'utente,false altrimenti
 	*/
 	public Boolean checkInserzioneOsservataByIdUtente(Integer idUtenteRegistrato, Integer idInserzione);
 
 
 	/**
-	 * Inserisce un nuovo utente nel database.
+	 * Inserisce un nuovo utente nel database
+	 * 
 	 * @param utente
-	 * @return l'id dell'utente inserito, oppure -1 in caso di errore
+	 * 
+	 * @return L'id dell'utente inserito, oppure -1 in caso di errore
+	 * 
 	 * @throws SQLException
 	 */
 	public Integer insertUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
@@ -31,6 +36,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param utente
 	 * @param inserzione
+	 * 
 	 * @return il numero di righe inserite(ossia 1)
 	 */
 	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione);
@@ -41,13 +47,26 @@ public interface UtenteRegistratoDao {
 	 * non risulta più abilitato alle funzioni di un utente registrato
 	 * 
 	 * @param utente
-	 * @return numero di righe cancellate
+	 * 
+	 * @return Numero di righe cancellate
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws IOException
 	 */
 	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 			
+	/**
+	 * Questo metodo aggiorna uno o più attributi dell'utente passato come parametro
+	 * 
+	 * @param utente
+	 * 
+	 * @return 1 se l'aggiornamento ha successo,-1 se l'aggiornamento fallisce
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	
 	public Integer updateUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 
@@ -57,8 +76,10 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtenteRegistrato
 	 * @param limiteInf
+	 * 
 	 * @param numInserzioniPagina
-	 * @return le inserzioni comprese in un intervallo specifico
+	 * 
+	 * @return Le inserzioni comprese in un intervallo specifico
 	 */
 	public List<Inserzione> getLimitLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione, Integer limiteInf, Integer numInserzioniPagina);
 
@@ -75,7 +96,8 @@ public interface UtenteRegistratoDao {
 	 * @param telefono
 	 * @param nContoCorrente
 	 * @param eMail
-	 * @return il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
+	 * 
+	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 * 
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -88,6 +110,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtente
 	 * @param flagAbilitato
+	 * 
 	 * @return 1 in caso di aggiornamento, -1 in caso di aggiornamento non riuscito
 	 */
 	public Integer updateStatoUtente(Integer idUtente, Boolean flagAbilitato);
@@ -97,7 +120,9 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param nick identificativo univoco dell'utente da modificare 
 	 * @param tipologiaCliente stato valore dello stato da settare
-	 * @return il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
+	 * 
+	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
+	 * 
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -110,7 +135,7 @@ public interface UtenteRegistratoDao {
 	 * @param nick identificativo univoco dell'utente da modificare 
 	 * @param flagAbilitato
 	 * 
-	 * @return il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
+	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 */
 	public Integer updateAbilitazioneUtente(String nick, boolean flagAbilitato);
 		
@@ -120,7 +145,8 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param nick
 	 * @param psw 
-	 * @return il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
+	 * 
+	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 * 
 	 * @throws SQLException 
 	 * @throws IOException 
@@ -133,15 +159,17 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param eMail
 	 * 
-	 * @return l'utente corrispondente alla mail passata come paramentro
+	 * @return L'utente corrispondente alla mail passata come paramentro
 	 */
 	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail);
 
 
 	/**
 	 * Restituisce l'utente corrispondente all'id passato come paramentro
+	 * 
 	 * @param idUtente
-	 * @return l'utente
+	 * 
+	 * @return L'utente corrispondente all'id passato come parametro
 	  */
 	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente);
 
@@ -150,7 +178,8 @@ public interface UtenteRegistratoDao {
 	 * Questo metodo crea una lista delle inserzioni osservate da un utente passato come parametro
 	 * 
 	 * @param idUtente
-	 * @return lista delle inserzioni osservate dall' utente registrato
+	 * 
+	 * @return Lista delle inserzioni osservate dall' utente registrato
 	 */
 	public List<Inserzione> getInserzioniOsservateByIdUtente(Integer idUtente);
 
@@ -160,7 +189,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtente
 	 * 
-	 * @return numero inserzioni
+	 * @return Numero delle inserzioni osservate dall'utente passato come parametro
 	 */
 	public Integer getNumeroInserzioniOsservateByIdUtente(Integer idUtente);
 	
@@ -169,7 +198,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtenteRegistrato identificatore univoco dell'acquirente
 	 * 
-	 * @return lista di prodotti relativi all'acquirente
+	 * @return Lista di prodotti relativi all'acquirente
 	 */
 	public List<Inserzione> getInserzioniByIdUtenteAcquirente(Integer idUtenteRegistrato);
 	
@@ -178,7 +207,8 @@ public interface UtenteRegistratoDao {
 	 * Visualizzo tutte le inserzioni aggiudicate dall'utente passato come parametro
 	 * 
 	 * @param idUtenteRegistrato
-	 * @return lista inserzioni aggiudicate
+	 * 
+	 * @return Lista inserzioni aggiudicate
 	*/
 	public List<Inserzione> getInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato);
 		
@@ -187,7 +217,8 @@ public interface UtenteRegistratoDao {
 	 * Visualizza il numero delle inserzioni aggiudicate dall'utente passato come parametro
 	 * 
 	 * @param idUtenteRegistrato
-	 * @return
+	 * 
+	 * @return Il numero delle inserzioni che l'utente passato come parametro si è aggiudicato
 	 */
 	public Integer getNumeroInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato);
 		
@@ -196,39 +227,42 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtenteRegistrato identificatore univoco del venditore
 	 * 
-	 * @return lista di prodotti relativi al venditore
+	 * @return Lista di prodotti relativi al venditore
 	 */
 	public List<Inserzione> getInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato);
 		
 	/**
 	 * Ottiene tutti i nickname degli utenti presenti nel database
 	 * 
-	 * @return lista di tutti i nickname degli utenti
+	 * @return Lista di tutti i nickname degli utenti
 	 */
 	public List<String> getNick();
 	
 	/**
 	 * Visualizza il numero delgli utenti presenti nel db
 	 * 
-	 * @return numero totale utenti
+	 * @return Numero totale utenti
 	 */
 	public Integer getNumeroUtenti();
 
 
 	/**
-	 * Restituisce l'utente corrispondente al nick passato come paramentro.
+	 * Restituisce l'utente corrispondente al nick passato come paramentro
 	 * 
 	 * @param nick
-	 * @return l'utente registrato
+	 * 
+	 * @return L'utente registrato
 	 */
 	public UtenteRegistrato getUtenteRegistratoByNick(String nick);
 	
 	
 	/**
-	 * Ricerca nel database l'utente corrispondente al nickname passato come parametro, e se presente lo restituisce. 
+	 * Ricerca nel database l'utente corrispondente al nickname passato come parametro, e se presente lo restituisce
 	 * 
-	 * @param nickName identificativo dell'utente.
-	 * @return restituisce l'utente se il nick è esistente, null altrimenti.
+	 * @param nickName identificativo dell'utente
+	 * 
+	 * @return Restituisce l'utente se il nick è esistente, null altrimenti
+	 * 
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -251,7 +285,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param nick
 	 * 
-	 * @return true se l'utente venditore ha almeno un'inserzione che è scaduta e quindi può cancellarla oppure ripubblicarla
+	 * @return True se l'utente venditore ha almeno un'inserzione che è scaduta e quindi può cancellarla oppure ripubblicarla
 	 */
 	public boolean controllaProdottiScaduti(String nick);
 	
@@ -260,7 +294,8 @@ public interface UtenteRegistratoDao {
 	 * Controlla se la mail è già presente nel db.
 	 * 
 	 * @param eMail identificativo dell'utente.
-	 * @return restituisce true se il nick è esistente, false altrimenti.
+	 * 
+	 * @return Restituisce true se il nick è esistente, false altrimenti.
 	 */
 	public boolean controlloeMail(String eMail);
 	
@@ -269,7 +304,8 @@ public interface UtenteRegistratoDao {
 	 * Controlla se il nick è già presente nel db.
 	 * 
 	 * @param nickName identificativo dell'utente.
-	 * @return restituisce true se il nick è esistente, false altrimenti.
+	 * 
+	 * @return Restituisce true se il nick è esistente, false altrimenti.
 	 */
 	public boolean controlloNick(String nickName);
 	
@@ -278,7 +314,8 @@ public interface UtenteRegistratoDao {
 	 * Il metodo viene utilizzato per prelevare dal db tutte le aste(inserzioni) a cui l'utente sta partecipando
 	 * 
 	 * @param idUtente
-	 * @return la lista delle aste corrente a cui l'utente partecipa
+	 * 
+	 * @return La lista delle aste corrente a cui l'utente partecipa
 	 */
 	public List<Inserzione> getMieAsteInCorsoByIdUtente(Integer idUtente);
 	
@@ -288,7 +325,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtenteRegistrato
 	 * 
-	 * @return il numero delle inserzioni
+	 * @return Il numero delle inserzioni
 	 */
 	public Integer getNumeroInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato);
 	
@@ -299,7 +336,8 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param idUtenteRegistrato
 	 * @param titoloInserzione
-	 * @return il numero delle inserzioni con quel titolo
+	 * 
+	 * @return Il numero delle inserzioni con quel titolo
 	 */
 	public Integer getNumeroLeMieInserzioniPerTitolo(Integer idUtenteRegistrato, String titoloInserzione);
 	
@@ -308,7 +346,7 @@ public interface UtenteRegistratoDao {
 	 * Visualizza il numero delle aste a cui l'utente, passato come parametro, sta partecipando
 	 * 
 	 * @param idUtenteRegistrato
-	 * @return numero inserzioni
+	 * @return Numero inserzioni
 	 */
 	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato);
 	
@@ -317,7 +355,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Preleva tutti gli utenti registrati nel database.
 	 * 
-	 * @return lista di utenti
+	 * @return Lista degli utenti registrati
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -329,7 +367,7 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * @param nick
 	 * 
-	 * @return true se l'utente è abilitato
+	 * @return True se l'utente è abilitato
 	 */
 	public boolean isUtenteAbilitato(String nick);
 	
@@ -339,7 +377,7 @@ public interface UtenteRegistratoDao {
 	 * @param codiceFiscale
 	 * @param tipologiaUtente
 	 * 
-	 * @return true se l'utente si è già registrato
+	 * @return True se l'utente si è già registrato
 	 */
 	public boolean isUtenteRegistrato(String codiceFiscale, String tipologiaUtente);
 	
@@ -350,15 +388,18 @@ public interface UtenteRegistratoDao {
 	 * @param idUtenteRegistrato
 	 * @param limiteInf
 	 * @param numInserzioniPagina
-	 * @return le inserzioni comprese in un intervallo specifico
+	 * 
+	 * @return Le inserzioni comprese in un intervallo specifico
 	 */
 	public List<Inserzione> getLimitInserzioniByIdUtenteVenditore(Integer idUtenteRegistrato, Integer limiteInf,  Integer numInserzioniPagina);
 
 	
 	/**
 	 * Visualizza le inserzioni osservate relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
+	 * 
 	 * @param idUtente
-	 * @return
+	 * 
+	 * @return Restituisce le inserzioni osservate relative ad un certo intervallo
 	 */
 	public List<Inserzione> getLimitInserzioniOsservateByIdUtente(Integer idUtente, Integer limiteInf, Integer numeroInserzioniPagina);
 		
@@ -369,7 +410,8 @@ public interface UtenteRegistratoDao {
 	 * @param idUtenteRegistrato
 	 * @param limiteInf
 	 * @param numeroInserzioniPagina
-	 * @return lista d inserzioni
+	 * 
+	 * @return Lista d inserzioni
 	 */
 	public List<Inserzione> getLimitInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato, Integer limiteInf, Integer numeroInserzioniPagina);
 
@@ -377,7 +419,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Restituisce gli utenti relativi ad un intervallo specifico(utilizzato nella paginazione)
 	 * 
-	 * @return lista utenti
+	 * @return Lista degli utenti relativi ad un certo intevallo
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws IOException
@@ -391,7 +434,8 @@ public interface UtenteRegistratoDao {
 	 * @param idUtente
 	 * @param limiteInf
 	 * @param numInserzioniPagina
-	 * @return 
+	 * 
+	 * @return La lista delle aste a cui l'utente avente l'id passato come parametro sta partecipando
 	 */
 	public List<Inserzione> getLimitMieAsteInCorsoByIdUtente(Integer idUtente, Integer limiteInf, Integer numInserzioniPagina);
 

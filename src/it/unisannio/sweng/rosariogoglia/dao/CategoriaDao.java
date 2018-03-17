@@ -12,22 +12,28 @@ public interface CategoriaDao {
 
 	
 	/**
+	 * Questo metodo carica tutte le Categorie presenti nel sistema
 	 * 
-	 * @return tutte le categorie censite dal sistema
+	 * @return Tutte le categorie censite dal sistema
 	 */
 	public List<Categoria> getCategorie();
 	
 	/**
+	 * Questo metodo carica la Categoria avente l'id passato come parametro
 	 * 
 	 * @param idCategoria è l'id della categoria da caricare
-	 * @return la categoria con id uguale ad idCategoria. E' null se non c'è una categoria con tale id
+	 * 
+	 * @return La categoria con id uguale ad idCategoria. E' null se non c'è una categoria con tale id
 	 */
 	public Categoria getCategoriaById (Integer idCategoria);
 	
 	/**
 	 * Dato il nome della categoria, la restituisce se presente, altrimenti restiruisce null
+	 * 
 	 * @param nomeCategoria
-	 * @return restituisce la categoria se presente, altrimenti restiruisce null
+	 * 
+	 * @return Restituisce la categoria se presente, altrimenti restiruisce null
+	 * 
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
@@ -37,7 +43,8 @@ public interface CategoriaDao {
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
 	 * 
 	 * @param idCategoria
-	 * @return la lista dei produttori non ancora associati alla categoria
+	 * 
+	 * @return La lista dei produttori non ancora associati alla categoria
 	 */
 	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria);
 	
@@ -67,14 +74,17 @@ public interface CategoriaDao {
 	 * Aggiunge la categoria nel db
 	 * 
 	 * @param categoria
-	 * @return l'id della categoria inserita
+	 * 
+	 * @return L'id della categoria inserita
 	 */
 	public Integer insertCategoria (Categoria categoria);
 	
 	/**
+	 * Questo metodo aggiorna il nome di una categoria presente nel sistema
 	 * 
 	 * @param categoria da aggiornare (id è sempre lo stesso, cambia il nome)
-	 * @return categoria 1 se la categoria è stata aggiornata, 0 altrimenti
+	 * 
+	 * @return 1 se la categoria è stata aggiornata, 0 altrimenti
 	  */
 	public Integer updateCategoria (Categoria categoria);
 
@@ -91,7 +101,8 @@ public interface CategoriaDao {
 	 * Controlla se è possibile eliminare una categoria. Per essere eliminata è necessario che non ci siano inserzioni con prodotti ad essa associati
 	 * 
 	 * @param idCategoria
-	 * @return true se è possibile eliminare la categoria, false se non è possibile
+	 * 
+	 * @return True se è possibile eliminare la categoria, false se non è possibile
 	  */
 	public boolean checkDeleteCategoria(Integer idCategoria);
 		
@@ -100,7 +111,8 @@ public interface CategoriaDao {
 	 * 
 	 * @param idCategoria
 	 * @param idProduttore
-	 * @return true in caso l'associazione sia presente, false in caso contrario
+	 * 
+	 * @return True in caso l'associazione sia presente, false in caso contrario
 	 */
 	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore);
 		

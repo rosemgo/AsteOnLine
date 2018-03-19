@@ -12,7 +12,7 @@ public interface ComuneDao {
 	/**
 	 * Questo metodo carica il comune avente l'id passato come parametro
 	 * 
-	 * @param idComune
+	 * @param idComune id identificativo del comune nel database
 	 * 
 	 * @return Restituisce il comune
 	 * 

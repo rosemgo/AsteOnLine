@@ -20,13 +20,7 @@ public interface InserzioneDao {
 	/**
 	 * Questo metodo carica tutte le inserzioni presenti nel database
 	 * 
-	 * @param idInserzione
-	 * 
 	 * @return Restituisce l'inserzione
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
 	 */
 	public List<Inserzione> getInserzioni();
 		
@@ -93,9 +87,6 @@ public interface InserzioneDao {
 	 * 
 	 * @return Restituisce l'inserzione
 	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
 	 */
 	public Inserzione getInserzioneById(Integer idInserzione);
 	

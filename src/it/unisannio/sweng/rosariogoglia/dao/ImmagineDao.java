@@ -24,7 +24,7 @@ public interface ImmagineDao {
 	/**
 	 * Questo metodo carica tutte le immagini dell'inserzione avente l'id passato come parametro
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Restituisce tutte le immagini associate ad un'inserzione
 	 * 
@@ -37,6 +37,8 @@ public interface ImmagineDao {
 	/** 
 	 * Questo metodo inserisce un'immagine nel database
 	 * 
+	 * @param immagine l'oggetto immagine
+	 * 
 	 * @return l'id dell' immagine inserita
 	 */
 	public Integer insertImmagine(Immagine immagine);
@@ -44,7 +46,7 @@ public interface ImmagineDao {
 	/**
 	 * Questo metodo elimina un'immagine dal database
 	 * 
-	 * @param immagine
+	 * @param immagine l'oggetto immagine
 	 * 
 	 * @return Restituisce il numero di righe eliminate dal database,se l'eliminazione fallisce restituisce -1
 	 */
@@ -54,7 +56,7 @@ public interface ImmagineDao {
 	/**
 	 * Cancella tutte le immagini relative ad un'inserzione
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Numero di righe cancellate
 	 */

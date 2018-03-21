@@ -49,8 +49,8 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza le inserzioni in chiusura relative ad un intervallo
 	 * 
-	 * @param limiteInf
-	 * @param numInserzioniPerPagina
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPerPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Inserzioni relative ad un intervallo specifico
 	 */
@@ -60,8 +60,8 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza le inserzioni in asta relative ad un intervallo 
 	 * 
-	 * @param limiteInf
-	 * @param numInserzioniPerPagina
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPerPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return inserzioni relative ad un intervallo specifico
 	 */
@@ -71,19 +71,18 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza le inserzioni relative ad un intervallo 
 	 * 
-	 * @param limiteInf
-	 * @param numInserzioniPerPagina
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPerPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return inserzioni relative ad un intervallo specifico
 	 */
 	public List<Inserzione> getLimitInserzioni(Integer limiteInf, Integer numInserzioniPerPagina);
 		
 	
-	
 	/**
 	 * Questo metodo carica l'intera inserzione con la lista immagini e la lista di offerte
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Restituisce l'inserzione
 	 * 
@@ -94,7 +93,7 @@ public interface InserzioneDao {
 	 * Questo metodo a differenza del getInserzioneById, carica solo l'inserzione senza la lista immagini e 
 	 * la lista di offerte(utilizzato nel metodo getOffertaByIdInserzione per non creare la ricorsione tra offerta ed inserzione)
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Restituisce l'inserzione
 	 * 
@@ -108,8 +107,8 @@ public interface InserzioneDao {
 	/**
 	 * Questo metodo visualizza la lista delle inserzioni contenenti la keyword passata come parametro.	
 	 * 
-	 * @param keyword
-	 * @param idCategoria
+	 * @param keyword parola chiave per la ricerca delle inserzioni
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return Restituisce la lista delle inserzioni conteneti una determinata keyword
 	 */
@@ -119,10 +118,10 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza le inserzioni relative ad un intervallo specifico(utilizzato nella paginazione delle inserzioni) in seguito ad una ricerca filtrata per keyword e idCategoria
 	 * 
-	 * @param keyword
-	 * @param idCategoria
-	 * @param limiteInf
-	 * @param numInserzioniPagina
+	 * @param keyword parola chiave per la ricerca delle inserzioni
+	 * @param idCategoria numero identificativo della categoria
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Solo le inserzioni cercate relative ad un intervallo
 	 */
@@ -131,15 +130,15 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza le inserzioni relative ad un intervallo specifico(utilizzato nella paginazione delle inserzioni) in seguito ad una ricerca filtrata per keyword, idCategoria, idProduttore, idProdotto, titolo, prezzoMin e prezzoMax
 	 * 
-	 * @param keyword
-	 * @param idCategoria
-	 * @param idProduttore
-	 * @param idProdotto
-	 * @param titolo
-	 * @param prezzoMin
-	 * @param prezzoMax
-	 * @param limiteInf
-	 * @param numInserzioniPagina
+	 * @param keyword parola chiave per la ricerca delle inserzioni
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
+	 * @param idProdotto numero identificativo del prodotto
+	 * @param titolo titolo dell'inserzione da ricercare
+	 * @param prezzoMin prezzo minimo dell'inserzione
+	 * @param prezzoMax prezzo massimo dell'inserzione
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Solo le inserzioni cercate relative ad un intervallo
 	 */
@@ -149,8 +148,8 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza il numero delle inserzioni ottenute in seguito ad una ricerca
 	 * 
-	 * @param keyword
-	 * @param idCategoria
+	 * @param keyword parola chiave per la ricerca delle inserzioni
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return Numero totale delle inserzioni trovate filtrate per keyword e idCategoria
 	 */
@@ -159,13 +158,13 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza il numero delle inserzioni ottenute in seguito ad una ricerca avanzata
 	 * 
-	 * @param keyword
-	 * @param idCategoria
-	 * @param idProduttore
-	 * @param idProdotto
-	 * @param titolo
-	 * @param prezzoMin
-	 * @param prezzoMax
+	 * @param keyword parola chiave per la ricerca delle inserzioni
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
+	 * @param idProdotto numero identificativo del prodotto
+	 * @param titolo titolo dell'inserzione da cercare
+	 * @param prezzoMin prezzo minimo dell'inserzione
+	 * @param prezzoMax prezzo massimo dell'inserzione
 	 * 
 	 * @return Numero totale delle inserzioni trovate filtrate per keyword, idCategoria, idProduttore, idProdotto, titolo, prezzoMin e prezzoMax
 	 */
@@ -175,7 +174,7 @@ public interface InserzioneDao {
 	 * Il metodo visualizza le inserzioni più osservate dagli utenti tra quelle aventi stato 'in asta', il numero
 	 * di inserzioni da osservare dipende dal parametro 'numInserzioni'
 	 * 
-	 * @param numInserzioni
+	 * @param numInserzioni il numero di inserzioni da visualizzare
 	 * 
 	 * @return La lista delle inserzioni più osservate 
 	 * 
@@ -201,7 +200,7 @@ public interface InserzioneDao {
 	 * Visualizza le inserzioni ordinate in base alla loro data di scadenza,il numero di isnerzioni da visualizzare
 	 * dipende dal parametro 'numInserzioni'
 	 * 
-	 * @param numInserzioni
+	 * @param numInserzioni il numero di inserzioni da visualizzare
 	 * 
 	 * @return La lista ordinata delle inserzioni più prossime alla scadenza
 	 * 
@@ -215,7 +214,7 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza il numero delle inserzioni ottenute in seguito ad una ricerca per titolo
 	 * 
-	 * @param titoloInserzione
+	 * @param titoloInserzione titolo dell'inserzione da cercare
 	 * 
 	 * @return Il numero delle inserzioni che hanno un determintao titolo
 	 */
@@ -225,7 +224,7 @@ public interface InserzioneDao {
 	/**
 	 * Questo metodo restituisce una lista di utenti che osservano l'inserzione identificata dal parametro idInserzione
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return lista di utente registrati
 	 */
@@ -235,9 +234,9 @@ public interface InserzioneDao {
 	/**
 	 *  Visualizza le inserzioni relative ad un intervallo specifico (utilizzato nella paginazione delle inserzioni) in seguito ad una ricerca filtrata per titolo
 	 * 
-	 * @param titoloInserzione
-	 * @param limiteInf
-	 * @param numeroInserzioniPerPagina 
+	 * @param titoloInserzione titolo dell'inserzione da cercare
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numeroInserzioniPerPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return La liste di inserzioni comprese nell'intervallo specificato
 	 */
@@ -246,7 +245,7 @@ public interface InserzioneDao {
 	/**
 	 * Inserisce l'oggetto inserzione passato come parametro nel database.
 	 * 	
-	 * @param inserzione
+	 * @param inserzione oggetto inserzione da inserire nel database
 	 * 
 	 * @return L'id associato all'inserzione nel database
 	 * 
@@ -261,7 +260,7 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo aggiorna un'inserzione caricata precedentemente
 	 * 
-	 * @param inserzione
+	 * @param inserzione oggetto inserzione da aggiornare
 	 * 
 	 * @return Il numero di righe aggiornate nel database, se l'aggiornamento non va a buon fine viene restituito -1
 	 * 
@@ -274,8 +273,8 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo aggiorna lo stato dell'inserzione
 	 * 
-	 * @param statoInserzione
-	 * @param idInserzione
+	 * @param statoInserzione stato dell'nserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Il numero di righe aggiornate nel database,se l'aggiornamento fallisce restituisce -1
 	 */
@@ -284,9 +283,9 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo aggiorna il prezzo iniziale e la data scadenza dell'inserzione. Utilizzato nella ripubblicazione dell'inserzione.
 	 * 
-	 * @param prezzoIniziale
-	 * @param dataScadenzaAsta
-	 * @param idInserzione
+	 * @param prezzoIniziale prezzo iniziale dell'inserzione
+	 * @param dataScadenzaAsta data di scadenza dell'asta
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Il numero di righe aggiornate nel database,se l'aggiornamento fallisce restituisce -1
 	 */
@@ -295,8 +294,9 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo aggiorna l'acquirente dell'inserzione e il prezzo in base all'ultima offerta fatta
 	 * 
-	 * @param idAcquirente
-	 * @param idInserzione
+	 * @param idAcquirente numero identificativo dell'acquirente
+	 * @param prezzoAggiornato prezzo dell'inserzione aggiornato dopo un'offerta
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return numero di righe aggiornate(1 se la modifica è avvenuta, -1 nel caso contrario)
 	 */
@@ -307,7 +307,7 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo elimina un'inserzione caricata da utente dal database
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Il numero di righe eliminate dal database, se l'eliminazione fallisce restituisce -1
 	 */
@@ -318,8 +318,8 @@ public interface InserzioneDao {
 	/**
 	 * Il metodo elimina un'inserzione  dalla lista delle inserzioni osservate da un utente
 	 * 
-	 * @param idInserzione
-	 * @param idUtente
+	 * @param idInserzione numero identificativo dell'inserzione
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return Il numero di righe eliminate dal database, se l'eliminazione fallisce restituisce -1
 	 */
@@ -330,9 +330,9 @@ public interface InserzioneDao {
 	/**
 	 * Visualizza il numero delle inserzioni ottenute in seguito ad una ricerca avanzata
 	 * 
-	 * @param idCategoria
-	 * @param idProduttore
-	 * @param idProdotto
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
+	 * @param idProdotto numero identificativo del prodotto
 	 * 
 	 * @return Numero totale delle inserzioni trovate filtrate per idCategoria, idProduttore, idProdotto
 	 */
@@ -341,11 +341,11 @@ public interface InserzioneDao {
 	/**
 	 *  Visualizza le inserzioni relative ad un intervallo specifico(utilizzato nella paginazione delle inserzioni) in seguito ad una ricerca filtrata per idCategoria, idProduttore, idProdotto
 	 *
-	 * @param idCategoria
-	 * @param idProduttore
-	 * @param idProdotto
-	 * @param limiteInf
-	 * @param numInserzioniPagina
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
+	 * @param idProdotto numero identificativo del prodotto
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Solo le inserzioni cercate relative ad un intervallo
 	 * 

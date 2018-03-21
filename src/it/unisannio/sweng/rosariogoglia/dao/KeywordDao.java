@@ -19,7 +19,7 @@ public interface KeywordDao {
 	/**
 	 * Questo metodo carica la keyword avente l'id passato come parametro
 	 * 
-	 * @param id
+	 * @param id numero identificativo della keyword
 	 * 
 	 * @return La keyword corrispondente all'id passato come parametro
 	 */
@@ -29,7 +29,7 @@ public interface KeywordDao {
 	/**
 	 * Questo metodo carica la keyword corrispondente a quella passata come parametro
 	 * 
-	 * @param key
+	 * @param key parola chiave da visualizzare
 	 * 
 	 * @return La keyword corrispondente a quella passata come parametro
 	 * 
@@ -41,7 +41,7 @@ public interface KeywordDao {
 	/**
 	 * Metodo usato per ottenere le parole chiave associate ad un prodotto
 	 * 
-	 * @param idProdotto
+	 * @param idProdotto numero identificativo del prodotto
 	 * 
 	 * @return Restituisce la lista delle parole chiave di un prodotto
 	 * 
@@ -68,6 +68,7 @@ public interface KeywordDao {
 	 * Inserisce una lista di parola chiave passata come parametro
 	 * 
 	 * @param keywords lista di parole chiave
+	 * 
 	 * @return restituisce l'id dell'ultima keyword inserita, oppure -1 in caso di errore
 	 */
 	public int insertListaKeyword(List<Keyword> keywords);
@@ -75,7 +76,7 @@ public interface KeywordDao {
 	/**
 	 * Inserisce una parola chiave nel database
 	 * 
-	 * @param keyword sottoforma di stringa
+	 * @param keyword parola chiave da inserire nel database
 	 * 
 	 * @return Un intero che indica l'id della keyword inserita
 	 * 
@@ -88,7 +89,7 @@ public interface KeywordDao {
 	/**
 	 * Cancella la parola chiave corrispondente a quella passata come parametro dal database
 	 * 
-	 * @param idKeyword id della keyword
+	 * @param idKeyword numero identificativo della keyword
 	 * 
 	 * @return Un intero che indica il numero di righe cancellate
 	 */
@@ -98,7 +99,7 @@ public interface KeywordDao {
 	/**
 	 * Modifica la parola chiave corrispondente a quella passata come parametro 
 	 * 
-	 * @param keyword id della keyword
+	 * @param keyword numero identificativo della keyword
 	 * 
 	 * @return Un intero che indica il numero delle righe aggiornata
 	 */

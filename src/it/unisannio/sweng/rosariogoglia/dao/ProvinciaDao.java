@@ -11,7 +11,7 @@ public interface ProvinciaDao {
 	/**
 	 * Questo metodo fornisce la provincia che ha l'id corrispondente a quello passato come parametro
 	 * 
-	 * @param idProvincia
+	 * @param idProvincia numero identificativo della provincia
 	 * 
 	 * @return La provincia con id coincidente a quello passato come parametro
 	 * 

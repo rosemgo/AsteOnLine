@@ -30,7 +30,7 @@ public interface CategoriaDao {
 	/**
 	 * Dato il nome della categoria, la restituisce se presente, altrimenti restiruisce null
 	 * 
-	 * @param nomeCategoria
+	 * @param nomeCategoria nome della categoria
 	 * 
 	 * @return Restituisce la categoria se presente, altrimenti restiruisce null
 	 * 
@@ -42,7 +42,7 @@ public interface CategoriaDao {
 	/**
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
 	 * 
-	 * @param idCategoria
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return La lista dei produttori non ancora associati alla categoria
 	 */
@@ -51,8 +51,8 @@ public interface CategoriaDao {
 	/**
 	 * Il metodo è utilizzato per associare un produttore ad una categoria effettuanfo un'inserimento nella tabella categoria_has_produttore
 	 * 
-	 * @param idCategoria
-	 * @param IdProduttore
+	 * @param idCategoria numero identificativo della categoria
+	 * @param IdProduttore numero identificativo del produttore
 	 * 
 	 * @return 1 se l'inserimento è andato a buon fine, -1 in caso contrario
 	 */
@@ -62,8 +62,8 @@ public interface CategoriaDao {
 	/**
 	 * Il metodo è utilizzato per disassociare un produttore ad una categoria effettuando una cancellazione nella tabella categoria_has_produttore
 	 * 
-	 * @param idCategoria
-	 * @param idProduttore
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
 	 *
 	 * @return 1 se la cancellazione è andato a buon fine, -1 in caso contrario
 	 */
@@ -73,7 +73,7 @@ public interface CategoriaDao {
 	/**
 	 * Aggiunge la categoria nel db
 	 * 
-	 * @param categoria
+	 * @param categoria l'oggetto categoria da inserire
 	 * 
 	 * @return L'id della categoria inserita
 	 */
@@ -91,7 +91,7 @@ public interface CategoriaDao {
 	/**
 	 * Elimina dal db la categoria identificata dall'id passato come parametro
 	 * 
-	 * @param idCategoria
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return 1 se la cancellazione è andata a buon fine, -1 in caso contrario
 	 */
@@ -100,7 +100,7 @@ public interface CategoriaDao {
 	/**
 	 * Controlla se è possibile eliminare una categoria. Per essere eliminata è necessario che non ci siano inserzioni con prodotti ad essa associati
 	 * 
-	 * @param idCategoria
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return True se è possibile eliminare la categoria, false se non è possibile
 	  */
@@ -109,8 +109,8 @@ public interface CategoriaDao {
 	/**
 	 * Controlla se l'associazione Categoria-Produttore sia già presente nel db
 	 * 
-	 * @param idCategoria
-	 * @param idProduttore
+	 * @param idCategoria numero identificativo della categoria
+	 * @param idProduttore numero identificativo del produttore
 	 * 
 	 * @return True in caso l'associazione sia presente, false in caso contrario
 	 */

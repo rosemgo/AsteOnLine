@@ -16,7 +16,8 @@ public interface BannedCookiesDao {
 	/**
 	 * Verifica se l'utente con l'id passato come paramentro, è bannato o meno.
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
+	 * 
 	 * @return un booleano settato a true se l'utente è bannato
 	 */
 	public boolean checkUtenteRegistratoBanned(Integer idUtente);
@@ -24,7 +25,7 @@ public interface BannedCookiesDao {
 	/**
 	 * Rimuovere un utente bannata dalla lista degli utenti bannati
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 */
 	public Integer deleteBannedCookies(Integer idUtente);
 		

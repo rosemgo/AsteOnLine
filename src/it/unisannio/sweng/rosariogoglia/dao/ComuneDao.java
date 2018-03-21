@@ -34,7 +34,7 @@ public interface ComuneDao {
 	/**
 	 * Questo metodo visualizza tutti i comuni aventi l'idProvincia passato come parametro.
 	 * 
-	 * @param idProvincia
+	 * @param idProvincia numero identificativo della provincia
 	 * 
 	 * @return La lista dei comuni appartenenti ad una provincia
 	 */

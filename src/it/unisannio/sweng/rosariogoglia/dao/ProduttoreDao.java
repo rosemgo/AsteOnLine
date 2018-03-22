@@ -19,7 +19,7 @@ public interface ProduttoreDao {
 	/**
 	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
 	 * 
-	 * @param idProduttore
+	 * @param idProduttore numero identificativo del produttore
 	 * 
 	 * @return Il produttore avente l'id passato come parametro
 	 */
@@ -29,7 +29,7 @@ public interface ProduttoreDao {
 	/**
 	 * Questo metodo fornisce il produttore avente il nome corrispondente a quello passato come parametro
 	 * 
-	 * @param nomeProduttore
+	 * @param nomeProduttore nome del produttore da visualizzare
 	 * 
 	 * @return Il produttore che ha il nome corrispondente a quello passato come parametro
 	 * 
@@ -42,7 +42,7 @@ public interface ProduttoreDao {
 	/**
 	 * Questo metodo fornisce la lista dei produttori che hanno l'id della categoria coincidente a quello passato come parametro
 	 * 
-	 * @param idCategoria
+	 * @param idCategoria numero identificativo della categoria
 	 * 
 	 * @return La lista dei produttori aventi l'id della categoria coincidente a quello passato come parametro
 	 */
@@ -52,7 +52,7 @@ public interface ProduttoreDao {
 	/**
 	 * Questo metodo inserisce il produttore passato come parametro nel database
 	 * 
-	 * @param produttore
+	 * @param produttore oggetto produttore da inserire nel database
 	 * 
 	 * @return 1 se l'inserimento ha successo, -1 se l'inserimento fallisce
 	 */
@@ -62,7 +62,7 @@ public interface ProduttoreDao {
 	/**
 	 * Elimina dal database il produttore avente l'id passato come parametro 
 	 * 
-	 * @param idProduttore
+	 * @param idProduttore numero identificativo del produttore
 	 * 
 	 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
 	 */
@@ -72,7 +72,7 @@ public interface ProduttoreDao {
 	/**
 	 * Aggiorna uno o più attributi del produttore
 	 * 
-	 * @param produttore
+	 * @param produttore oggetto produttore da inserire nel database
 	 * 
 	 * @return 1 se l'aggiornamento è andato a buon fine, -1 altrimenti
 	 */
@@ -82,7 +82,7 @@ public interface ProduttoreDao {
 	/**
 	 * Controlla se è possibile eliminare un produttore. Per essere eliminato è necessario che non ci siano inserzioni con prodotti ad essa associati
 	 * 
-	 * @param idProduttore
+	 * @param idProduttore numero identificativo del produttore
 	 * 
 	 * @return True se è possibile eliminare il produttore, false se non è possibile
 	 */

@@ -12,8 +12,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Verifico se l'inserzione passata come parametro è già osservata dall'utente passato come parametro
 	 * 
-	 * @param idUtenteRegistrato
-	 * @param idInserzione
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return True se l'inserzione è già osservata dall'utente,false altrimenti
 	*/
@@ -23,7 +23,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Inserisce un nuovo utente nel database
 	 * 
-	 * @param utente
+	 * @param utente oggetto utente da inserire nel database
 	 * 
 	 * @return L'id dell'utente inserito, oppure -1 in caso di errore
 	 * 
@@ -34,8 +34,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Questo metodo effettua un inserimento nella tabella utente_registrato_osserva_inserzione, quando un utente osserva un'inserzione.
 	 * 
-	 * @param utente
-	 * @param inserzione
+	 * @param utente oggetto utente che osserva un'inserzione
+	 * @param inserzione oggetto inserzione osservata
 	 * 
 	 * @return il numero di righe inserite(ossia 1)
 	 */
@@ -46,7 +46,7 @@ public interface UtenteRegistratoDao {
 	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
 	 * non risulta più abilitato alle funzioni di un utente registrato
 	 * 
-	 * @param utente
+	 * @param utente oggetto utente da elinimare nel database
 	 * 
 	 * @return Numero di righe cancellate
 	 * 
@@ -59,7 +59,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Questo metodo aggiorna uno o più attributi dell'utente passato come parametro
 	 * 
-	 * @param utente
+	 * @param utente oggetto utente da aggiornare nel database
 	 * 
 	 * @return 1 se l'aggiornamento ha successo,-1 se l'aggiornamento fallisce
 	 * 
@@ -74,10 +74,9 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza le inserzioni caricate dall'utente, passato come parametro, e con parte del titolo, passato come parametro, relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
 	 * 
-	 * @param idUtenteRegistrato
-	 * @param limiteInf
-	 * 
-	 * @param numInserzioniPagina
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Le inserzioni comprese in un intervallo specifico
 	 */
@@ -87,15 +86,15 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Modifica i dati dell'utente dato il nickname
 	 * 
-	 * @param nick
-	 * @param nome
-	 * @param cognome
-	 * @param indirizzo
-	 * @param idComune
-	 * @param cap
-	 * @param telefono
-	 * @param nContoCorrente
-	 * @param eMail
+	 * @param nick nickname dell'utente
+	 * @param nome nome dell'utente
+	 * @param cognome cognome dell'utente
+	 * @param indirizzo indirizzo dell'utente
+	 * @param idComune numero identificativo del comune
+	 * @param cap codice avviamento postale dell'utente
+	 * @param telefono numero di telefono dell'utente
+	 * @param nContoCorrente numero di conto corrente dell'utente
+	 * @param eMail indirizzo e-mail dell'utente
 	 * 
 	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 * 
@@ -108,8 +107,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Modifica lo stato di un utente (abilitato o disabilitato)
 	 * 
-	 * @param idUtente
-	 * @param flagAbilitato
+	 * @param idUtente numero identificativo dell'utente
+	 * @param flagAbilitato flag che indica se l'utente è abilitato o meno
 	 * 
 	 * @return 1 in caso di aggiornamento, -1 in caso di aggiornamento non riuscito
 	 */
@@ -118,7 +117,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Modifica la tipologia di un Utente (venditore o acquirente)
 	 * 
-	 * @param nick identificativo univoco dell'utente da modificare 
+	 * @param nick numero identificativo dell'utente da modificare 
 	 * @param tipologiaCliente stato valore dello stato da settare
 	 * 
 	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
@@ -133,7 +132,7 @@ public interface UtenteRegistratoDao {
 	 * Modifica l'abilitazione di Utente (abilitato all'uso dell'applicazione o meno)
 	 * 
 	 * @param nick identificativo univoco dell'utente da modificare 
-	 * @param flagAbilitato
+	 * @param flagAbilitato flag che indica se l'utente è abilitato o meno
 	 * 
 	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 */
@@ -143,8 +142,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Modifica la password dell'utente 
 	 * 
-	 * @param nick
-	 * @param psw 
+	 * @param nick identificativo univoco dell'utente
+	 * @param psw password da modificare
 	 * 
 	 * @return Il numero di righe aggiornate(1 in caso di successo, 0 in caso di fallimento)
 	 * 
@@ -157,7 +156,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Restituisce l'utente corrispondente alla mail passata come paramentro
 	 * 
-	 * @param eMail
+	 * @param eMail indirzzo e-mail dell'utente
 	 * 
 	 * @return L'utente corrispondente alla mail passata come paramentro
 	 */
@@ -167,7 +166,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Restituisce l'utente corrispondente all'id passato come paramentro
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return L'utente corrispondente all'id passato come parametro
 	  */
@@ -177,7 +176,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Questo metodo crea una lista delle inserzioni osservate da un utente passato come parametro
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return Lista delle inserzioni osservate dall' utente registrato
 	 */
@@ -187,7 +186,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza il numero delle inserzioni osservate dall'utente passato come parametro
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return Numero delle inserzioni osservate dall'utente passato come parametro
 	 */
@@ -196,7 +195,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza tutti i dati relativi alle inserzioni(acquistate) dell'acquirente
 	 * 
-	 * @param idUtenteRegistrato identificatore univoco dell'acquirente
+	 * @param idUtenteRegistrato numero identificativo dell'acquirente
 	 * 
 	 * @return Lista di prodotti relativi all'acquirente
 	 */
@@ -206,7 +205,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizzo tutte le inserzioni aggiudicate dall'utente passato come parametro
 	 * 
-	 * @param idUtenteRegistrato
+	 * @param idUtenteRegistrato numero identificativo dell'acquirente
 	 * 
 	 * @return Lista inserzioni aggiudicate
 	*/
@@ -216,7 +215,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza il numero delle inserzioni aggiudicate dall'utente passato come parametro
 	 * 
-	 * @param idUtenteRegistrato
+	 * @param idUtenteRegistrato numero identificativo dell'acquirente
 	 * 
 	 * @return Il numero delle inserzioni che l'utente passato come parametro si è aggiudicato
 	 */
@@ -225,7 +224,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza tutti i dati relativi alle inserzioni del venditore
 	 * 
-	 * @param idUtenteRegistrato identificatore univoco del venditore
+	 * @param idUtenteRegistrato numero identificativo del venditore
 	 * 
 	 * @return Lista di prodotti relativi al venditore
 	 */
@@ -249,7 +248,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Restituisce l'utente corrispondente al nick passato come paramentro
 	 * 
-	 * @param nick
+	 * @param nick identificativo univoco dell'utente
 	 * 
 	 * @return L'utente registrato
 	 */
@@ -272,7 +271,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Controlla se l'utente definito da nick ha delle inserzioni aggiudicate da pagare
 	 * 
-	 * @param nick
+	 * @param nick identificativo univoco dell'utente
 	 * 
 	 * @return true se l'utente ha almeno un' inserzione aggiudicata da pagare
 	 */
@@ -283,7 +282,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Controlla se l'utente definito da nick ha delle inserzioni scadute
 	 * 
-	 * @param nick
+	 * @param nick identificativo univoco dell'utente
 	 * 
 	 * @return True se l'utente venditore ha almeno un'inserzione che è scaduta e quindi può cancellarla oppure ripubblicarla
 	 */
@@ -291,21 +290,21 @@ public interface UtenteRegistratoDao {
 	
 	
 	/**
-	 * Controlla se la mail è già presente nel db.
+	 * Controlla se la mail è già presente nel db
 	 * 
-	 * @param eMail identificativo dell'utente.
+	 * @param eMail indirizzo e-mail dell'utente
 	 * 
-	 * @return Restituisce true se il nick è esistente, false altrimenti.
+	 * @return Restituisce true se il nick è esistente, false altrimenti
 	 */
 	public boolean controlloeMail(String eMail);
 	
 	
 	/**
-	 * Controlla se il nick è già presente nel db.
+	 * Controlla se il nick è già presente nel db
 	 * 
-	 * @param nickName identificativo dell'utente.
+	 * @param nickName identificativo dell'utente
 	 * 
-	 * @return Restituisce true se il nick è esistente, false altrimenti.
+	 * @return Restituisce true se il nick è esistente, false altrimenti
 	 */
 	public boolean controlloNick(String nickName);
 	
@@ -313,7 +312,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Il metodo viene utilizzato per prelevare dal db tutte le aste(inserzioni) a cui l'utente sta partecipando
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return La lista delle aste corrente a cui l'utente partecipa
 	 */
@@ -323,7 +322,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza il numero delle inserzioni pubblicate dall'utente passato come parametro
 	 * 
-	 * @param idUtenteRegistrato
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
 	 * 
 	 * @return Il numero delle inserzioni
 	 */
@@ -334,8 +333,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza il numero delle inserzioni pubblicate dall'utente cercate per titolo
 	 * 
-	 * @param idUtenteRegistrato
-	 * @param titoloInserzione
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * @param titoloInserzione titolo dell'inserzione da visualizzare
 	 * 
 	 * @return Il numero delle inserzioni con quel titolo
 	 */
@@ -345,7 +344,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza il numero delle aste a cui l'utente, passato come parametro, sta partecipando
 	 * 
-	 * @param idUtenteRegistrato
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * 
 	 * @return Numero inserzioni
 	 */
 	public Integer getNumeroMieAsteInCorsoByIdUtente(Integer idUtenteRegistrato);
@@ -356,6 +356,7 @@ public interface UtenteRegistratoDao {
 	 * Preleva tutti gli utenti registrati nel database.
 	 * 
 	 * @return Lista degli utenti registrati
+	 * 
 	 * @throws IOException 
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -365,7 +366,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Controlla se l'utente è abilitato alle funzioni di utente registrato
 	 * 
-	 * @param nick
+	 * @param nick identificativo univoco dell'utente
 	 * 
 	 * @return True se l'utente è abilitato
 	 */
@@ -374,8 +375,8 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Controlla se l'utente è già registrato nel database
 	 * 
-	 * @param codiceFiscale
-	 * @param tipologiaUtente
+	 * @param codiceFiscale codice fiscale dell'utente
+	 * @param tipologiaUtente indica se l'utente è un 'venditore' o un 'acquirente'
 	 * 
 	 * @return True se l'utente si è già registrato
 	 */
@@ -385,9 +386,9 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza le inserzioni caricate dall'utente, passato come parametro, relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
 	 * 
-	 * @param idUtenteRegistrato
-	 * @param limiteInf
-	 * @param numInserzioniPagina
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Le inserzioni comprese in un intervallo specifico
 	 */
@@ -397,7 +398,7 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza le inserzioni osservate relative ad un intervallo (utilizzato nella paginazione delle inserzioni)
 	 * 
-	 * @param idUtente
+	 * @param idUtente numero identificativo dell'utente
 	 * 
 	 * @return Restituisce le inserzioni osservate relative ad un certo intervallo
 	 */
@@ -407,9 +408,9 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizzo le inserzioni, relative ad un intervallo, aggiudicate dall'utente passato come parametro (utilizzato nella paginazione delle inserzioni)
 	 * 
-	 * @param idUtenteRegistrato
-	 * @param limiteInf
-	 * @param numeroInserzioniPagina
+	 * @param idUtenteRegistrato numero identificativo dell'utente registrato
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numeroInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return Lista d inserzioni
 	 */
@@ -431,9 +432,9 @@ public interface UtenteRegistratoDao {
 	/**
 	 * Visualizza le aste a cui l'utente, passato come parametro, sta partecipando (utilizzato nella paginazione delle inserzioni)
 	 * 
-	 * @param idUtente
-	 * @param limiteInf
-	 * @param numInserzioniPagina
+	 * @param idUtente numero identificativo dell'utente
+	 * @param limiteInf limite inferiore dell'intervallo
+	 * @param numInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
 	 * @return La lista delle aste a cui l'utente avente l'id passato come parametro sta partecipando
 	 */

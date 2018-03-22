@@ -11,7 +11,7 @@ public interface OffertaDao {
 	/**
 	 * Inserisce un'offerta
 	 * 
-	 * @param offerta
+	 * @param offerta oggetto offerta da inserire nel database
 	 * 
 	 * @return Un intero che indica l'id dell'offerta inserita
 	 */
@@ -20,7 +20,7 @@ public interface OffertaDao {
 	/**
 	 * Cancella offerta specifica
 	 * 
-	 * @param offerta
+	 * @param offerta oggetto offerta da cancellare nel database
 	 * 
 	 * @return Un intero che indica il numero delle righe cancellate
 	 * 
@@ -33,7 +33,7 @@ public interface OffertaDao {
 	/**
 	 * Cancella tutte le offerte relative ad un'inserzione
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'inserzione
 	 * 
 	 * @return Restituisce il numero di righe cancellate
 	 * 
@@ -46,7 +46,8 @@ public interface OffertaDao {
 	/**
 	 * Metodo utilizzato per ottenere l'oggetto offerta relativo al suo id.
 	 * 
-	 * @param idOfferta
+	 * @param idOfferta numero identificativo dell'offerta
+	 * 
 	 * @return Restituisce l'oggetto offerta corrispondente all' id passato come paramentro
 	 * 
 	 * @throws IOException 
@@ -58,7 +59,7 @@ public interface OffertaDao {
 	/**
 	 * Restituisce una lista di offerte relative ad un'inserzione, indicata dal parametro idInserzione
 	 * 
-	 * @param idInserzione
+	 * @param idInserzione numero identificativo dell'offerta
 	 * 
 	 * @return Lista di offerte relative all'inserzione
 	 */

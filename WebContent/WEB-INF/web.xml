@@ -375,6 +375,15 @@
   </servlet-mapping> 
  
  
+ <servlet>
+    <display-name>ServletRipubblicaInserzione</display-name>
+    <servlet-name>ServletRipubblicaInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRipubblicaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRipubblicaInserzione</servlet-name>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+  </servlet-mapping>
  
  
  

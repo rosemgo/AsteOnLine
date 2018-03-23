@@ -386,10 +386,26 @@
   </servlet-mapping>
  
  
+ <servlet>
+    <display-name>amministrazione</display-name>
+    <servlet-name>amministrazione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAmministrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>amministrazione</servlet-name>
+    <url-pattern>/amministrazione</url-pattern>
+  </servlet-mapping>
  
  
- 
- 
+ <servlet>
+    <display-name>ServletLoginAmministratore</display-name>
+    <servlet-name>ServletLoginAmministratore</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletLoginAmministratore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLoginAmministratore</servlet-name>
+    <url-pattern>/ServletLoginAmministratore</url-pattern>
+  </servlet-mapping>
  
  
  

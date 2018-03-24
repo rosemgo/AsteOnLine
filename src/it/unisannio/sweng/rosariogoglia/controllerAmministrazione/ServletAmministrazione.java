@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * Servlet implementation class ServletAmministrazione
+ * Servlet per inviare alla pagina di amministrazione quando viene digitato l'indirizzio /ammministrazione
+ * Se in sessione non vi è un utente amministratore loggato, la servlet invia alla pagina di login amministratore
  */
 
 public class ServletAmministrazione extends HttpServlet {

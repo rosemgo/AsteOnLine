@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletListaUtenti
+ * La Servlet è utilizzata per mostrare, all'amministratore del sito, la lista degli utenti registrati
  */
 //@WebServlet("/ServletListaUtenti")
 public class ServletListaUtenti extends HttpServlet {

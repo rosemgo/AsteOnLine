@@ -18,13 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletListaInserzioni
+ * La Servlet mostra all'amministratore la lista delle inserzioni caricate sul sito.
  */
 //@WebServlet("/ServletListaInserzioni")
 public class ServletListaInserzioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

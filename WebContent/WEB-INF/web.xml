@@ -407,7 +407,15 @@
     <url-pattern>/ServletLoginAmministratore</url-pattern>
   </servlet-mapping>
  
- 
+  <servlet>
+    <display-name>ServletListaInserzioni</display-name>
+    <servlet-name>ServletListaInserzioni</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletListaInserzioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListaInserzioni</servlet-name>
+    <url-pattern>/ServletListaInserzioni</url-pattern>
+  </servlet-mapping>
  
  
  

@@ -417,7 +417,15 @@
     <url-pattern>/ServletListaInserzioni</url-pattern>
   </servlet-mapping>
  
- 
+  <servlet>
+    <display-name>ServletSetStatoUtente</display-name>
+    <servlet-name>ServletSetStatoUtente</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletSetStatoUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSetStatoUtente</servlet-name>
+    <url-pattern>/ServletSetStatoUtente</url-pattern>
+  </servlet-mapping>
  
  
  

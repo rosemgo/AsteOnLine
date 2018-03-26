@@ -20,14 +20,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 /**
- * Servlet implementation class ServletSetStatoUtente
+ * Servlet per modificare lo stato di abilitazione all'uso delle funzionalità dell'aplicazione da parte di un utente registrato.
  */
 //@WebServlet("/ServletSetStatoUtente")
 public class ServletSetStatoUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = Logger.getLogger(ServletSetStatoUtente.class); 
-	   
-	
+		
    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -82,7 +81,6 @@ public class ServletSetStatoUtente extends HttpServlet {
 		
 		
 	}
-
 	
 
 }

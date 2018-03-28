@@ -33,11 +33,9 @@ public interface ProduttoreDao {
 	 * 
 	 * @return Il produttore che ha il nome corrispondente a quello passato come parametro
 	 * 
-	 * @throws ClassNotFoundException
-	 * @throws IOException
 	 */
 	
-	public Produttore getProduttoreByNome (String nomeProduttore) throws ClassNotFoundException, IOException;
+	public Produttore getProduttoreByNome (String nomeProduttore);
 	
 	/**
 	 * Questo metodo fornisce la lista dei produttori che hanno l'id della categoria coincidente a quello passato come parametro

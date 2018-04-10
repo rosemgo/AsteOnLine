@@ -428,8 +428,28 @@
   </servlet-mapping>
  
  
+ <servlet>
+    <display-name>ServletAggiungiCategoria</display-name>
+    <servlet-name>ServletAggiungiCategoria</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiCategoria</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAggiungiCategoria</servlet-name>
+    <url-pattern>/ServletAggiungiCategoria</url-pattern>
+  </servlet-mapping>
  
- 
- 
+ <servlet>
+    <display-name>ServletAggiungiKeyword</display-name>
+    <servlet-name>ServletAggiungiKeyword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiKeyword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAggiungiKeyword</servlet-name>
+    <url-pattern>/ServletAggiungiKeyword</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
  
 </web-app>

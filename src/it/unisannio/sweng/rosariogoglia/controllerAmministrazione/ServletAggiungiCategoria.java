@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.ajaxtags.helpers.AjaxXmlBuilder;
 
 /**
- * Servlet implementation class ServletAggiungiCategoria
+ * La Servlet permette all'amministratore di inserire una nuova categoria.
  */
 //@WebServlet("/ServletAggiungiCategoria")
 public class ServletAggiungiCategoria extends HttpServlet {

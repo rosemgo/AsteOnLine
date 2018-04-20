@@ -25,7 +25,7 @@ import org.ajaxtags.helpers.AjaxXmlBuilder;
 //@WebServlet("/ServletEliminaCategoria")
 public class ServletEliminaCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
    
 
 	/**
@@ -74,8 +74,7 @@ public class ServletEliminaCategoria extends HttpServlet {
 				Map<String, String> produttoriMap = new HashMap<String,String>();
 				this.aggiornaTabellaProduttori(produttoriMap);
 				context.setAttribute("produttoriMap", produttoriMap);
-				
-				
+							
 				
 			}
 			else{
@@ -126,7 +125,6 @@ public class ServletEliminaCategoria extends HttpServlet {
 	        
 	}
 	
-	
-	
+		
 	
 }

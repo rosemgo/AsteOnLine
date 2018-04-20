@@ -23,7 +23,6 @@ public class ServletEliminaKeyword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -35,7 +34,7 @@ public class ServletEliminaKeyword extends HttpServlet {
 		String messaggio = "";
 		
 		if(word != null && !word.equals("")){
-			
+	
 			
 			KeywordDao daoK = new KeywordDaoMysqlJdbc();
 			Keyword keyword = daoK.getKeywordByWord(word);

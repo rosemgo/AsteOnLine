@@ -36,8 +36,9 @@ public interface KeywordDao {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public Keyword getKeywordByWord(String key) throws ClassNotFoundException, IOException;
+	public Keyword getKeywordByWord(String key);
 	
+		
 	/**
 	 * Metodo usato per ottenere le parole chiave associate ad un prodotto
 	 * 

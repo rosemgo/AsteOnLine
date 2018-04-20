@@ -63,7 +63,8 @@ public class ServletEliminaKeyword extends HttpServlet {
 					
 					
 					ServletMostraKeyword servlet2 = (ServletMostraKeyword) context.getAttribute("ServletMostraKeyword");
-					/*Se ServletMostraKeyword non è stato mai utilizzata e quindi non stato invocato il metodo init, non l'avrò ancora nel contesto*/
+					
+					/*Se ServletMostraKeyword non è stato mai utilizzata e quindi non è stato invocato il metodo init, non l'avrò ancora nel contesto*/
 					if(servlet2 != null){
 						HashMap<String, String> keywordMap = new HashMap<String, String>();
 						servlet2.aggiornaKeywordMap(keywordMap);

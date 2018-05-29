@@ -386,6 +386,11 @@
   </servlet-mapping>
  
  
+ 
+ 
+ 
+ 
+ 
  <servlet>
     <display-name>amministrazione</display-name>
     <servlet-name>amministrazione</servlet-name>
@@ -438,7 +443,7 @@
     <url-pattern>/ServletAggiungiCategoria</url-pattern>
   </servlet-mapping>
  
- <servlet>
+  <servlet>
     <display-name>ServletAggiungiKeyword</display-name>
     <servlet-name>ServletAggiungiKeyword</servlet-name>
     <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiKeyword</servlet-class>
@@ -449,7 +454,38 @@
   </servlet-mapping>
   
   
+ <servlet>
+    <display-name>ServletAggiornaScadenzaAste</display-name>
+    <servlet-name>ServletAggiornaScadenzaAste</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiornaScadenzaAste</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAggiornaScadenzaAste</servlet-name>
+    <url-pattern>/ServletAggiornaScadenzaAste</url-pattern>
+  </servlet-mapping>
   
+  <servlet>
+    <display-name>ServletAggiungiProdotto</display-name>
+    <servlet-name>ServletAggiungiProdotto</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiProdotto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAggiungiProdotto</servlet-name>
+    <url-pattern>/ServletAggiungiProdotto</url-pattern>
+  </servlet-mapping>
   
+    <servlet>
+    <display-name>ServletAggiungiProduttore</display-name>
+    <servlet-name>ServletAggiungiProduttore</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiProduttore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAggiungiProduttore</servlet-name>
+    <url-pattern>/ServletAggiungiProduttore</url-pattern>
+  </servlet-mapping>
+ 
+ 
+ 
+ 
  
 </web-app>

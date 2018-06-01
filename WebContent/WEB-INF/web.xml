@@ -67,8 +67,6 @@
     <url-pattern>/ServletInizializzazione</url-pattern>
   </servlet-mapping>
  
-
-  
  
   <servlet>
     <display-name>ServletInserisciInserzione</display-name>
@@ -386,6 +384,25 @@
   </servlet-mapping>
  
  
+ <servlet>
+    <display-name>ServletRimuoviInserzioneLeMieInserzioni</display-name>
+    <servlet-name>ServletRimuoviInserzioneLeMieInserzioni</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRimuoviInserzioneLeMieInserzioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRimuoviInserzioneLeMieInserzioni</servlet-name>
+    <url-pattern>/ServletRimuoviInserzioneLeMieInserzioni</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <display-name>ServletRimuoviInserzioniOsservate</display-name>
+    <servlet-name>ServletRimuoviInserzioniOsservate</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRimuoviInserzioniOsservate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRimuoviInserzioniOsservate</servlet-name>
+    <url-pattern>/ServletRimuoviInserzioniOsservate</url-pattern>
+ </servlet-mapping>
  
  
  

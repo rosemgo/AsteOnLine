@@ -474,7 +474,7 @@
     <url-pattern>/ServletAggiungiProdotto</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <display-name>ServletAggiungiProduttore</display-name>
     <servlet-name>ServletAggiungiProduttore</servlet-name>
     <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAggiungiProduttore</servlet-class>
@@ -484,8 +484,149 @@
     <url-pattern>/ServletAggiungiProduttore</url-pattern>
   </servlet-mapping>
  
+  <servlet>
+    <display-name>ServletAssociaProdottoKeyword</display-name>
+    <servlet-name>ServletAssociaProdottoKeyword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAssociaProdottoKeyword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAssociaProdottoKeyword</servlet-name>
+    <url-pattern>/ServletAssociaProdottoKeyword</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <display-name>ServletAssociaProduttore</display-name>
+    <servlet-name>ServletAssociaProduttore</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletAssociaProduttore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAssociaProduttore</servlet-name>
+    <url-pattern>/ServletAssociaProduttore</url-pattern>
+  </servlet-mapping>
   
+  
+  <servlet>
+    <display-name>ServletCercaProduttoriMancanti</display-name>
+    <servlet-name>ServletCercaProduttoriMancanti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletCercaProduttoriMancanti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCercaProduttoriMancanti</servlet-name>
+    <url-pattern>/ServletCercaProduttoriMancanti</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+    <display-name>ServletDisassociaProdottoKeyword</display-name>
+    <servlet-name>ServletDisassociaProdottoKeyword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletDisassociaProdottoKeyword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDisassociaProdottoKeyword</servlet-name>
+    <url-pattern>/ServletDisassociaProdottoKeyword</url-pattern>
+  </servlet-mapping>
  
  
+  <servlet>
+    <display-name>ServletDisassociaProduttore</display-name>
+    <servlet-name>ServletDisassociaProduttore</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletDisassociaProduttore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDisassociaProduttore</servlet-name>
+    <url-pattern>/ServletDisassociaProduttore</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletEliminaCategoria</display-name>
+    <servlet-name>ServletEliminaCategoria</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletEliminaCategoria</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminaCategoria</servlet-name>
+    <url-pattern>/ServletEliminaCategoria</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletEliminaInserzione</display-name>
+    <servlet-name>ServletEliminaInserzione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletEliminaInserzione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminaInserzione</servlet-name>
+    <url-pattern>/ServletEliminaInserzione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletEliminaKeyword</display-name>
+    <servlet-name>ServletEliminaKeyword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletEliminaKeyword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminaKeyword</servlet-name>
+    <url-pattern>/ServletEliminaKeyword</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <display-name>ServletEliminaProdotto</display-name>
+    <servlet-name>ServletEliminaProdotto</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletEliminaProdotto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminaProdotto</servlet-name>
+    <url-pattern>/ServletEliminaProdotto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletEliminaProduttore</display-name>
+    <servlet-name>ServletEliminaProduttore</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletEliminaProduttore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEliminaProduttore</servlet-name>
+    <url-pattern>/ServletEliminaProduttore</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+    <display-name>ServletListaInserzioni</display-name>
+    <servlet-name>ServletListaInserzioni</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletListaInserzioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListaInserzioni</servlet-name>
+    <url-pattern>/ServletListaInserzioni</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ServletListaUtenti</display-name>
+    <servlet-name>ServletListaUtenti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletListaUtenti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListaUtenti</servlet-name>
+    <url-pattern>/ServletListaUtenti</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
  
 </web-app>

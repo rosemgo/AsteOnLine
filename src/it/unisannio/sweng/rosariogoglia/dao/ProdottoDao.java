@@ -53,10 +53,8 @@ public interface ProdottoDao {
 	 * 
 	 * @return Il prodotto associato al nome passato come parametro
 	 * 
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
-	public Prodotto getProdottoByName(String nomeProdotto) throws ClassNotFoundException, IOException;
+	public Prodotto getProdottoByName(String nomeProdotto);
 
 
 	/**
@@ -66,10 +64,8 @@ public interface ProdottoDao {
 	 * 
 	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
 	 * 
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
-	public Integer insertProdotto(Prodotto prodotto) throws ClassNotFoundException, IOException;
+	public Integer insertProdotto(Prodotto prodotto);
 	
 	
 	

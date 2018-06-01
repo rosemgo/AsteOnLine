@@ -34,10 +34,8 @@ public interface CategoriaDao {
 	 * 
 	 * @return Restituisce la categoria se presente, altrimenti restiruisce null
 	 * 
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
 	 */
-	public Categoria getCategoriaByNome (String nomeCategoria) throws ClassNotFoundException, IOException;
+	public Categoria getCategoriaByNome (String nomeCategoria);
 	
 	/**
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro

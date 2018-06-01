@@ -28,6 +28,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletDettagliInserzione
+ * Servlet che gestisce la visualizzazione dei dettagli di un'inserzione:
+ * Se l'utente corrente è l'amministratore inoltra i dati di visualizzazione alla pagina "dettagliInserzioneAdmin.jsp";
+ * se l'utente corrente è un acquirente o un venditore inoltra la richiesta alla pagina "dettagliInserzione.jsp".
+ 
  */
 //@WebServlet("/ServletDettagliInserzione")
 public class ServletDettagliInserzione extends HttpServlet {

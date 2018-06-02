@@ -38,6 +38,7 @@ public class FilterLog implements Filter {
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
+		
 		}
 
 	/**

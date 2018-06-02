@@ -12,6 +12,7 @@
   </listener>
  
  
+ 
  <filter>
     <filter-name>FilterManutenzione</filter-name>
     <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterManutenzione</filter-class>
@@ -373,7 +374,15 @@
     <url-pattern>/ServletDettagliInserzione</url-pattern>
   </servlet-mapping>
  
- 
+ <servlet>
+    <servlet-name>MostraProdotti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletMostraProdotti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostraProdotti</servlet-name>
+    <url-pattern>/mostraprodotti.ajax</url-pattern>
+  </servlet-mapping>
+  
  <servlet>
     <display-name>ServletAsteInChiusura</display-name>
     <servlet-name>ServletAsteInChiusura</servlet-name>
@@ -921,15 +930,6 @@
     <url-pattern>/ServletMostraKeywordMancanti</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <display-name>ServletMostraProdotti</display-name>
-    <servlet-name>ServletMostraProdotti</servlet-name>
-    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletMostraProdotti</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletMostraProdotti</servlet-name>
-    <url-pattern>/ServletMostraProdotti</url-pattern>
-  </servlet-mapping>
   
   
   <servlet>
@@ -973,6 +973,37 @@
     <servlet-name>ServletSetStatoUtente</servlet-name>
     <url-pattern>/ServletSetStatoUtente</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <display-name>AutocompletamentoKeyword</display-name>
+    <servlet-name>AutocompletamentoKeyword</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletAutocompletamentoKeyword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutocompletamentoKeyword</servlet-name>
+    <url-pattern>/autocompleteKeyword.ajax</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AutocompletamentoTitolo</display-name>
+    <servlet-name>AutocompletamentoTitolo</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletAutocompletamentoTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutocompletamentoTitolo</servlet-name>
+    <url-pattern>/autocompleteTitolo.ajax</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AutocompletamentoNick</display-name>
+    <servlet-name>AutocompletamentoNick</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.ajax.ServletAutocompletamentoNick</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutocompletamentoNick</servlet-name>
+    <url-pattern>/autocompleteNick.ajax</url-pattern>
+  </servlet-mapping>
+  
+  
   
  
 </web-app>

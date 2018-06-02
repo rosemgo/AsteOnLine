@@ -223,8 +223,7 @@
     <url-pattern>/ServletOsservaInserzione</url-pattern>
   </filter-mapping>
  
- 
- 
+  
   <filter>
     <filter-name>FilterUtenteVenditore</filter-name>
     <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteVenditore</filter-class>
@@ -346,6 +345,14 @@
     <url-pattern>/cercaproduttori.ajax</url-pattern>
   </servlet-mapping>
   
+ <servlet>
+    <servlet-name>CercaProduttoriMancanti</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletCercaProduttoriMancanti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CercaProduttoriMancanti</servlet-name>
+    <url-pattern>/cercaproduttorimancanti.ajax</url-pattern>
+  </servlet-mapping> 
   
  <servlet>
     <servlet-name>CercaProdotti</servlet-name>

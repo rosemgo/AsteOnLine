@@ -146,10 +146,75 @@
   </filter-mapping>
  
  
+ <filter>
+    <filter-name>FilterUtenteNotAdmin</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteNotAdmin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteNotAdmin</filter-name>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+    <url-pattern>/ServletControlloOfferta</url-pattern>
+    <url-pattern>/ServletControlloPagamento</url-pattern>
+    <url-pattern>/ServletModificaDati</url-pattern>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+    <url-pattern>/ServletIMieiAcquisti</url-pattern>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletPagamento</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
+    <url-pattern>/ServletLeMieInserzioni</url-pattern>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneLeMieiInserzioni</url-pattern>
+  </filter-mapping>
+  
+ 
+ 
+  <filter>
+    <filter-name>FilterUtenteAdmin</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteAdmin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteAdmin</filter-name>
+    <url-pattern>/amministrazione.jsp</url-pattern>
+    <url-pattern>/categorie.jsp</url-pattern>
+    <url-pattern>/produttori.jsp</url-pattern>
+    <url-pattern>/prodotti.jsp</url-pattern>
+    <url-pattern>/ServletAmministrazione</url-pattern>
+    <url-pattern>/ServletAggiornascadenzaAste</url-pattern>
+    <url-pattern>/ServletAggiungiCategoria</url-pattern>
+    <url-pattern>/ServletAggiungiKeyword</url-pattern>
+    <url-pattern>/ServletAggiungiProdotto</url-pattern>
+    <url-pattern>/ServletAggiungiProduttore</url-pattern>
+    <url-pattern>/ServletAssociaProdottoKeyword</url-pattern>
+    <url-pattern>/ServletAssociaProduttore</url-pattern>
+    <url-pattern>/ServletDisassociaProdottoKeyword</url-pattern>
+    <url-pattern>/ServletDisassociaProduttore</url-pattern>
+    <url-pattern>/ServletEliminaCategoria</url-pattern>
+    <url-pattern>/ServletEliminaInserzione</url-pattern>
+    <url-pattern>/ServletEliminaProdotto</url-pattern>
+    <url-pattern>/ServletEliminaProduttore</url-pattern>
+    <url-pattern>/ServletEliminaKeyword</url-pattern>
+    <url-pattern>/ServletListaInserzioni</url-pattern>
+    <url-pattern>/ServletListaUtenti</url-pattern>
+    <url-pattern>/ServletModificaCategoria</url-pattern>
+    <url-pattern>/ServletModificaKeyword</url-pattern>
+    <url-pattern>/ServletModificaProdotto</url-pattern>
+    <url-pattern>/ServletModificaProduttore</url-pattern>
+    <url-pattern>/ServletRicercaInserzioneAdmin</url-pattern>
+    <url-pattern>/ServletRicercaUtente</url-pattern>
+    <url-pattern>/ServletSetStatoSito</url-pattern>
+    <url-pattern>/ServletSetStatoUtente</url-pattern>
+  </filter-mapping>
  
  
  
- 
+
  
  
  
@@ -349,7 +414,7 @@
   <servlet>
     <display-name>ServletControlloPagamento</display-name>
     <servlet-name>ServletControlloPagamento</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletControlloPagamento</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletControlloPagamento</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletControlloPagamento</servlet-name>
@@ -399,7 +464,7 @@
    <servlet>
     <display-name>ServletLeMieInserzioni</display-name>
     <servlet-name>ServletLeMieInserzioni</servlet-name>
-    <servlet-class>it.unisannio.tsw.rosariogoglia.controller.ServletLeMieInserzioni</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletLeMieInserzioni</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletLeMieInserzioni</servlet-name>

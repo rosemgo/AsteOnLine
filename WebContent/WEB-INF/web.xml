@@ -16,6 +16,18 @@
     <welcome-file></welcome-file>
   </welcome-file-list>
   
+  
+  <servlet>
+    <display-name>ServletInizializzazione</display-name>
+    <servlet-name>ServletInizializzazione</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletInizializzazione</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInizializzazione</servlet-name>
+    <url-pattern>/ServletInizializzazione</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <display-name>index</display-name>
     <servlet-name>index</servlet-name>
@@ -56,16 +68,7 @@
     <url-pattern>/ServletRegistrazione</url-pattern>
   </servlet-mapping>
  
-  <servlet>
-    <display-name>ServletInizializzazione</display-name>
-    <servlet-name>ServletInizializzazione</servlet-name>
-    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletInizializzazione</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletInizializzazione</servlet-name>
-    <url-pattern>/ServletInizializzazione</url-pattern>
-  </servlet-mapping>
+
  
  
   <servlet>

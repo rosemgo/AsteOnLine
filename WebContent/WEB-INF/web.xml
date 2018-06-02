@@ -7,9 +7,152 @@
         <param-value>WEB-INF/log4j.properties</param-value>
     </context-param>
  
-   <listener>
+  <listener>
     <listener-class>it.unisannio.sweng.rosariogoglia.listener.ContextInitializer</listener-class>
   </listener>
+ 
+ 
+ <filter>
+    <filter-name>FilterManutenzione</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterManutenzione</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterManutenzione</filter-name>
+    <url-pattern>/registrazione.jsp</url-pattern>
+    <url-pattern>/ricercaAvanzata.jsp</url-pattern>
+    <url-pattern>/index</url-pattern>
+    <url-pattern>/amministrazione</url-pattern>
+    <url-pattern>/categorie.jsp</url-pattern>
+    <url-pattern>/produttori.jsp</url-pattern>
+    <url-pattern>/prodotti.jsp</url-pattern>
+    <url-pattern>/recuperoPassword.jsp</url-pattern>
+    <url-pattern>/ServletIndex</url-pattern>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaPassword</url-pattern>
+    <url-pattern>/ServletControlloOfferta</url-pattern>
+    <url-pattern>/ServletControlloPagamento</url-pattern>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletModificaDati</url-pattern>
+    <url-pattern>/ServletModificaPassword</url-pattern>
+    <url-pattern>/ServletDettagliUtente</url-pattern>
+    <url-pattern>/ServletDettagliInserzione</url-pattern>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+    <url-pattern>/ServletLeMieInserzioni</url-pattern>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+    <url-pattern>/ServletIMieiAcquisti</url-pattern>
+    <url-pattern>/ServletLogin</url-pattern>
+    <url-pattern>/ServletLoginAmministratore</url-pattern>
+    <url-pattern>/ServletLogout</url-pattern>
+    <url-pattern>/ServletModificaDati</url-pattern>
+    <url-pattern>/ServletModificaPassword</url-pattern>
+    <url-pattern>/ServletRegistrazione</url-pattern>
+    <url-pattern>/ServletRicercaInserzioni</url-pattern>
+    <url-pattern>/ServletRicercaAvanzataInserzione</url-pattern>
+    <url-pattern>/ServletRicercaAvanzataProdotto</url-pattern>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletPagamento</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneLeMieiInserzioni</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+  </filter-mapping>
+ 
+ <filter>
+    <filter-name>FilterUtenteLoggato</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteLoggato</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteLoggato</filter-name>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+   	<url-pattern>/ServletControlloPagamento</url-pattern>
+    <url-pattern>/ServletModificaDati</url-pattern>
+    <url-pattern>/ServletDettagliUtente</url-pattern>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+    <url-pattern>/ServletLeMieInserzioni</url-pattern>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+    <url-pattern>/ServletIMieiAcquisti</url-pattern>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletPagamento</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
+  </filter-mapping>
+ 
+ 
+ <filter>
+    <filter-name>FilterUtenteBanned</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteBanned</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteBanned</filter-name>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+    <url-pattern>/ServletControlloOfferta</url-pattern>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneLeMieiInserzioni</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+  </filter-mapping>
+ 
+ 
+  <filter>
+    <filter-name>FilterUtenteDisabilitato</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteDisabilitato</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteDisabilitato</filter-name>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaDati</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaPassword</url-pattern>
+    <url-pattern>/ServletControlloOfferta</url-pattern>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletModificaDati</url-pattern>
+    <url-pattern>/ServletModificaPassword</url-pattern>
+    <url-pattern>/ServletDettagliUtente</url-pattern>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+    <url-pattern>/ServletInserzioniOsservate</url-pattern>
+    <url-pattern>/ServletLeMieAste</url-pattern>
+    <url-pattern>/ServletRegistrazione</url-pattern>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneLeMieiInserzioni</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+  </filter-mapping>
+ 
+ 
+ 
+ <filter>
+    <filter-name>FilterNotVisitatore</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterNotVisitatore</filter-class>
+  </filter>
+  <filter-mapping>
+	<filter-name>FilterNotVisitatore</filter-name>
+	<url-pattern>/ServletControlloModificaPassword</url-pattern>
+	<url-pattern>/ServletModificaPassword</url-pattern>
+  </filter-mapping>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   
  <display-name>AsteOnLine</display-name>
   <welcome-file-list>

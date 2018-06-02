@@ -347,7 +347,7 @@
   
  <servlet>
     <servlet-name>CercaProduttoriMancanti</servlet-name>
-    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletCercaProduttoriMancanti</servlet-class>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controllerAmministrazione.ServletCercaProduttoriMancanti</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CercaProduttoriMancanti</servlet-name>

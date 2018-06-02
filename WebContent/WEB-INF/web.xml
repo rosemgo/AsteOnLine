@@ -213,6 +213,33 @@
   </filter-mapping>
  
  
+   <filter>
+    <filter-name>FilterControlloNotVenditore</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterControlloNotVenditore</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterControlloNotVenditore</filter-name>
+    <url-pattern>/ServletOfferta</url-pattern>
+    <url-pattern>/ServletOsservaInserzione</url-pattern>
+  </filter-mapping>
+ 
+ 
+ 
+  <filter>
+    <filter-name>FilterUtenteVenditore</filter-name>
+    <filter-class>it.unisannio.sweng.rosariogoglia.filters.FilterUtenteVenditore</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUtenteVenditore</filter-name>
+    <url-pattern>/ServletControlloInserisciInserzione</url-pattern>
+    <url-pattern>/ServletControlloModificaInserzione</url-pattern>
+    <url-pattern>/ServletControlloRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletInserisciInserzione</url-pattern>
+    <url-pattern>/ServletRipubblicaInserzione</url-pattern>
+    <url-pattern>/ServletLeMieInserzioni</url-pattern>
+    <url-pattern>/ServletRicercaLeMieInserzioniTitolo</url-pattern>
+    <url-pattern>/ServletRimuoviInserzioneLeMieiInserzioni</url-pattern>
+  </filter-mapping>
  
 
  

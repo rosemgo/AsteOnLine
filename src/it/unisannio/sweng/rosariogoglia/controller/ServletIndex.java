@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet che fa il redirect alla pagine index del sito
+ * Servlet che fa il redirect alla pagina index del sito
  */
 
 

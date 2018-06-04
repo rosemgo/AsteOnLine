@@ -20,7 +20,6 @@ import org.apache.log4j.Logger;
  * Servlet Filter implementation class FilterLog
  * 
  *
- * Servlet Filter implementation class FilterLog
  */
 //@WebFilter("/FilterLog")
 public class FilterLog implements Filter {

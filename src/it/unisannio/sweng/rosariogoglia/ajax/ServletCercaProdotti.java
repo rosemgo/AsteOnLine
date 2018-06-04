@@ -1,6 +1,7 @@
 package it.unisannio.sweng.rosariogoglia.ajax;
 
 import it.unisannio.sweng.rosariogoglia.chiaveTabellaProdotti.KeyTabellaProdotti;
+import it.unisannio.sweng.rosariogoglia.controller.ServletInserisciInserzione;
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ajaxtags.helpers.AjaxXmlBuilder;
 import org.ajaxtags.servlets.BaseAjaxServlet;
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class ServletCercaProdotto
@@ -36,6 +38,9 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 	
 	
 	private static final long serialVersionUID = -3534695539530815007L;
+	
+	Logger logger = Logger.getLogger(ServletCercaProdotti.class); 
+	
 	
 	/*Mappa con una chiave data dalla coppia "idCategoria-IdProduttore" e come valore la lista di prodotti appartenenti a quel produttore ma solo in quella categoria */
 	private Map<String, String> prodottoMap;
@@ -56,7 +61,10 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 	
 	  @Override
 	  public void init() {
-	    prodottoMap = new HashMap<String,String>();
+	    
+		  
+		  
+		prodottoMap = new HashMap<String,String>();
 	    
 	    CategoriaDao categoriaDao = new CategoriaDaoMysqlJdbc();
 	    ProduttoreDao produttoreDao = new ProduttoreDaoMysqlJdbc();
@@ -80,6 +88,11 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 		    	keyMap = new KeyTabellaProdotti(categoria.getIdCategoria(), produttore.getIdProduttore());
 		    	
 		    	listaProdotti = prodottoDao.getProdottiByIdCategoriaByIdProduttore(categoria.getIdCategoria(), produttore.getIdProduttore());
+		    	
+		    	
+		    	
+		    	logger.debug("chiave: " + keyMap.toString());
+		    	logger.debug("valore: " + makeProdottiList( (ArrayList<Prodotto>) listaProdotti ));
 		    	
 		    	System.out.println("chiave: " + keyMap.toString());
 		    	System.out.println("valore: " + makeProdottiList( (ArrayList<Prodotto>) listaProdotti ));
@@ -115,7 +128,9 @@ public class ServletCercaProdotti extends BaseAjaxServlet {
 	  @SuppressWarnings("unchecked")
 	  @Override
 	  public String getXmlContent(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("entro in cerca prodotti");
+		
+		 logger.debug("entro in cerca prodotti");
+		 System.out.println("entro in cerca prodotti");
 		
 		String produttore = request.getParameter("produttore"); 
 		String categoria = request.getParameter("categoria"); 

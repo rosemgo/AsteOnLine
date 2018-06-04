@@ -833,7 +833,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletMostraKeywordMancanti</servlet-name>
-    <url-pattern>/ServletMostraKeywordMancanti</url-pattern>
+    <url-pattern>/mostrakeywordmancanti.ajax</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>ServletRicercaInserzioniAdmin</display-name>

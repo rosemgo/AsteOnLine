@@ -65,7 +65,9 @@ public class ContextInitializer implements ServletContextListener {
         String log4jConfigFile = context.getInitParameter("log4j-config-location");
         
         String fullPath = context.getRealPath("") + File.separator + log4jConfigFile;
-         
+        
+        System.out.println("Nel LISTNER CONTEXTINITIALIZER ");
+        
         System.out.println("Stampo il realpath: " + context.getRealPath(""));
         PropertyConfigurator.configure(fullPath);
         
@@ -73,7 +75,7 @@ public class ContextInitializer implements ServletContextListener {
          * in modo tale da poterla usare nel log4j.properties per la creazione del file di log*/
        
         System.setProperty("rootPath", context.getRealPath("/"));
-        System.out.println("Stampo il realpath: " + context.getRealPath("/"));
+        System.out.println("Stampo il rootPath: " + context.getRealPath("/"));
         
         
     }

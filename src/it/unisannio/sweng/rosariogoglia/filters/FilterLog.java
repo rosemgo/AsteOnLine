@@ -17,7 +17,10 @@ import org.apache.log4j.Logger;
 
 
 /**
- * Filter di Logging per tenere traccia di tutti i tentativi di accesso al sito. 
+ * Servlet Filter implementation class FilterLog
+ * 
+ *
+ * Servlet Filter implementation class FilterLog
  */
 //@WebFilter("/FilterLog")
 public class FilterLog implements Filter {
@@ -38,7 +41,7 @@ public class FilterLog implements Filter {
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		
+
 		}
 
 	/**
@@ -46,7 +49,7 @@ public class FilterLog implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		//System.out.println("FILTRO LOG PRENDE LA RICHIESTA");
+		System.out.println("FILTRO LOG PRENDE LA RICHIESTA");
 		
 		
 		HttpServletRequest req = (HttpServletRequest) request;

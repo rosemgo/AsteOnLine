@@ -44,7 +44,6 @@
     <url-pattern>/ServletLeMieAste</url-pattern>
     <url-pattern>/ServletIMieiAcquisti</url-pattern>
     <url-pattern>/ServletLogin</url-pattern>
-    <url-pattern>/ServletLoginAmministratore</url-pattern>
     <url-pattern>/ServletLogout</url-pattern>
     <url-pattern>/ServletModificaDati</url-pattern>
     <url-pattern>/ServletModificaPassword</url-pattern>

@@ -27,7 +27,9 @@ public class FilterLog implements Filter {
 	protected FilterConfig config;
 	private String filterName;
 	// log per gli accessi alle risorse
-	private Logger logAccessi = Logger.getLogger("asteonline.logAccessi");
+	//private Logger logAccessi = Logger.getLogger("asteonline.logAccessi");
+	
+	private Logger logAccessi = Logger.getLogger(FilterLog.class);
 	
 	/**
      * Default constructor. 

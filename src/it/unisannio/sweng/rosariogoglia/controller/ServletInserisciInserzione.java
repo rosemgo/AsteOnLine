@@ -335,7 +335,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 							
 							try {
 							
-								item.write(fin);
+								item.write(fin); //serve per salvare la foto nella cartella immagini/inserzioni dell'app deployata in tomcat
 								
 								immagine = new ImmagineImpl();
 								

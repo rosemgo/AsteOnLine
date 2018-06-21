@@ -1,5 +1,6 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
+import static org.junit.Assert.assertEquals;
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -36,24 +37,25 @@ public class ProdottoDaoMysqlTest {
 		Produttore produttore = null;
 		Integer idProduttore = -1;
 		
-		prodotto.setNome("Samsung Galaxy Next33");
+		prodotto.setNome("Samsung Galaxy Infinity");
 		
-		categoria = categoriaDao.getCategoriaByNome("Audio e TV");
+		categoria = categoriaDao.getCategoriaByNomeTest("Audio e TV");
 		if (categoria==null){
 			categoria = new CategoriaImpl();
 			categoria.setNome("Audio e TV");
-			idCategoria = categoriaDao.insertCategoria(categoria);
+			idCategoria = categoriaDao.insertCategoriaTest(categoria);
 			categoria.setIdCategoria(idCategoria);
 		}
 		prodotto.setIdCategoria(categoria.getIdCategoria());
 
-		produttore = produttoreDao.getProduttoreByNome("Apple");
+		produttore = produttoreDao.getProduttoreByNomeTest("Samsung");
 		if (produttore==null){
 			produttore = new ProduttoreImpl();
-			produttore.setNome("Apple");
-			idProduttore = produttoreDao.insertProduttore(produttore);
+			produttore.setNome("Samsung");
+			idProduttore = produttoreDao.insertProduttoreTest(produttore);
 			produttore.setIdProduttore(idProduttore);
 		}
+		
 		prodotto.setIdProduttore(produttore.getIdProduttore());
 		
 		List<Keyword> keywordList = new ArrayList<Keyword>(); 
@@ -66,31 +68,32 @@ public class ProdottoDaoMysqlTest {
 		
 		prodotto.setKeywordsList(keywordList);
 		
-		Integer autoincrementKey =  prodottoDao.insertProdotto(prodotto);
+		Integer autoincrementKey =  prodottoDao.insertProdottoTest(prodotto);
 		
+		System.out.println("AUTO INC: " + autoincrementKey);
 		prodotto.setIdProdotto(autoincrementKey);
 		
 		System.out.println("INSERIMENTO PRODOTTO COMPLETATO");
 		
 		Prodotto readingProdotto = null;
 	
-	//	Integer autoincrementKey = 27;
-		readingProdotto = prodottoDao.getProdottoById(1);
+	    readingProdotto = prodottoDao.getProdottoByIdTest(autoincrementKey);
 		
 		System.out.println(readingProdotto.toString());
 
-	/*	assertEquals(readingProdotto.getNome(), prodotto.getNome());
+		assertEquals(readingProdotto.getNome(), prodotto.getNome());
 		assertEquals(readingProdotto.getIdProdotto(), prodotto.getIdProdotto());
 		
-		Integer deletedRows = prodottoDao.deleteProdotto(readingProdotto);
-		assertEquals(deletedRows, (Integer)1);
-		
+		Integer deletedRows = prodottoDao.deleteProdottoTest(readingProdotto);
+		assertEquals(deletedRows, (Integer)1); //delete rows è 1 se è stata cancellata una riga
+	
+    /*
 		System.out.println("lista parole prodotto ");
 		for(int i=0; i<readingProdotto.getKeywordsList().size(); i++){
 			System.out.println(readingProdotto.getKeywordsList().get(i).getKeyword());
 		}
 		
-		
+	
 		Keyword keyword3 = new KeywordImpl();
 		keyword3.setKeyword("Provaaaa");
 		

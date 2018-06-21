@@ -28,6 +28,18 @@ public interface CategoriaDao {
 	public Categoria getCategoriaById (Integer idCategoria);
 	
 	/**
+	 * Questo metodo carica la Categoria avente l'id passato come parametro
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idCategoria è l'id della categoria da caricare
+	 * 
+	 * @return La categoria con id uguale ad idCategoria. E' null se non c'è una categoria con tale id
+	 */
+	public Categoria getCategoriaByIdTest (Integer idCategoria);
+	
+	
+	/**
 	 * Dato il nome della categoria, la restituisce se presente, altrimenti restiruisce null
 	 * 
 	 * @param nomeCategoria nome della categoria
@@ -36,6 +48,19 @@ public interface CategoriaDao {
 	 * 
 	 */
 	public Categoria getCategoriaByNome (String nomeCategoria);
+	
+	/**
+	 * Dato il nome della categoria, la restituisce se presente, altrimenti restiruisce null
+	 * 
+	 * Usato per eseguire il test con connessione DatabaseUtil 
+	 * 
+	 * @param nomeCategoria nome della categoria
+	 * 
+	 * @return Restituisce la categoria se presente, altrimenti restiruisce null
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Categoria getCategoriaByNomeTest (String nomeCategoria) throws ClassNotFoundException, IOException;
 	
 	/**
 	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
@@ -76,6 +101,20 @@ public interface CategoriaDao {
 	 * @return L'id della categoria inserita
 	 */
 	public Integer insertCategoria (Categoria categoria);
+	
+	
+	/**
+	 * Aggiunge la categoria nel db
+	 * 
+	 * Usato con connessione DatabaseUtil 
+	 * 
+	 * @param categoria l'oggetto categoria da inserire
+	 * 
+	 * @return L'id della categoria inserita
+	 */
+	public Integer insertCategoriaTest (Categoria categoria);
+	
+	
 	
 	/**
 	 * Questo metodo aggiorna il nome di una categoria presente nel sistema

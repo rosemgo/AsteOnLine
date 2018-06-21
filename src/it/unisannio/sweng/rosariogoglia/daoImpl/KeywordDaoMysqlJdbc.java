@@ -147,6 +147,55 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 	}
 	
+	public Keyword getKeywordByWordTest(String key) {
+		logger.debug("in getKeywordByWordTest: " + key);
+		Keyword keyword = null;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM keyword WHERE (keyword = ?)";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, key);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			if (rs.next()){
+				logger.debug("creo la nuova parola");
+				keyword = new KeywordImpl();
+				keyword.setIdKeyword(rs.getInt("idkeyword"));
+				keyword.setKeyword(rs.getString("keyword"));
+				
+				logger.debug("Keyword recuperata: ( " + keyword.getIdKeyword() + ")");
+				
+			}
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		logger.debug("Il ritorno è: " + keyword);
+		return keyword;
+		
+	}
+	
+	
 	public List<Keyword> getKeywordByIdProdotto(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getKeywordByIdProdotto");
 		List<Keyword> keywordList = new ArrayList<Keyword>();
@@ -155,6 +204,43 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		ResultSet rs = null;
 		
 		connection = ConnectionPoolTomcat.getConnection();
+			
+		String sql = "SELECT * FROM prodotto, keyword, prodotto_has_keyword " +
+					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
+					"AND prodotto.idprodotto = ?";
+			
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, idProdotto);
+		logger.debug("Select Query: " + pstmt.toString());
+		rs = pstmt.executeQuery();
+			
+		while(rs.next()){
+				
+			Keyword keyword = new KeywordImpl();
+			keyword.setIdKeyword(rs.getInt("keyword.idkeyword"));
+			keyword.setKeyword(rs.getString("keyword.keyword"));
+			keywordList.add(keyword);
+			logger.debug(" Aggiunta keyword (" + keyword.getIdKeyword() + ", " + keyword.getKeyword() + ")");
+				
+		}
+			
+		rs.close();
+		pstmt.close();
+		connection.close();
+		
+		return keywordList;
+	}
+	
+	
+	public List<Keyword> getKeywordByIdProdottoTest(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in getKeywordByIdProdottoTest");
+		List<Keyword> keywordList = new ArrayList<Keyword>();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		connection = DatabaseUtil.getConnection();
 			
 		String sql = "SELECT * FROM prodotto, keyword, prodotto_has_keyword " +
 					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
@@ -221,8 +307,44 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		return autoincrementKey;
 	}
 	
+	public int insertKeywordTest(Keyword keyword) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in insertKeywordTest");
+		Integer autoincrementKey = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		connection = DatabaseUtil.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		
+		connection.setAutoCommit(false);
+				
+						
+		String sql = "INSERT INTO keyword (keyword) VALUES (?)";
+		pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setString(1, keyword.getKeyword());
+		logger.debug("Insert Query: " + pstmt.toString());
+		int insertStatus = pstmt.executeUpdate();
+		if (insertStatus==1){
+			rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+		        autoincrementKey = rs.getInt(1);
+		    }
+		}
+		keyword.setIdKeyword(autoincrementKey);
+			
+		rs.close();
+		pstmt.close();
+			
+		connection.commit();
+		logger.info("Inserimento nuova keyword (" + autoincrementKey + ", " + keyword.getKeyword() + ")");
+			
+		connection.setAutoCommit(true);
+		connection.close();
+		
+		return autoincrementKey;
+	}
 
-
+	
+	
 	public int insertListaKeyword(List<Keyword> keywords){
 		logger.debug("in insertListaKeyword");
 		Integer autoincrementKey = -1;

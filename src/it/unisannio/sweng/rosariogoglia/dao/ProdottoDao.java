@@ -21,6 +21,20 @@ public interface ProdottoDao {
 	
 	public Prodotto getProdottoById(Integer idProdotto);
 	
+	
+	/**
+	 * Questo metodo fornisce una lista di tutti i prodotti presenti nel database
+	 * 
+	 * Usato per fare il Test con connessione DatabaseUtil
+	 * 
+	 * @param idProdotto numero identificativo del prodotto
+	 * 
+	 * @return La li sta di tutti i prodotti presenti nel database
+	 */
+	public Prodotto getProdottoByIdTest(Integer idProdotto);
+	
+	
+	
 	/**
 	 * Questo metodo fornisce il prodotto avente l'id passato come parametro
 	 * 
@@ -67,6 +81,19 @@ public interface ProdottoDao {
 	 */
 	public Integer insertProdotto(Prodotto prodotto);
 	
+	
+	/**
+	 * Inserimento di un prodotto nel database
+	 * 
+	 * Usato per il test con connessione DatabaseUtil 
+	 * 
+	 * @param prodotto l'oggetto prodotto da inserire nel database
+	 * 
+	 * @return 1 in caso di corretto inserimento, -1 in caso di fallimento
+	 * 
+	 */
+	public Integer insertProdottoTest(Prodotto prodotto);
+		
 	
 	
 	/**
@@ -128,6 +155,17 @@ public interface ProdottoDao {
 	 */
 	public Integer deleteProdotto(Prodotto prodotto);
 	
+	
+	/**
+	 * Cancellazione di un prodotto dal database
+	 * 
+	 * Usato per fare il Test con connessione DatabaseUtil
+	 * 
+	 * @param prodotto numero identificativo del prodotto
+	 * 
+	 * @return 1 in caso di corretta cancellazione, -1 in caso di fallimento
+	 */
+	public Integer deleteProdottoTest(Prodotto prodotto);
 	
 	/**
 	 * Visualizza tutte le parole chiavi presenti nel database ma non ancora associate al prodotto che viene passato come parametro

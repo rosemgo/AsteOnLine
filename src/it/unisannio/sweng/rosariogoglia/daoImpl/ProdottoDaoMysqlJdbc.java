@@ -17,6 +17,8 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -179,6 +181,75 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return prodotto;
 	}
 
+	
+	public Prodotto getProdottoByIdTest(Integer idProdotto){
+		logger.debug("in getProdottoById: " + idProdotto);
+		Prodotto prodotto = null;
+		
+		Connection connection = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			
+			stmt = connection.createStatement();
+			String query = "SELECT * FROM prodotto " +
+					"WHERE prodotto.idprodotto = " + idProdotto;
+			
+			logger.debug("Select Query ProdottoById: " + query);
+			rs = stmt.executeQuery(query);
+			
+			if (rs.next()){
+				prodotto = new ProdottoImpl();
+							
+				Categoria categoria = new CategoriaImpl();
+				CategoriaDao dao = new CategoriaDaoMysqlJdbc();
+				int idCategoria = rs.getInt("categoria_idcategoria");
+				categoria = dao.getCategoriaByIdTest(idCategoria);
+				
+				Produttore produttore = new ProduttoreImpl();
+				ProduttoreDao dao1 = new ProduttoreDaoMysqlJdbc();
+				int idProduttore = rs.getInt("produttore_idproduttore");
+				produttore = dao1.getProduttoreByIdTest(idProduttore);
+				
+				List<Keyword> keywordList = new ArrayList<Keyword>();
+				KeywordDao dao2 = new KeywordDaoMysqlJdbc();
+				keywordList = dao2.getKeywordByIdProdottoTest(idProdotto);
+				
+				
+				prodotto.setIdProdotto(rs.getInt("prodotto.idprodotto"));
+				prodotto.setNome(rs.getString("prodotto.nome"));
+				prodotto.setIdCategoria(idCategoria);
+				prodotto.setCategoria(categoria);
+				prodotto.setIdProduttore(idProduttore);
+				prodotto.setProduttore(produttore);
+				
+				prodotto.setKeywordsList(keywordList); 
+				
+				logger.debug("(" + prodotto.getIdProdotto() + ", " + prodotto.getNome() + ")");
+				
+			}
+						
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return prodotto;
+	}
+	
+	
 	public List<Prodotto> getProdottiByIdProduttore(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getProdottiByIdProduttore");
 		Connection connection;
@@ -528,6 +599,138 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 	}
 
 
+	public Integer insertProdottoTest(Prodotto prodotto) {
+		logger.info("in insertProdottoTest");
+		Integer productIdKey = -1;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+						
+			try{
+				
+				if((prodotto.getKeywordsList() != null) && (prodotto.getKeywordsList().size() > 0)){
+				
+					Integer keywordIdKey = -1;
+					KeywordDao keyDao = new KeywordDaoMysqlJdbc();
+				
+					for(int i=0; i<prodotto.getKeywordsList().size(); i++){
+			
+						Keyword keyword = keyDao.getKeywordByWordTest(prodotto.getKeywordsList().get(i).getKeyword());
+						logger.debug("Dopo il controllo");
+						
+						if(keyword != null){
+							logger.debug("La parola è presente nel database");
+							keywordIdKey = keyword.getIdKeyword();
+						}
+						else{
+							logger.debug("La parola NON è presente nel database");
+							keywordIdKey = keyDao.insertKeywordTest(prodotto.getKeywordsList().get(i));					
+						}
+						prodotto.getKeywordsList().get(i).setIdKeyword(keywordIdKey);
+					}
+					
+				}
+						
+				
+			}
+			catch (Exception e) {
+				logger.debug("Rollback in inserimento keyword");
+				connection.rollback();
+				return productIdKey;
+			}
+			
+			try {
+					
+					
+					String sql = "INSERT INTO prodotto (nome, produttore_idproduttore, categoria_idcategoria) " +
+							"VALUES (?, ?, ?)";
+			
+					logger.debug("Inseriamo il prodotto");
+					pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+					pstmt.setString(1, prodotto.getNome());
+					logger.debug("Nome prodotto: " + prodotto.getNome());
+					pstmt.setInt(2, prodotto.getIdProduttore());
+					logger.debug("id produttore: " + prodotto.getIdProduttore());
+					pstmt.setInt(3, prodotto.getIdCategoria());
+					logger.debug("id categoria: " + prodotto.getIdCategoria());
+					logger.debug("Insert Query: " + pstmt.toString());
+					int insertRows = pstmt.executeUpdate();
+					logger.debug("righe inserite: "+ insertRows);
+					if (insertRows == 1) {
+						rs = pstmt.getGeneratedKeys();
+						if (rs.next()) {
+							productIdKey = rs.getInt(1);
+						}
+					}
+					prodotto.setIdProdotto(productIdKey); //setto l'id del prodotto
+					logger.debug("id del prodotto è: " + productIdKey);
+					System.out.println("id del prodotto è: " + productIdKey);
+					
+						
+					if (prodotto.getKeywordsList() != null && prodotto.getKeywordsList().size() > 0) {
+						sql = "INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) "
+									+ "VALUES (?, ?)";
+						for (int i = 0; i < prodotto.getKeywordsList().size(); i++) {
+							pstmt = connection.prepareStatement(sql);
+							pstmt.setInt(1, productIdKey);
+							pstmt.setInt(2, prodotto.getKeywordsList().get(i).getIdKeyword()); 
+							logger.debug("Insert Query: " + pstmt.toString());
+							pstmt.executeUpdate();
+						}
+					}
+					
+					connection.commit();
+					
+					System.out.println("Inserimento Prodotto (" + productIdKey + ", "
+							+ prodotto.getNome() + ")");
+					
+					logger.debug("Inserimento Prodotto (" + productIdKey + ", "
+							+ prodotto.getNome() + ")");
+					
+			} catch (Exception e) {
+				logger.debug("Rollback in inserimento prodotto");
+				logger.debug("Prodotto già presente");
+				connection.rollback();
+				return productIdKey;
+				//ServiceException per la stampa dell'errore
+			}	
+		
+		} catch (SQLException  e1) {
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}		
+		finally {
+			if (connection!=null) {
+				try {
+					if(rs != null)
+						rs.close();
+						pstmt.close();
+						connection.setAutoCommit(true);
+						connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}		
+		System.out.println("RETURN: " + productIdKey);
+		
+		return productIdKey;
+	}
+	
+	
+	
+	
 	
 	public Integer insertProdottoHasKeyword(Integer idProdotto, Integer idKeyword){
 		logger.debug("in insertProdottoHasKeyword");
@@ -766,6 +969,73 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		return deletedRows;
 	}
+	
+	
+	public Integer deleteProdottoTest(Prodotto prodotto){
+		logger.info("Eliminazione Prodotto Test: (" + prodotto.getIdProdotto()+ ")");
+		System.out.println("Eliminazione Prodotto Test: (" + prodotto.getIdProdotto()+ ")");
+		Integer deletedRows =-1;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+						
+			// prima si elimina dalla tabella prodotto_has_keyword
+			String sql = "DELETE FROM prodotto_has_keyword WHERE (prodotto_idprodotto = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, prodotto.getIdProdotto());
+			logger.debug("Delete Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+		
+			
+			sql = "DELETE FROM prodotto WHERE (idprodotto = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, prodotto.getIdProdotto());
+			logger.debug("Delete Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			logger.info("Prodotto Eliminato");
+			
+	
+		} catch (SQLException  e1) {
+			// Service Exception con messaggio di errore in pagina
+			e1.printStackTrace();
+			logger.debug("Rollback in cancellazione prodotto");
+			try {
+				connection.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}
+		System.out.println("Prodotto Eliminato");
+		return deletedRows;
+		
+		
+	}
+	
+	
+	
 	
 	/**
 	 * 

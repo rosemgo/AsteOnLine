@@ -23,9 +23,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 
 	Logger logger = Logger.getLogger(ProduttoreDaoMysqlJdbc.class);
-	
-
-	
+		
 	public List<Produttore> getProduttori(){
 		List<Produttore> listaProduttori = new ArrayList<Produttore>();
 		Connection connection = null;
@@ -117,6 +115,55 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return produttore;
 	}
 
+	public Produttore getProduttoreByIdTest(Integer idProduttore){
+		logger.debug("in getProduttoreById");
+		Produttore produttore = null;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+						
+			String sql = "SELECT * FROM produttore WHERE (idproduttore = ?) ";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProduttore);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()){
+				produttore = new ProduttoreImpl();
+				produttore.setIdProduttore(rs.getInt("idproduttore"));
+				produttore.setNome(rs.getString("nome"));
+				produttore.setWebsite(rs.getString("website"));
+			}
+						
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		logger.debug("produttore: " + produttore.toString());
+		return produttore;
+	}
+	
+	
 	
 	public Produttore getProduttoreByNome(String nomeProduttore) {
 		Produttore produttore = null;
@@ -157,6 +204,53 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return produttore;
 	}
 
+	
+	public Produttore getProduttoreByNomeTest(String nomeProduttore) {
+		Produttore produttore = null;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM produttore WHERE (nome = ?)";
+						
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, nomeProduttore);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()){
+				produttore = new ProduttoreImpl();
+				produttore.setIdProduttore(rs.getInt("idproduttore"));
+				produttore.setNome(rs.getString("nome"));
+				produttore.setWebsite(rs.getString("website"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return produttore;
+	}
+
+	
 	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriByIdCategoria");
 		
@@ -278,6 +372,78 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return autoincrementKey;
 	}
 
+	
+	public Integer insertProduttoreTest(Produttore produttore){
+		logger.debug("in insertProduttoreTest");
+		
+		Integer autoincrementKey = -1;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			connection = DatabaseUtil.getConnection(); //utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			
+			connection.setAutoCommit(false);
+		
+			String sql = "INSERT INTO produttore (nome, website) VALUES (?, ?)";
+				
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, produttore.getNome());
+			pstmt.setString(2, produttore.getWebsite());
+				
+			logger.debug("Insert Query: " + pstmt.toString());
+				
+			int insertStatus = pstmt.executeUpdate();
+			if (insertStatus==1){
+				rs = pstmt.getGeneratedKeys();
+				if (rs.next()) {
+			        autoincrementKey = rs.getInt(1);
+			    }
+			}
+			produttore.setIdProduttore(autoincrementKey);
+
+			connection.commit();
+				
+			logger.debug("Inserimento Produttore (" + autoincrementKey + ", " + produttore.getNome() + ")");
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+			System.out.println("Inserimento produttore non riuscito");
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					if(rs != null)
+						rs.close();
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}
+		
+		return autoincrementKey;
+	}
+	
+	
 	
 	public boolean checkDeleteProduttore(Integer idProduttore){
 		

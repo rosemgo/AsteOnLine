@@ -85,6 +85,7 @@ public class RegistrazioneUtente {
     Thread.sleep(2000);
     driver.findElement(By.id("bottone")).click();
     Thread.sleep(2000);
+    
   }
 
   @After

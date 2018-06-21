@@ -13,16 +13,15 @@ public class DatabaseUtilTest {
 	@Test
 	public void testGetConnection() throws ClassNotFoundException, SQLException, IOException{
 
-		
-		
-		Connection con = null;
-		con = DatabaseUtil.getConnection();
+				
+		Connection connection = null;
+		connection = DatabaseUtil.getConnection();
 
-		assertEquals(con.getCatalog(), "ecommerce");
+		assertEquals(connection.getCatalog(), "ecommerce");
 		
-		System.out.println("conn: " + con.toString());
+		System.out.println("conn: " + connection.toString());
 		
-		System.out.println(con.toString());
+		System.out.println(connection.toString());
 		
 		
 	}

@@ -84,6 +84,7 @@ public class ProdottoDaoMysqlTest {
 		assertEquals(readingProdotto.getNome(), prodotto.getNome());
 		assertEquals(readingProdotto.getIdProdotto(), prodotto.getIdProdotto());
 		
+		
 		Integer deletedRows = prodottoDao.deleteProdottoTest(readingProdotto);
 		assertEquals(deletedRows, (Integer)1); //delete rows è 1 se è stata cancellata una riga
 	

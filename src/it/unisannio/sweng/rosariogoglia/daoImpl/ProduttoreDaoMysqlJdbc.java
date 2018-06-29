@@ -566,6 +566,64 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 
 
+	public Integer deleteProduttoreTest(Integer idProduttore) {
+		logger.info("Eliminazione Produttore Test: (" + idProduttore + ")");
+		Integer deletedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+				
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			//cancello il produttore
+			String sql = "DELETE FROM produttore WHERE (idproduttore = ?)";
+					
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idProduttore);
+			logger.debug("Delete Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+				
+			connection.commit();
+									
+			logger.info("Produttore Eliminato");
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+			System.out.println("Cancellazione produttore non riuscita");
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException  e) {
+					
+					e.printStackTrace();
+				}
+				logger.debug("Connection chiusa");
+			}
+		}
+		
+		return deletedRows;
+	}
+	
+	
+	
 	public Integer updateProduttore(Produttore produttore){
 		logger.debug("in updateProduttore");
 		Integer uptadedRows = -1;

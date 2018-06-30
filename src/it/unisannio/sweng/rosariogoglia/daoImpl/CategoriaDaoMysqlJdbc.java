@@ -382,6 +382,69 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		return listaCategorie;
 	}
+	
+	
+	@Override
+	public List<Categoria> getCategorieTest(){
+		logger.debug("in getCategorieTest");
+		
+		
+		Connection connection = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<Categoria> listaCategorie = new ArrayList<Categoria>();
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			
+			
+			stmt = connection.createStatement();
+			
+			String query = "SELECT * FROM categoria ORDER BY nome ASC";
+			logger.debug("Select Query: " + query);
+			rs = stmt.executeQuery(query);
+			
+			while(rs.next()){
+				Categoria cat = new CategoriaImpl();
+				
+				cat.setIdCategoria(rs.getInt("idcategoria"));
+				cat.setNome(rs.getString("nome"));
+				
+				/*Preleviamo la lista dei produttori relativi alla categoria*/
+				ProduttoreDao dao = new ProduttoreDaoMysqlJdbc();
+				List<Produttore> listaProduttori = dao.getProduttoriByIdCategoriaTest(rs.getInt("idcategoria"));
+				cat.setListaProduttori(listaProduttori);
+				
+				listaCategorie.add(cat);
+				logger.debug("(" + cat.getIdCategoria() + ", " + cat.getNome() + ")");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		finally{
+			try {
+				rs.close();
+				stmt.close();
+				
+				connection.close();
+			
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return listaCategorie;
+	}
 
 	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriMancanti");
@@ -421,6 +484,71 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 						
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				
+				connection.close();
+			
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return listaProduttori;
+		
+	}
+	
+	public List<Produttore> getProduttoriMancantiByIdCategoriaTest(Integer idCategoria){
+		logger.debug("in getProduttoriMancanti");
+		
+		List<Produttore> listaProduttori = new ArrayList<>();
+		Produttore produttore;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+		
+			
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM produttore WHERE idproduttore " +
+					"NOT IN " +
+					"(SELECT produttore_idproduttore FROM categoria_has_produttore " +
+					"WHERE categoria_idcategoria = ? ) ORDER BY idproduttore ASC";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				produttore = new ProduttoreImpl();
+				
+				produttore.setIdProduttore(rs.getInt("produttore.idproduttore"));
+				produttore.setNome(rs.getString("produttore.nome"));
+				produttore.setWebsite(rs.getString("produttore.website"));
+							
+				listaProduttori.add(produttore);
+				logger.debug("produttore aggiunto alla lista: " + produttore.toString());
+			
+			}	
+						
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -729,6 +857,56 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return result;
 	}
 	
+public boolean checkDeleteCategoriaTest(Integer idCategoria){
+		
+		boolean result = true;
+		Connection connection = null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+					"WHERE categoria.idcategoria = prodotto.categoria_idcategoria " +
+					"AND prodotto.idprodotto = inserzione.prodotto_idprodotto " +
+					"AND idcategoria = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Check Query: " + pstmt.toString());
+			 rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = false;
+			}
+				
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				
+				connection.close();
+			
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
 	
 	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore){
 		boolean result = false;
@@ -850,6 +1028,84 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return deletedRows;		
 	}
 
+	
+	public Integer deleteCategoriaTest(Integer idCategoria){
+		logger.debug("in deleteCategoria");
+		Integer deletedRows = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+						
+			/*Innanzi tutto elimino tutti i prodotti associati alla categoria da eliminare*/
+			
+			//prima si elimina dalla tabella prodotto_has_keyword
+			String sql = "DELETE prodotto_has_keyword.* FROM prodotto_has_keyword, prodotto " +
+					"WHERE " +
+					"prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
+					"AND " +
+					"prodotto.categoria_idcategoria = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Delete Query: " + pstmt.toString());
+			pstmt.executeUpdate();
+		
+			//cancello il prodotto
+			sql = "DELETE FROM prodotto WHERE (categoria_idcategoria = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Delete Query: " + pstmt.toString());
+			pstmt.executeUpdate();
+					
+			//cancello l'associazione categoria-produttore
+			sql = "DELETE FROM categoria_has_produttore WHERE categoria_idcategoria = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Delete Query:" + pstmt.toString());
+			pstmt.executeUpdate();			
+						
+			//cancello la categoria
+			sql = "DELETE FROM categoria WHERE idcategoria = ? ";
+			pstmt = connection.prepareStatement(sql);			
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Delete Query:" + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			logger.info("Eliminazione Categoria id: (" + idCategoria + ")");
+			
+		} catch (SQLException  e) {
+			
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+			} catch (SQLException  e) {
+				
+				e.printStackTrace();
+			}
+		}
+			
+		return deletedRows;		
+	}
 
 	
 	public Integer updateCategoria(Categoria categoria){

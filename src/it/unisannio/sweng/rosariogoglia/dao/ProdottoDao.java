@@ -49,6 +49,24 @@ public interface ProdottoDao {
 	
 	public List<Prodotto> getProdottiByIdProduttore(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException;
 	
+	
+	/**
+	 * Questo metodo fornisce il prodotto avente l'id passato come parametro
+	 * 
+	 * Usato per fare il Test con connessione DatabaseUtil
+	 * 
+	 * @param idProduttore numero identificativo del produttore
+	 * 
+	 * @return Il prodotto avente id corrispondente a quello passato come parametro
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	
+	public List<Prodotto> getProdottiByIdProduttoreTest(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException;
+	
+	
 	/**
 	 * Questo metodo fornisce la lista dei prodotti il cui id del produttore corrisponde a quello passato come parametro
 	 * 

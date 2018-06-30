@@ -72,7 +72,58 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return listaProduttori;
 	}
+	
+	
+	public List<Produttore> getProduttoriTest(){
+		List<Produttore> listaProduttori = new ArrayList<Produttore>();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			
+			connection = DatabaseUtil.getConnection();
+			
 		
+			String sql = "SELECT * FROM produttore ORDER BY nome ASC ";
+			pstmt = connection.prepareStatement(sql);
+			
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Produttore produttore = new ProduttoreImpl();
+							
+				produttore.setIdProduttore(rs.getInt("idproduttore"));
+				produttore.setNome(rs.getString("nome"));
+				
+				/*Preleviamo la lista dei prodotti relativi al produttore*/
+				ProdottoDao dao = new ProdottoDaoMysqlJdbc();
+				List<Prodotto> listaProdotti = dao.getProdottiByIdProduttoreTest(rs.getInt("idproduttore"));
+				produttore.setProdotti(listaProdotti);
+				
+				listaProduttori.add(produttore);
+				logger.debug("(" + produttore.getIdProduttore() + ", " + produttore.getNome() + ")");
+			}
+		
+			
+		} catch (ClassNotFoundException	| IOException | SQLException  e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return listaProduttori;
+	}
+	
+	
 	public Produttore getProduttoreById(Integer idProduttore){
 		logger.debug("in getProduttoreById");
 		Produttore produttore = null;
@@ -305,7 +356,64 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 	}
 	
 	
-	
+	public List<Produttore> getProduttoriByIdCategoriaTest(Integer idCategoria){
+		logger.debug("in getProduttoriByIdCategoria");
+		
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		
+		Produttore produttore; 
+		List<Produttore> listaProduttori = new ArrayList<Produttore>();
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM produttore, categoria_has_produttore " +
+					"WHERE produttore.idproduttore = categoria_has_produttore.produttore_idproduttore " +
+					"AND categoria_has_produttore.categoria_idcategoria = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+		
+			pstmt.setInt(1, idCategoria);
+			logger.debug("Select Query:" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				produttore = new ProduttoreImpl();
+				
+				produttore.setIdProduttore(rs.getInt("produttore.idproduttore"));
+				produttore.setNome(rs.getString("produttore.nome"));
+				produttore.setWebsite(rs.getString("produttore.website"));
+				
+				listaProduttori.add(produttore);
+							
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return listaProduttori;
+			
+	}
 	
 	public Integer insertProduttore(Produttore produttore){
 		logger.debug("in insertProduttore");

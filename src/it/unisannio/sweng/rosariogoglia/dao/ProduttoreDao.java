@@ -17,6 +17,16 @@ public interface ProduttoreDao {
 	public List<Produttore> getProduttori();
 	
 	/**
+	 * Questo metodo fornisce la lista di tutti i produttori presenti nel database
+	 * 
+	 * Usato per il test con connessione DatabaseUtil
+	 * 
+	 * @return La lista dei produttori presenti nel database
+	 */
+	
+	public List<Produttore> getProduttoriTest();
+	
+	/**
 	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
 	 * 
 	 * @param idProduttore numero identificativo del produttore
@@ -28,7 +38,8 @@ public interface ProduttoreDao {
 	
 	/**
 	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
-	 * Usato per Test
+	 * 
+	 * Usato per il test con connessione DatabaseUtil
 	 * 
 	 * @param idProduttore numero identificativo del produttore
 	 * 
@@ -75,6 +86,20 @@ public interface ProduttoreDao {
 	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria);
 	
 	/**
+	 * Questo metodo fornisce la lista dei produttori che hanno l'id della categoria coincidente a quello passato come parametro
+	 * 
+	 * Usato per il test con connessione DatabaseUtil
+	 * 
+	 * @param idCategoria numero identificativo della categoria
+	 * 
+	 * @return La lista dei produttori aventi l'id della categoria coincidente a quello passato come parametro
+	 */
+		
+	public List<Produttore> getProduttoriByIdCategoriaTest(Integer idCategoria);
+		
+	
+	
+	/**
 	 * Questo metodo inserisce il produttore passato come parametro nel database
 	 * 
 	 * @param produttore oggetto produttore da inserire nel database
@@ -109,14 +134,14 @@ public interface ProduttoreDao {
 	public Integer deleteProduttore (Integer idProduttore);
 	
 	/**
-	+	 * Questo metodo Elimina dal database il produttore avente l'id passato come parametro 
-	+	 * 
-	+	 * Usato per fare il test con connessione DatabaseUtil
-	+	 * 
-	+	 * @param idProduttore numero identificativo del produttore
-	+	 * 
-	+	 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
-	+	*/
+		 * Questo metodo Elimina dal database il produttore avente l'id passato come parametro 
+		 * 
+		 * Usato per fare il test con connessione DatabaseUtil
+		 * 
+		 * @param idProduttore numero identificativo del produttore
+		 * 
+		 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
+		*/
 		public Integer deleteProduttoreTest(Integer idProduttore);
 
 	/**

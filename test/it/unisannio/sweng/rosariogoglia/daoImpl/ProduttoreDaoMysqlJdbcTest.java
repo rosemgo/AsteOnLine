@@ -22,15 +22,17 @@ public class ProduttoreDaoMysqlJdbcTest {
 		Integer autoIncKey = -1;
 		writingProduttore.setNome("TestProduttore");
 		writingProduttore.setWebsite("Website Test");
-		autoIncKey = dao.insertProduttore(writingProduttore);
-		writingProduttore.setIdProduttore(autoIncKey);
+		autoIncKey = dao.insertProduttoreTest(writingProduttore);
+		//writingProduttore.setIdProduttore(autoIncKey);
 
-		readingProduttore = dao.getProduttoreByNome(writingProduttore.getNome());
+		System.out.println("id produttore: " + writingProduttore.getIdProduttore());
+		
+		readingProduttore = dao.getProduttoreByNomeTest(writingProduttore.getNome());
 
 		assertEquals(readingProduttore.getNome(), writingProduttore.getNome());
-		//assertEquals(readingProduttore.getIdProduttore(), writingProduttore.getIdProduttore());
+		assertEquals(readingProduttore.getIdProduttore(), writingProduttore.getIdProduttore());
 		
-		Integer deletedRows = dao.deleteProduttore(readingProduttore.getIdProduttore());
+		Integer deletedRows = dao.deleteProduttoreTest(readingProduttore.getIdProduttore());
 		assertEquals(deletedRows, (Integer)1);
 		
 	}

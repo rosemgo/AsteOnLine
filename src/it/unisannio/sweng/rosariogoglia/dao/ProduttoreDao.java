@@ -105,9 +105,21 @@ public interface ProduttoreDao {
 	 * 
 	 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
 	 */
-	
 	public Integer deleteProduttore (Integer idProduttore);
 
+	
+	/**
+	 * Questo metodo Elimina dal database il produttore avente l'id passato come parametro 
+	 * 
+	 * Usato per fare il test con connessione DatabaseUtil
+	 * 
+	 * @param idProduttore numero identificativo del produttore
+	 * 
+	 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
+	*/
+	public Integer deleteProduttoreTest(Integer idProduttore);
+	
+	
 	/**
 	 * Aggiorna uno o più attributi del produttore
 	 * 

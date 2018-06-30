@@ -19,6 +19,15 @@ public interface CategoriaDao {
 	public List<Categoria> getCategorie();
 	
 	/**
+	 * Questo metodo carica tutte le Categorie presenti nel sistema
+	 * 
+	 *  Usato per test con connessione DatabaseUtil
+	 * 
+	 * @return Tutte le categorie censite dal sistema
+	 */
+	public List<Categoria> getCategorieTest();
+	
+	/**
 	 * Questo metodo carica la Categoria avente l'id passato come parametro
 	 * 
 	 * @param idCategoria è l'id della categoria da caricare
@@ -72,6 +81,18 @@ public interface CategoriaDao {
 	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria);
 	
 	/**
+	 * Restituisce la lista dei produttori non ancora associati alla categoria indicata dall'id passato come parametro
+	 * 
+	 * Usato per eseguire il test con connessione DatabaseUtil
+	 * 
+	 * @param idCategoria numero identificativo della categoria
+	 * 
+	 * @return La lista dei produttori non ancora associati alla categoria
+	 */
+	public List<Produttore> getProduttoriMancantiByIdCategoriaTest(Integer idCategoria);
+	
+	
+	/**
 	 * Il metodo è utilizzato per associare un produttore ad una categoria effettuanfo un'inserimento nella tabella categoria_has_produttore
 	 * 
 	 * @param idCategoria numero identificativo della categoria
@@ -101,6 +122,8 @@ public interface CategoriaDao {
 	 * @return L'id della categoria inserita
 	 */
 	public Integer insertCategoria (Categoria categoria);
+	
+	
 	
 	
 	/**
@@ -135,6 +158,17 @@ public interface CategoriaDao {
 	public Integer deleteCategoria(Integer idCategoria);
 	
 	/**
+	 * Elimina dal db la categoria identificata dall'id passato come parametro
+	 * 
+	 * Usato con connessione DatabaseUtil 
+	 * 
+	 * @param idCategoria numero identificativo della categoria
+	 * 
+	 * @return 1 se la cancellazione è andata a buon fine, -1 in caso contrario
+	 */
+	public Integer deleteCategoriaTest(Integer idCategoria);
+	
+	/**
 	 * Controlla se è possibile eliminare una categoria. Per essere eliminata è necessario che non ci siano inserzioni con prodotti ad essa associati
 	 * 
 	 * @param idCategoria numero identificativo della categoria
@@ -143,6 +177,17 @@ public interface CategoriaDao {
 	  */
 	public boolean checkDeleteCategoria(Integer idCategoria);
 		
+	/**
+	 * Controlla se è possibile eliminare una categoria. Per essere eliminata è necessario che non ci siano inserzioni con prodotti ad essa associati
+	 * 
+	 * Usato con connessione DatabaseUtil
+	 * 
+	 * @param idCategoria numero identificativo della categoria
+	 * 
+	 * @return True se è possibile eliminare la categoria, false se non è possibile
+	  */
+	public boolean checkDeleteCategoriaTest(Integer idCategoria);
+	
 	/**
 	 * Controlla se l'associazione Categoria-Produttore sia già presente nel db
 	 * 

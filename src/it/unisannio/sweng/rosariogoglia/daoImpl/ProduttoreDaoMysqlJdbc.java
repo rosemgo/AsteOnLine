@@ -564,8 +564,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return deletedRows;
 	}
-
-
+	
 	public Integer deleteProduttoreTest(Integer idProduttore) {
 		logger.info("Eliminazione Produttore Test: (" + idProduttore + ")");
 		Integer deletedRows = -1;
@@ -621,9 +620,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return deletedRows;
 	}
-	
-	
-	
+
+
 	public Integer updateProduttore(Produttore produttore){
 		logger.debug("in updateProduttore");
 		Integer uptadedRows = -1;
@@ -671,6 +669,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return uptadedRows;
 	}
+	
+	
 	
 	
 }

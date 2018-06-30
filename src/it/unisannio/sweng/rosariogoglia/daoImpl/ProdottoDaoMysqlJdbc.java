@@ -286,6 +286,43 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return listaProdotti;
 	}
 
+	public List<Prodotto> getProdottiByIdProduttoreTest(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException {
+		logger.debug("in getProdottiByIdProduttore");
+		Connection connection;
+		Prodotto prodotto;
+		List<Prodotto> listaProdotti = new ArrayList<Prodotto>();
+		
+		PreparedStatement pstmt;
+		
+		String sql = "SELECT * FROM prodotto " +
+				"WHERE prodotto.produttore_idproduttore = ? ";
+				
+		
+		connection = DatabaseUtil.getConnection();
+			
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, idProduttore);
+		logger.debug("Select Query:" + pstmt.toString());
+		ResultSet rs = pstmt.executeQuery();
+			
+		while(rs.next()){
+				
+				ProdottoDao dao = new ProdottoDaoMysqlJdbc();
+				prodotto = dao.getProdottoByIdTest(rs.getInt("prodotto.idprodotto"));
+				
+				listaProdotti.add(prodotto);		
+				
+		}
+			
+		rs.close();
+		pstmt.close();
+			
+		connection.close();
+				
+		return listaProdotti;
+	}
+
+	
 	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore){
 		logger.debug("in getProdottiByIdCategoriaByIdProduttore");
 		Prodotto prodotto;

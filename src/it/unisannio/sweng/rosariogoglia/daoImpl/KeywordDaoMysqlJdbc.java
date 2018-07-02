@@ -487,6 +487,68 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	}
 
 	
+	public int deleteKeywordTest(Integer idKeyword){
+		logger.debug("in deleteKeyword");
+		Integer deletedRows = -1;	
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "DELETE FROM prodotto_has_keyword WHERE (keyword_idkeyword = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idKeyword);
+			logger.debug("Delete Query:" + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			
+			sql = "DELETE FROM keyword WHERE (idkeyword = ?)";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idKeyword);
+			logger.debug("Delete Query:" + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			
+			logger.info("Eliminazione Keyword id: (" + idKeyword + ")");
+			connection.commit();
+			
+		} catch (SQLException  e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+				logger.debug("Rollback in cancellazione Keyword");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+
+			if (connection != null) {
+				try {
+					
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+
+			}
+		}
+		
+		return deletedRows;		
+		
+	}
+	
+	
 	public int updateKeyword(Keyword keyword){
 		logger.debug("in updateKeyword");
 		Integer uptadedRows = -1;

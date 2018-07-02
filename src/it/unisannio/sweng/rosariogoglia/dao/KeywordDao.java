@@ -146,6 +146,18 @@ public interface KeywordDao {
 	public int deleteKeyword(Integer idKeyword);
 	
 	/**
+	 * Cancella la parola chiave corrispondente a quella passata come parametro dal database
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idKeyword numero identificativo della keyword
+	 * 
+	 * @return Un intero che indica il numero di righe cancellate
+	 */
+	public int deleteKeywordTest(Integer idKeyword);
+	
+	
+	/**
 	 * Modifica la parola chiave corrispondente a quella passata come parametro 
 	 * 
 	 * @param keyword numero identificativo della keyword

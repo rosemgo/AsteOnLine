@@ -90,6 +90,19 @@ public interface InserzioneDao {
 	public Inserzione getInserzioneById(Integer idInserzione);
 	
 	/**
+	 * Questo metodo carica l'intera inserzione con la lista immagini e la lista di offerte
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idInserzione numero identificativo dell'inserzione
+	 * 
+	 * @return Restituisce l'inserzione
+	 * 
+	 */
+	public Inserzione getInserzioneByIdTest(Integer idInserzione);
+	
+	
+	/**
 	 * Questo metodo a differenza del getInserzioneById, carica solo l'inserzione senza la lista immagini e 
 	 * la lista di offerte(utilizzato nel metodo getOffertaByIdInserzione per non creare la ricorsione tra offerta ed inserzione)
 	 * 
@@ -104,6 +117,24 @@ public interface InserzioneDao {
 	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 	
 
+	/**
+	 * Questo metodo a differenza del getInserzioneById, carica solo l'inserzione senza la lista immagini e 
+	 * la lista di offerte(utilizzato nel metodo getOffertaByIdInserzione per non creare la ricorsione tra offerta ed inserzione)
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idInserzione numero identificativo dell'inserzione
+	 * 
+	 * @return Restituisce l'inserzione
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public Inserzione getInserzioneByIdSenzaListeTest(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
+	
+	
+	
 	/**
 	 * Questo metodo visualizza la lista delle inserzioni contenenti la keyword passata come parametro.	
 	 * 
@@ -255,6 +286,23 @@ public interface InserzioneDao {
 	 */
 	public Integer insertInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
 	
+	/**
+	 * Inserisce l'oggetto inserzione passato come parametro nel database.
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 	
+	 * @param inserzione oggetto inserzione da inserire nel database
+	 * 
+	 * @return L'id associato all'inserzione nel database
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public Integer insertInserzioneTest(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
+	
+	
+	
 	
 	
 	/**
@@ -314,6 +362,19 @@ public interface InserzioneDao {
 	
 	
 	public Integer deleteInserzione(Integer idInserzione);
+	
+	/**
+	 * Il metodo elimina un'inserzione caricata da utente dal database
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idInserzione numero identificativo dell'inserzione
+	 * 
+	 * @return Il numero di righe eliminate dal database, se l'eliminazione fallisce restituisce -1
+	 */
+	
+	
+	public Integer deleteInserzioneTest(Integer idInserzione);
 	
 	/**
 	 * Il metodo elimina un'inserzione  dalla lista delle inserzioni osservate da un utente

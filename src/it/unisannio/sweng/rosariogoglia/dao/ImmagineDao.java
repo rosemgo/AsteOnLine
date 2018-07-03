@@ -34,6 +34,22 @@ public interface ImmagineDao {
 	 */
 	public List<Immagine> getImmaginiByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
 		
+	/**
+	 * Questo metodo carica tutte le immagini dell'inserzione avente l'id passato come parametro
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idInserzione numero identificativo dell'inserzione
+	 * 
+	 * @return Restituisce tutte le immagini associate ad un'inserzione
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public List<Immagine> getImmaginiByIdInserzioneTest(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException;
+		
+	
 	/** 
 	 * Questo metodo inserisce un'immagine nel database
 	 * 
@@ -43,6 +59,18 @@ public interface ImmagineDao {
 	 */
 	public Integer insertImmagine(Immagine immagine);
 
+	/** 
+	 * Questo metodo inserisce un'immagine nel database
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param immagine l'oggetto immagine
+	 * 
+	 * @return l'id dell' immagine inserita
+	 */
+	public Integer insertImmagineTest(Immagine immagine);
+
+	
 	/**
 	 * Questo metodo elimina un'immagine dal database
 	 * 

@@ -3,6 +3,7 @@ package it.unisannio.sweng.rosariogoglia.daoImpl;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
@@ -109,6 +110,72 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return utenteIdKey;
 		
 	}
+	
+	public Integer insertUtenteRegistratoTest(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, SQLException, IOException{
+		logger.info("in insertRegistrato");
+		Integer utenteIdKey = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "INSERT INTO utente_registrato (nick, nome, cognome, password, e_mail, codice_fiscale, n_conto_corrente, indirizzo, cap, telefono, tipologia_cliente, data_registrazione, comune_idcomune, flag_abilitato)" +
+					" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					
+			logger.debug("Inseriamo l'utente");
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, utenteRegistrato.getNick());
+			pstmt.setString(2, utenteRegistrato.getNome());
+			pstmt.setString(3, utenteRegistrato.getCognome());
+			pstmt.setString(4, utenteRegistrato.getPassword());
+			pstmt.setString(5, utenteRegistrato.geteMail());
+			pstmt.setString(6, utenteRegistrato.getCodiceFiscale());
+			pstmt.setString(7, utenteRegistrato.getNumContoCorrente());
+			pstmt.setString(8, utenteRegistrato.getIndirizzo());
+			pstmt.setString(9, utenteRegistrato.getCap());
+			pstmt.setString(10, utenteRegistrato.getTelefono());
+			pstmt.setString(11, utenteRegistrato.getTipologiaCliente());
+			pstmt.setTimestamp(12, Utility.convertitoreDataUtilToTimestamp(utenteRegistrato.getDataRegistrazione()));
+			pstmt.setInt(13, utenteRegistrato.getIdComune());
+			pstmt.setBoolean(14, utenteRegistrato.isFlagAbilitato());
+			logger.debug("Insert Query: " + pstmt.toString());
+			int insertRows = pstmt.executeUpdate();
+			logger.debug("righe inserite: "+ insertRows);
+			if(insertRows == 1){
+				rs = pstmt.getGeneratedKeys();
+				if(rs.next()){
+					utenteIdKey = rs.getInt(1);
+				}
+			}
+			utenteRegistrato.setIdUtente(utenteIdKey); //setto l'id dell'utente
+			logger.debug("id dell'utente è: " + utenteIdKey);
+			
+					
+			connection.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.debug("Rollback in inserimento prodotto");
+			connection.rollback();
+		}	
+				
+		finally {
+			if (connection!=null) {
+				if(rs != null)
+					rs.close();
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+				
+			}
+		}	
+	
+		return utenteIdKey;
+		
+	}
 
 	/**
 	 * eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
@@ -124,7 +191,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
-			String sql = "UPDATE utente_registrato SET (flagAbilitato = ?) WHERE (idutente = ?)";
+			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE (idutente = ?)";
 			
 			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setBoolean(1, false);
@@ -152,6 +219,45 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return updatedRows;
 	}
 
+	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
+		logger.info("in deleteRegistrato");
+		Integer updatedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE (idutente = ?)";
+			
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setBoolean(1, false);
+			pstmt.setInt(2, utente.getIdUtente());
+			logger.debug("Delete Query: " + pstmt.toString());
+			updatedRows = pstmt.executeUpdate();
+			logger.debug("righe aggiornate: " + updatedRows);
+			
+			connection.commit();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.debug("Rollback in delete utente");
+			connection.rollback();
+		}	
+		finally {
+			if (connection!=null) {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			}
+		}
+		
+		return updatedRows;
+	}
+	
 	
 	public Integer updateUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("In updateUtenteRegistrato");
@@ -701,6 +807,91 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		}	
 		return utenteReg;
 	}
+	
+	public UtenteRegistrato getUtenteRegistratoByIdTest(Integer idUtente){
+		logger.debug("in getUtenteRegistratoById");
+		
+		UtenteRegistrato utenteReg = null;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+		
+			connection = DatabaseUtil.getConnection();
+			
+			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
+						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
+						 "AND " + 
+						 "comune.provincia_idprovincia = provincia.idprovincia " +
+						 "AND " +
+						 "utente_registrato.idutente = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idUtente);
+			logger.debug("Select Query : " + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				utenteReg = new UtenteRegistratoImpl();
+				Comune comune = new ComuneImpl();
+				Provincia provincia = new ProvinciaImpl();
+				
+				comune.setIdComune(rs.getInt("comune.idcomune"));
+				comune.setNomeComune(rs.getString("comune.nome_comune"));
+				comune.setIdProvincia(rs.getInt("comune.provincia_idprovincia"));
+				logger.debug("comune: " + comune.getNomeComune());
+				
+				provincia.setIdProvincia(rs.getInt("provincia.idprovincia"));
+				provincia.setNomeProvincia(rs.getString("provincia.nome_provincia"));
+				logger.debug("provincia: " + provincia.getNomeProvincia());
+				
+				comune.setProvincia(provincia);
+				
+				utenteReg.setIdUtente(rs.getInt("idutente"));
+				utenteReg.setNick(rs.getString("nick"));
+				utenteReg.setNome(rs.getString("nome"));
+				utenteReg.setCognome(rs.getString("cognome"));
+				utenteReg.setPassword(rs.getString("password"));
+				utenteReg.seteMail(rs.getString("e_mail"));
+				utenteReg.setCodiceFiscale(rs.getString("codice_fiscale"));
+				utenteReg.setNumContoCorrente(rs.getString("n_conto_corrente"));
+				utenteReg.setIndirizzo(rs.getString("indirizzo"));
+				utenteReg.setCap(rs.getString("cap"));
+				utenteReg.setTelefono(rs.getString("telefono"));
+				utenteReg.setTipologiaCliente(rs.getString("tipologia_cliente"));
+				utenteReg.setDataRegistrazione(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data_registrazione")));
+				utenteReg.setFlagAbilitato(rs.getBoolean("flag_abilitato"));
+				utenteReg.setIdComune(rs.getInt("comune_idcomune"));
+				utenteReg.setComune(comune);
+				
+				logger.debug("utente registrato: " + utenteReg.toString());		
+			}
+			
+
+		} catch (SQLException e) {
+			 e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+		return utenteReg;
+	}
+	
 	
 	public UtenteRegistrato getUtenteRegistratoByeMail(String eMail){
 		logger.debug("in getUtenteRegistratoByeMail");

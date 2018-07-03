@@ -1,6 +1,7 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
@@ -592,6 +593,112 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		
 	}
 	
+	public Inserzione getInserzioneByIdTest(Integer idInserzione){
+		logger.debug("in getInserzioneById");
+		Inserzione inserzione = null;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			
+			
+			connection = DatabaseUtil.getConnection();
+		
+			
+			String sql = "SELECT * FROM inserzione " +
+						"WHERE (inserzione.idinserzione = ?)";
+		
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("select inserzione" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				inserzione = new InserzioneImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				Integer idAcquirente = null; 
+				UtenteRegistrato acquirente = null;
+				idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); //la funzione rs.getInt() restituisce 0 se il campo acquirente nella tabella inserzione è NULL
+				logger.debug("idAcquirente: " + idAcquirente);
+				if(idAcquirente != 0){ //se l'inserzione ha un acquirente andiamo a caricarlo
+					logger.debug("Entro per l'acquirente");
+					acquirente = dao.getUtenteRegistratoByIdTest(idAcquirente);
+					System.out.println("ACQUIRENTE CARICATO");
+				}
+			
+			/*	soluzione alternativa	
+				if (rs.getObject("inserzione.acquirente_utente_registrato_idutente") != null && !rs.wasNull()) {
+					idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); //DA RIVEDERE SE ACQUIRENTE è NULL!!!!!!!!!!!!!
+					acquirente = dao.getUtenteRegistratoById(idAcquirente); //SI INCAZZA CON IDACQUIRENTE NULL
+				}
+			*/
+				
+				
+				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+				UtenteRegistrato venditore = dao.getUtenteRegistratoByIdTest(idVenditore);
+				System.out.println("VENDITORE CARICATO");
+				
+				ProdottoDao dao1 = new ProdottoDaoMysqlJdbc();
+				int idProdotto = rs.getInt("inserzione.prodotto_idprodotto");
+				Prodotto prodotto = dao1.getProdottoByIdTest(idProdotto); //ho l'intero prodotto
+				logger.debug("prodotto caricato: " + prodotto.toString());
+				System.out.println("PRODOTTO CARICATO");
+				
+				ImmagineDao dao2 = new ImmagineDaoMysqlJdbc();
+				List<Immagine> immagini = dao2.getImmaginiByIdInserzioneTest(rs.getInt("inserzione.idinserzione")); //prelevo tutte le immagine dell'inserzione
+				logger.debug("immagini caricate");
+				System.out.println("IMMAGINI CARICATE");
+				
+				OffertaDao dao3 = new OffertaDaoMysqlJdbc();
+				List<Offerta> listaOfferte = dao3.getOfferteByIdInserzioneTest(idInserzione);
+				logger.debug("offerte caricate: ");
+				System.out.println("OFFERTE CARICATE");
+								
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setDescrizione(rs.getString("inserzione.descrizione"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				inserzione.setIdAcquirente(idAcquirente); //se l'acquirente è null, L' IDACQUIRENTE VIENE VISTO COME 0
+				inserzione.setAcquirente(acquirente); 
+				
+				inserzione.setIdVenditore(idVenditore);
+				inserzione.setVenditore(venditore);
+				inserzione.setIdProdotto(idProdotto);
+				inserzione.setProdotto(prodotto);
+				inserzione.setImmagini(immagini); //carico le immagini
+				inserzione.setOfferte(listaOfferte); //carico tutte le offerte
+				
+				
+				logger.debug("inserzione caricata: " + inserzione.getIdInserzione() + " " + inserzione.getTitolo());
+			}
+			
+		} catch (ClassNotFoundException	| IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				rs.close();
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		return inserzione;
+		
+	}
+
+	
 	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getInserzioneByIdSenzaListe");
 		Inserzione inserzione = null;
@@ -667,7 +774,85 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}		
 		return inserzione;
 	}
+	
+	public Inserzione getInserzioneByIdSenzaListeTest(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
+		logger.debug("in getInserzioneByIdSenzaListe");
+		Inserzione inserzione = null;
+		Connection connection = null;
+		PreparedStatement  pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
+						"WHERE (inserzione.idinserzione = ?)";
+		
+	
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("select inserzione" + pstmt.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				inserzione = new InserzioneImpl();
+				
+				UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+				Integer idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); 
+				UtenteRegistrato acquirente = null;
+				if(idAcquirente != 0){ //lo 0 equivale al null
+					 acquirente = dao.getUtenteRegistratoByIdTest(idAcquirente); 
+				}
+				logger.debug("idAcquirente: " + idAcquirente);
+				
+				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
+				UtenteRegistrato venditore = dao.getUtenteRegistratoByIdTest(idVenditore);
+				
+				
+				ProdottoDao dao1 = new ProdottoDaoMysqlJdbc();
+				int idProdotto = rs.getInt("prodotto.idprodotto");
+				Prodotto prodotto = dao1.getProdottoByIdTest(idProdotto); //ho l'intero prodotto
+				logger.debug("prodotto caricato: " + prodotto.toString());
+				
+								
+				inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
+				inserzione.setTitolo(rs.getString("inserzione.titolo"));
+				inserzione.setDescrizione(rs.getString("inserzione.descrizione"));
+				inserzione.setPrezzoIniziale(rs.getDouble("inserzione.prezzo_iniziale"));
+				inserzione.setPrezzoAggiornato(rs.getDouble("inserzione.prezzo_aggiornato"));
+				inserzione.setDataScadenza(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("inserzione.data_scadenza")));
+				inserzione.setStato(rs.getString("inserzione.stato"));
+				
+				inserzione.setIdAcquirente(idAcquirente); //se l'acquirente è null, L' IDACQUIRENTE VIENE VISTO COME 0
+				inserzione.setAcquirente(acquirente); 
+				
+				inserzione.setIdVenditore(idVenditore);
+				inserzione.setVenditore(venditore);
+				inserzione.setIdProdotto(idProdotto);
+				inserzione.setProdotto(prodotto);				
+				
+				logger.debug("inserzione caricata: " + inserzione.getIdInserzione() + " " + inserzione.getTitolo());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				rs.close();
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			}
+		}		
+		return inserzione;
+	}
 
+	
+	
 	public List<UtenteRegistrato> getUtentiRegistratiOsservanoByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 			logger.debug("in getUtentiRegistratiOsservanoByIdInserzione");
 			List<UtenteRegistrato> listaUtentiRegistrati = new ArrayList<UtenteRegistrato>();
@@ -1916,6 +2101,110 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	}
 	
 	
+	public Integer insertInserzioneTest(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
+		logger.info("Inserimento Inserzione");
+		Integer inserzioneIdKey = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+						
+			String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+						
+			logger.debug("Inseriamo l' inserzione");
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, inserzione.getTitolo());
+			pstmt.setString(2, inserzione.getDescrizione());
+			pstmt.setDouble(3, inserzione.getPrezzoIniziale());
+			pstmt.setDouble(4, inserzione.getPrezzoAggiornato());
+			pstmt.setTimestamp(5, Utility.convertitoreDataUtilToTimestamp(inserzione.getDataScadenza()));
+			pstmt.setString(6, inserzione.getStato());
+			//pstmt.setInt(7, inserzione.getIdAcquirente()); l'acquirente viene impostato automaticamente a null nel db
+			pstmt.setInt(7, inserzione.getIdVenditore());
+			pstmt.setInt(8, inserzione.getIdProdotto());
+			logger.debug("Insert Query: " + pstmt.toString());
+			
+			int insertRows = pstmt.executeUpdate();
+			logger.debug("righe inserite: "+ insertRows);
+			
+			if(insertRows == 1){
+				rs = pstmt.getGeneratedKeys();
+				if(rs.next()){
+					inserzioneIdKey = rs.getInt(1);
+				}
+			}
+			inserzione.setIdInserzione(inserzioneIdKey);
+			logger.debug("id dell' inserzione è: " + inserzioneIdKey);
+			
+			connection.commit();
+								
+			Integer immagineIdKey = -1;
+			
+			//effettuare controllo per vedere se la lista immagine è vuota
+			if((inserzione.getImmagini() != null) && (inserzione.getImmagini().size() > 0)){
+			
+				ImmagineDao dao = new ImmagineDaoMysqlJdbc();
+			//	Immagine immagine = new ImmagineImpl();
+				
+				for(int i=0; i<inserzione.getImmagini().size(); i++){
+					
+					logger.debug("nella lista immagini");
+					
+				//	immagine = inserzione.getImmagini().get(i); //prendo l'immagine. NB se salvo l'immagine in una variabile immagine, e faccio delle modifiche, dove saranno apportate tali modifiche? solo sull'immagine o sull'arrayList?
+					
+				//	immagine.setIdInserzione(inserzioneIdKey); //setto l'idinserzione relativo all' immagine
+					
+					inserzione.getImmagini().get(i).setIdInserzione(inserzioneIdKey); 
+					
+					logger.debug("idinserzione nell'immagine: " + inserzione.getImmagini().get(i).getIdInserzione());
+					logger.debug(inserzione.getImmagini().get(i).getFoto());
+					
+					System.out.println("IN INSERIMENTO IMMAGINE: " + inserzione.getImmagini().get(i).getFoto());
+					
+					immagineIdKey = dao.insertImmagineTest(inserzione.getImmagini().get(i)); //inserisco l'immagine!!!
+					
+					inserzione.getImmagini().get(i).setIdImmagine(immagineIdKey);//setto l'id dell'immagine nell'arraylist delle immagini di inserzione
+					
+					logger.debug("id dell' immagine è: " + immagineIdKey);
+					
+					System.out.println("id dell' immagine è: " + immagineIdKey);
+					
+				}
+				
+				connection.commit();
+				
+			}
+						
+			logger.debug("Inserimento inserzione (" + inserzioneIdKey + ", " + inserzione.getTitolo() + ")");
+		
+			
+		}	
+		finally {
+
+			if (connection != null) {
+
+				try {
+					if(rs != null)
+						rs.close();
+					
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+
+					e.printStackTrace();
+				}
+
+			}
+		}
+	
+		return inserzioneIdKey;
+	}
+	
 	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in updateInserzione");
 		logger.info("Aggiornamento Inserzione: (" + inserzione.getIdInserzione()+ ", " + inserzione.getTitolo() + ", " + inserzione.getDescrizione() +")");
@@ -2225,7 +2514,98 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		return deletedRows;
 	}
 
+	
+	public Integer deleteInserzioneTest(Integer idInserzione){
+		logger.debug("In delete Inserzione");
+		
+		Integer deletedRows = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+	/*
+			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+			UtenteRegistrato venditore = dao.getUtenteRegistratoById(inserzione.getIdVenditore());
+						
+			
+	     	if( (inserzione.getIdAcquirente() == null && !venditore.isFlagAbilitato()) || 
+					(inserzione.getIdAcquirente() == null) &&){
+			
+	*/		
+			String sql = "DELETE FROM immagine WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Immagini cancellate: " + deletedRows);
+			
+			sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Offerte cancellate: " + deletedRows);
+			
+			//cancellare nella tabella utente_osserva_inserzione
+			sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Osservazioni cancellate: " + deletedRows);
+						
+			sql = "DELETE FROM inserzione WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			
+			logger.debug("inserzione cancellata");
+		
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+				logger.debug("Roolback in cancellazione inserzione");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return deletedRows;
+	}
 
+	
+	
+	
 	public Integer deleteInserzioneOsservata(Integer idInserzione, Integer idUtente){
 		logger.debug("In deleteInserzioneOsservata");
 		

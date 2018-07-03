@@ -17,6 +17,18 @@ public interface OffertaDao {
 	 */
 	public Integer insertOfferta(Offerta offerta);
 	
+	
+	/**
+	 * Inserisce un'offerta
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param offerta oggetto offerta da inserire nel database
+	 * 
+	 * @return Un intero che indica l'id dell'offerta inserita
+	 */
+	public Integer insertOffertaTest(Offerta offerta);
+	
 	/**
 	 * Cancella offerta specifica
 	 * 
@@ -29,6 +41,22 @@ public interface OffertaDao {
 	 * @throws IOException
 	 */
 	public Integer deleteOfferta(Offerta offerta) throws SQLException, ClassNotFoundException, IOException;
+	
+	/**
+	 * Cancella offerta specifica
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param offerta oggetto offerta da cancellare nel database
+	 * 
+	 * @return Un intero che indica il numero delle righe cancellate
+	 * 
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public Integer deleteOffertaTest(Offerta offerta) throws SQLException, ClassNotFoundException, IOException;
+	
 	
 	/**
 	 * Cancella tutte le offerte relative ad un'inserzione
@@ -57,6 +85,22 @@ public interface OffertaDao {
 	public Offerta getOffertaByIdOfferta(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException;	
 	
 	/**
+	 * Metodo utilizzato per ottenere l'oggetto offerta relativo al suo id.
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idOfferta numero identificativo dell'offerta
+	 * 
+	 * @return Restituisce l'oggetto offerta corrispondente all' id passato come paramentro
+	 * 
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Offerta getOffertaByIdOffertaTest(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException;	
+	
+	
+	/**
 	 * Restituisce una lista di offerte relative ad un'inserzione, indicata dal parametro idInserzione
 	 * 
 	 * @param idInserzione numero identificativo dell'offerta
@@ -65,4 +109,15 @@ public interface OffertaDao {
 	 */
 	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione);	
 
+	/**
+	 * Restituisce una lista di offerte relative ad un'inserzione, indicata dal parametro idInserzione
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param idInserzione numero identificativo dell'offerta
+	 * 
+	 * @return Lista di offerte relative all'inserzione
+	 */
+	public List<Offerta> getOfferteByIdInserzioneTest(Integer idInserzione);
+	
 }

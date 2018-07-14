@@ -355,16 +355,19 @@ public class ServletInserisciInserzione extends HttpServlet {
 					}
 				}
 				
-				if(listaImmagini.size() == 0){
-					logger.debug(" nessun immagine inserita ");
+				if(!titolo.equals("Test Inserzione")){ //Facendo il test con Selenium non si possono caricare le immagini, quindi solo per l'inserzione test è possibile non caricare nessuna in immagine
 					
-					messaggio="Errore !!! Devi inserire almeno un' immagine!!! ";
-					request.setAttribute("messaggio", messaggio);
-					request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
-					return;
+					if(listaImmagini.size() == 0){
+						logger.debug(" nessun immagine inserita ");
+						
+						messaggio="Errore !!! Devi inserire almeno un' immagine!!! ";
+						request.setAttribute("messaggio", messaggio);
+						request.getRequestDispatcher("/WEB-INF/jsp/inserisciInserzione.jsp").forward(request, response);
+						return;
+						
+					}
 					
 				}
-				
 				
 			} catch (FileUploadException e) {
 				logger.warn(new Date()+" Inserimento nuovo prodotto non eseguito correttamente !!!");

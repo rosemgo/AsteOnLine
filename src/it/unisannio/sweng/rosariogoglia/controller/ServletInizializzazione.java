@@ -144,7 +144,7 @@ public class ServletInizializzazione extends HttpServlet {
 			Date odierna = new Date();
 			
 			Calendar c = Calendar.getInstance();
-			c.setTime(fineAsta);
+			c.setTime(fineAsta); //converte un Date in Calender
 			
 			Calendar cOggi = Calendar.getInstance();
 			

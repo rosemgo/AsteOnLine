@@ -22,13 +22,13 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 		UtenteRegistrato utente = new UtenteRegistratoImpl();
 		Integer idUtente = -1;
 		
-		utente.setNick("TestNick");
+		utente.setNick("Test Nick");
 		utente.setNome("Test nome");
 		utente.setCognome("Test Cognome");
 		utente.setPassword("Testpass");
 		utente.seteMail("Testmail");
-		utente.setCodiceFiscale("BLFMRC88P27A783Z");
-		utente.setNumContoCorrente("5234171055368084");
+		utente.setCodiceFiscale("BLFMRC88P29A783Y");
+		utente.setNumContoCorrente("2222222222222222");
 		utente.setIndirizzo("Test indirizzo");
 		utente.setCap("82030");
 		utente.setTelefono("TestTel");
@@ -44,8 +44,8 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 		
 		assertEquals(readingUtente.getIdUtente(), utente.getIdUtente());
 		
-		Integer deleteRows = utenteDao.deleteUtenteRegistratoTest(utente);
-		assertEquals(deleteRows, (Integer)1);
+	//	Integer deleteRows = utenteDao.deleteUtenteRegistratoTest(utente);
+	//	assertEquals(deleteRows, (Integer)1);
 		
 	}
 

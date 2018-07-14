@@ -28,40 +28,45 @@ package it.unisannio.sweng.rosariogoglia.integration;
 	  }
 
 	  @Test
-	  public void testAggiungiEAssociaProduttore() throws Exception {
-	    driver.get("http://localhost:30000/AsteOnLine/index");
-	    driver.findElement(By.name("nick")).click();
-	    driver.findElement(By.name("nick")).clear();
-	    driver.findElement(By.name("nick")).sendKeys("ros7");
-	    driver.findElement(By.name("password")).click();
-	    driver.findElement(By.name("password")).clear();
-	    driver.findElement(By.name("password")).sendKeys("rosario");
-	    driver.findElement(By.id("bottone-Accedi")).click();
-	    driver.findElement(By.xpath("//a[2]/strong")).click();
-	    driver.findElement(By.xpath("//a[3]/strong")).click();
-	    driver.findElement(By.id("campoTesto")).click();
-	    driver.findElement(By.id("campoTesto")).clear();
-	    driver.findElement(By.id("campoTesto")).sendKeys("Nokia");
-	    driver.findElement(By.name("website")).click();
-	    driver.findElement(By.name("website")).clear();
-	    driver.findElement(By.name("website")).sendKeys("www.nokia.com");
-	    driver.findElement(By.id("bottone")).click();
-	    driver.findElement(By.xpath("//a[2]/strong")).click();
-	    driver.findElement(By.id("cate")).click();
-	    new Select(driver.findElement(By.id("cate"))).selectByVisibleText("Cellulari");
-	    driver.findElement(By.xpath("(//option[@value='3'])[3]")).click();
-	    driver.findElement(By.id("prod")).click();
-	    new Select(driver.findElement(By.id("prod"))).selectByVisibleText("Nokia");
-	    driver.findElement(By.xpath("//option[@value='25']")).click();
-	    driver.findElement(By.xpath("(//input[@id='bottone'])[7]")).click();
-	    driver.findElement(By.id("categoria2")).click();
-	    new Select(driver.findElement(By.id("categoria2"))).selectByVisibleText("Cellulari");
-	    driver.findElement(By.xpath("(//option[@value='3'])[4]")).click();
-	    driver.findElement(By.id("produttore2")).click();
-	    new Select(driver.findElement(By.id("produttore2"))).selectByVisibleText("Nokia");
-	    driver.findElement(By.xpath("//option[@value='25']")).click();
-	    driver.findElement(By.xpath("(//input[@id='bottone'])[9]")).click();
-	    driver.findElement(By.xpath("//a[7]/strong")).click();
+	  public void testAssociaDisassociaProduttore() throws Exception {
+		  driver.get("http://localhost:30000/AsteOnLine/index");
+		    driver.findElement(By.xpath("//a[@id='logo']")).click();
+		    driver.findElement(By.name("nick")).click();
+		    driver.findElement(By.name("nick")).clear();
+		    driver.findElement(By.name("nick")).sendKeys("ros7");
+		    driver.findElement(By.name("password")).click();
+		    driver.findElement(By.name("password")).clear();
+		    driver.findElement(By.name("password")).sendKeys("rosario");
+		    driver.findElement(By.id("bottone-Accedi")).click();
+		    driver.findElement(By.xpath("//a[3]/strong")).click();
+		    driver.findElement(By.id("campoTesto")).click();
+		    driver.findElement(By.id("campoTesto")).clear();
+		    driver.findElement(By.id("campoTesto")).sendKeys("Test Produttore");
+		    driver.findElement(By.name("website")).click();
+		    driver.findElement(By.name("website")).clear();
+		    driver.findElement(By.name("website")).sendKeys("www.test.com");
+		    driver.findElement(By.id("bottone")).click();
+		    driver.findElement(By.xpath("//a[2]/strong")).click();
+		    driver.findElement(By.id("cate")).click();
+		    new Select(driver.findElement(By.id("cate"))).selectByVisibleText("Prodotti per animali");
+		    driver.findElement(By.xpath("(//option[@value='10'])[3]")).click();
+		    driver.findElement(By.id("prod")).click();
+		    new Select(driver.findElement(By.id("prod"))).selectByVisibleText("Test Produttore");
+//		    driver.findElement(By.xpath("//option[@value='32']")).click();
+		    driver.findElement(By.xpath("(//input[@id='bottone'])[7]")).click();
+		    driver.findElement(By.id("categoria2")).click();
+		    new Select(driver.findElement(By.id("categoria2"))).selectByVisibleText("Prodotti per animali");
+		    driver.findElement(By.xpath("(//option[@value='10'])[4]")).click();
+		    driver.findElement(By.id("produttore2")).click();
+		    new Select(driver.findElement(By.id("produttore2"))).selectByVisibleText("Test Produttore");
+//		    driver.findElement(By.xpath("//option[@value='32']")).click();
+		    driver.findElement(By.xpath("(//input[@id='bottone'])[9]")).click();
+		    driver.findElement(By.xpath("//a[3]/strong")).click();
+		    driver.findElement(By.name("idProduttore")).click();
+		    new Select(driver.findElement(By.name("idProduttore"))).selectByVisibleText("Test Produttore");
+//		    driver.findElement(By.xpath("//option[@value='32']")).click();
+		    driver.findElement(By.xpath("(//input[@id='bottone'])[3]")).click();
+		    driver.findElement(By.xpath("//a[7]/strong")).click();
 	  }
 
 	  @After

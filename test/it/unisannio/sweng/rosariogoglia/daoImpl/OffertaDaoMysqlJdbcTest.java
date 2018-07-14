@@ -32,8 +32,7 @@ public class OffertaDaoMysqlJdbcTest {
 		offerta.setInserzione(inserzioneDao.getInserzioneByIdTest(28));
 		offerta.setIdUtenteRegistrato(5);
 		offerta.setUtente(utenteDao.getUtenteRegistratoByIdTest(5));
-		
-		
+			
 		
 		idOfferta = offertaDao.insertOffertaTest(offerta);
 		

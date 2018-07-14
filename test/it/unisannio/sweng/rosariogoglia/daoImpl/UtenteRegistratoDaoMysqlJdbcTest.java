@@ -28,7 +28,7 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 		utente.setPassword("Testpass");
 		utente.seteMail("Testmail");
 		utente.setCodiceFiscale("BLFMRC88P27A783Z");
-		utente.setNumContoCorrente("'5234171055368084'");
+		utente.setNumContoCorrente("5234171055368084");
 		utente.setIndirizzo("Test indirizzo");
 		utente.setCap("82030");
 		utente.setTelefono("TestTel");

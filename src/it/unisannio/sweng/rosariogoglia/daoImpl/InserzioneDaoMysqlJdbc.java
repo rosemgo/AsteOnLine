@@ -709,7 +709,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
-			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
+			String sql = "SELECT * FROM inserzione " +
 						"WHERE (inserzione.idinserzione = ?)";
 		
 	
@@ -736,7 +736,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				
 				
 				ProdottoDao dao1 = new ProdottoDaoMysqlJdbc();
-				int idProdotto = rs.getInt("prodotto.idprodotto");
+				int idProdotto = rs.getInt("inserzione.prodotto_idprodotto");
 				Prodotto prodotto = dao1.getProdottoById(idProdotto); //ho l'intero prodotto
 				logger.debug("prodotto caricato: " + prodotto.toString());
 				
@@ -785,7 +785,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 			
-			String sql = "SELECT * FROM inserzione, prodotto, categoria, produttore, prodotto_has_keyword, keyword " +
+			String sql = "SELECT * FROM inserzione " +
 						"WHERE (inserzione.idinserzione = ?)";
 		
 	
@@ -812,7 +812,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				
 				
 				ProdottoDao dao1 = new ProdottoDaoMysqlJdbc();
-				int idProdotto = rs.getInt("prodotto.idprodotto");
+				int idProdotto = rs.getInt("inserzione.prodotto_idprodotto");
 				Prodotto prodotto = dao1.getProdottoByIdTest(idProdotto); //ho l'intero prodotto
 				logger.debug("prodotto caricato: " + prodotto.toString());
 				

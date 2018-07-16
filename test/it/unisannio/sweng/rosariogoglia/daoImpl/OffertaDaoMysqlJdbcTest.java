@@ -23,32 +23,30 @@ public class OffertaDaoMysqlJdbcTest {
 		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 		UtenteRegistratoDao utenteDao = new UtenteRegistratoDaoMysqlJdbc();
 		
-		Offerta offerta = new OffertaImpl();
+		Offerta writingofferta = new OffertaImpl();
 		Integer idOfferta = -1;
 		
-		offerta.setSomma(1002.00);
-		offerta.setData(new Date());
-		offerta.setIdInserzione(28);
-		offerta.setInserzione(inserzioneDao.getInserzioneByIdTest(28));
-		offerta.setIdUtenteRegistrato(5);
-		offerta.setUtente(utenteDao.getUtenteRegistratoByIdTest(5));
+		writingofferta.setSomma(1002.00);
+		writingofferta.setData(new Date());
+		writingofferta.setIdInserzione(28);
+		writingofferta.setInserzione(inserzioneDao.getInserzioneByIdTest(28));
+		writingofferta.setIdUtenteRegistrato(5);
+		writingofferta.setUtente(utenteDao.getUtenteRegistratoByIdTest(5));
 			
 		
-	//	idOfferta = offertaDao.insertOffertaTest(offerta);
+		idOfferta = offertaDao.insertOffertaTest(writingofferta);
 		
-		System.out.println("writing offerta: " + idOfferta);
-		
-		Offerta readingOfferta = offertaDao.getOffertaByIdOffertaTest(11);
-		
-	//	System.out.println("reading offerta: " + readingOfferta.getIdOfferta() );
+		System.out.println("writing offerta: " + writingofferta.getIdOfferta());
+	
+		Offerta readingOfferta = offertaDao.getOffertaByIdOffertaTest(idOfferta);
 		
 		System.out.println("reading offerta: " + readingOfferta.getIdOfferta() );
 		
-	//	assertEquals(readingOfferta.getIdOfferta(), offerta.getIdOfferta());
+		assertEquals(readingOfferta.getIdOfferta(), writingofferta.getIdOfferta());
 		
-	//	Integer deleteRows = offertaDao.deleteOffertaTest(offerta);
+		Integer deleteRows = offertaDao.deleteOffertaTest(writingofferta);
 		
-	//	assertEquals(deleteRows, (Integer)1);
+		assertEquals(deleteRows, (Integer)1);
 		
 	}
 

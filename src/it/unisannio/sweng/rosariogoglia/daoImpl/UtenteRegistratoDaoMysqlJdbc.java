@@ -259,6 +259,46 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 	
 	
+	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
+		logger.info("in deleteRegistrato");
+		Integer removedRows = -1;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+			String sql = "DELETE FROM utente_registrato WHERE idutente = ? ";
+			
+			pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, utente.getIdUtente());
+			logger.debug("Delete Query: " + pstmt.toString());
+			removedRows = pstmt.executeUpdate();
+			logger.debug("righe aggiornate: " + removedRows);
+			
+			connection.commit();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.debug("Rollback in delete utente");
+			connection.rollback();
+		}	
+		finally {
+			if (connection!=null) {
+				pstmt.close();
+				connection.setAutoCommit(true);
+				connection.close();
+				logger.debug("Connection chiusa");
+			}
+		}
+		
+		return removedRows;
+	}
+	
+	
+	
 	public Integer updateUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("In updateUtenteRegistrato");
 		Integer updatedRows = -1;

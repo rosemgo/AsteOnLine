@@ -64,9 +64,9 @@ public interface UtenteRegistratoDao {
 	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
 	 * non risulta più abilitato alle funzioni di un utente registrato
 	 * 
-	 * @param utente oggetto utente da elinimare nel database
+	 * @param utente da disabilitare nel database
 	 * 
-	 * @return Numero di righe cancellate
+	 * @return Numero di righe aggiornate
 	 * 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -80,9 +80,9 @@ public interface UtenteRegistratoDao {
 	 * 
 	 * Usato per test con connessione DatabaseUtil
 	 * 
-	 * @param utente oggetto utente da elinimare nel database
+	 * @param utente da disabilitarenel database
 	 * 
-	 * @return Numero di righe cancellate
+	 * @return Numero di righe aggiornate
 	 * 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -90,7 +90,20 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 			
-	
+	/**
+	 * Metodo per eliminare l'utente, usato solo in fase di test perchè l'applicazione non prevede funzionalità per l'eliminazione di un utente.
+	 * 
+	 * Usato per test con connessione DatabaseUtil
+	 * 
+	 * @param utente da elinimare nel database
+	 * 
+	 * @return Numero di righe cancellate
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */	
+	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException; 
 	
 	/**
 	 * Questo metodo aggiorna uno o più attributi dell'utente passato come parametro

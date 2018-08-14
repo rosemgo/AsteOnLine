@@ -44,8 +44,8 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 		
 		assertEquals(readingUtente.getIdUtente(), utente.getIdUtente());
 		
-	//	Integer deleteRows = utenteDao.deleteUtenteRegistratoTest(utente);
-	//	assertEquals(deleteRows, (Integer)1);
+		Integer deleteRows = utenteDao.removeUtenteRegistratoTest(utente);
+		assertEquals(deleteRows, (Integer)1);
 		
 	}
 

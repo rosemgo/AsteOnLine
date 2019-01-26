@@ -88,6 +88,7 @@ public class ProdottoDaoMysqlTest {
 		Integer deletedRows = prodottoDao.deleteProdottoTest(readingProdotto);
 		assertEquals(deletedRows, (Integer)1); //delete rows è 1 se è stata cancellata una riga
 	
+		System.out.println("CANCELLAZIONE PRODOTTO COMPLETATO");
     /*
 		System.out.println("lista parole prodotto ");
 		for(int i=0; i<readingProdotto.getKeywordsList().size(); i++){

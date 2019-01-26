@@ -62,6 +62,18 @@ public class ServletAggiornaScadenzaAste extends HttpServlet {
 				dao.updateStatoInserzione(statoInserzione, inserzione.getIdInserzione());
 								
 			}
+			
+			
+			//furbata usata perche se un'inserzione è scaduta e voglio rimetterla in asta manualmente modificando il db, dovrei modificare anche lo stato oltre alla data, invece così modifico solo la data manualmente e lo stato lo cambia in automatico
+			if(statoInserzione.equals("scaduta") && (fineAsta.compareTo(odierna) > 0)){
+				
+				statoInserzione = "in asta";
+				
+				// Esegue l'aggiornamento del prodotto nel database
+				dao.updateStatoInserzione(statoInserzione, inserzione.getIdInserzione());
+								
+			}
+			
 						
 		}
 		

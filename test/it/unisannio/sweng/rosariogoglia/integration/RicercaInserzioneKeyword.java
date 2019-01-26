@@ -28,7 +28,7 @@ public class RicercaInserzioneKeyword {
 
   }
 
-  @Test
+/*  @Test
   public void testRicercaInserzioneKeyword() throws Exception {
     driver.get("http://localhost:30000/AsteOnLine/index");
     driver.findElement(By.xpath("//a[@id='logo']")).click();
@@ -41,7 +41,22 @@ public class RicercaInserzioneKeyword {
     driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
     driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
   }
+*/
+  @Test
+  public void testRicercaInserzioneKeyword() throws Exception {
+	    driver.get("http://localhost:30000/AsteOnLine/index");
+	    driver.findElement(By.xpath("//a[@id='logo']")).click();
+	    driver.findElement(By.id("autoKeyword")).click();
+	    driver.findElement(By.id("autoKeyword")).clear();
+	    driver.findElement(By.id("autoKeyword")).sendKeys("Calcio");
+	    driver.findElement(By.id("bottone-Cerca")).click();
+	    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sei un nuovo utente?'])[1]/preceding::a[1]")).click();
+  }
 
+  
   @After
   public void tearDown() throws Exception {
     driver.quit();

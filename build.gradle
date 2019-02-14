@@ -13,7 +13,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 //apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'findbugs'
-
+apply plugin: 'jacoco'
 
 // JDK version source compatibility
 sourceCompatibility = 1.8
@@ -62,7 +62,7 @@ dependencies {
     }
    */ 
     
-    //dipendendenza librerie
+   //dipendendenza librerie
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
      testCompile "junit:junit:4.11"
 }
@@ -72,12 +72,12 @@ dependencies {
 //tomcatRunWar.contextPath = '/'
 
 
+
 //creazione documentazione java
 javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile
 }
-
 
 
 tasks.withType(FindBugs) {
@@ -86,8 +86,7 @@ tasks.withType(FindBugs) {
     
     effort = "min"
     reportLevel = "high"
-    
-    
+        
     reports {
         xml.enabled = false
         xml.withMessages = true
@@ -96,14 +95,36 @@ tasks.withType(FindBugs) {
         xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
         html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
     }
-    
+  
     
 }
+
+
+jacoco {
+    toolVersion = "0.8.1"
+    reportsDir = file("$project.build/DircustomJacocoReportDir")
+    
+}
+
+
+jacocoTestReport {
+
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled = true
+        html.destination file("$project.buildDir/outputs/jacoco/jacoco-output.html")
+    }
+}
+
+
 
 
 test {
    ignoreFailures = true
 
+   finalizedBy jacocoTestReport
+   
     reports {
         junitXml.enabled = false
         html.enabled = true

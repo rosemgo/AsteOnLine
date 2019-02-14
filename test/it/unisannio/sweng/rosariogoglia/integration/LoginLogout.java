@@ -31,7 +31,9 @@ public class LoginLogout {
   public void testLoginLogout() throws Exception {
     driver.get("http://localhost:30000/AsteOnLine/index");
     Thread.sleep(2000);
-    driver.findElement(By.linkText("Home")).click();
+    driver.findElement(By.xpath("//a[@id='logo']")).click();
+
+  //  driver.findElement(By.linkText("Home")).click();
     driver.findElement(By.name("nick")).click();
     driver.findElement(By.name("nick")).clear();
     driver.findElement(By.name("nick")).sendKeys("steto");

@@ -45,7 +45,7 @@ public class RicercaKeyword{
 	//driver.get("http://www.google.com");
 	
     driver.get("http://localhost:30000/AsteOnLine/index");
-    driver.findElement(By.linkText("Home")).click();
+    driver.findElement(By.xpath("//a[@id='logo']")).click();
     driver.findElement(By.id("autoKeyword")).click();
     driver.findElement(By.id("autoKeyword")).clear();
     driver.findElement(By.id("autoKeyword")).sendKeys("smartphone");

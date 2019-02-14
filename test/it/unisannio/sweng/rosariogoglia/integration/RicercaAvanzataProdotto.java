@@ -48,7 +48,7 @@ public class RicercaAvanzataProdotto {
     new Select(driver.findElement(By.id("prodotto"))).selectByVisibleText("Samsung Galaxy NOTE 8");
     driver.findElement(By.xpath("(//option[@value='3'])[2]")).click();
     driver.findElement(By.id("bottone-Cerca")).click();
-    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+  //driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
   
   }
 

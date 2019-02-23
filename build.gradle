@@ -1,36 +1,48 @@
-buildscript {
+/*buildscript {
+
+
     repositories {
         jcenter()
+        mavenCentral()
+        mavenLocal()
     }
 
     dependencies {
         classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+               
     }
 }
+*/
 
 
 apply plugin: 'java'
 apply plugin: 'war'
-//apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
+//apply plugin: 'com.bmuschko.tomcat'
+
+
+
+repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+}
+
 
 // JDK version source compatibility
 sourceCompatibility = 1.8
 
 // project version
 //version = '1.0'
-// War file name
+
+// creazione del file war nella cartella build\libs, nella post compilazione di Jenkins viene deployato su Tomcat 
+// War file name 
 war.baseName = 'AsteOnLine'
 
 // Web directory, this overrides the default value "webapp"
 project.webAppDirName = 'WebContent'
 
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
 
 // Set source directory
 sourceSets {
@@ -40,31 +52,45 @@ sourceSets {
                 srcDir 'src'
             }
         }
-        
-
+ 
         //lanciare test automaticamente con gradle
         test {
 	        java {
 	            srcDirs = ["test"]  
 	        }
-    	}
-        
-    }
+    	}        
+}
 
-// dependencies to run on tomcat, are mandatory for tomcat plugin
+
+
 dependencies {
+
+     //dipendendenza librerie
+     compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
+     
+     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.+'
+  
+     compile group: 'com.google.code.findbugs', name: 'annotations', version: '3.+'
+     
+     compile 'org.jacoco:jacoco-maven-plugin:0.7.+'
+     
+     compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
+            
+     testCompile "junit:junit:4.11"
+     
+     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+     
+     testCompile 'org.seleniumhq.selenium:selenium-java:3.3.1'
+     
+   // dependencies to run on tomcat, are mandatory for tomcat plugin
    // def tomcatVersion = '7.0.57'
-  /*
+   /*
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
     }
-   */ 
-    
-   //dipendendenza librerie
-     compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
-     testCompile "junit:junit:4.11"
+   */    
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/
@@ -72,68 +98,127 @@ dependencies {
 //tomcatRunWar.contextPath = '/'
 
 
-
-//creazione documentazione java
+//setting del task Javadoc
 javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile
+    failOnError = false
 }
 
 
-tasks.withType(FindBugs) {
-    
-    ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
+//setting del task findbug
+findbugs{
+	sourceSets = [sourceSets.main]
+	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
+    reportsDir = file("$project.buildDir/findbugsReports")
     
     effort = "min"
     reportLevel = "high"
-        
+    
+}
+
+tasks.withType(FindBugs) {
+           
     reports {
         xml.enabled = false
-        xml.withMessages = true
+        xml.withMessages = false
         html.enabled = true
-        //html.enabled = !xml.isEnabled()
-        xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
-        html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
+        xml.destination = file("$project.buildDir/reports/findbugs/findbugs-output.xml")
+        html.destination = file ("$project.buildDir/reports/findbugs/findbugs-output.html")
+        //si può anche scrivere così:
+        //html.destination "$project.buildDir/reports/findbugs/findbugs-output.html"
     }
-  
-    
+     
 }
 
-
+//setting del task Jacoco
 jacoco {
     toolVersion = "0.8.1"
-    reportsDir = file("$project.build/DircustomJacocoReportDir")
-    
+    reportsDir = file("$project.buildDir/DircustomJacocoReportDir")
 }
 
-
-jacocoTestReport {
+tasks.withType(JacocoReport) {
 
     reports {
         xml.enabled false
         csv.enabled false
         html.enabled = true
-        html.destination file("$project.buildDir/outputs/jacoco/jacoco-output.html")
+        html.destination = file("$project.buildDir/reports/jacoco/jacoco-output.html")
     }
 }
 
 
-
-
+//setting del task test
 test {
    ignoreFailures = true
-
    finalizedBy jacocoTestReport
    
-    reports {
-        junitXml.enabled = false
-        html.enabled = true
-    }               
+   reports {
+       junitXml.enabled = false
+       html.enabled = true
+       html.destination = file("$project.buildDir/reports/tests/JUnitReport")
+   }               
 }
 
-//war {
-//    from (project(':AsteOnLine').file('build/resources/main'))
-//}
+
+
+
+
+/*
+task mysql (type:Exec) {
+	commandLine 'mysql', 'ecommerce', ‘<ecommerce.sql’
+}
+*/
+
+/*
+task createDB (type:Exec){
+	
+		
+		
+		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", '--excecute=CREATE DATABASE IF NOT EXISTS provadb'		
+		
+		
+	
+
+}
+*/
+
+
+/*
+togliere non serve
+
+task createDB{
+	project.exec {
+		
+		
+		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", "--password=root", '--excecute=CREATE DATABASE IF NOT EXISTS provadb'		
+		
+		
+	}
+
+}
+
+task loadDB{
+	project.exec{
+		
+		standardInput = new FileInputStream(project.file("$rootProject.projectDir/provadb.sql"))
+
+		commandLine 'mysql', "--user=root", "--password=root", "--host=localhost", "--port=3306", 'provadb'		
+		
+		
+	}
+
+
+}
+*/
+
+
+/*
+war {
+    from (project(':AsteOnLine2').file('build/libs'))
+}
+*/
+
 
 
 

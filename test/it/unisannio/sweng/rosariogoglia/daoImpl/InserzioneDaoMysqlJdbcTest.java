@@ -56,8 +56,7 @@ public class InserzioneDaoMysqlJdbcTest {
 		Integer deleteRows = inserzioneDao.deleteInserzioneTest(idInserzione);
 		
 		assertEquals(deleteRows, (Integer)1);
-		
-		
+	
 		
 		
 	}

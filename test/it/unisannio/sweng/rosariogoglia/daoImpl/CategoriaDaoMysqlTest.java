@@ -70,6 +70,31 @@ public class CategoriaDaoMysqlTest {
 			
 		}
 		
+		
+		
+		
+		
+		
 	}
+	
+	@Test
+	public void testAssociaDisassociaProduttore() {
+		
+		CategoriaDao categoriaDao = new CategoriaDaoMysqlJdbc(); 
+		Integer result;
+		
+		//associa un produttore ad una categoria
+		result = categoriaDao.insertCategoriaHasProduttore(3 , 9);
+		assertEquals(result, (Integer) 1) ;
+		
+		//disassocia un produttore ad una categoria
+		categoriaDao.deleteCategoriaHasProduttore(3 , 9);
+		assertEquals(result, (Integer) 1) ;
+
+
+		
+	}
+	
+	
 	
 }

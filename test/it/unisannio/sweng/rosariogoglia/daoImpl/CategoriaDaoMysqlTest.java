@@ -24,21 +24,21 @@ public class CategoriaDaoMysqlTest {
 		Integer idCategoria = -1;
 		
 		categoria.setNome("Test Categoria nuova");
-		idCategoria = categoriaDao.insertCategoriaTest(categoria);
+		idCategoria = categoriaDao.insertCategoria(categoria);
 		categoria.setIdCategoria(idCategoria);
 		
 		System.out.println("Categoria Inserita");
 		
-		System.out.println("La categoria inserita è" + categoriaDao.getCategoriaByIdTest(idCategoria));
+		System.out.println("La categoria inserita è" + categoriaDao.getCategoriaById(idCategoria));
 		
-		Categoria readingCategoria = categoriaDao.getCategoriaByIdTest(idCategoria);
+		Categoria readingCategoria = categoriaDao.getCategoriaById(idCategoria);
 		
 		System.out.println("readingCategoria : " + readingCategoria.getIdCategoria() + " " + readingCategoria.getNome() );
 		
 		assertEquals(readingCategoria.getIdCategoria(), categoria.getIdCategoria()); //verifico che la categoria letta con il metodo getCategoriaById è realmente quella inserita nel database
 		
 		
-		List<Categoria> listaCategoria = categoriaDao.getCategorieTest();
+		List<Categoria> listaCategoria = categoriaDao.getCategorie();
 		
 		for(int i=0;i<listaCategoria.size();i++) {
 			
@@ -46,7 +46,7 @@ public class CategoriaDaoMysqlTest {
 			
 		}
 		
-		List<Produttore> listaProdMancanti = categoriaDao.getProduttoriMancantiByIdCategoriaTest(idCategoria);
+		List<Produttore> listaProdMancanti = categoriaDao.getProduttoriMancantiByIdCategoria(idCategoria);
 		
 		for(int i=0;i<listaProdMancanti.size();i++) {
 			
@@ -55,14 +55,14 @@ public class CategoriaDaoMysqlTest {
 		}
 		
 		ProduttoreDao produttoreDao = new ProduttoreDaoMysqlJdbc();
-		List<Produttore> listaTuttiProduttori = produttoreDao.getProduttoriTest();
+		List<Produttore> listaTuttiProduttori = produttoreDao.getProduttori();
 		
 		assertEquals(listaTuttiProduttori.size(), listaProdMancanti.size());
 		
 		
-		if(categoriaDao.checkDeleteCategoriaTest(idCategoria)) {
+		if(categoriaDao.checkDeleteCategoria(idCategoria)) {
 			
-			Integer del = categoriaDao.deleteCategoriaTest(idCategoria);
+			Integer del = categoriaDao.deleteCategoria(idCategoria);
 			
 			assertEquals(del, (Integer)1);
 			

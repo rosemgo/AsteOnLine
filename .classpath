@@ -15,8 +15,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/lib/mockito-all-1.10.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/lib/mockito-core-2.3.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rosario/git/AsteOnLine/WebContent/WEB-INF/lib/Gradle-DatabasePlugin-1.0.12.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

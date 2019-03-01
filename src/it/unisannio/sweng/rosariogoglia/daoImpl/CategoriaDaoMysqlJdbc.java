@@ -21,6 +21,18 @@ import org.apache.log4j.Logger;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProduttoreDaoMysqlJdbc;
@@ -96,7 +108,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
 			
@@ -115,13 +128,21 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
+				if(rs!=null)
+					rs.close();
+				if(pstmt!=null)
+					pstmt.close();
+				if(connection!=null)
+					connection.close();
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -143,6 +164,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
+			//connection = DatabaseUtil.getConnection();
 			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
@@ -197,8 +219,9 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM categoria WHERE nome = ?";
 			
 			pstmt = connection.prepareStatement(sql);
@@ -213,6 +236,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -230,7 +259,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return categoria;
 		
 	}
-	
+
+/*
 	public Categoria getCategoriaByNomeTest(String nomeCategoria){
 		logger.debug("in getCategoriaByNomeTest");
 		Categoria categoria = null;
@@ -281,53 +311,9 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return categoria;
 		
 	}
+*/	
+
 	
-	/*
-	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria){
-		logger.debug("in getProduttoriMancanti");
-		
-		List<Produttore> listaProduttori = new ArrayList<>();
-		Produttore produttore;
-		Connection connection;
-		try {
-		
-			connection = ConnectionPoolTomcat.getConnection();
-						
-			String sql = "SELECT * FROM produttore WHERE idproduttore " +
-					"NOT IN " +
-					"(SELECT produttore_idproduttore FROM categoria_has_produttore " +
-					"WHERE categoria_idcategoria = ? )";
-			
-			PreparedStatement pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idCategoria);
-			logger.debug("Select Query:" + pstmt.toString());
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				
-				produttore = new ProduttoreImpl();
-				
-				produttore.setIdProduttore(rs.getInt("produttore.idproduttore"));
-				produttore.setNome(rs.getString("produttore.nome"));
-				produttore.setWebsite(rs.getString("produttore.website"));
-							
-				listaProduttori.add(produttore);
-				logger.debug("produttore aggiunto alla lista: " + produttore.toString());
-			
-			}	
-			
-			rs.close();
-			pstmt.close();
-			
-			connection.close();
-			
-		} catch (ClassNotFoundException  | IOException | SQLException e) {
-			e.printStackTrace();
-		}
-		return listaProduttori;
-		
-	}
-	*/
 		
 	@Override
 	public List<Categoria> getCategorie(){
@@ -341,9 +327,9 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		ResultSet rs = null;
 		List<Categoria> listaCategorie = new ArrayList<Categoria>();
 		try {
-			//connection = ConnectionPoolTomcat.getConnection();
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			stmt = connection.createStatement();
 			
@@ -369,6 +355,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}	
 		
 		finally{
@@ -387,7 +379,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return listaCategorie;
 	}
 	
-	
+/*	
 	@Override
 	public List<Categoria> getCategorieTest(){
 		logger.debug("in getCategorieTest");
@@ -414,7 +406,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				cat.setIdCategoria(rs.getInt("idcategoria"));
 				cat.setNome(rs.getString("nome"));
 				
-				/*Preleviamo la lista dei produttori relativi alla categoria*/
+				//Preleviamo la lista dei produttori relativi alla categoria
 				ProduttoreDao dao = new ProduttoreDaoMysqlJdbc();
 				List<Produttore> listaProduttori = dao.getProduttoriByIdCategoriaTest(rs.getInt("idcategoria"));
 				cat.setListaProduttori(listaProduttori);
@@ -451,7 +443,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		return listaCategorie;
 	}
-
+*/
 	public List<Produttore> getProduttoriMancantiByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriMancanti");
 		
@@ -461,9 +453,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-		
-			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE idproduttore " +
 					"NOT IN " +
@@ -492,6 +483,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		finally{
@@ -511,6 +508,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 	}
 	
+/*	
 	public List<Produttore> getProduttoriMancantiByIdCategoriaTest(Integer idCategoria){
 		logger.debug("in getProduttoriMancanti");
 		
@@ -577,7 +575,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return listaProduttori;
 		
 	}
-	
+*/	
 	public Integer insertCategoriaHasProduttore(Integer idCategoria, Integer IdProduttore){
 		logger.debug("in insertCategoriaHasProduttore");
 		Integer insertRow = -1;
@@ -586,8 +584,9 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		try {
 			
+            //connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
-			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 		
 			
@@ -613,6 +612,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				e1.printStackTrace();
 			}
 			logger.debug("Inserimento non riuscito");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -639,9 +644,10 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-		
+					
+				//connection = ConnectionPoolTomcat.getConnection();
+				connection = DatabaseUtil.getConnection();
 				
-				connection = ConnectionPoolTomcat.getConnection();
 				connection.setAutoCommit(false);
 							
 				String sql = "DELETE FROM categoria_has_produttore WHERE categoria_idcategoria = ? AND produttore_idproduttore= ?";
@@ -666,6 +672,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				}
 				logger.debug("Roolback in cancellazione categoria_has_produttore");
 			
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 		finally {
@@ -699,8 +711,8 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		ResultSet rs = null;	
 		try {
 				
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection(); // utilizzato in caso di caricamento categorie al primo avvio, con il Test
 				
 			connection.setAutoCommit(false);
 			
@@ -734,6 +746,12 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 				
 			}
 			logger.debug("Categoria già presente");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -755,7 +773,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	
 	}
 
-	
+/*	
 	public Integer insertCategoriaTest(Categoria categoria){
 		logger.debug("in insertCategoriaTest");
 		Integer autoincrementKey = -1;		
@@ -825,7 +843,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		return autoincrementKey;
 	
 	}
-	
+*/	
 	
 	public boolean checkDeleteCategoria(Integer idCategoria){
 		
@@ -835,49 +853,7 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		PreparedStatement pstmt = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
-					"WHERE categoria.idcategoria = prodotto.categoria_idcategoria " +
-					"AND prodotto.idprodotto = inserzione.prodotto_idprodotto " +
-					"AND idcategoria = ?";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idCategoria);
-			logger.debug("Check Query: " + pstmt.toString());
-			 rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				result = false;
-			}
-				
-			
-		} catch (SQLException  e) {
-			e.printStackTrace();
-		}
-		finally{
-			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
-			
-			}catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		return result;
-	}
-	
-public boolean checkDeleteCategoriaTest(Integer idCategoria){
-		
-		boolean result = true;
-		Connection connection = null;
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		try {
-			
+			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
@@ -906,12 +882,10 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		}
 		finally{
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null)
-					connection.close();
+				rs.close();
+				pstmt.close();
+				
+				connection.close();
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -921,7 +895,60 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		
 		return result;
 	}
-	
+
+/*
+	public boolean checkDeleteCategoriaTest(Integer idCategoria){
+			
+			boolean result = true;
+			Connection connection = null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			try {
+				
+				connection = DatabaseUtil.getConnection();
+				
+				String sql = "SELECT * FROM inserzione, categoria, prodotto " +
+						"WHERE categoria.idcategoria = prodotto.categoria_idcategoria " +
+						"AND prodotto.idprodotto = inserzione.prodotto_idprodotto " +
+						"AND idcategoria = ?";
+				
+				pstmt = connection.prepareStatement(sql);
+				pstmt.setInt(1, idCategoria);
+				logger.debug("Check Query: " + pstmt.toString());
+				 rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					result = false;
+				}
+					
+				
+			} catch (SQLException  e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try {
+					if(rs != null)
+						rs.close();
+					if(pstmt != null)
+						pstmt.close();
+					if(connection != null)
+						connection.close();
+				
+				}catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			return result;
+		}
+*/	
 	
 	public boolean checkAssociazioneCategoriaProduttore(Integer idCategoria, Integer idProduttore){
 		boolean result = false;
@@ -929,7 +956,8 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM categoria_has_produttore " +
 					"WHERE categoria_idcategoria = ? " +
@@ -951,6 +979,12 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 			connection.close();
 			
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -978,7 +1012,9 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		PreparedStatement pstmt = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			/*Innanzi tutto elimino tutti i prodotti associati alla categoria da eliminare*/
@@ -1028,6 +1064,12 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1043,7 +1085,7 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		return deletedRows;		
 	}
 
-	
+/*	
 	public Integer deleteCategoriaTest(Integer idCategoria){
 		logger.debug("in deleteCategoria");
 		Integer deletedRows = -1;
@@ -1054,7 +1096,7 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 						
-			/*Innanzi tutto elimino tutti i prodotti associati alla categoria da eliminare*/
+			//Innanzi tutto elimino tutti i prodotti associati alla categoria da eliminare
 			
 			//prima si elimina dalla tabella prodotto_has_keyword
 			String sql = "DELETE prodotto_has_keyword.* FROM prodotto_has_keyword, prodotto " +
@@ -1125,6 +1167,7 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		return deletedRows;		
 	}
 
+*/
 	
 	public Integer updateCategoria(Categoria categoria){
 		logger.debug("in updateCategoria");
@@ -1133,7 +1176,10 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		PreparedStatement  pstmt = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE categoria SET nome = ? WHERE idcategoria = ?";
@@ -1154,6 +1200,12 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1168,6 +1220,9 @@ public boolean checkDeleteCategoriaTest(Integer idCategoria){
 		
 		return uptadedRows;
 	}
+
+
+
 
 
 }

@@ -41,7 +41,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 
 	Logger logger = Logger.getLogger(InserzioneDaoMysqlJdbc.class);
 	
-
 	
 	public List<Inserzione> getInserzioni() {
 		logger.debug("in getInserzioni");
@@ -53,7 +52,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione ";
 						
@@ -102,6 +102,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 						
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 
@@ -133,8 +139,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT COUNT(*) FROM inserzione ";
 			
 			pstmt = connection.prepareStatement(sql);
@@ -145,6 +152,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				numeroInserzioni = rs.getInt(1); //prelevo il numero delle inserzioni
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -173,7 +186,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione WHERE stato = 'in asta' ";
 			
@@ -186,6 +200,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			}
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -211,8 +231,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-									
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
 					"WHERE " +
 					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
@@ -299,7 +320,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
@@ -316,6 +338,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			}
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -340,8 +368,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try{
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
 					"WHERE ( DATEDIFF(inserzione.data_scadenza, CURDATE()) < 31 AND DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0) " +
 					"OR " +
@@ -411,7 +440,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
 					"WHERE " +
@@ -592,7 +622,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		return inserzione;
 		
 	}
-	
+
+/*
 	public Inserzione getInserzioneByIdTest(Integer idInserzione){
 		logger.debug("in getInserzioneById");
 		Inserzione inserzione = null;
@@ -629,12 +660,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					System.out.println("ACQUIRENTE CARICATO");
 				}
 			
-			/*	soluzione alternativa	
-				if (rs.getObject("inserzione.acquirente_utente_registrato_idutente") != null && !rs.wasNull()) {
-					idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); //DA RIVEDERE SE ACQUIRENTE è NULL!!!!!!!!!!!!!
-					acquirente = dao.getUtenteRegistratoById(idAcquirente); //SI INCAZZA CON IDACQUIRENTE NULL
-				}
-			*/
+//				soluzione alternativa	
+//				if (rs.getObject("inserzione.acquirente_utente_registrato_idutente") != null && !rs.wasNull()) {
+//					idAcquirente = rs.getInt("inserzione.acquirente_utente_registrato_idutente"); //DA RIVEDERE SE ACQUIRENTE è NULL!!!!!!!!!!!!!
+//					acquirente = dao.getUtenteRegistratoById(idAcquirente); //SI INCAZZA CON IDACQUIRENTE NULL
+//				}
+			
 				
 				
 				int idVenditore = rs.getInt("inserzione.venditore_utente_registrato_idutente");
@@ -698,6 +729,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		
 	}
 
+*/	
 	
 	public Inserzione getInserzioneByIdSenzaListe(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getInserzioneByIdSenzaListe");
@@ -706,7 +738,10 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "SELECT * FROM inserzione " +
@@ -774,7 +809,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}		
 		return inserzione;
 	}
-	
+
+/*
 	public Inserzione getInserzioneByIdSenzaListeTest(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getInserzioneByIdSenzaListe");
 		Inserzione inserzione = null;
@@ -851,7 +887,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		return inserzione;
 	}
 
-	
+*/	
 	
 	public List<UtenteRegistrato> getUtentiRegistratiOsservanoByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException{
 			logger.debug("in getUtentiRegistratiOsservanoByIdInserzione");
@@ -860,7 +896,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			PreparedStatement  pstmt = null;
 			ResultSet rs = null;
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			UtenteRegistrato utente;
@@ -898,8 +936,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 	
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-						
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT DISTINCT(titolo) FROM inserzione";
 			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -910,6 +949,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			}
 							
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -938,8 +983,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-				
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto, keyword, prodotto_has_keyword " +
 					"WHERE " +
 					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
@@ -1047,7 +1093,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String condizioneKeyword = "";
 			if(keyword != "" && keyword != null)
@@ -1109,6 +1156,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1139,8 +1192,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			//AGGIUNGIAMO LA CONDIZIONE KEYWORD SOLO SE BISOGNA EFFETTUARE LA RICERCA ANCHE SU KEYWORD.
 			String condizioneKeyword = "";
@@ -1195,8 +1248,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				pstmt.setInt(2, numInserzioniPagina);
 			}
 	*/
-			
-			
+						
 			int i = 1;
 			
 			if(keyword != "" && keyword != null){
@@ -1244,7 +1296,6 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
 					inserzione.setImmagini(listaImmagini);
 										
-					
 					listaInserzioni.add(inserzione);
 					
 				}while(rs.next());	
@@ -1282,8 +1333,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 	
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 	
 			String condizioneKeyword = "";
 			if(keyword != "" && keyword != null)
@@ -1357,6 +1408,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1382,7 +1439,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String condizioneKeyword = "";
 			if(keyword != "" && keyword != null)
@@ -1421,8 +1479,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			sql = sql + " GROUP BY idinserzione ORDER BY idinserzione DESC LIMIT ?,? ";
 			
 			pstmt = connection.prepareStatement(sql);
-			
-			
+						
 			int i = 1;
 			
 			if(keyword != "" && keyword != null){
@@ -1523,7 +1580,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, prodotto " +
 					"WHERE " +
@@ -1573,6 +1632,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 						
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1598,8 +1663,10 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione, prodotto " +
 					"WHERE " +
 					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
@@ -1708,13 +1775,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 		
 		try {
-			//connection = ConnectionPoolTomcat.getConnection();
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			System.out.println("connection: " + connection.toString());
-			
-			
+				
 			
 			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza, count(*) AS numoss " +
 					"FROM inserzione, utente_registrato_osserva_inserzione " +
@@ -1768,8 +1834,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection;
 		
 		//connection = ConnectionPoolTomcat.getConnection();
-			
-		connection = ConnectionPoolTomcat.getConnection();
+		connection = DatabaseUtil.getConnection();
 		
 		PreparedStatement  pstmt;
 
@@ -1818,7 +1883,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT idinserzione, titolo, prezzo_iniziale, prezzo_aggiornato, data_scadenza FROM inserzione " +
 					"WHERE (( DATEDIFF(inserzione.data_scadenza, CURDATE()) > 0 ) OR ( DATEDIFF(inserzione.data_scadenza, CURDATE()) = 0 AND TIMEDIFF(inserzione.data_scadenza, NOW()) > 0 )) " +
@@ -1875,7 +1941,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE titolo LIKE ? ";
@@ -1891,6 +1958,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		finally{
@@ -1916,8 +1989,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 	
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione, categoria, prodotto " +
 					"WHERE " +
 					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
@@ -2003,7 +2077,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
@@ -2108,7 +2184,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO inserzione (titolo, descrizione, prezzo_iniziale, prezzo_aggiornato, data_scadenza, stato,  venditore_utente_registrato_idutente, prodotto_idprodotto) "
@@ -2189,8 +2267,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				try {
 					if(rs != null)
 						rs.close();
-					
-					pstmt.close();
+					if(pstmt!=null)
+						pstmt.close();
 					connection.setAutoCommit(true);
 					connection.close();
 					logger.debug("Connection chiusa");
@@ -2212,7 +2290,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			connection.setAutoCommit(false);
 			
@@ -2296,7 +2375,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE inserzione SET stato = ? " +
@@ -2314,6 +2395,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			logger.info("Inserzione Aggiornata");
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
@@ -2343,7 +2430,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		PreparedStatement  pstmt = null;
 			
 		try {			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE inserzione SET prezzo_iniziale = ?, data_scadenza = ?, stato = 'in asta' " +
@@ -2362,6 +2451,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			logger.info("Inserzione Aggiornata");
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		finally {
@@ -2391,6 +2486,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Integer updatedRows = -1;
 		
 		try {			
+			
 			connection = ConnectionPoolTomcat.getConnection();
 			connection.setAutoCommit(false);
 			
@@ -2439,90 +2535,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			connection.setAutoCommit(false);
-			
-	/*
-			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
-			UtenteRegistrato venditore = dao.getUtenteRegistratoById(inserzione.getIdVenditore());
-						
-			
-	     	if( (inserzione.getIdAcquirente() == null && !venditore.isFlagAbilitato()) || 
-					(inserzione.getIdAcquirente() == null) &&){
-			
-	*/		
-			String sql = "DELETE FROM immagine WHERE inserzione_idinserzione = ? ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idInserzione);
-			logger.debug("Deleted Query: " + pstmt.toString());
-			deletedRows = pstmt.executeUpdate();
-			
-			logger.debug("Immagini cancellate: " + deletedRows);
-			
-			sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idInserzione);
-			logger.debug("Deleted Query: " + pstmt.toString());
-			deletedRows = pstmt.executeUpdate();
-			
-			logger.debug("Offerte cancellate: " + deletedRows);
-			
-			//cancellare nella tabella utente_osserva_inserzione
-			sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idInserzione);
-			logger.debug("Deleted Query: " + pstmt.toString());
-			deletedRows = pstmt.executeUpdate();
-			
-			logger.debug("Osservazioni cancellate: " + deletedRows);
-						
-			sql = "DELETE FROM inserzione WHERE idinserzione = ? ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idInserzione);
-			logger.debug("Deleted Query: " + pstmt.toString());
-			deletedRows = pstmt.executeUpdate();
-			
-			connection.commit();
-			
-			logger.debug("inserzione cancellata");
-		
-		} catch (SQLException e) {
-			try {
-				connection.rollback();
-				logger.debug("Roolback in cancellazione inserzione");
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		}
-		finally {
-			if (connection!=null) {
-				try {
-					pstmt.close();
-					connection.setAutoCommit(true);
-					connection.close();
-					logger.debug("Connection chiusa");
-				} catch (SQLException  e) {
-					e.printStackTrace();
-				}
-				
-			}
-		}
-		return deletedRows;
-	}
-
-	
-	public Integer deleteInserzioneTest(Integer idInserzione){
-		logger.debug("In delete Inserzione");
-		
-		Integer deletedRows = -1;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		try {
+			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 	/*
@@ -2603,6 +2618,95 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		return deletedRows;
 	}
 
+/*	
+	public Integer deleteInserzioneTest(Integer idInserzione){
+		logger.debug("In delete Inserzione");
+		
+		Integer deletedRows = -1;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		try {
+			connection = DatabaseUtil.getConnection();
+			connection.setAutoCommit(false);
+			
+	
+			UtenteRegistratoDao dao = new UtenteRegistratoDaoMysqlJdbc();
+			UtenteRegistrato venditore = dao.getUtenteRegistratoById(inserzione.getIdVenditore());
+						
+			
+	     	if( (inserzione.getIdAcquirente() == null && !venditore.isFlagAbilitato()) || 
+					(inserzione.getIdAcquirente() == null) &&){
+			
+			
+			String sql = "DELETE FROM immagine WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Immagini cancellate: " + deletedRows);
+			
+			sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Offerte cancellate: " + deletedRows);
+			
+			//cancellare nella tabella utente_osserva_inserzione
+			sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			logger.debug("Osservazioni cancellate: " + deletedRows);
+						
+			sql = "DELETE FROM inserzione WHERE idinserzione = ? ";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, idInserzione);
+			logger.debug("Deleted Query: " + pstmt.toString());
+			deletedRows = pstmt.executeUpdate();
+			
+			connection.commit();
+			
+			logger.debug("inserzione cancellata");
+		
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+				logger.debug("Roolback in cancellazione inserzione");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if (connection!=null) {
+				try {
+					pstmt.close();
+					connection.setAutoCommit(true);
+					connection.close();
+					logger.debug("Connection chiusa");
+				} catch (SQLException  e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return deletedRows;
+	}
+*/
 	
 	
 	
@@ -2613,7 +2717,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM utente_registrato_osserva_inserzione WHERE inserzione_idinserzione = ? " +
@@ -2635,6 +2741,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}				
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			if (connection!=null) {
@@ -2651,6 +2763,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 		return deletedRows;
 	}
+
+
+
 
 	
 }

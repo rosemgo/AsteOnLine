@@ -329,12 +329,16 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			logger.debug("offerta caricata");	
 			
 		}
-		rs.close();
-		pstmt.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
 		
 		connection.close();
 		
-		logger.debug("offerta restituita: " + offerta.toString());		
+		if(offerta != null)
+			logger.debug("offerta restituita: " + offerta.toString());		
+		
 		return offerta;
 	}
 
@@ -378,12 +382,14 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			logger.debug("offerta caricata");	
 			
 		}
-		rs.close();
-		pstmt.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
 		
 		connection.close();
-		
-		logger.debug("offerta restituita: " + offerta.toString());		
+		if(offerta != null)
+			logger.debug("offerta restituita: " + offerta.toString());		
 		return offerta;
 	}
 
@@ -516,9 +522,12 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

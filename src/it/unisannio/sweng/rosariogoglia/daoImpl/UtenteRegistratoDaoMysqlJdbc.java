@@ -922,9 +922,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -1009,8 +1012,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				e.printStackTrace();
 			}
 		}
-		
-		logger.debug("utente registrato: " + utenteReg.toString());	
+		if(utenteReg != null)
+			logger.debug("utente registrato: " + utenteReg.toString());	
 			
 		return utenteReg;
 	}

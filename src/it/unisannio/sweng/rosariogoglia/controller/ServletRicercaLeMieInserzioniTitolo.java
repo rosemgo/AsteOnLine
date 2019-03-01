@@ -92,7 +92,7 @@ public class ServletRicercaLeMieInserzioniTitolo extends HttpServlet {
 			HashMap<Integer, Integer> indicizzazionePagine = new HashMap<Integer, Integer>();
 						
 			/* Verifico che il numero di pagine richieste per visualizzare le inserzioni sia uguale al numero precedente. Nel caso fosse così, non è necessario creare una nuova hash map, quindi prelevo dalla sessione quella precedentemente creata. */
-			if(numeroPagine != numPaginePrecedente){
+			if(!numeroPagine.equals(numPaginePrecedente)){
 				System.out.println("tabella nuova");
 				/*creo l'hasmap che sarà utilizzata per la corrispondenza pagina-numero tupla da cui iniziare il prelievo dal db*/
 				for(int i=1; i<=numeroPagine; i++){

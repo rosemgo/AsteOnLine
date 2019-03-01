@@ -183,9 +183,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -295,8 +298,10 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		keyword.setIdKeyword(autoincrementKey);
 			
-		rs.close();
-		pstmt.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
 			
 		connection.commit();
 		logger.info("Inserimento nuova keyword (" + autoincrementKey + ", " + keyword.getKeyword() + ")");
@@ -331,8 +336,10 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		}
 		keyword.setIdKeyword(autoincrementKey);
 			
-		rs.close();
-		pstmt.close();
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
 			
 		connection.commit();
 		logger.info("Inserimento nuova keyword (" + autoincrementKey + ", " + keyword.getKeyword() + ")");

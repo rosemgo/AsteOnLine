@@ -622,7 +622,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				try {
 					if(rs != null)
 						rs.close();
-					pstmt.close();
+					if(pstmt != null)
+						pstmt.close();
 					connection.setAutoCommit(true);
 					connection.close();
 				} catch (SQLException  e) {
@@ -750,9 +751,10 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				try {
 					if(rs != null)
 						rs.close();
+					if(pstmt != null)
 						pstmt.close();
-						connection.setAutoCommit(true);
-						connection.close();
+					connection.setAutoCommit(true);
+					connection.close();
 				} catch (SQLException  e) {
 					
 					e.printStackTrace();

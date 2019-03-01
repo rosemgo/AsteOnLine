@@ -23,12 +23,13 @@ public class ServletCercaComuni extends BaseAjaxServlet {
   public void init() {
     comuniMap = new HashMap<String,String>();
     ProvinciaDao provinciaDao = new ProvinciaDaoMysqlJdbc();
-    for(Provincia provincia: provinciaDao.getProvince()) {
+    for(Provincia provincia: provinciaDao.getProvince()){
     	if(provincia == null)
     		System.out.println("Provincia vuota");
-    	else
+    	else{
     		System.out.println("Provincia: " + provincia.getNomeProvincia());
-      comuniMap.put(String.valueOf(provincia.getIdProvincia()), makeComuniList((ArrayList<Comune>)provincia.getListaComuni()));
+    		comuniMap.put(String.valueOf(provincia.getIdProvincia()), makeComuniList((ArrayList<Comune>)provincia.getListaComuni()));
+    	}
     }
   }
 

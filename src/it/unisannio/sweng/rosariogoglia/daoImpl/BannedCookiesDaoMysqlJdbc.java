@@ -62,8 +62,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			try {
 				if(rs != null)
 					rs.close();
-				
-				pstmt.close();
+				if(pstmt != null)
+					pstmt.close();
 				connection.setAutoCommit(true);
 				connection.close();	
 			} catch (SQLException  e) {

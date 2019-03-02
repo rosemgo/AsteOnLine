@@ -19,7 +19,7 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
 public class InserzioneDaoMysqlJdbcTest {
 	
 	@Test
-	public void test() throws ClassNotFoundException, SQLException, IOException {
+	public void testInserimentoRimozioneInserzione() throws ClassNotFoundException, SQLException, IOException {
 		
 		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 		Inserzione inserzione = new InserzioneImpl();

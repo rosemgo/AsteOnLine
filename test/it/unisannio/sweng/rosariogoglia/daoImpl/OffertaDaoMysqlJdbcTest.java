@@ -17,7 +17,7 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.OffertaImpl;
 public class OffertaDaoMysqlJdbcTest {
 	
 	@Test
-	public void test() throws ClassNotFoundException, SQLException, IOException{
+	public void testInserimentoRimozioneOfferta() throws ClassNotFoundException, SQLException, IOException{
 		
 		OffertaDao offertaDao = new OffertaDaoMysqlJdbc(); 
 		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
@@ -29,22 +29,22 @@ public class OffertaDaoMysqlJdbcTest {
 		writingofferta.setSomma(1002.00);
 		writingofferta.setData(new Date());
 		writingofferta.setIdInserzione(28);
-		writingofferta.setInserzione(inserzioneDao.getInserzioneByIdTest(28));
+		writingofferta.setInserzione(inserzioneDao.getInserzioneById(28));
 		writingofferta.setIdUtenteRegistrato(5);
-		writingofferta.setUtente(utenteDao.getUtenteRegistratoByIdTest(5));
+		writingofferta.setUtente(utenteDao.getUtenteRegistratoById(5));
 			
 		
-		idOfferta = offertaDao.insertOffertaTest(writingofferta);
+		idOfferta = offertaDao.insertOfferta(writingofferta);
 		
 		System.out.println("writing offerta: " + writingofferta.getIdOfferta());
 	
-		Offerta readingOfferta = offertaDao.getOffertaByIdOffertaTest(idOfferta);
+		Offerta readingOfferta = offertaDao.getOffertaByIdOfferta(idOfferta);
 		
 		System.out.println("reading offerta: " + readingOfferta.getIdOfferta() );
 		
 		assertEquals(readingOfferta.getIdOfferta(), writingofferta.getIdOfferta());
 		
-		Integer deleteRows = offertaDao.deleteOffertaTest(writingofferta);
+		Integer deleteRows = offertaDao.deleteOfferta(writingofferta);
 		
 		assertEquals(deleteRows, (Integer)1);
 		

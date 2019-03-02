@@ -462,6 +462,12 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {

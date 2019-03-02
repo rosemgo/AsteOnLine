@@ -526,9 +526,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione " +
 						"WHERE (inserzione.idinserzione = ?)";

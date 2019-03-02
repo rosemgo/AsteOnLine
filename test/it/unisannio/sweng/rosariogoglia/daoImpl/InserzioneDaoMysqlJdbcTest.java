@@ -58,7 +58,6 @@ public class InserzioneDaoMysqlJdbcTest {
 		assertEquals(deleteRows, (Integer)1);
 	
 		
-		
 	}
 	
 	@Test
@@ -101,8 +100,8 @@ public class InserzioneDaoMysqlJdbcTest {
 				result.removeAll(result);
 				result = inserzioneDao.ricercaTopInserzioniChiusura(3);
 				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 36);
-				assertEquals(result.get(2).getIdInserzione(), (Integer) 35);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 35);
+				assertEquals(result.get(2).getIdInserzione(), (Integer) 36);
 				
 				//ricerca inserzione per titolo limit
 				
@@ -146,7 +145,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result2 = -1;
 				result2 = inserzioneDao.getNumeroAsteInChiusura();
-				assertEquals(result2 , (Integer) 2);
+				assertEquals(result2 , (Integer) 3);
 
 				//numero inserzioni cercate
 				
@@ -173,7 +172,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				result = inserzioneDao.getLimitInserzioniChiusura(0, 10);
 				//confronto se le prime due aste in chiusura corrispondo a quelle con id 34 e 36
 				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 36);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 35);
 				
 				//aste in corso limit
 				

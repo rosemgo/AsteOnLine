@@ -52,8 +52,8 @@ public class ProduttoreDaoMysqlJdbcTest {
 		ProduttoreDao produttoreDao = new ProduttoreDaoMysqlJdbc();
 		List<Produttore> result = new ArrayList<Produttore>();
 		result = produttoreDao.getProduttori();
-		assertEquals("Samsung", result.get(0).getNome());
-		assertEquals("Canon", result.get(1).getNome());
+		assertEquals("Adidas", result.get(0).getNome());
+		assertEquals("Apple", result.get(1).getNome());
 		
 		//metodo che restituisce un produttora dall'id
 			

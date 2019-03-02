@@ -334,7 +334,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		List<Produttore> listaProduttori = new ArrayList<Produttore>();
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM produttore, categoria_has_produttore " +
 					"WHERE produttore.idproduttore = categoria_has_produttore.produttore_idproduttore " +
@@ -359,6 +360,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{

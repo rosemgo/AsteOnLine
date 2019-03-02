@@ -28,8 +28,7 @@ public class CategoriaDaoMysqlTest {
 		categoria.setIdCategoria(idCategoria);
 		
 		System.out.println("Categoria Inserita");
-		
-		System.out.println("La categoria inserita è" + categoriaDao.getCategoriaById(idCategoria));
+		System.out.println("La categoria inserita è: " + categoriaDao.getCategoriaById(idCategoria));
 		
 		Categoria readingCategoria = categoriaDao.getCategoriaById(idCategoria);
 		
@@ -42,24 +41,26 @@ public class CategoriaDaoMysqlTest {
 		
 		for(int i=0;i<listaCategoria.size();i++) {
 			
-			System.out.println("Categoria " + i + " " + listaCategoria.get(i).getNome());
+			System.out.println("Categoria: " + i + " " + listaCategoria.get(i).getNome());
 			
 		}
 		
 		List<Produttore> listaProdMancanti = categoriaDao.getProduttoriMancantiByIdCategoria(idCategoria);
+		System.out.println("Stampa i produttori non ancora associati alla categoria appena inserita. Quindi devono essere tutti.");
 		
 		for(int i=0;i<listaProdMancanti.size();i++) {
 			
-			System.out.println("Categoria " + i + " " + listaProdMancanti.get(i).getNome());
+			System.out.println("Produttore:  " + i + " " + listaProdMancanti.get(i).getNome());
 			
 		}
 		
+		//confronto tra tutti i produttori presenti nel db e quelli non ancora associati alla categoria appena inseriti (cioè tutti i produttori)
 		ProduttoreDao produttoreDao = new ProduttoreDaoMysqlJdbc();
 		List<Produttore> listaTuttiProduttori = produttoreDao.getProduttori();
 		
 		assertEquals(listaTuttiProduttori.size(), listaProdMancanti.size());
 		
-		
+		//cancellazione della categoria inserita
 		if(categoriaDao.checkDeleteCategoria(idCategoria)) {
 			
 			Integer del = categoriaDao.deleteCategoria(idCategoria);
@@ -69,11 +70,6 @@ public class CategoriaDaoMysqlTest {
 			System.out.println("Catgoria eliminata");
 			
 		}
-		
-		
-		
-		
-		
 		
 	}
 	
@@ -90,8 +86,6 @@ public class CategoriaDaoMysqlTest {
 		//disassocia un produttore ad una categoria
 		categoriaDao.deleteCategoriaHasProduttore(3 , 9);
 		assertEquals(result, (Integer) 1) ;
-
-
 		
 	}
 	

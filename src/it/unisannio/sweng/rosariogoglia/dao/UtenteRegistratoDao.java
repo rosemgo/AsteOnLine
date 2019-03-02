@@ -104,7 +104,7 @@ public interface UtenteRegistratoDao {
 	 * @throws IOException
 	 */	
 	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException; 
-
+	
 	/**
 	 * Questo metodo aggiorna uno o più attributi dell'utente passato come parametro
 	 * 

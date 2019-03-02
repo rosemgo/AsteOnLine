@@ -125,6 +125,8 @@ public class ProdottoDaoMysqlTest {
 	@Test
 	public void testGetProdotto() {
 		
+		//AGGIUNGERE GETPRODOTTI
+		
 				//get prodotti by id categoria e id produttore
 				
 				ProdottoDao prodottoDao = new ProdottoDaoMysqlJdbc();

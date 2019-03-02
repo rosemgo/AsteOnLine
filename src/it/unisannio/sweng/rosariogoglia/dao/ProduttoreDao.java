@@ -16,15 +16,15 @@ public interface ProduttoreDao {
 	
 	public List<Produttore> getProduttori();
 	
-	/**
-	 * Questo metodo fornisce la lista di tutti i produttori presenti nel database
-	 * 
-	 * Usato per il test con connessione DatabaseUtil
-	 * 
-	 * @return La lista dei produttori presenti nel database
-	 */
-	
-	public List<Produttore> getProduttoriTest();
+//	/**
+//	 * Questo metodo fornisce la lista di tutti i produttori presenti nel database
+//	 * 
+//	 * Usato per il test con connessione DatabaseUtil
+//	 * 
+//	 * @return La lista dei produttori presenti nel database
+//	 */
+//	
+//	public List<Produttore> getProduttoriTest();
 	
 	/**
 	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
@@ -36,16 +36,16 @@ public interface ProduttoreDao {
 	
 	public Produttore getProduttoreById(Integer idProduttore);
 	
-	/**
-	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
-	 * 
-	 * Usato per il test con connessione DatabaseUtil
-	 * 
-	 * @param idProduttore numero identificativo del produttore
-	 * 
-	 * @return Il produttore avente l'id passato come parametro
-	 */
-	public Produttore getProduttoreByIdTest(Integer idProduttore);
+//	/**
+//	 * Questo metodo fornisce il produttore avente l'id coincidente con quello passato come parametro
+//	 * 
+//	 * Usato per il test con connessione DatabaseUtil
+//	 * 
+//	 * @param idProduttore numero identificativo del produttore
+//	 * 
+//	 * @return Il produttore avente l'id passato come parametro
+//	 */
+//	public Produttore getProduttoreByIdTest(Integer idProduttore);
 		
 	
 	
@@ -61,18 +61,18 @@ public interface ProduttoreDao {
 	public Produttore getProduttoreByNome (String nomeProduttore);
 	
 	
-	/**
-	 * Questo metodo fornisce il produttore avente il nome corrispondente a quello passato come parametro
-	 * 
-	 * Usato per il test con connessione DatabaseUtil
-	 * 
-	 * @param nomeProduttore nome del produttore da visualizzare
-	 * 
-	 * @return Il produttore che ha il nome corrispondente a quello passato come parametro
-	 * 
-	 */
-	
-	public Produttore getProduttoreByNomeTest(String nomeProduttore);
+//	/**
+//	 * Questo metodo fornisce il produttore avente il nome corrispondente a quello passato come parametro
+//	 * 
+//	 * Usato per il test con connessione DatabaseUtil
+//	 * 
+//	 * @param nomeProduttore nome del produttore da visualizzare
+//	 * 
+//	 * @return Il produttore che ha il nome corrispondente a quello passato come parametro
+//	 * 
+//	 */
+//	
+//	public Produttore getProduttoreByNomeTest(String nomeProduttore);
 	
 	
 	/**
@@ -85,17 +85,17 @@ public interface ProduttoreDao {
 		
 	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria);
 	
-	/**
-	 * Questo metodo fornisce la lista dei produttori che hanno l'id della categoria coincidente a quello passato come parametro
-	 * 
-	 * Usato per il test con connessione DatabaseUtil
-	 * 
-	 * @param idCategoria numero identificativo della categoria
-	 * 
-	 * @return La lista dei produttori aventi l'id della categoria coincidente a quello passato come parametro
-	 */
-		
-	public List<Produttore> getProduttoriByIdCategoriaTest(Integer idCategoria);
+//	/**
+//	 * Questo metodo fornisce la lista dei produttori che hanno l'id della categoria coincidente a quello passato come parametro
+//	 * 
+//	 * Usato per il test con connessione DatabaseUtil
+//	 * 
+//	 * @param idCategoria numero identificativo della categoria
+//	 * 
+//	 * @return La lista dei produttori aventi l'id della categoria coincidente a quello passato come parametro
+//	 */
+//		
+//	public List<Produttore> getProduttoriByIdCategoriaTest(Integer idCategoria);
 		
 	
 	
@@ -110,16 +110,16 @@ public interface ProduttoreDao {
 	public Integer insertProduttore (Produttore produttore);
 	
 	
-	/**
-	 * Questo metodo inserisce il produttore passato come parametro nel database
-	 * 
-	 * Usato per fare il test con connessione DatabaseUtil
-	 * 
-	 * @param produttore oggetto produttore da inserire nel database
-	 * 
-	 * @return 1 se l'inserimento ha successo, -1 se l'inserimento fallisce
-	 */
-	public Integer insertProduttoreTest(Produttore produttore);
+//	/**
+//	 * Questo metodo inserisce il produttore passato come parametro nel database
+//	 * 
+//	 * Usato per fare il test con connessione DatabaseUtil
+//	 * 
+//	 * @param produttore oggetto produttore da inserire nel database
+//	 * 
+//	 * @return 1 se l'inserimento ha successo, -1 se l'inserimento fallisce
+//	 */
+//	public Integer insertProduttoreTest(Produttore produttore);
 	
 	
 	
@@ -133,16 +133,16 @@ public interface ProduttoreDao {
 	
 	public Integer deleteProduttore (Integer idProduttore);
 	
-	/**
-		 * Questo metodo Elimina dal database il produttore avente l'id passato come parametro 
-		 * 
-		 * Usato per fare il test con connessione DatabaseUtil
-		 * 
-		 * @param idProduttore numero identificativo del produttore
-		 * 
-		 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
-		*/
-		public Integer deleteProduttoreTest(Integer idProduttore);
+//	/**
+//		 * Questo metodo Elimina dal database il produttore avente l'id passato come parametro 
+//		 * 
+//		 * Usato per fare il test con connessione DatabaseUtil
+//		 * 
+//		 * @param idProduttore numero identificativo del produttore
+//		 * 
+//		 * @return 1 se l'eliminazione ha successo, -1 se l'eliminazione fallisce
+//		*/
+//		public Integer deleteProduttoreTest(Integer idProduttore);
 
 	/**
 	 * Aggiorna uno o più attributi del produttore

@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 
 
 
+
+
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
 import it.unisannio.sweng.rosariogoglia.dao.OffertaDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
@@ -41,7 +43,9 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 					
 			String sql = "INSERT INTO offerta(somma, data, utente_registrato_idutente, inserzione_idinserzione) VALUES (?, ?, ?, ?) ";
@@ -76,6 +80,12 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}				
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			if (connection!=null) {
@@ -92,7 +102,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		return offertaIdKey;
 	}
 
-	
+/*	
 	public Integer insertOffertaTest(Offerta offerta){
 		logger.debug("in insertOfferta");			
 		int offertaIdKey = -1;
@@ -155,7 +165,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		}		
 		return offertaIdKey;
 	}
-
+*/
 	
 	
 	public Integer deleteOfferta(Offerta offerta) throws SQLException, ClassNotFoundException, IOException {
@@ -164,7 +174,9 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM offerta WHERE idofferta = ? ";
@@ -200,7 +212,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		logger.debug("offerta cancellata");
 		return deletedRow;
 	}
-	
+/*	
 	public Integer deleteOffertaTest(Offerta offerta) throws SQLException, ClassNotFoundException, IOException {
 		logger.debug("in deleteOfferta");		
 		int deletedRow = -1;
@@ -243,15 +255,17 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		logger.debug("offerta cancellata");
 		return deletedRow;
 	}
-	
-	
+*/	
+
 	public Integer deleteOffertaByIdInserzione(Integer idInserzione) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in deleteOffertaByIdInserzione");		
 		int deletedRow = -1;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM offerta WHERE inserzione_idinserzione = ? ";
@@ -296,8 +310,10 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		Connection connection;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		connection = ConnectionPoolTomcat.getConnection();
-			
+		
+		//connection = ConnectionPoolTomcat.getConnection();
+		connection = DatabaseUtil.getConnection();
+		
 		String sql = "SELECT * FROM offerta " +
 				"WHERE idofferta = ? ";
 		
@@ -342,7 +358,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		return offerta;
 	}
 
-	
+/*	
 	public Offerta getOffertaByIdOffertaTest(Integer idOfferta) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getOffertaById");		
 		Offerta offerta = null;
@@ -393,7 +409,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		return offerta;
 	}
 
-	
+*/	
 
 	public List<Offerta> getOfferteByIdInserzione(Integer idInserzione) {
 		logger.debug("in getOffertaById");		
@@ -403,8 +419,8 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		ResultSet rs = null;
 		try {
 			
-			    connection = ConnectionPoolTomcat.getConnection();
-				//connection = DatabaseUtil.getConnection();
+			    //connection = ConnectionPoolTomcat.getConnection();
+				connection = DatabaseUtil.getConnection();
 				
 				String sql = "SELECT * FROM offerta " +
 						"WHERE offerta.inserzione_idinserzione = ? " +
@@ -462,6 +478,8 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		return listaOfferte;
 	}
 
+
+/*
 	public List<Offerta> getOfferteByIdInserzioneTest(Integer idInserzione) {
 		logger.debug("in getOffertaById");		
 		List<Offerta> listaOfferte = new ArrayList<Offerta>();
@@ -492,12 +510,12 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 					int idUtenteRegistrato = rs.getInt("utente_registrato_idutente");
 					UtenteRegistrato utente = dao.getUtenteRegistratoByIdTest(idUtenteRegistrato);
 			
-			/*		Non mi serve caricare anche l'inserzione, perchè è scontato che l'inserzione sia quella relativa all'id passato come paramentro.
-			 * 		In quanto questo metodo viene utilizzato per vedere tutte le offerte relative ad una singola inserzione				
-			 * 
-					InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
-					Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione); //carico solo l'inserzione, in modo tale da nn caricarmi la lista delle offerte e creare una ricorsione
-			*/						
+//					Non mi serve caricare anche l'inserzione, perchè è scontato che l'inserzione sia quella relativa all'id passato come paramentro.
+//			 		In quanto questo metodo viene utilizzato per vedere tutte le offerte relative ad una singola inserzione				
+//			 
+//					InserzioneDao dao1 = new InserzioneDaoMysqlJdbc();
+//					Inserzione inserzione = dao1.getInserzioneByIdSenzaListe(idInserzione); //carico solo l'inserzione, in modo tale da nn caricarmi la lista delle offerte e creare una ricorsione
+//									
 					offerta.setIdOfferta(rs.getInt("idofferta"));
 					offerta.setSomma(rs.getDouble("somma"));
 					offerta.setData(Utility.convertitoreTimestampToDataUtil(rs.getTimestamp("data")));
@@ -538,7 +556,7 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		return listaOfferte;
 	}
 
-
+*/
 
 	
 	

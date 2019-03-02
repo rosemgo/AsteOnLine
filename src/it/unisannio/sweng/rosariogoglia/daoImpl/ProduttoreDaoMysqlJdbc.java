@@ -31,8 +31,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		try {
 			
-			//connection = DatabaseUtil.getConnection();
-			connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
 		
 			String sql = "SELECT * FROM produttore ORDER BY nome ASC ";
 			pstmt = connection.prepareStatement(sql);
@@ -73,7 +73,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return listaProduttori;
 	}
 	
-	
+/*	
 	public List<Produttore> getProduttoriTest(){
 		List<Produttore> listaProduttori = new ArrayList<Produttore>();
 		Connection connection = null;
@@ -96,7 +96,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 				produttore.setIdProduttore(rs.getInt("idproduttore"));
 				produttore.setNome(rs.getString("nome"));
 				
-				/*Preleviamo la lista dei prodotti relativi al produttore*/
+				//Preleviamo la lista dei prodotti relativi al produttore
 				ProdottoDao dao = new ProdottoDaoMysqlJdbc();
 				List<Prodotto> listaProdotti = dao.getProdottiByIdProduttoreTest(rs.getInt("idproduttore"));
 				produttore.setProdotti(listaProdotti);
@@ -122,7 +122,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return listaProduttori;
 	}
-	
+*/	
 	
 	public Produttore getProduttoreById(Integer idProduttore){
 		logger.debug("in getProduttoreById");
@@ -133,8 +133,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-						
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM produttore WHERE (idproduttore = ?) ";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, idProduttore);
@@ -149,6 +150,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			}
 						
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -166,6 +173,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return produttore;
 	}
 
+/*	
 	public Produttore getProduttoreByIdTest(Integer idProduttore){
 		logger.debug("in getProduttoreById");
 		Produttore produttore = null;
@@ -216,7 +224,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			logger.debug("produttore: " + produttore.toString());
 		return produttore;
 	}
-	
+*/	
 	
 	
 	public Produttore getProduttoreByNome(String nomeProduttore) {
@@ -225,7 +233,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM produttore WHERE (nome = ?)";
 						
@@ -244,6 +253,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -258,7 +273,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return produttore;
 	}
 
-	
+/*	
 	public Produttore getProduttoreByNomeTest(String nomeProduttore) {
 		Produttore produttore = null;
 		Connection connection = null;
@@ -306,7 +321,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		}
 		return produttore;
 	}
-
+*/
 	
 	public List<Produttore> getProduttoriByIdCategoria(Integer idCategoria){
 		logger.debug("in getProduttoriByIdCategoria");
@@ -361,7 +376,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 	}
 	
-	
+/*	
 	public List<Produttore> getProduttoriByIdCategoriaTest(Integer idCategoria){
 		logger.debug("in getProduttoriByIdCategoria");
 		
@@ -423,6 +438,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return listaProduttori;
 			
 	}
+*/
 	
 	public Integer insertProduttore(Produttore produttore){
 		logger.debug("in insertProduttore");
@@ -435,9 +451,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection(); //utilizzato in caso di caricamento categorie al primo avvio, con il Test
 			
-			//connection = DatabaseUtil.getConnection(); utilizzato in caso di caricamento categorie al primo avvio, con il Test
 			connection.setAutoCommit(false);
 		
 			String sql = "INSERT INTO produttore (nome, website) VALUES (?, ?)";
@@ -469,6 +485,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -489,7 +511,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		return autoincrementKey;
 	}
 
-	
+/*	
 	public Integer insertProduttoreTest(Produttore produttore){
 		logger.debug("in insertProduttoreTest");
 		
@@ -559,7 +581,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return autoincrementKey;
 	}
-	
+*/	
 	
 	
 	public boolean checkDeleteProduttore(Integer idProduttore){
@@ -570,7 +592,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, produttore, prodotto " +
 					"WHERE produttore.idproduttore = prodotto.produttore_idproduttore " +
@@ -588,6 +611,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			
 			
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -611,7 +640,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		PreparedStatement  pstmt = null;
 				
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 				
 				
@@ -664,6 +695,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -681,7 +718,8 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return deletedRows;
 	}
-	
+
+/*
 	public Integer deleteProduttoreTest(Integer idProduttore) {
 		logger.info("Eliminazione Produttore Test: (" + idProduttore + ")");
 		Integer deletedRows = -1;
@@ -737,7 +775,7 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		
 		return deletedRows;
 	}
-
+*/
 
 	public Integer updateProduttore(Produttore produttore){
 		logger.debug("in updateProduttore");
@@ -746,7 +784,9 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE produttore SET nome = ?, website = ? WHERE idproduttore = ?";
@@ -768,6 +808,12 @@ public class ProduttoreDaoMysqlJdbc implements ProduttoreDao{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {

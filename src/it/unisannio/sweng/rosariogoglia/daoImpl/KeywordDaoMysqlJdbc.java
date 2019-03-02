@@ -24,7 +24,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 	Logger logger = Logger.getLogger(KeywordDaoMysqlJdbc.class);
 	
 
-	public List<Keyword> getKeywords() {
+	public List<Keyword> getKeywords(){
 		logger.debug("in getKeywords");
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
 		
@@ -32,7 +32,10 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String query = "SELECT * FROM keyword ORDER BY keyword ASC";
 			
 			pstmt = connection.prepareStatement(query);
@@ -51,6 +54,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 		} catch (SQLException  e) {
 				e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -74,7 +83,8 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE (idkeyword = ?)";
 			pstmt = connection.prepareStatement(sql);
@@ -89,6 +99,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 			}
 						
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -112,7 +128,8 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE (keyword = ?)";
 			
@@ -132,6 +149,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 			
 		} catch (SQLException  e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -146,7 +169,8 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		return keyword;
 		
 	}
-	
+
+/*
 	public Keyword getKeywordByWordTest(String key) {
 		logger.debug("in getKeywordByWordTest: " + key);
 		Keyword keyword = null;
@@ -198,6 +222,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 	}
 	
+*/
 	
 	public List<Keyword> getKeywordByIdProdotto(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getKeywordByIdProdotto");
@@ -206,8 +231,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		connection = ConnectionPoolTomcat.getConnection();
-			
+		//connection = ConnectionPoolTomcat.getConnection();
+		connection = DatabaseUtil.getConnection();
+		
 		String sql = "SELECT * FROM prodotto, keyword, prodotto_has_keyword " +
 					"WHERE prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
 					"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
@@ -235,7 +261,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		return keywordList;
 	}
 	
-	
+/*	
 	public List<Keyword> getKeywordByIdProdottoTest(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in getKeywordByIdProdottoTest");
 		List<Keyword> keywordList = new ArrayList<Keyword>();
@@ -272,6 +298,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		return keywordList;
 	}
 	
+*/
 	
 	public int insertKeyword(Keyword keyword) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in insertKeyword");
@@ -279,9 +306,10 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//connection = DatabaseUtil.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
 		
-		connection = ConnectionPoolTomcat.getConnection();
+		connection = DatabaseUtil.getConnection();// utilizzato in caso di caricamento Keyword al primo avvio, con il Test
+		//connection = ConnectionPoolTomcat.getConnection();
+		
 		connection.setAutoCommit(false);
 				
 						
@@ -311,7 +339,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 		return autoincrementKey;
 	}
-	
+/*	
 	public int insertKeywordTest(Keyword keyword) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in insertKeywordTest");
 		Integer autoincrementKey = -1;
@@ -349,7 +377,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 		return autoincrementKey;
 	}
-
+*/
 	
 	
 	public int insertListaKeyword(List<Keyword> keywords){
@@ -360,7 +388,10 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			for(int i=0; i<keywords.size(); i++){
@@ -401,6 +432,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 				
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		finally {
 
@@ -423,9 +460,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		return autoincrementKey;
 	}
 	
-	
-	
-	
+		
 	public int insertKeyword(String keyword) throws ClassNotFoundException, SQLException, IOException {
 		Integer keywordIdKey = -1;
 		KeywordDao dao = new KeywordDaoMysqlJdbc();
@@ -444,7 +479,9 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM prodotto_has_keyword WHERE (keyword_idkeyword = ?)";
@@ -472,6 +509,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 
@@ -493,7 +536,7 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 	}
 
-	
+/*	
 	public int deleteKeywordTest(Integer idKeyword){
 		logger.debug("in deleteKeyword");
 		Integer deletedRows = -1;	
@@ -555,14 +598,16 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 		
 	}
 	
-	
+*/	
 	public int updateKeyword(Keyword keyword){
 		logger.debug("in updateKeyword");
 		Integer uptadedRows = -1;
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			if(keyword.getIdKeyword() != null){
@@ -588,6 +633,12 @@ public class KeywordDaoMysqlJdbc implements KeywordDao{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			if (connection!=null) {

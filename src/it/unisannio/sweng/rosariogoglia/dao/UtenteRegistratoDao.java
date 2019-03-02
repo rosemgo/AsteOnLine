@@ -31,18 +31,18 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer insertUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 
-	/**
-	 * Inserisce un nuovo utente nel database
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param utente oggetto utente da inserire nel database
-	 * 
-	 * @return L'id dell'utente inserito, oppure -1 in caso di errore
-	 * 
-	 * @throws SQLException
-	 */
-	public Integer insertUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
+//	/**
+//	 * Inserisce un nuovo utente nel database
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param utente oggetto utente da inserire nel database
+//	 * 
+//	 * @return L'id dell'utente inserito, oppure -1 in caso di errore
+//	 * 
+//	 * @throws SQLException
+//	 */
+//	public Integer insertUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 
 	
 	
@@ -74,36 +74,36 @@ public interface UtenteRegistratoDao {
 	 */
 	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 			
-	/**
-	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
-	 * non risulta più abilitato alle funzioni di un utente registrato
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param utente da disabilitarenel database
-	 * 
-	 * @return Numero di righe aggiornate
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
-	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
+//	/**
+//	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
+//	 * non risulta più abilitato alle funzioni di un utente registrato
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param utente da disabilitarenel database
+//	 * 
+//	 * @return Numero di righe aggiornate
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws SQLException
+//	 * @throws IOException
+//	 */
+//	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 			
-	/**
-	 * Metodo per eliminare l'utente, usato solo in fase di test perchè l'applicazione non prevede funzionalità per l'eliminazione di un utente.
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param utente da elinimare nel database
-	 * 
-	 * @return Numero di righe cancellate
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */	
-	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException; 
+//	/**
+//	 * Metodo per eliminare l'utente, usato solo in fase di test perchè l'applicazione non prevede funzionalità per l'eliminazione di un utente.
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param utente da elinimare nel database
+//	 * 
+//	 * @return Numero di righe cancellate
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws SQLException
+//	 * @throws IOException
+//	 */	
+//	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException; 
 	
 	/**
 	 * Questo metodo aggiorna uno o più attributi dell'utente passato come parametro
@@ -222,16 +222,16 @@ public interface UtenteRegistratoDao {
 	public UtenteRegistrato getUtenteRegistratoById(Integer idUtente);
 
 
-	/**
-	 * Restituisce l'utente corrispondente all'id passato come paramentro
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param idUtente numero identificativo dell'utente
-	 * 
-	 * @return L'utente corrispondente all'id passato come parametro
-	  */
-	public UtenteRegistrato getUtenteRegistratoByIdTest(Integer idUtente);
+//	/**
+//	 * Restituisce l'utente corrispondente all'id passato come paramentro
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param idUtente numero identificativo dell'utente
+//	 * 
+//	 * @return L'utente corrispondente all'id passato come parametro
+//	  */
+//	public UtenteRegistrato getUtenteRegistratoByIdTest(Integer idUtente);
 	
 
 	/**

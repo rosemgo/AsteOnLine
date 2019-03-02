@@ -26,6 +26,37 @@ import it.unisannio.sweng.rosariogoglia.daoImpl.InserzioneDaoMysqlJdbc;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +75,6 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	Logger logger = Logger.getLogger(UtenteRegistratoDaoMysqlJdbc.class);
 
 	
-	
 	public Integer insertUtenteRegistrato(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, SQLException, IOException{
 		logger.info("in insertRegistrato");
 		Integer utenteIdKey = -1;
@@ -52,7 +82,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "INSERT INTO utente_registrato (nick, nome, cognome, password, e_mail, codice_fiscale, n_conto_corrente, indirizzo, cap, telefono, tipologia_cliente, data_registrazione, comune_idcomune, flag_abilitato)" +
@@ -110,7 +142,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return utenteIdKey;
 		
 	}
-	
+
+/*	
 	public Integer insertUtenteRegistratoTest(UtenteRegistrato utenteRegistrato) throws ClassNotFoundException, SQLException, IOException{
 		logger.info("in insertRegistrato");
 		Integer utenteIdKey = -1;
@@ -176,10 +209,11 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return utenteIdKey;
 		
 	}
-
-	/**
-	 * eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
-	 */
+*/
+	
+	
+	//eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
+	 
 	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
 		logger.info("in deleteRegistrato");
 		Integer updatedRows = -1;
@@ -188,7 +222,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE (idutente = ?)";
@@ -219,6 +255,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return updatedRows;
 	}
 
+/*
 	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
 		logger.info("in deleteRegistrato");
 		Integer updatedRows = -1;
@@ -257,7 +294,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		return updatedRows;
 	}
-	
+*/	
 	
 	public Integer removeUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
 		logger.info("in deleteRegistrato");
@@ -305,7 +342,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET nick = ?, nome = ?, cognome = ?, password = ?, e_mail = ?, codice_fiscale = ?, n_conto_corrente = ?, indirizzo = ?, cap = ?, telefono = ?, tipologia_cliente = ?, data_registrazione = ?, flag_abilitato = ?, comune_idcomune = ? " +
@@ -356,7 +395,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {	
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET nome = ?, cognome = ?, codice_fiscale = ?, e_mail = ?, n_conto_corrente = ?, indirizzo = ?, cap = ?, telefono = ?, comune_idcomune = ? " +
@@ -404,7 +445,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET password = ? " +
@@ -447,7 +490,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE idutente = ?";
@@ -471,6 +516,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				e1.printStackTrace();
 			}
 			logger.debug("Rollback in aggiornamenrìto Stato Utente Registrato");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -495,7 +546,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET tipologia_cliente = ? WHERE nick = ?";
@@ -537,7 +590,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		try{
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql = "UPDATE utente_registrato SET flag_abilitato = ? WHERE nick = ?";
@@ -562,6 +617,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				e1.printStackTrace();
 			}
 			logger.debug("Rollback in updateAbilitazioneUtente");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null){
@@ -586,8 +647,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			UtenteRegistrato utenteReg = null;
 			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
@@ -661,7 +723,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM utente_registrato ";
 			
@@ -674,6 +737,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -697,8 +766,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			UtenteRegistrato utenteReg = null;
 			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
@@ -756,6 +826,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -780,7 +856,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
@@ -834,6 +911,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 
 		} catch (SQLException e) {
 			 e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		finally{
@@ -858,6 +941,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
+			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
@@ -946,8 +1030,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;	
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-							
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
 						 "AND " + 
@@ -1002,6 +1087,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1026,8 +1117,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM utente_registrato, comune, provincia " +
 						 "WHERE utente_registrato.comune_idcomune = comune.idcomune " +
 						 "AND " + 
@@ -1081,6 +1173,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1105,7 +1203,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		try{
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			String sql = "INSERT INTO utente_registrato_osserva_inserzione (utente_registrato_idutente, inserzione_idinserzione) VALUES (?, ?) ";
@@ -1127,6 +1227,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -1156,7 +1262,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			Inserzione inserzione;
@@ -1186,6 +1294,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1209,8 +1323,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			Inserzione inserzione;
 			
@@ -1241,6 +1355,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1265,8 +1385,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM utente_registrato_osserva_inserzione " +
 					"WHERE utente_registrato_osserva_inserzione.utente_registrato_idutente = ? "; //Mi serve solo l'id dell'inserzione su cui chiamare il metodo inserzioneById
@@ -1284,6 +1404,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			logger.debug("Connessione rilasciata");
 		
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1309,7 +1435,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			connection.setAutoCommit(false);
 			
@@ -1329,6 +1456,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1357,8 +1490,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE acquirente_utente_registrato_idutente = ? ";
 			
@@ -1378,6 +1512,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1404,8 +1544,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE (inserzione.stato = 'aggiudicata' OR inserzione.stato = 'pagata') " +
 					"AND acquirente_utente_registrato_idutente = ? " +
@@ -1428,6 +1569,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1453,8 +1600,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();	
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();	
 				
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE (inserzione.stato = 'aggiudicata' OR inserzione.stato = 'pagata') " +
@@ -1484,6 +1631,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -1507,8 +1660,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();	
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();	
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE (inserzione.stato = 'aggiudicata' OR inserzione.stato = 'pagata') " +
@@ -1528,6 +1681,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -1552,7 +1711,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE venditore_utente_registrato_idutente = ? " +
@@ -1570,6 +1730,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		finally{
@@ -1596,8 +1762,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			Inserzione inserzione;
 			try {
 				
-				connection = ConnectionPoolTomcat.getConnection();
-						
+				//connection = ConnectionPoolTomcat.getConnection();
+				connection = DatabaseUtil.getConnection();
+				
 				String sql = "SELECT * FROM inserzione " +
 						"WHERE venditore_utente_registrato_idutente = ? " +
 						"AND titolo LIKE ? " +
@@ -1623,6 +1790,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				}
 				
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			finally{
@@ -1650,8 +1823,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-					
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM inserzione " +
 					"WHERE venditore_utente_registrato_idutente = ? ";
 			
@@ -1671,6 +1845,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1695,7 +1875,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			Inserzione inserzione;
 			try {
 				
-				connection = ConnectionPoolTomcat.getConnection();	
+				//connection = ConnectionPoolTomcat.getConnection();
+				connection = DatabaseUtil.getConnection();
 				
 				String sql = "SELECT * FROM inserzione " +
 						"WHERE venditore_utente_registrato_idutente = ? " +
@@ -1721,6 +1902,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			finally{
 				try {
@@ -1743,7 +1930,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		int numeroInserzioni = 0;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(*) FROM inserzione " +
 					"WHERE venditore_utente_registrato_idutente = ? ";
@@ -1759,6 +1947,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 						
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -1788,7 +1982,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT DISTINCT * FROM inserzione, offerta " +
 					"WHERE inserzione.idinserzione = offerta.inserzione_idinserzione " +
@@ -1814,6 +2009,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1841,9 +2042,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-		
 					
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT DISTINCT * FROM inserzione, offerta " +
 					"WHERE inserzione.idinserzione = offerta.inserzione_idinserzione " +
@@ -1877,6 +2078,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		finally{
@@ -1903,7 +2110,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT COUNT(DISTINCT idinserzione) FROM inserzione, offerta " +
 					"WHERE inserzione.idinserzione = offerta.inserzione_idinserzione " +
@@ -1925,6 +2133,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1950,8 +2164,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-						
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT DISTINCT(nick) FROM utente_registrato";
 			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -1962,6 +2177,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 					
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -1986,7 +2207,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato " +
 					"WHERE nick = ?";
@@ -2031,8 +2253,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM utente_registrato " +
 				"WHERE nick = ?";
 		
@@ -2044,6 +2267,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				result = true;
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -2067,8 +2296,9 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM utente_registrato " +
 				"WHERE e_mail = ?";
 		
@@ -2082,6 +2312,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -2106,8 +2342,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato " +
 					"WHERE codice_fiscale = ? " +
@@ -2123,6 +2359,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 				result = true;
 					
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -2147,7 +2389,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato " +
 					"WHERE nick = ? ";
@@ -2161,6 +2404,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			}
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -2183,7 +2432,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, inserzione " +
 					"WHERE inserzione.acquirente_utente_registrato_idutente = utente_registrato.idutente " +
@@ -2201,6 +2451,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -2225,7 +2481,8 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM utente_registrato, inserzione " +
 					"WHERE inserzione.venditore_utente_registrato_idutente = utente_registrato.idutente " +
@@ -2243,6 +2500,12 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{

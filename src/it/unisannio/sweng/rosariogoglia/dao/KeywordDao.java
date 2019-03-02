@@ -38,19 +38,19 @@ public interface KeywordDao {
 	 */
 	public Keyword getKeywordByWord(String key);
 	
-	/**
-	 * Questo metodo carica la keyword corrispondente a quella passata come parametro
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param key parola chiave da visualizzare
-	 * 
-	 * @return La keyword corrispondente a quella passata come parametro
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 */
-	public Keyword getKeywordByWordTest(String key);
+//	/**
+//	 * Questo metodo carica la keyword corrispondente a quella passata come parametro
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param key parola chiave da visualizzare
+//	 * 
+//	 * @return La keyword corrispondente a quella passata come parametro
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws IOException
+//	 */
+//	public Keyword getKeywordByWordTest(String key);
 		
 		
 	/**
@@ -66,20 +66,20 @@ public interface KeywordDao {
 	 */
 	public List<Keyword> getKeywordByIdProdotto(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException;
 	
-	/**
-	 * Metodo usato per ottenere le parole chiave associate ad un prodotto
-	 * 
-	 * Usato per test
-	 * 
-	 * @param idProdotto numero identificativo del prodotto
-	 * 
-	 * @return Restituisce la lista delle parole chiave di un prodotto
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
-	public List<Keyword> getKeywordByIdProdottoTest(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException;
+//	/**
+//	 * Metodo usato per ottenere le parole chiave associate ad un prodotto
+//	 * 
+//	 * Usato per test
+//	 * 
+//	 * @param idProdotto numero identificativo del prodotto
+//	 * 
+//	 * @return Restituisce la lista delle parole chiave di un prodotto
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws SQLException
+//	 * @throws IOException
+//	 */
+//	public List<Keyword> getKeywordByIdProdottoTest(Integer idProdotto) throws ClassNotFoundException, SQLException, IOException;
 	
 	
 	
@@ -97,20 +97,20 @@ public interface KeywordDao {
 	public int insertKeyword(Keyword keyword) throws ClassNotFoundException, SQLException, IOException;
 	
 	
-	/**
-	 * Inserimento parola chiave nel database
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param keyword un oggetto keyword
-	 * 
-	 * @return Un intero che indica l'id della keyword inserita
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
-	public int insertKeywordTest(Keyword keyword) throws ClassNotFoundException, SQLException, IOException;
+//	/**
+//	 * Inserimento parola chiave nel database
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param keyword un oggetto keyword
+//	 * 
+//	 * @return Un intero che indica l'id della keyword inserita
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws SQLException
+//	 * @throws IOException
+//	 */
+//	public int insertKeywordTest(Keyword keyword) throws ClassNotFoundException, SQLException, IOException;
 	
 	
 	/**
@@ -145,16 +145,16 @@ public interface KeywordDao {
 	
 	public int deleteKeyword(Integer idKeyword);
 	
-	/**
-	 * Cancella la parola chiave corrispondente a quella passata come parametro dal database
-	 * 
-	 * Usato per test con connessione DatabaseUtil
-	 * 
-	 * @param idKeyword numero identificativo della keyword
-	 * 
-	 * @return Un intero che indica il numero di righe cancellate
-	 */
-	public int deleteKeywordTest(Integer idKeyword);
+//	/**
+//	 * Cancella la parola chiave corrispondente a quella passata come parametro dal database
+//	 * 
+//	 * Usato per test con connessione DatabaseUtil
+//	 * 
+//	 * @param idKeyword numero identificativo della keyword
+//	 * 
+//	 * @return Un intero che indica il numero di righe cancellate
+//	 */
+//	public int deleteKeywordTest(Integer idKeyword);
 	
 	
 	/**

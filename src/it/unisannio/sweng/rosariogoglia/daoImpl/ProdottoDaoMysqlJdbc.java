@@ -19,6 +19,18 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 import it.unisannio.sweng.rosariogoglia.dao.CategoriaDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProduttoreDao;
@@ -53,8 +65,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		try {
 		
-			connection = ConnectionPoolTomcat.getConnection();
-								
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			stmt = connection.createStatement();
 			String query = "SELECT * FROM prodotto ORDER BY nome ASC";
 			
@@ -122,8 +135,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			stmt = connection.createStatement();
 			String query = "SELECT * FROM prodotto " +
@@ -181,7 +194,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return prodotto;
 	}
 
-	
+/*	
 	public Prodotto getProdottoByIdTest(Integer idProdotto){
 		logger.debug("in getProdottoById: " + idProdotto);
 		Prodotto prodotto = null;
@@ -249,6 +262,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return prodotto;
 	}
 	
+*/
 	
 	public List<Prodotto> getProdottiByIdProduttore(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getProdottiByIdProduttore");
@@ -261,9 +275,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		String sql = "SELECT * FROM prodotto " +
 				"WHERE prodotto.produttore_idproduttore = ? ";
 				
-		connection = ConnectionPoolTomcat.getConnection();
-		//connection = DatabaseUtil.getConnection();
-			
+		//connection = ConnectionPoolTomcat.getConnection();
+		connection = DatabaseUtil.getConnection();
+		
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, idProduttore);
 		logger.debug("Select Query:" + pstmt.toString());
@@ -286,6 +300,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return listaProdotti;
 	}
 
+/*
 	public List<Prodotto> getProdottiByIdProduttoreTest(Integer idProduttore) throws ClassNotFoundException, SQLException, IOException {
 		logger.debug("in getProdottiByIdProduttore");
 		Connection connection;
@@ -321,7 +336,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				
 		return listaProdotti;
 	}
-
+*/
 	
 	public List<Prodotto> getProdottiByIdCategoriaByIdProduttore(Integer idCategoria, Integer idProduttore){
 		logger.debug("in getProdottiByIdCategoriaByIdProduttore");
@@ -333,7 +348,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM prodotto " +
 				"WHERE produttore_idproduttore = ? " +
@@ -356,6 +372,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			}
 						
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -382,7 +404,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		
 		try{
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM prodotto WHERE nome = ?";
 			
@@ -400,6 +423,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			}
 						
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -425,7 +454,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM keyword WHERE keyword.idkeyword " +
 					"NOT IN " +
@@ -451,6 +481,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			
 		} catch (SQLException  e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -475,8 +511,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 		try {
 			
-			connection = ConnectionPoolTomcat.getConnection();
-			//connection = DatabaseUtil.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM prodotto " +
 					"WHERE idprodotto = ? ";
@@ -499,6 +535,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			}
 					
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -525,7 +567,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			try{
@@ -616,6 +660,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 		} catch (SQLException  e1) {
 			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}		
 		finally {
 			if (connection!=null) {
@@ -636,7 +686,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return productIdKey;
 	}
 
-
+/*
 	public Integer insertProdottoTest(Prodotto prodotto) {
 		logger.info("in insertProdottoTest");
 		Integer productIdKey = -1;
@@ -767,7 +817,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return productIdKey;
 	}
 	
-	
+*/
 	
 	
 	
@@ -780,7 +830,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 		try {
 			
-				connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 				connection.setAutoCommit(false);
 							
 				String sql = "INSERT INTO prodotto_has_keyword(prodotto_idprodotto, keyword_idkeyword) VALUES (?, ?)";
@@ -809,6 +861,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				e1.printStackTrace();
 			}
 			
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -835,7 +893,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM prodotto_has_keyword " +
 					"WHERE prodotto_idprodotto = ? " +
@@ -852,6 +911,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			}
 						
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -873,7 +938,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		PreparedStatement pstmt = null;
 		try {
 			
-				connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 				connection.setAutoCommit(false);
 							
 				String sql = "DELETE FROM prodotto_has_keyword WHERE prodotto_idprodotto = ? AND keyword_idkeyword = ?";
@@ -901,6 +968,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				
 				e1.printStackTrace();
 			}			
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		finally{
 			try {
@@ -925,7 +998,8 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM inserzione, prodotto " +
 					"WHERE prodotto.idprodotto = inserzione.prodotto_idprodotto " +
@@ -941,6 +1015,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			}
 			
 		} catch (SQLException  e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
@@ -962,7 +1042,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 						
 			// prima si elimina dalla tabella prodotto_has_keyword
@@ -992,6 +1074,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 			
 		finally {
@@ -1009,7 +1097,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		return deletedRows;
 	}
 	
-	
+/*	
 	public Integer deleteProdottoTest(Prodotto prodotto){
 		logger.info("Eliminazione Prodotto Test: (" + prodotto.getIdProdotto()+ ")");
 		System.out.println("Eliminazione Prodotto Test: (" + prodotto.getIdProdotto()+ ")");
@@ -1073,7 +1161,7 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		
 	}
 	
-	
+*/	
 	
 	
 	/**
@@ -1088,12 +1176,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		PreparedStatement  pstmt = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
-			
-		
-			
+						
 				String sql1 = "INSERT INTO prodotto_has_keyword (prodotto_idprodotto, keyword_idkeyword) "
 						+ "VALUES (?, ?)";
 				
@@ -1180,7 +1268,9 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			connection.setAutoCommit(false);
 			
 			String sql2 = "UPDATE prodotto SET nome=? WHERE idprodotto=?";
@@ -1206,6 +1296,12 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 				e.printStackTrace();
 			}
 			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 			if (connection!=null) {
@@ -1222,9 +1318,6 @@ public class ProdottoDaoMysqlJdbc implements ProdottoDao{
 		}
 		return uptadedRows;
 	}
-	
-	
-	
 	
 	
 	

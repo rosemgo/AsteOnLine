@@ -16,7 +16,7 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.CategoriaImpl;
 public class CategoriaDaoMysqlTest {
 
 	@Test
-	public void test() {
+	public void testInserimentoRimozioneCategoria() {
 		
 		
 		CategoriaDao categoriaDao = new CategoriaDaoMysqlJdbc();

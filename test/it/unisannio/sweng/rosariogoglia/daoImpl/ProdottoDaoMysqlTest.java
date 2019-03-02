@@ -23,7 +23,7 @@ import org.junit.Test;
 public class ProdottoDaoMysqlTest {
 
 	@Test
-	public void test() throws ClassNotFoundException, SQLException, IOException {
+	public void testInserimentoRimozioneProdotto() throws ClassNotFoundException, SQLException, IOException {
 
 		
 		ProdottoDao prodottoDao = new ProdottoDaoMysqlJdbc();
@@ -39,20 +39,20 @@ public class ProdottoDaoMysqlTest {
 		
 		prodotto.setNome("Samsung Galaxy Infinity");
 		
-		categoria = categoriaDao.getCategoriaByNomeTest("Audio e TV");
+		categoria = categoriaDao.getCategoriaByNome("Audio e TV");
 		if (categoria==null){
 			categoria = new CategoriaImpl();
 			categoria.setNome("Audio e TV");
-			idCategoria = categoriaDao.insertCategoriaTest(categoria);
+			idCategoria = categoriaDao.insertCategoria(categoria);
 			categoria.setIdCategoria(idCategoria);
 		}
 		prodotto.setIdCategoria(categoria.getIdCategoria());
 
-		produttore = produttoreDao.getProduttoreByNomeTest("Samsung");
+		produttore = produttoreDao.getProduttoreByNome("Samsung");
 		if (produttore==null){
 			produttore = new ProduttoreImpl();
 			produttore.setNome("Samsung");
-			idProduttore = produttoreDao.insertProduttoreTest(produttore);
+			idProduttore = produttoreDao.insertProduttore(produttore);
 			produttore.setIdProduttore(idProduttore);
 		}
 		
@@ -68,7 +68,7 @@ public class ProdottoDaoMysqlTest {
 		
 		prodotto.setKeywordsList(keywordList);
 		
-		Integer autoincrementKey =  prodottoDao.insertProdottoTest(prodotto);
+		Integer autoincrementKey =  prodottoDao.insertProdotto(prodotto);
 		
 		System.out.println("AUTO INC: " + autoincrementKey);
 		prodotto.setIdProdotto(autoincrementKey);
@@ -77,7 +77,7 @@ public class ProdottoDaoMysqlTest {
 		
 		Prodotto readingProdotto = null;
 	
-	    readingProdotto = prodottoDao.getProdottoByIdTest(autoincrementKey);
+	    readingProdotto = prodottoDao.getProdottoById(autoincrementKey);
 		
 		System.out.println(readingProdotto.toString());
 
@@ -85,7 +85,7 @@ public class ProdottoDaoMysqlTest {
 		assertEquals(readingProdotto.getIdProdotto(), prodotto.getIdProdotto());
 		
 		
-		Integer deletedRows = prodottoDao.deleteProdottoTest(readingProdotto);
+		Integer deletedRows = prodottoDao.deleteProdotto(readingProdotto);
 		assertEquals(deletedRows, (Integer)1); //delete rows è 1 se è stata cancellata una riga
 	
 		System.out.println("CANCELLAZIONE PRODOTTO COMPLETATO");
@@ -119,6 +119,53 @@ public class ProdottoDaoMysqlTest {
 		Integer updatedRows = prodottoDao.updateProdotto(readingProdotto);
 		assertEquals(updatedRows, (Integer)1);
 	*/
+		
+	}
+	
+	@Test
+	public void testGetProdotto() {
+		
+				//get prodotti by id categoria e id produttore
+				
+				ProdottoDao prodottoDao = new ProdottoDaoMysqlJdbc();
+				List<Prodotto> result = new ArrayList<Prodotto>();
+				result = prodottoDao.getProdottiByIdCategoriaByIdProduttore(3, 7);
+				assertEquals(result.get(0).getIdProdotto(),45);
+				assertEquals(result.get(1).getIdProdotto(),46);
+				
+				//get prodotto by nome
+				
+				Prodotto result2 = new ProdottoImpl();
+				result2 = prodottoDao.getProdottoByName("iPhone X");
+				assertEquals(result2.getIdProdotto(), 4);
+				
+		
+	}
+	
+	@Test
+	public void testCheckProdotto() {
+		
+				//check prodotto appartiene a categoria e produttore
+		
+				ProdottoDao prodottoDao = new ProdottoDaoMysqlJdbc();
+				boolean result3;
+				result3 = prodottoDao.checkProdottoBelongCategoriaProduttore(5, 3, 1);
+				assertEquals(result3 , true);
+				
+				//check delete prodotto
+				
+				boolean result4;
+				result4 = prodottoDao.checkDeleteProdotto(10);
+				assertEquals(result4 , true);
+				
+				//check keyword associata al prodotto
+				
+				boolean result5;
+				result5 = prodottoDao.checkProdottoHasKeyword(3, 2);
+				assertEquals(result5 , true);
+
+
+
 		
 	}
 	

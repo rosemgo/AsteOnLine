@@ -12,12 +12,14 @@ public class DatabaseUtil {
 
 	private static Connection connection;
 	
-    private static String fileProperties = "../WebContent/WEB-INF/db.properties";
+ //   private static String fileProperties = "WebContent/WEB-INF/db.properties"; //DA USARE SENZA LANCIARE IL SERVER, PER PROVARE I TEST DI UNITà
     
-
+	//CON IL PERCORSO CON IL .. L'APPLICAZIONE FUNZONA, PERCHè QUESTA VA A PRENDERSI IL FILE DOVE VIENE DEPLOYATA L'APP
+    private static String fileProperties = "../WebContent/WEB-INF/db.properties"; //DA USARE DOPO AVER LANCIATO IL SERVER, PER PROVARE I TEST DI SELENIUM
+    
 	public static Connection getConnection() throws SQLException, ClassNotFoundException, IOException {
 	
-		Properties properties = new Properties();
+/*		Properties properties = new Properties();
 		properties.load(new FileInputStream(fileProperties));
 
         String jdbcDriver = properties.getProperty("driver");
@@ -25,14 +27,14 @@ public class DatabaseUtil {
         String username = properties.getProperty("username");
         String password = properties.getProperty("password");     
         String database = properties.getProperty("database");     
-        
+ */       
 		
-/*		 String jdbcDriver = "com.mysql.jdbc.Driver";
+		 String jdbcDriver = "com.mysql.jdbc.Driver";
 	     String hostname = "jdbc:mysql://localhost:3306/";
 	     String username = "root";
 	     String password = "root";     
 	     String database = "ecommerce"; 
-*/		
+		
 		//Carico il driver JDBC per la connessione con il database MySQL
 		Class.forName(jdbcDriver);
 		//String URL = jdbc:mysql://localhost:3306/ecommerce

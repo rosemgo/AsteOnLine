@@ -114,10 +114,18 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 
 				try {
+					
+					if(rs != null) {
 					rs.close();
+					}
+					if(pstmt != null) {
 					pstmt.close();
+					}
+					if(connection != null) {
 					connection.setAutoCommit(true);
 					connection.close();
+					}
+					
 					logger.debug("Connection chiusa");
 				} catch (SQLException  e) {
 
@@ -163,9 +171,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -210,9 +226,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -348,9 +372,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -958,9 +990,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -1164,9 +1204,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -1416,9 +1464,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -1640,9 +1696,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -1967,9 +2031,17 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 		}	
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

@@ -246,10 +246,18 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
 				
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -365,11 +373,18 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		finally{
 			try {
-				rs.close();
-				stmt.close();
 				
-				connection.close();
-			
+				if(rs != null) {
+					rs.close();
+					}
+					
+					if(stmt != null) {
+					stmt.close();
+					}
+					
+					if(connection != null) {
+					connection.close();
+					}
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -493,11 +508,19 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
 				
-				connection.close();
-			
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
+				
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -621,12 +644,15 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				
-				pstmt.close();
-				
-				connection.setAutoCommit(true);
-				connection.close();
-			
+				if(pstmt != null) {
+					pstmt.close();
+				}
+					
+				if(connection != null) {
+					connection.setAutoCommit(true);
+					connection.close();
+					}
+					
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -755,13 +781,18 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				if(rs != null)
+				if(rs != null) {
 					rs.close();
-				if(pstmt != null)
+				}
+				if(pstmt != null) {
 					pstmt.close();
+				}
+				if(connection != null) {
+					
 				connection.setAutoCommit(true);
-				
 				connection.close();
+				
+				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -882,11 +913,17 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				
-				connection.close();
-			
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -989,11 +1026,18 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
+				if(rs != null) {
 				rs.close();
-				pstmt.close();
+				}
 				
+				if(pstmt != null) {
+				pstmt.close();
+				}
+				
+				if(connection != null) {
 				connection.close();
-			
+				}
+				
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1073,9 +1117,16 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
+				
+				if(pstmt != null) {
 				pstmt.close();
+				}
+				
+				if(connection != null) {
 				connection.setAutoCommit(true);
 				connection.close();
+				}
+				
 			} catch (SQLException  e) {
 				
 				e.printStackTrace();
@@ -1209,9 +1260,15 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 		}
 		finally{
 			try {
-				pstmt.close();
-				connection.setAutoCommit(true);
-				connection.close();
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.setAutoCommit(true);
+					connection.close();
+					}
+					
 			} catch (SQLException  e) {
 				e.printStackTrace();
 			}			

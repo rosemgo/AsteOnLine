@@ -471,9 +471,17 @@ public class OffertaDaoMysqlJdbc implements OffertaDao{
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs != null) {
+					rs.close();
+					}
+					
+				if(pstmt != null) {
+					pstmt.close();
+					}
+					
+				if(connection != null) {
+					connection.close();
+					}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

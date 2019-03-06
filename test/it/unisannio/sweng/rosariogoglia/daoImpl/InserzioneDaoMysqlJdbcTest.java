@@ -92,8 +92,8 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result.removeAll(result);
 				result = inserzioneDao.ricercaTopInserzioniPopolari(2);
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 37);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 34);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 37);
 				
 				//ricerca top inserzioni in chiusura
 				
@@ -212,11 +212,11 @@ public class InserzioneDaoMysqlJdbcTest {
 				List<Inserzione> result = new ArrayList<Inserzione>();
 				
 				result = inserzioneDao.ordinaInserzioniPopolari();
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 37);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(2).getIdInserzione(), (Integer) 39);
-				assertEquals(result.get(3).getIdInserzione(), (Integer) 40);
-				assertEquals(result.get(4).getIdInserzione(), (Integer) 41);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 37);
+				assertEquals(result.get(2).getIdInserzione(), (Integer) 35);
+				assertEquals(result.get(3).getIdInserzione(), (Integer) 36);
+				assertEquals(result.get(4).getIdInserzione(), (Integer) 39);
 
 		
 	}

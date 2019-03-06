@@ -12,35 +12,33 @@ public class DatabaseUtil {
 
 	private static Connection connection;
 	
-    private static String fileProperties = "WebContent/WEB-INF/db.properties";
+    private static String fileProperties = "../WebContent/WEB-INF/db.properties";
     
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException, IOException {
 	
-/*		Properties properties = new Properties();
+		Properties properties = new Properties();
 		properties.load(new FileInputStream(fileProperties));
-*/
-    /*  String jdbcDriver = properties.getProperty("driver");
+
+        String jdbcDriver = properties.getProperty("driver");
         String hostname = properties.getProperty("hostname");
         String username = properties.getProperty("username");
         String password = properties.getProperty("password");     
         String database = properties.getProperty("database");     
-    */    
+        
 		
-		 String jdbcDriver = "com.mysql.jdbc.Driver";
+/*		 String jdbcDriver = "com.mysql.jdbc.Driver";
 	     String hostname = "jdbc:mysql://localhost:3306/";
 	     String username = "root";
 	     String password = "root";     
 	     String database = "ecommerce"; 
-		
+*/		
 		//Carico il driver JDBC per la connessione con il database MySQL
 		Class.forName(jdbcDriver);
 		//String URL = jdbc:mysql://localhost:3306/ecommerce
 	
 	//	connection = DriverManager.getConnection(hostname + database, username, password); //Definiamo l'URL per la connessione
 
-			
-		
 		connection = DriverManager.getConnection(hostname + database, username, password); //Definiamo l'URL per la connessione
 		
 		return connection;

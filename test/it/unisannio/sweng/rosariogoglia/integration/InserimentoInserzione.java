@@ -55,7 +55,7 @@ package it.unisannio.sweng.rosariogoglia.integration;
 		    driver.findElement(By.name("prezzoIniziale")).sendKeys("100");
 		    driver.findElement(By.xpath("//p[12]")).click();
 		    driver.findElement(By.name("data_scadenza")).click();
-		    driver.findElement(By.name("descrizione")).sendKeys("01/05/2019");
+		    driver.findElement(By.name("data_scadenza")).sendKeys("01/05/2020");
 		 
 		 // driver.findElement(By.name("data_scadenza")).click();
 		 // driver.findElement(By.xpath("//td[@onclick='f_tcalUpdate(1533031200000)']")).click();

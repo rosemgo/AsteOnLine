@@ -92,16 +92,16 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result.removeAll(result);
 				result = inserzioneDao.ricercaTopInserzioniPopolari(2);
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 37);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 30);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 31);
 				
 				//ricerca top inserzioni in chiusura
 				
 				result.removeAll(result);
 				result = inserzioneDao.ricercaTopInserzioniChiusura(3);
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 35);
-				assertEquals(result.get(2).getIdInserzione(), (Integer) 36);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 35);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 36);
+				assertEquals(result.get(2).getIdInserzione(), (Integer) 29);
 				
 				//ricerca inserzione per titolo limit
 				
@@ -139,7 +139,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result2 = -1;
 				result2 = inserzioneDao.getNumeroAsteInCorso();
-				assertEquals(result2 , (Integer) 15);
+				assertEquals(result2 , (Integer) 18);
 				
 				//numero aste in chiusura
 				
@@ -151,7 +151,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result2 = -1;
 				result2 = inserzioneDao.getNumeroInserzioniCercate("smartphone", 3);
-				assertEquals(result2 , (Integer) 2);
+				assertEquals(result2 , (Integer) 3);
 				
 				//numero inserzioni per titolo
 				
@@ -170,17 +170,17 @@ public class InserzioneDaoMysqlJdbcTest {
 				List<Inserzione> result = new ArrayList<Inserzione>();
 				result.removeAll(result);
 				result = inserzioneDao.getLimitInserzioniChiusura(0, 10);
-				//confronto se le prime due aste in chiusura corrispondo a quelle con id 34 e 36
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 35);
+				//confronto se le prime due aste in chiusura corrispondo a quelle con id 35 e 36
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 35);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 36);
 				
 				//aste in corso limit
 				
 				result.removeAll(result);
 				result = inserzioneDao.getLimitAsteInCorso(1, 3);
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 35);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 36);
-				assertEquals(result.get(2).getIdInserzione(), (Integer) 37);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 30);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 31);
+				assertEquals(result.get(2).getIdInserzione(), (Integer) 32);
 				
 				//limit inserzioni
 				
@@ -212,11 +212,11 @@ public class InserzioneDaoMysqlJdbcTest {
 				List<Inserzione> result = new ArrayList<Inserzione>();
 				
 				result = inserzioneDao.ordinaInserzioniPopolari();
-				assertEquals(result.get(0).getIdInserzione(), (Integer) 34);
-				assertEquals(result.get(1).getIdInserzione(), (Integer) 37);
-				assertEquals(result.get(2).getIdInserzione(), (Integer) 35);
-				assertEquals(result.get(3).getIdInserzione(), (Integer) 36);
-				assertEquals(result.get(4).getIdInserzione(), (Integer) 39);
+				assertEquals(result.get(0).getIdInserzione(), (Integer) 30);
+				assertEquals(result.get(1).getIdInserzione(), (Integer) 31);
+				assertEquals(result.get(2).getIdInserzione(), (Integer) 32);
+				assertEquals(result.get(3).getIdInserzione(), (Integer) 37);
+				assertEquals(result.get(4).getIdInserzione(), (Integer) 29);
 
 		
 	}

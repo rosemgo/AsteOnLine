@@ -473,7 +473,7 @@ public interface UtenteRegistratoDao {
 	 * @param limiteInf limite inferiore dell'intervallo
 	 * @param numeroInserzioniPagina numero di inserzioni da visualizzare per pagina
 	 * 
-	 * @return Lista d inserzioni
+	 * @return Lista di inserzioni
 	 */
 	public List<Inserzione> getLimitInserzioniAggiudicateByIdUtenteAcquirente(Integer idUtenteRegistrato, Integer limiteInf, Integer numeroInserzioniPagina);
 

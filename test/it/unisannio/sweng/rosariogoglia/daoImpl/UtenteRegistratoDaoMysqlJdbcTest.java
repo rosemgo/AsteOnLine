@@ -99,12 +99,12 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			
 			result2.removeAll(result2);
 			result2 = utenteDao.getInserzioniAggiudicateByIdUtenteAcquirente(5);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer)30);
+			assertEquals(result2.get(0).getIdInserzione(), (Integer)34);
 
 			//numero inserzioni aggiudicate utente
 			
 			result4 = -1;
-			result4 = utenteDao.getNumeroInserzioniAggiudicateByIdUtenteAcquirente(6);
+			result4 = utenteDao.getNumeroInserzioniAggiudicateByIdUtenteAcquirente(5);
 			assertEquals(result4, (Integer) 1);
 			
 			//inserzioni dell'utente venditore
@@ -130,7 +130,7 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			
 			result2.removeAll(result2);
 			result2 = utenteDao.getMieAsteInCorsoByIdUtente(5);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer) 34);
+			assertEquals(result2.get(0).getIdInserzione(), (Integer) 30);
 			
 			//numero inserzioni utente
 			
@@ -176,8 +176,8 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			//get limit inserzioni aggiudicate
 			
 			result2.removeAll(result2);
-			result2 = utenteDao.getLimitInserzioniAggiudicateByIdUtenteAcquirente(2, 0, 3);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer) 32);
+			result2 = utenteDao.getLimitInserzioniAggiudicateByIdUtenteAcquirente(5, 0, 10);
+			assertEquals(result2.get(0).getIdInserzione(), (Integer) 34);
 			
 			//get limit utenti 
 			
@@ -191,7 +191,7 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			
 			result2.removeAll(result2);
 			result2 = utenteDao.getLimitMieAsteInCorsoByIdUtente(5, 0, 2);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer) 34);
+			assertEquals(result2.get(0).getIdInserzione(), (Integer) 30);
 
 }
 	
@@ -209,13 +209,13 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 				//controlla pagamenti
 				
 				boolean result = false;
-				result = utenteDao.controllaPagamenti("francescos");
+				result = utenteDao.controllaPagamenti("steto");
 				assertEquals(result , true);
 				
 				//controlla prodotti scaduti
 				
 				result = false;
-				result = utenteDao.controllaProdottiScaduti("francescos");
+				result = utenteDao.controllaProdottiScaduti("immadg");
 				assertEquals(result , true);
 				
 				//controllo mail

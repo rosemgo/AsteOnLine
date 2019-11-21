@@ -22,7 +22,6 @@ apply plugin: 'jacoco'
 //apply plugin: 'com.bmuschko.tomcat'
 
 
-
 repositories {
         jcenter()
         mavenCentral()
@@ -62,7 +61,6 @@ sourceSets {
 }
 
 
-
 dependencies {
 
      //dipendendenza librerie
@@ -73,6 +71,7 @@ dependencies {
      compile group: 'com.google.code.findbugs', name: 'annotations', version: '3.+'
      
      compile 'org.jacoco:jacoco-maven-plugin:0.7.+'
+     compile 'com.google.guava:guava:21.0'
      
      compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
             
@@ -96,14 +95,6 @@ dependencies {
 // context where tomcat is deployed, by defautl localhost:8080/
 //tomcatRun.contextPath = '/'
 //tomcatRunWar.contextPath = '/'
-
-
-//setting del task Javadoc
-javadoc {
-    source = sourceSets.main.allJava
-    classpath = configurations.compile
-    failOnError = false
-}
 
 
 //setting del task findbug
@@ -160,6 +151,37 @@ test {
    }               
 }
 
+//creazione e caricamente DB dal dump
+
+task createDB{
+	project.exec {
+		
+		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", "--password=root", "--execute=CREATE DATABASE IF NOT EXISTS ecommerce"		
+		
+	}
+}
+
+task loadDB{
+	project.exec{
+		
+		standardInput = new FileInputStream(project.file("$rootProject.projectDir/Dump20191118.sql"))
+
+		commandLine 'mysql', "--user=root", "--password=root", "--host=localhost", "--port=3306", 'ecommerce'		
+		
+	}
+}
+
+loadDB.dependsOn createDB
+
+tasks.test.dependsOn loadDB
+
+
+//setting del task Javadoc
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    failOnError = false
+}
 
 
 
@@ -172,55 +194,17 @@ task mysql (type:Exec) {
 
 /*
 task createDB (type:Exec){
+		
+		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", '--execute=CREATE DATABASE IF NOT EXISTS provadb'		
 	
-		
-		
-		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", '--excecute=CREATE DATABASE IF NOT EXISTS provadb'		
-		
-		
-	
-
 }
 */
-
-
-/*
-togliere non serve
-
-task createDB{
-	project.exec {
-		
-		
-		commandLine 'mysql', "--host=localhost", "--port=3306", "--user=root", "--password=root", '--excecute=CREATE DATABASE IF NOT EXISTS provadb'		
-		
-		
-	}
-
-}
-
-task loadDB{
-	project.exec{
-		
-		standardInput = new FileInputStream(project.file("$rootProject.projectDir/provadb.sql"))
-
-		commandLine 'mysql', "--user=root", "--password=root", "--host=localhost", "--port=3306", 'provadb'		
-		
-		
-	}
-
-
-}
-*/
-
 
 /*
 war {
     from (project(':AsteOnLine2').file('build/libs'))
 }
 */
-
-
-
 
 
 /*

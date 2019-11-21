@@ -164,7 +164,7 @@ task createDB{
 task loadDB{
 	project.exec{
 		
-		standardInput = new FileInputStream(project.file("$rootProject.projectDir/Dump20191118.sql"))
+		standardInput = new FileInputStream(project.file("$rootProject.projectDir/DumpEcommerce.sql"))
 
 		commandLine 'mysql', "--user=root", "--password=root", "--host=localhost", "--port=3306", 'ecommerce'		
 		

@@ -568,13 +568,13 @@
     <url-pattern>/ServletRimuoviInserzioneLeMieInserzioni</url-pattern>
   </servlet-mapping>
   <servlet>
-    <display-name>ServletRimuoviInserzioniOsservate</display-name>
-    <servlet-name>ServletRimuoviInserzioniOsservate</servlet-name>
-    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRimuoviInserzioniOsservate</servlet-class>
+    <display-name>ServletRimuoviInserzioneOsservata</display-name>
+    <servlet-name>ServletRimuoviInserzioneOsservata</servlet-name>
+    <servlet-class>it.unisannio.sweng.rosariogoglia.controller.ServletRimuoviInserzioneOsservata</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletRimuoviInserzioniOsservate</servlet-name>
-    <url-pattern>/ServletRimuoviInserzioniOsservate</url-pattern>
+    <servlet-name>ServletRimuoviInserzioneOsservata</servlet-name>
+    <url-pattern>/ServletRimuoviInserzioneOsservata</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>amministrazione</display-name>

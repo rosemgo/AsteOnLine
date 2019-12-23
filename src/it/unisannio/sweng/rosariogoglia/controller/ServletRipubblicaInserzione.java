@@ -95,7 +95,7 @@ public class ServletRipubblicaInserzione extends HttpServlet {
 			}
 			
 			Calendar c = Calendar.getInstance();
-			c.set(anno, mese, giorno);
+			c.set(anno, (mese-1), giorno); //mese-1 perchè i mesi nel gregorianCalendar partono da 0
 			System.out.println("c: " + c.toString());
 			
 			//c.set(year, month, date, hourOfDay, minute, second); farsi dare anche l'orario di scadenza

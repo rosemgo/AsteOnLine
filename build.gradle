@@ -43,19 +43,18 @@ war.baseName = 'AsteOnLine'
 project.webAppDirName = 'WebContent'
 
 
-// Set source directory
+// Set source directory, istruisco gradle su dove trovare i file di produzione ed i file di test
 sourceSets {
-        //percorso di compilazione 
+        //percorso file di produzione
         main {
             java {
-                srcDir 'src'
+                srcDirs 'src'
             }
         }
- 
-        //lanciare test automaticamente con gradle
+        //percorso file di test
         test {
 	        java {
-	            srcDirs = ["test"]  
+	            srcDirs 'test' 
 	        }
     	}        
 }

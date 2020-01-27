@@ -77,7 +77,7 @@ CREATE TABLE `categoria` (
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`idcategoria`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `immagine` (
   PRIMARY KEY (`idimmagine`),
   KEY `fk_immagini_inserzione` (`inserzione_idinserzione`),
   CONSTRAINT `fk_immagini_inserzione` FOREIGN KEY (`inserzione_idinserzione`) REFERENCES `inserzione` (`idinserzione`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,7 @@ CREATE TABLE `inserzione` (
   CONSTRAINT `fk_inserzione_acquirente` FOREIGN KEY (`acquirente_utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_prodotto` FOREIGN KEY (`prodotto_idprodotto`) REFERENCES `prodotto` (`idprodotto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_venditore` FOREIGN KEY (`venditore_utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `inserzione` (
 
 LOCK TABLES `inserzione` WRITE;
 /*!40000 ALTER TABLE `inserzione` DISABLE KEYS */;
-INSERT INTO `inserzione` VALUES (28,'Asus vivobook pro ','Asus vivobook pro 15 pollici',1000,1001,'2019-05-07 15:43:24','aggiudicata',7,2,24),(29,'Asus vivobook pro NUOVO','Imballo originale, 15 pollici GOLD',567,0,'2019-06-28 18:26:32','scaduta',NULL,2,24),(30,'Asus vivobook PRO USATO','Notebook USATO solo 1 mese, Windows 10 PRO',955,1000,'2019-12-07 15:45:02','in asta',10,2,24),(31,'Smart TV Samsung 40','- Risoluzione 4 volte superiore ai TV FHD\r\n- Design e materiali curati in ogni dettaglio e raffinate finiture\r\n- Sintonizzatore analogico \r\n- Il prodotto ha il menu multilingue - italiano incluso ',400,409,'2019-10-18 15:34:06','aggiudicata',6,7,15),(32,'Samsung SM-N950F Gold','Samsung Note 8 GOLD',505,509,'2019-10-18 15:39:19','aggiudicata',2,7,3),(33,'iPhone X NUOVO','- super AMOLED\r\n- 4G\r\n- NUOVO ',960,0,'2019-01-09 16:01:58','scaduta',NULL,6,4),(34,'Macbook PRO ','Bellissimo macbook PRO NUOVO \r\n\"La mela Ã¨ una garanzia\"',1000,1001,'2019-04-01 16:05:44','aggiudicata',5,6,23),(35,'Tuta Juve stagione17/18','Scelta tra i 3 colori in foto. Tutte le taglie',90,0,'2019-06-01 18:29:16','scaduta',NULL,6,12),(36,'Samsung S9 + NUOVO','Android S9+ NUOVO',850,0,'2019-06-01 18:29:31','scaduta',NULL,6,7),(37,'T-Shirt Adidas Trefoil NUOVA','T-Shirt nera con logo del trifoglio oversize stampato in gomma.Taglio morbido e confortevole.100% cotone.',15,0,'2019-12-20 11:25:57','in asta',NULL,8,29),(38,'Felpa adidas con cappuccio','Felpa 3-Stripes nera.Chiusura con zip.Contone:70% Polyestere:30%.Prodotto nuovo.',60,0,'2019-11-24 11:29:45','in asta',NULL,8,31),(39,'Huawei P10 USATO','Huawei P10 con 64 gb di memoria interna e 4 gb di RAM.Sistema operativo installato:Android 7 Nougat aggiornabile all\'ultima versione.Prodotto usato ma in ottime condizioni.Colore nero.',230,500,'2019-12-18 11:31:39','in asta',2,8,46),(40,'Televisore LG 55 pollici Nuovo','LG TV LED 55\" Ultra HD 4K schermo IPS.Active HDR.Smart Tv.Sistema Audio Ultra Surround 2.0 Ch 20W.Riproduce colori vividi e contrasti intensi, che restano uniformi da ogni distanza ed angolo di visione.',450,0,'2019-12-19 11:45:26','in asta',NULL,8,39),(41,'Huawei Mate 10 NUOVO','Huawei Mate 10 dispone di 64 gb di memoria interna e 4 gb di RAM.Schermo da 5.9\".Risulta essere uno smartphone molto performante che si adatta bene a tutte le esigenze.Colore nero.',539,0,'2019-12-19 12:12:46','in asta',NULL,9,45),(42,'Tv Sony Bravia NUOVO','SMART TV LED 43\" Ultra HD 4K - Risoluzione: 3840x2160.',699,0,'2019-11-21 12:15:01','in asta',NULL,9,41),(43,'Scopa elettrica Rowenta NUOVA','Scopa elettrica Rowenta con:Tecnologia ciclonica,spazzola di aspirazione: Dual Clean & Steam,tempo di riscaldamento: 30 sec,impostazioni vapore: min/medio/max, posizione di parcheggio. ',143,0,'2019-10-20 16:18:04','scaduta',NULL,9,44),(44,'Pc convertibile Asus','Pc convertibile asus 12.6\" con 8 gb di Ram e 512 gb di memoria SSD.Leggero e comodo da trasportare,con tastiera inclusa.Prodotto usato solo 2 mesi e quindi ancora in garanzia.',990,0,'2019-10-20 14:37:02','scaduta',NULL,9,47),(45,'Cuffie Sony NUOVE','Cuffie Sony nere con archetto dal design leggero e pieghevole.Driver da 30 mm e 98 db/mW di sensibilitÃ .Gamma di frequenza 10-24000 Hz.',12.5,0,'2019-12-25 14:45:14','in asta',NULL,10,42),(46,'T-Shirt da training Nike','T-shirt da training Nike Dri-FIT \"Just Don\'t Quit\" - Uomo Ã¨ realizzata in un tessuto traspirante che garantisce pelle asciutta e comfort per restare sempre motivato in allenamento.Prodotto NUOVO.',19.99,0,'2019-10-20 14:52:41','scaduta',NULL,10,33),(49,'Ferro da stiro Rowenta','Ferro da stiro professionale permette una stiratura rapida e precisa ed ha la piastra Airglide in acciaio inossidabile. Dispone di una punta di precisione per raggiungere anche i punti difficili.Prodotto nuovo.',99,0,'2019-11-20 16:22:56','in asta',NULL,10,17),(50,'Smart tv LG','SmartTV 49\" LG con risoluzione UltraHD 4k,sintonizzatore integrato DVB T2, C, S2,active HDR e piattaforma SmartTv webOS 3.5.Prodotto nuovo.',380,0,'2019-11-22 15:27:15','in asta',NULL,10,40),(93,'Test Inserzione','Test descrizione',100,0,'2020-01-05 12:45:01','in asta',NULL,2,46);
+INSERT INTO `inserzione` VALUES (28,'Asus vivobook pro ','Asus vivobook pro 15 pollici',1000,1001,'2019-05-07 15:43:24','aggiudicata',7,2,24),(29,'Asus vivobook pro NUOVO','Imballo originale, 15 pollici GOLD',567,0,'2020-04-16 19:47:12','in asta',NULL,2,24),(30,'Asus vivobook PRO USATO','Notebook USATO solo 1 mese, Windows 10 PRO',955,1000,'2019-12-07 15:45:02','aggiudicata',10,2,24),(31,'Smart TV Samsung 40','- Risoluzione 4 volte superiore ai TV FHD\r\n- Design e materiali curati in ogni dettaglio e raffinate finiture\r\n- Sintonizzatore analogico \r\n- Il prodotto ha il menu multilingue - italiano incluso ',400,409,'2019-10-18 15:34:06','aggiudicata',6,7,15),(32,'Samsung SM-N950F Gold','Samsung Note 8 GOLD',505,509,'2019-10-18 15:39:19','aggiudicata',2,7,3),(33,'iPhone X NUOVO','- super AMOLED\r\n- 4G\r\n- NUOVO ',960,0,'2020-02-28 19:53:23','in asta',NULL,6,4),(34,'Macbook PRO ','Bellissimo macbook PRO NUOVO \r\n\"La mela Ã¨ una garanzia\"',1000,1001,'2019-04-01 16:05:44','aggiudicata',5,6,23),(35,'Tuta Juve stagione17/18','Scelta tra i 3 colori in foto. Tutte le taglie',90,0,'2020-02-28 19:53:12','in asta',NULL,6,12),(36,'Samsung S9 + NUOVO','Android S9+ NUOVO',850,0,'2020-02-27 19:53:00','in asta',NULL,6,7),(37,'T-Shirt Adidas Trefoil NUOVA','T-Shirt nera con logo del trifoglio oversize stampato in gomma.Taglio morbido e confortevole.100% cotone.',15,0,'2020-03-07 19:54:10','in asta',NULL,8,29),(38,'Felpa adidas con cappuccio','Felpa 3-Stripes nera.Chiusura con zip.Contone:70% Polyestere:30%.Prodotto nuovo.',60,61,'2020-02-26 19:53:57','in asta',4,8,31),(39,'Huawei P10 USATO','Huawei P10 con 64 gb di memoria interna e 4 gb di RAM.Sistema operativo installato:Android 7 Nougat aggiornabile all\'ultima versione.Prodotto usato ma in ottime condizioni.Colore nero.',230,500,'2019-12-18 11:31:39','aggiudicata',2,8,46),(40,'Televisore LG 55 pollici Nuovo','LG TV LED 55\" Ultra HD 4K schermo IPS.Active HDR.Smart Tv.Sistema Audio Ultra Surround 2.0 Ch 20W.Riproduce colori vividi e contrasti intensi, che restano uniformi da ogni distanza ed angolo di visione.',450,0,'2020-02-28 19:53:45','in asta',NULL,8,39),(41,'Huawei Mate 10 NUOVO','Huawei Mate 10 dispone di 64 gb di memoria interna e 4 gb di RAM.Schermo da 5.9\".Risulta essere uno smartphone molto performante che si adatta bene a tutte le esigenze.Colore nero.',539,0,'2019-12-19 12:12:46','scaduta',NULL,9,45),(42,'Tv Sony Bravia NUOVO','SMART TV LED 43\" Ultra HD 4K - Risoluzione: 3840x2160.',699,700,'2020-02-27 19:51:12','in asta',12,9,41),(43,'Scopa elettrica Rowenta NUOVA','Scopa elettrica Rowenta con:Tecnologia ciclonica,spazzola di aspirazione: Dual Clean & Steam,tempo di riscaldamento: 30 sec,impostazioni vapore: min/medio/max, posizione di parcheggio. ',143,0,'2020-03-18 19:50:49','in asta',NULL,9,44),(44,'Pc convertibile Asus','Pc convertibile asus 12.6\" con 8 gb di Ram e 512 gb di memoria SSD.Leggero e comodo da trasportare,con tastiera inclusa.Prodotto usato solo 2 mesi e quindi ancora in garanzia.',990,0,'2020-01-10 19:47:50','in asta',NULL,9,47),(45,'Cuffie Sony NUOVE','Cuffie Sony nere con archetto dal design leggero e pieghevole.Driver da 30 mm e 98 db/mW di sensibilitÃ .Gamma di frequenza 10-24000 Hz.',12.5,0,'2020-01-30 19:52:36','in asta',NULL,10,42),(46,'T-Shirt da training Nike','T-shirt da training Nike Dri-FIT \"Just Don\'t Quit\" - Uomo Ã¨ realizzata in un tessuto traspirante che garantisce pelle asciutta e comfort per restare sempre motivato in allenamento.Prodotto NUOVO.',19.99,0,'2020-02-29 19:52:27','in asta',NULL,10,33),(49,'Ferro da stiro Rowenta','Ferro da stiro professionale permette una stiratura rapida e precisa ed ha la piastra Airglide in acciaio inossidabile. Dispone di una punta di precisione per raggiungere anche i punti difficili.Prodotto nuovo.',99,0,'2020-02-26 19:52:10','in asta',NULL,10,17),(50,'Smart tv LG','SmartTV 49\" LG con risoluzione UltraHD 4k,sintonizzatore integrato DVB T2, C, S2,active HDR e piattaforma SmartTv webOS 3.5.Prodotto nuovo.',380,0,'2020-02-28 19:51:52','in asta',NULL,10,40);
 /*!40000 ALTER TABLE `inserzione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +263,7 @@ CREATE TABLE `keyword` (
   `keyword` varchar(45) NOT NULL,
   PRIMARY KEY (`idkeyword`),
   UNIQUE KEY `keyword_UNIQUE` (`keyword`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +323,7 @@ CREATE TABLE `offerta` (
   KEY `fk_asta_inserzione` (`inserzione_idinserzione`),
   CONSTRAINT `fk_asta_inserzione` FOREIGN KEY (`inserzione_idinserzione`) REFERENCES `inserzione` (`idinserzione`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_has_utente_registrato_utente_registrato1` FOREIGN KEY (`utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +332,7 @@ CREATE TABLE `offerta` (
 
 LOCK TABLES `offerta` WRITE;
 /*!40000 ALTER TABLE `offerta` DISABLE KEYS */;
-INSERT INTO `offerta` VALUES (4,509,'2018-06-04 15:45:53',2,32),(5,405,'2018-06-04 15:46:28',2,31),(6,956,'2018-06-04 15:47:26',7,30),(7,1001,'2018-06-04 15:47:47',7,28),(8,958,'2018-06-04 15:57:43',6,30),(9,409,'2018-06-04 15:57:50',6,31),(10,1001,'2018-06-04 16:06:17',5,34),(11,959,'2018-06-04 16:06:57',5,30),(12,1002,'2018-07-15 20:25:16',5,28),(13,500,'2019-03-22 11:49:08',2,39),(16,1000,'2019-05-29 19:44:56',10,30);
+INSERT INTO `offerta` VALUES (4,509,'2018-06-04 15:45:53',2,32),(5,405,'2018-06-04 15:46:28',2,31),(6,956,'2018-06-04 15:47:26',7,30),(7,1001,'2018-06-04 15:47:47',7,28),(8,958,'2018-06-04 15:57:43',6,30),(9,409,'2018-06-04 15:57:50',6,31),(10,1001,'2018-06-04 16:06:17',5,34),(11,959,'2018-06-04 16:06:57',5,30),(12,1002,'2018-07-15 20:25:16',5,28),(13,500,'2019-03-22 11:49:08',2,39),(16,1000,'2019-05-29 19:44:56',10,30),(20,700,'2020-01-27 19:57:58',12,42),(21,61,'2020-01-27 20:11:14',4,38);
 /*!40000 ALTER TABLE `offerta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +354,7 @@ CREATE TABLE `prodotto` (
   KEY `fk_prodotto_categoria` (`categoria_idcategoria`),
   CONSTRAINT `fk_prodotto_categoria` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_prodotto_produttore` FOREIGN KEY (`produttore_idproduttore`) REFERENCES `produttore` (`idproduttore`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,7 +408,7 @@ CREATE TABLE `produttore` (
   `website` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idproduttore`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,7 +477,7 @@ CREATE TABLE `utente_registrato` (
   UNIQUE KEY `telefono_UNIQUE` (`telefono`),
   KEY `fk_utente_registrato_comuni1` (`comune_idcomune`),
   CONSTRAINT `fk_utente_registrato_comuni1` FOREIGN KEY (`comune_idcomune`) REFERENCES `comune` (`idcomune`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,7 +514,7 @@ CREATE TABLE `utente_registrato_osserva_inserzione` (
 
 LOCK TABLES `utente_registrato_osserva_inserzione` WRITE;
 /*!40000 ALTER TABLE `utente_registrato_osserva_inserzione` DISABLE KEYS */;
-INSERT INTO `utente_registrato_osserva_inserzione` VALUES (6,28),(7,28),(6,29),(5,30),(6,30),(7,30),(2,31),(5,31),(6,31),(2,32),(6,32),(3,34),(5,34),(3,35),(3,36),(2,37),(6,37),(2,39),(6,40),(2,41);
+INSERT INTO `utente_registrato_osserva_inserzione` VALUES (6,28),(7,28),(6,29),(5,30),(6,30),(7,30),(2,31),(5,31),(6,31),(2,32),(6,32),(3,34),(5,34),(3,35),(12,35),(3,36),(12,36),(2,37),(6,37),(12,37),(12,38),(2,39),(3,40),(6,40),(2,41),(4,49);
 /*!40000 ALTER TABLE `utente_registrato_osserva_inserzione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,14 +546,6 @@ LOCK TABLES `utente_registrato_riceve_messaggio_privato` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'ecommerce'
---
-
---
--- Dumping routines for database 'ecommerce'
---
-
---
 -- Final view structure for view `countinserzioni`
 --
 
@@ -580,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-21 12:50:36
+-- Dump completed on 2020-01-27 20:22:18

@@ -21,7 +21,7 @@ public class LoginLogout {
 
   @Before
   public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "C:/Users/Rosario/git/AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:30000/AsteOnLine/index";
 	    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

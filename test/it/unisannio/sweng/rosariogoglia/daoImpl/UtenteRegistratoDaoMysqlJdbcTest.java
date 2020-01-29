@@ -126,11 +126,17 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			result3 = utenteDao.getUtenteRegistratoByNick("mikke");
 			assertEquals(result3.getIdUtente(), 4);
 			
-			//mie aste in corso
-			
+			//verifica se l'inserzione con id 42 a cui l'utente con id 12 ha fatto un offerta, è ancora in corso
+			boolean trovato=false;
 			result2.removeAll(result2);
-			result2 = utenteDao.getMieAsteInCorsoByIdUtente(5);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer) 30);
+			result2 = utenteDao.getMieAsteInCorsoByIdUtente(12);
+			System.out.println("dimensione: " + result2.size());
+			for(int i=0; i<result2.size(); i++) {
+				if(result2.get(i).getIdInserzione() == 42)
+					trovato=true;
+			}
+			assertEquals(true, trovato);
+			
 			
 			//numero inserzioni utente
 			
@@ -144,11 +150,11 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			result4 = utenteDao.getNumeroLeMieInserzioniPerTitolo(2, "asus vivobook pro");
 			assertEquals(result4, (Integer) 3);
 
-			//numero mie aste in corso 
+			//si verifica che l'utente con id 4 sta partecipando ad una sola asta
 			
 			result4 = -1;
-			result4 = utenteDao.getNumeroMieAsteInCorsoByIdUtente(5);
-			assertEquals(result4, (Integer) 1);
+			result4 = utenteDao.getNumeroMieAsteInCorsoByIdUtente(4);
+			assertEquals((Integer) 1, result4);
 			
 			// get utenti
 			
@@ -190,8 +196,8 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			//get limit le mie aste in corso
 			
 			result2.removeAll(result2);
-			result2 = utenteDao.getLimitMieAsteInCorsoByIdUtente(5, 0, 2);
-			assertEquals(result2.get(0).getIdInserzione(), (Integer) 30);
+			result2 = utenteDao.getLimitMieAsteInCorsoByIdUtente(4, 0, 2);
+			assertEquals((Integer) 38, result2.get(0).getIdInserzione());
 
 }
 	
@@ -215,7 +221,7 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 				//controlla prodotti scaduti
 				
 				result = false;
-				result = utenteDao.controllaProdottiScaduti("immadg");
+				result = utenteDao.controllaProdottiScaduti("gionny");
 				assertEquals(result , true);
 				
 				//controllo mail

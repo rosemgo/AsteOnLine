@@ -29,7 +29,7 @@ public class RicercaKeyword{
 	//driver per google chrome
 //	System.setProperty("webdriver.chrome.driver","C:/Users/Rosario/Desktop/driverchrome/chromedriver.exe");
 	//driver per mozilla firefox 
-	System.setProperty("webdriver.gecko.driver", "C:/Users/Rosario/git/AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
+	System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
 	
 	
 	driver = new FirefoxDriver();
@@ -48,7 +48,7 @@ public class RicercaKeyword{
     driver.findElement(By.xpath("//a[@id='logo']")).click();
     driver.findElement(By.id("autoKeyword")).click();
     driver.findElement(By.id("autoKeyword")).clear();
-    driver.findElement(By.id("autoKeyword")).sendKeys("smartphone");
+    driver.findElement(By.id("autoKeyword")).sendKeys("Cellulare");
     driver.findElement(By.id("bottone-Cerca")).click();
   
   }

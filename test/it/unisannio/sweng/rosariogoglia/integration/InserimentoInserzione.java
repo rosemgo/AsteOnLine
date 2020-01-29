@@ -55,7 +55,9 @@ package it.unisannio.sweng.rosariogoglia.integration;
 		    driver.findElement(By.name("prezzoIniziale")).sendKeys("100");
 		    driver.findElement(By.xpath("//p[12]")).click();
 		    driver.findElement(By.name("data_scadenza")).click();
-		    driver.findElement(By.name("data_scadenza")).sendKeys("01/05/2020");
+		    driver.findElement(By.name("data_scadenza")).click();
+		    driver.findElement(By.id("tcalNextYear")).click();
+		    driver.findElement(By.xpath("//td[@onclick='f_tcalUpdate(1610017200000)']")).click();
 		 
 		 // driver.findElement(By.name("data_scadenza")).click();
 		 // driver.findElement(By.xpath("//td[@onclick='f_tcalUpdate(1533031200000)']")).click();
@@ -71,8 +73,10 @@ package it.unisannio.sweng.rosariogoglia.integration;
 		    driver.findElement(By.xpath("(//input[@id='campoTesto'])[5]")).clear();
 		    driver.findElement(By.xpath("(//input[@id='campoTesto'])[5]")).sendKeys("C:\\fakepath\\P10 3.jpg");
 		 */
+		   
 		    driver.findElement(By.id("bottone")).click();		    
 		 // driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+		    
 		    driver.findElement(By.xpath("//a[6]/strong")).click();
 	  }
 

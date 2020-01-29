@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.19, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ecommerce
 -- ------------------------------------------------------
--- Server version	5.7.19-log
+-- Server version	5.7.28-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `banned_cookies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `banned_cookies` (
   `idbanned_cookies` int(11) NOT NULL AUTO_INCREMENT,
   `idutentebannato` int(11) NOT NULL,
@@ -46,7 +46,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `banned_ip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `banned_ip` (
   `idbanned_ip` int(11) NOT NULL AUTO_INCREMENT,
   `indirizzo_ip` varchar(45) NOT NULL,
@@ -71,7 +71,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria` (
   `idcategoria` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -96,7 +96,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categoria_has_produttore`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria_has_produttore` (
   `categoria_idcategoria` int(11) NOT NULL,
   `produttore_idproduttore` int(11) NOT NULL,
@@ -124,7 +124,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `commento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `commento` (
   `commento` text NOT NULL,
   `data_pubblicazione` datetime NOT NULL,
@@ -152,7 +152,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comune`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comune` (
   `idcomune` int(11) NOT NULL AUTO_INCREMENT,
   `nome_comune` varchar(45) NOT NULL,
@@ -174,13 +174,13 @@ INSERT INTO `comune` VALUES (2,'Agliè',1),(3,'Airasca',1),(4,'Ala di Stura',1),
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `countinserzioni`
+-- Temporary view structure for view `countinserzioni`
 --
 
 DROP TABLE IF EXISTS `countinserzioni`;
 /*!50001 DROP VIEW IF EXISTS `countinserzioni`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `countinserzioni` AS SELECT 
  1 AS `idinserzione`,
  1 AS `numoss`*/;
@@ -192,7 +192,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `immagine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `immagine` (
   `idimmagine` int(11) NOT NULL AUTO_INCREMENT,
   `inserzione_idinserzione` int(11) NOT NULL,
@@ -219,7 +219,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `inserzione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inserzione` (
   `idinserzione` int(11) NOT NULL AUTO_INCREMENT,
   `titolo` varchar(45) NOT NULL,
@@ -247,7 +247,7 @@ CREATE TABLE `inserzione` (
 
 LOCK TABLES `inserzione` WRITE;
 /*!40000 ALTER TABLE `inserzione` DISABLE KEYS */;
-INSERT INTO `inserzione` VALUES (28,'Asus vivobook pro ','Asus vivobook pro 15 pollici',1000,1001,'2019-05-07 15:43:24','aggiudicata',7,2,24),(29,'Asus vivobook pro NUOVO','Imballo originale, 15 pollici GOLD',567,0,'2020-04-16 19:47:12','in asta',NULL,2,24),(30,'Asus vivobook PRO USATO','Notebook USATO solo 1 mese, Windows 10 PRO',955,1000,'2019-12-07 15:45:02','aggiudicata',10,2,24),(31,'Smart TV Samsung 40','- Risoluzione 4 volte superiore ai TV FHD\r\n- Design e materiali curati in ogni dettaglio e raffinate finiture\r\n- Sintonizzatore analogico \r\n- Il prodotto ha il menu multilingue - italiano incluso ',400,409,'2019-10-18 15:34:06','aggiudicata',6,7,15),(32,'Samsung SM-N950F Gold','Samsung Note 8 GOLD',505,509,'2019-10-18 15:39:19','aggiudicata',2,7,3),(33,'iPhone X NUOVO','- super AMOLED\r\n- 4G\r\n- NUOVO ',960,0,'2020-02-28 19:53:23','in asta',NULL,6,4),(34,'Macbook PRO ','Bellissimo macbook PRO NUOVO \r\n\"La mela Ã¨ una garanzia\"',1000,1001,'2019-04-01 16:05:44','aggiudicata',5,6,23),(35,'Tuta Juve stagione17/18','Scelta tra i 3 colori in foto. Tutte le taglie',90,0,'2020-02-28 19:53:12','in asta',NULL,6,12),(36,'Samsung S9 + NUOVO','Android S9+ NUOVO',850,0,'2020-02-27 19:53:00','in asta',NULL,6,7),(37,'T-Shirt Adidas Trefoil NUOVA','T-Shirt nera con logo del trifoglio oversize stampato in gomma.Taglio morbido e confortevole.100% cotone.',15,0,'2020-03-07 19:54:10','in asta',NULL,8,29),(38,'Felpa adidas con cappuccio','Felpa 3-Stripes nera.Chiusura con zip.Contone:70% Polyestere:30%.Prodotto nuovo.',60,61,'2020-02-26 19:53:57','in asta',4,8,31),(39,'Huawei P10 USATO','Huawei P10 con 64 gb di memoria interna e 4 gb di RAM.Sistema operativo installato:Android 7 Nougat aggiornabile all\'ultima versione.Prodotto usato ma in ottime condizioni.Colore nero.',230,500,'2019-12-18 11:31:39','aggiudicata',2,8,46),(40,'Televisore LG 55 pollici Nuovo','LG TV LED 55\" Ultra HD 4K schermo IPS.Active HDR.Smart Tv.Sistema Audio Ultra Surround 2.0 Ch 20W.Riproduce colori vividi e contrasti intensi, che restano uniformi da ogni distanza ed angolo di visione.',450,0,'2020-02-28 19:53:45','in asta',NULL,8,39),(41,'Huawei Mate 10 NUOVO','Huawei Mate 10 dispone di 64 gb di memoria interna e 4 gb di RAM.Schermo da 5.9\".Risulta essere uno smartphone molto performante che si adatta bene a tutte le esigenze.Colore nero.',539,0,'2019-12-19 12:12:46','scaduta',NULL,9,45),(42,'Tv Sony Bravia NUOVO','SMART TV LED 43\" Ultra HD 4K - Risoluzione: 3840x2160.',699,700,'2020-02-27 19:51:12','in asta',12,9,41),(43,'Scopa elettrica Rowenta NUOVA','Scopa elettrica Rowenta con:Tecnologia ciclonica,spazzola di aspirazione: Dual Clean & Steam,tempo di riscaldamento: 30 sec,impostazioni vapore: min/medio/max, posizione di parcheggio. ',143,0,'2020-03-18 19:50:49','in asta',NULL,9,44),(44,'Pc convertibile Asus','Pc convertibile asus 12.6\" con 8 gb di Ram e 512 gb di memoria SSD.Leggero e comodo da trasportare,con tastiera inclusa.Prodotto usato solo 2 mesi e quindi ancora in garanzia.',990,0,'2020-01-10 19:47:50','in asta',NULL,9,47),(45,'Cuffie Sony NUOVE','Cuffie Sony nere con archetto dal design leggero e pieghevole.Driver da 30 mm e 98 db/mW di sensibilitÃ .Gamma di frequenza 10-24000 Hz.',12.5,0,'2020-01-30 19:52:36','in asta',NULL,10,42),(46,'T-Shirt da training Nike','T-shirt da training Nike Dri-FIT \"Just Don\'t Quit\" - Uomo Ã¨ realizzata in un tessuto traspirante che garantisce pelle asciutta e comfort per restare sempre motivato in allenamento.Prodotto NUOVO.',19.99,0,'2020-02-29 19:52:27','in asta',NULL,10,33),(49,'Ferro da stiro Rowenta','Ferro da stiro professionale permette una stiratura rapida e precisa ed ha la piastra Airglide in acciaio inossidabile. Dispone di una punta di precisione per raggiungere anche i punti difficili.Prodotto nuovo.',99,0,'2020-02-26 19:52:10','in asta',NULL,10,17),(50,'Smart tv LG','SmartTV 49\" LG con risoluzione UltraHD 4k,sintonizzatore integrato DVB T2, C, S2,active HDR e piattaforma SmartTv webOS 3.5.Prodotto nuovo.',380,0,'2020-02-28 19:51:52','in asta',NULL,10,40);
+INSERT INTO `inserzione` VALUES (28,'Asus vivobook pro ','Asus vivobook pro 15 pollici',1000,1001,'2019-05-07 15:43:24','aggiudicata',7,2,24),(29,'Asus vivobook pro NUOVO','Imballo originale, 15 pollici GOLD',567,570,'2020-04-16 19:47:12','in asta',9,2,24),(30,'Asus vivobook PRO USATO','Notebook USATO solo 1 mese, Windows 10 PRO',955,1000,'2019-12-07 15:45:02','aggiudicata',10,2,24),(31,'Smart TV Samsung 40','- Risoluzione 4 volte superiore ai TV FHD\r\n- Design e materiali curati in ogni dettaglio e raffinate finiture\r\n- Sintonizzatore analogico \r\n- Il prodotto ha il menu multilingue - italiano incluso ',400,409,'2019-10-18 15:34:06','aggiudicata',6,7,15),(32,'Samsung SM-N950F Gold','Samsung Note 8 GOLD',505,509,'2019-10-18 15:39:19','aggiudicata',2,7,3),(33,'iPhone X NUOVO','- super AMOLED\r\n- 4G\r\n- NUOVO ',960,962,'2020-02-28 19:53:23','in asta',12,6,4),(34,'Macbook PRO ','Bellissimo macbook PRO NUOVO \r\n\"La mela Ã¨ una garanzia\"',1000,1001,'2019-04-01 16:05:44','aggiudicata',5,6,23),(35,'Tuta Juve stagione17/18','Scelta tra i 3 colori in foto. Tutte le taglie',90,91,'2020-02-28 19:53:12','in asta',10,6,12),(36,'Samsung S9 + NUOVO','Android S9+ NUOVO',850,852,'2020-02-27 19:53:00','in asta',9,6,7),(37,'T-Shirt Adidas Trefoil NUOVA','T-Shirt nera con logo del trifoglio oversize stampato in gomma.Taglio morbido e confortevole.100% cotone.',15,17,'2020-03-07 19:54:10','in asta',6,8,29),(38,'Felpa adidas con cappuccio','Felpa 3-Stripes nera.Chiusura con zip.Contone:70% Polyestere:30%.Prodotto nuovo.',60,62,'2020-02-26 19:53:57','in asta',12,8,31),(39,'Huawei P10 USATO','Huawei P10 con 64 gb di memoria interna e 4 gb di RAM.Sistema operativo installato:Android 7 Nougat aggiornabile all\'ultima versione.Prodotto usato ma in ottime condizioni.Colore nero.',230,500,'2019-12-18 11:31:39','aggiudicata',2,8,46),(40,'Televisore LG 55 pollici Nuovo','LG TV LED 55\" Ultra HD 4K schermo IPS.Active HDR.Smart Tv.Sistema Audio Ultra Surround 2.0 Ch 20W.Riproduce colori vividi e contrasti intensi, che restano uniformi da ogni distanza ed angolo di visione.',450,451,'2020-02-28 19:53:45','in asta',9,8,39),(41,'Huawei Mate 10 NUOVO','Huawei Mate 10 dispone di 64 gb di memoria interna e 4 gb di RAM.Schermo da 5.9\".Risulta essere uno smartphone molto performante che si adatta bene a tutte le esigenze.Colore nero.',539,0,'2019-12-19 12:12:46','scaduta',NULL,9,45),(42,'Tv Sony Bravia NUOVO','SMART TV LED 43\" Ultra HD 4K - Risoluzione: 3840x2160.',699,703,'2020-02-27 19:51:12','in asta',12,9,41),(43,'Scopa elettrica Rowenta NUOVA','Scopa elettrica Rowenta con:Tecnologia ciclonica,spazzola di aspirazione: Dual Clean & Steam,tempo di riscaldamento: 30 sec,impostazioni vapore: min/medio/max, posizione di parcheggio. ',143,146,'2020-03-18 19:50:49','in asta',12,9,44),(44,'Pc convertibile Asus','Pc convertibile asus 12.6\" con 8 gb di Ram e 512 gb di memoria SSD.Leggero e comodo da trasportare,con tastiera inclusa.Prodotto usato solo 2 mesi e quindi ancora in garanzia.',990,992,'2020-10-10 19:47:50','in asta',8,9,47),(45,'Cuffie Sony NUOVE','Cuffie Sony nere con archetto dal design leggero e pieghevole.Driver da 30 mm e 98 db/mW di sensibilitÃ .Gamma di frequenza 10-24000 Hz.',12.5,13,'2020-01-30 19:52:36','in asta',6,10,42),(46,'T-Shirt da training Nike','T-shirt da training Nike Dri-FIT \"Just Don\'t Quit\" - Uomo Ã¨ realizzata in un tessuto traspirante che garantisce pelle asciutta e comfort per restare sempre motivato in allenamento.Prodotto NUOVO.',19.99,21,'2020-02-29 19:52:27','in asta',9,10,33),(49,'Ferro da stiro Rowenta','Ferro da stiro professionale permette una stiratura rapida e precisa ed ha la piastra Airglide in acciaio inossidabile. Dispone di una punta di precisione per raggiungere anche i punti difficili.Prodotto nuovo.',99,100,'2020-02-26 19:52:10','in asta',6,10,17),(50,'Smart tv LG','SmartTV 49\" LG con risoluzione UltraHD 4k,sintonizzatore integrato DVB T2, C, S2,active HDR e piattaforma SmartTv webOS 3.5.Prodotto nuovo.',380,383,'2020-02-28 19:51:52','in asta',9,10,40);
 /*!40000 ALTER TABLE `inserzione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +257,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `keyword`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `keyword` (
   `idkeyword` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(45) NOT NULL,
@@ -282,7 +282,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `messaggio_privato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `messaggio_privato` (
   `idmessaggio_privato` int(11) NOT NULL,
   `testo` text NOT NULL,
@@ -311,7 +311,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `offerta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `offerta` (
   `idofferta` int(11) NOT NULL AUTO_INCREMENT,
   `somma` double NOT NULL,
@@ -323,7 +323,7 @@ CREATE TABLE `offerta` (
   KEY `fk_asta_inserzione` (`inserzione_idinserzione`),
   CONSTRAINT `fk_asta_inserzione` FOREIGN KEY (`inserzione_idinserzione`) REFERENCES `inserzione` (`idinserzione`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_has_utente_registrato_utente_registrato1` FOREIGN KEY (`utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +332,7 @@ CREATE TABLE `offerta` (
 
 LOCK TABLES `offerta` WRITE;
 /*!40000 ALTER TABLE `offerta` DISABLE KEYS */;
-INSERT INTO `offerta` VALUES (4,509,'2018-06-04 15:45:53',2,32),(5,405,'2018-06-04 15:46:28',2,31),(6,956,'2018-06-04 15:47:26',7,30),(7,1001,'2018-06-04 15:47:47',7,28),(8,958,'2018-06-04 15:57:43',6,30),(9,409,'2018-06-04 15:57:50',6,31),(10,1001,'2018-06-04 16:06:17',5,34),(11,959,'2018-06-04 16:06:57',5,30),(12,1002,'2018-07-15 20:25:16',5,28),(13,500,'2019-03-22 11:49:08',2,39),(16,1000,'2019-05-29 19:44:56',10,30),(20,700,'2020-01-27 19:57:58',12,42),(21,61,'2020-01-27 20:11:14',4,38);
+INSERT INTO `offerta` VALUES (4,509,'2018-06-04 15:45:53',2,32),(5,405,'2018-06-04 15:46:28',2,31),(6,956,'2018-06-04 15:47:26',7,30),(7,1001,'2018-06-04 15:47:47',7,28),(8,958,'2018-06-04 15:57:43',6,30),(9,409,'2018-06-04 15:57:50',6,31),(10,1001,'2018-06-04 16:06:17',5,34),(11,959,'2018-06-04 16:06:57',5,30),(12,1002,'2018-07-15 20:25:16',5,28),(13,500,'2019-03-22 11:49:08',2,39),(16,1000,'2019-05-29 19:44:56',10,30),(20,700,'2020-01-27 19:57:58',12,42),(21,61,'2020-01-27 20:11:14',4,38),(22,13,'2020-01-29 17:47:12',6,45),(23,991,'2020-01-29 17:49:08',6,44),(24,16,'2020-01-29 17:49:16',6,37),(25,144,'2020-01-29 17:49:30',6,43),(26,701,'2020-01-29 17:49:45',6,42),(27,17,'2020-01-29 18:00:38',6,37),(28,568,'2020-01-29 18:01:03',6,29),(29,100,'2020-01-29 18:01:49',6,49),(30,381,'2020-01-29 18:02:09',6,50),(31,569,'2020-01-29 18:02:48',10,29),(32,961,'2020-01-29 18:03:04',10,33),(33,91,'2020-01-29 18:03:14',10,35),(34,20,'2020-01-29 18:03:58',8,46),(35,992,'2020-01-29 18:04:12',8,44),(36,851,'2020-01-29 18:04:31',8,36),(37,702,'2020-01-29 18:04:55',8,42),(38,145,'2020-01-29 18:05:28',8,43),(39,382,'2020-01-29 18:05:56',12,50),(40,62,'2020-01-29 18:06:07',12,38),(41,962,'2020-01-29 18:07:13',12,33),(42,703,'2020-01-29 18:07:49',12,42),(43,146,'2020-01-29 18:08:45',12,43),(44,852,'2020-01-29 18:13:15',9,36),(45,570,'2020-01-29 18:13:38',9,29),(46,451,'2020-01-29 18:14:31',9,40),(47,21,'2020-01-29 18:15:08',9,46),(48,383,'2020-01-29 18:15:34',9,50);
 /*!40000 ALTER TABLE `offerta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +342,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `prodotto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `prodotto` (
   `idprodotto` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -373,7 +373,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `prodotto_has_keyword`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `prodotto_has_keyword` (
   `prodotto_idprodotto` int(11) NOT NULL,
   `keyword_idkeyword` int(11) NOT NULL,
@@ -401,7 +401,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `produttore`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produttore` (
   `idproduttore` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -427,7 +427,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `provincia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `provincia` (
   `idprovincia` int(11) NOT NULL,
   `nome_provincia` varchar(45) NOT NULL,
@@ -451,7 +451,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `utente_registrato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utente_registrato` (
   `idutente` int(11) NOT NULL AUTO_INCREMENT,
   `nick` varchar(45) NOT NULL,
@@ -496,7 +496,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `utente_registrato_osserva_inserzione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utente_registrato_osserva_inserzione` (
   `utente_registrato_idutente` int(11) NOT NULL,
   `inserzione_idinserzione` int(11) NOT NULL,
@@ -524,7 +524,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `utente_registrato_riceve_messaggio_privato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utente_registrato_riceve_messaggio_privato` (
   `utente_registrato_idutente` int(11) NOT NULL,
   `messaggio_privato_idmessaggio_privato` int(11) NOT NULL,
@@ -544,6 +544,14 @@ LOCK TABLES `utente_registrato_riceve_messaggio_privato` WRITE;
 /*!40000 ALTER TABLE `utente_registrato_riceve_messaggio_privato` DISABLE KEYS */;
 /*!40000 ALTER TABLE `utente_registrato_riceve_messaggio_privato` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'ecommerce'
+--
+
+--
+-- Dumping routines for database 'ecommerce'
+--
 
 --
 -- Final view structure for view `countinserzioni`
@@ -572,4 +580,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-27 20:22:18
+-- Dump completed on 2020-01-29 18:18:09

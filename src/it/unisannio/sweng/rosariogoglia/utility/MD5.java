@@ -1,6 +1,7 @@
 package it.unisannio.sweng.rosariogoglia.utility;
 
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,7 +37,7 @@ import java.security.NoSuchAlgorithmException;
 			StringBuffer sb = new StringBuffer();
 			
 			// il metodo digest vuole come argomento un array di byte e restituisce un array di byte
-			byte[] messDig5 = md.digest(message.getBytes());
+			byte[] messDig5 = md.digest(message.getBytes(Charset.forName("UTF-8")));
 			
 			// trasformiamo l'array di byte in una stringa
 			for( int i = 0 ; i < messDig5.length ; i++ ) {

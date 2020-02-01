@@ -1040,7 +1040,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				sql = sql + " AND keyword.keyword LIKE ? ";
 			
 			if(idCategoria != 0)
@@ -1050,12 +1050,12 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			pstmt = connection.prepareStatement(sql);
 						
-			if(keyword != "" && keyword != null && idCategoria != 0){
+			if(!keyword.equals("") && !keyword.equals(null) && idCategoria != 0){
 				System.out.println("ENTRO NEL PRIMO");
 				pstmt.setString(1, "%" + keyword + "%");
 				pstmt.setInt(2, idCategoria);
 			}
-			else if(keyword != "" && keyword != null ) {
+			else if(!keyword.equals("") && !keyword.equals(null) ) {
 				System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
 				pstmt.setString(1, "%" + keyword + "%");
 			}
@@ -1136,7 +1136,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			connection = DatabaseUtil.getConnection();
 			
 			String condizioneKeyword = "";
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				condizioneKeyword = ", keyword, prodotto_has_keyword ";
 			
 			
@@ -1151,7 +1151,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
 						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
 						"AND keyword.keyword LIKE ? ";
@@ -1177,7 +1177,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	*/		
 			int i = 1;
 			
-			if(keyword != "" && keyword != null){
+			if(!keyword.equals("") && !keyword.equals(null)){
 				pstmt.setString(i,  "%" + keyword + "%");
 				i++;
 			}
@@ -1244,7 +1244,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			//AGGIUNGIAMO LA CONDIZIONE KEYWORD SOLO SE BISOGNA EFFETTUARE LA RICERCA ANCHE SU KEYWORD.
 			String condizioneKeyword = "";
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				condizioneKeyword = ", keyword, prodotto_has_keyword ";
 			
 			
@@ -1259,7 +1259,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
 						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
 						"AND keyword.keyword LIKE ? ";
@@ -1298,7 +1298,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 						
 			int i = 1;
 			
-			if(keyword != "" && keyword != null){
+			if(!keyword.equals("") && !keyword.equals(null)){
 				pstmt.setString(i,  "%" + keyword + "%");
 				i++;
 			}
@@ -1384,7 +1384,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			connection = DatabaseUtil.getConnection();
 	
 			String condizioneKeyword = "";
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				condizioneKeyword = ", keyword, prodotto_has_keyword ";
 			
 			
@@ -1399,7 +1399,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
 						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
 						"AND keyword.keyword LIKE ? ";
@@ -1408,7 +1408,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			if(idCategoria != 0)
 				sql = sql + " AND categoria.idcategoria = ? ";
 
-			if(titolo != "" && titolo != null)
+			if(!titolo.equals("") && !titolo.equals(null))
 				sql = sql + " AND inserzione.titolo LIKE ? ";
 			
 			if(prezzoMin != null)
@@ -1423,7 +1423,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			int i = 1;
 			
-			if(keyword != "" && keyword != null){
+			if(!keyword.equals("") && !keyword.equals(null)){
 				pstmt.setString(i,  "%" + keyword + "%");
 				i++;
 			}
@@ -1431,7 +1431,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				pstmt.setInt(i, idCategoria);
 				i++;
 			}
-			if(titolo != "" && titolo != null){
+			if(!titolo.equals("") && !titolo.equals(null)){
 				pstmt.setString(i, "%" + titolo + "%");
 				i++;
 			}			
@@ -1498,7 +1498,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			connection = DatabaseUtil.getConnection();
 			
 			String condizioneKeyword = "";
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				condizioneKeyword = ", keyword, prodotto_has_keyword ";
 			
 			
@@ -1513,7 +1513,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(keyword != "" && keyword != null)
+			if(!keyword.equals("") && !keyword.equals(null))
 				sql = sql + "AND prodotto.idprodotto = prodotto_has_keyword.prodotto_idprodotto " +
 						"AND prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
 						"AND keyword.keyword LIKE ? ";
@@ -1521,7 +1521,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			if(idCategoria != 0)
 				sql = sql + " AND categoria.idcategoria = ? ";
 			
-			if(titolo != "" && titolo != null)
+			if(!titolo.equals("") && !titolo.equals(null))
 				sql = sql + " AND inserzione.titolo LIKE ? ";
 			
 			if(prezzoMin != null)
@@ -1537,7 +1537,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 						
 			int i = 1;
 			
-			if(keyword != "" && keyword != null){
+			if(!keyword.equals("") && !keyword.equals(null)){
 				pstmt.setString(i,  "%" + keyword + "%");
 				i++;
 			}
@@ -1545,7 +1545,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				pstmt.setInt(i, idCategoria);
 				i++;
 			}
-			if(titolo != "" && titolo != null){
+			if(!titolo.equals("") && !titolo.equals(null)){
 				pstmt.setString(i, "%" + titolo + "%");
 				i++;
 			}			

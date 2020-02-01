@@ -100,9 +100,9 @@ dependencies {
 findbugs{
 	sourceSets = [sourceSets.main]
 	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicamente gli errori non saranno mostrati nel file html
-    reportsDir = file("$project.buildDir/reports/findbugs")
+    reportsDir = file("$project.buildDir/reports/findbugsReport")
     effort = "min" //livello di sforzo di analisi eseguito dal tool, livelli più elevati aumentano la precisione e trovano più bug a spese del tempo di esecuzione e del consumo di memoria.
-    reportLevel = "low"
+    reportLevel = "high"
     
 }
 
@@ -122,7 +122,7 @@ tasks.withType(FindBugs) {
 //setting del task Jacoco
 jacoco {
     toolVersion = "0.8.1"
-    reportsDir = file("$project.buildDir/reports/jacoco")
+    reportsDir = file("$project.buildDir/reports/jacocoReport")
 }
 
 tasks.withType(JacocoReport) {
@@ -131,7 +131,7 @@ tasks.withType(JacocoReport) {
         xml.enabled false
         csv.enabled false
         html.enabled = true
-       	html.destination = file("$project.buildDir/reports/jacoco/jacoco-output.html")
+       	html.destination = file("$project.buildDir/reports/jacocoReport/jacoco-output.html")
     }
 }
 

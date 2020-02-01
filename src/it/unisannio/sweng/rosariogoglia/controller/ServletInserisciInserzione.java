@@ -415,7 +415,7 @@ public class ServletInserisciInserzione extends HttpServlet {
 						
 						//CREO IL THREAD DI VERIFICA SCADENZA ASTA IN SEGUITO ALL'INSERIMENTO
 						Date fineAsta = inserzione.getDataScadenza();
-						Date odierna = new Date();
+					
 						
 						Calendar c = Calendar.getInstance();
 						c.setTime(fineAsta);

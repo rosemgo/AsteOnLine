@@ -34,7 +34,7 @@ public class ServletModificaKeyword extends HttpServlet {
 		String word = request.getParameter("keyword");
 		String keywordModificata = request.getParameter("keywordModificata");
 		
-		ProdottoDao daoP = new ProdottoDaoMysqlJdbc();
+		
 		KeywordDao daoK = new KeywordDaoMysqlJdbc();
 		
 		int updateRow = -1;

@@ -99,11 +99,10 @@ dependencies {
 //setting del task findbug
 findbugs{
 	sourceSets = [sourceSets.main]
-	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicmente gli errori non saranno mostrati nel file html
-    reportsDir = file("$project.buildDir/findbugsReports")
-    
-    effort = "min"
-    reportLevel = "high"
+	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicamente gli errori non saranno mostrati nel file html
+    reportsDir = file("$project.buildDir/reports/findbugs")
+    effort = "min" //livello di sforzo di analisi eseguito dal tool, livelli più elevati aumentano la precisione e trovano più bug a spese del tempo di esecuzione e del consumo di memoria.
+    reportLevel = "low"
     
 }
 
@@ -111,12 +110,11 @@ tasks.withType(FindBugs) {
            
     reports {
         xml.enabled = false
-        xml.withMessages = false
         html.enabled = true
-        xml.destination = file("$project.buildDir/reports/findbugs/findbugs-output.xml")
-        html.destination = file ("$project.buildDir/reports/findbugs/findbugs-output.html")
-        //si può anche scrivere così:
-        //html.destination "$project.buildDir/reports/findbugs/findbugs-output.html"
+      //xml.destination = file("$project.buildDir/reports/findbugs/findbugs-output.xml")
+      //html.destination = file ("$project.buildDir/reports/findbugs/findbugs-output.html")
+      //si può anche scrivere così:
+      //html.destination "$project.buildDir/reports/findbugs/findbugs-output.html"
     }
      
 }
@@ -124,7 +122,7 @@ tasks.withType(FindBugs) {
 //setting del task Jacoco
 jacoco {
     toolVersion = "0.8.1"
-    reportsDir = file("$project.buildDir/DircustomJacocoReportDir")
+    reportsDir = file("$project.buildDir/reports/jacoco")
 }
 
 tasks.withType(JacocoReport) {
@@ -133,7 +131,7 @@ tasks.withType(JacocoReport) {
         xml.enabled false
         csv.enabled false
         html.enabled = true
-        html.destination = file("$project.buildDir/reports/jacoco/jacoco-output.html")
+       	html.destination = file("$project.buildDir/reports/jacoco/jacoco-output.html")
     }
 }
 
@@ -146,7 +144,7 @@ test {
    reports {
        junitXml.enabled = false
        html.enabled = true
-       html.destination = file("$project.buildDir/reports/tests/JUnitReport")
+       html.destination = file("$project.buildDir/reports/JUnitReport")
    }               
 }
 

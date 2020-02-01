@@ -42,7 +42,7 @@ public class ServletListaUtenti extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		UtenteRegistratoDao daoU = new UtenteRegistratoDaoMysqlJdbc();
-		List<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+		//List<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
 		
 		String idNumPaginaString = request.getParameter("idNumPagina");
 		

@@ -42,9 +42,8 @@ public class RipubblicaInserzione {
     driver.findElement(By.xpath("//a[2]/strong")).click();
     driver.findElement(By.xpath("//img[@alt='Ripubblica']")).click();
     driver.findElement(By.name("data_scadenza")).click();
-    driver.findElement(By.name("data_scadenza")).click();
-    driver.findElement(By.id("tcalNextYear")).click();
-    driver.findElement(By.xpath("//td[@onclick='f_tcalUpdate(1610017200000)']")).click();
+    driver.findElement(By.name("data_scadenza")).clear();
+    driver.findElement(By.name("data_scadenza")).sendKeys("04/16/2021");
     driver.findElement(By.id("bottone")).click();
     driver.findElement(By.xpath("//a[6]/strong")).click();
   }

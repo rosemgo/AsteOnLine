@@ -63,12 +63,90 @@ public class InserzioneDaoMysqlJdbcTest {
 	@Test
 	public void testRicercaInserzioni() throws ClassNotFoundException, SQLException, IOException {
 		
-				//ricerca inserzione per parola chiave
+		
+		//****INIZIO TEST BLACK BOX SU RICERCA INSERZIONE
+		
+				//EXISTENCE1
+				//ricerca inserzione per parola chiave keyword=null idCategoria=0
+		
+				InserzioneDao inserzioneDao2 = new InserzioneDaoMysqlJdbc();
+				List<Inserzione> result22 = new ArrayList<Inserzione>();
+				String keyword=null;		
+				result22 = inserzioneDao2.ricercaInserzioni(keyword, 0);
+				System.out.println("result" + result22.size());
+					
+						
+				//EXISTENCE2_LENGHT2_CONTENT1_CHOICE_1
+				//ricerca inserzione per parola chiave keyword='calcio' idCategoria=7
 		
 				InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 				List<Inserzione> result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("calcio", 0);
+				assertEquals((Integer) 35,result.get(0).getIdInserzione());
+				
+				//EXISTENCE2_LENGHT2_CONTENT1_CHOICE_2
+				//ricerca inserzione per parola chiave keyword='calcio' idCategoria=7
+		
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
 				result = inserzioneDao.ricercaInserzioni("calcio", 7);
 				assertEquals((Integer) 35,result.get(0).getIdInserzione());
+				
+				
+				//EXISTENCE2_LENGHT2_CONTENT2_CHOICE_1
+				//ricerca inserzione per parola chiave keyword='abcdfg' idCategoria=0
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("abcdfg", 0);
+			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
+				
+				//EXISTENCE2_LENGHT2_CONTENT2_CHOICE_2
+				//ricerca inserzione per parola chiave keyword='abcdfg' idCategoria=7
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("abcdfg", 7);
+			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
+				
+				//LENGHT1_CHOICE1
+				//ricerca inserzione per parola chiave keyword='' idCategoria='0'
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("", 0);
+				//assertEquals(null ,result.get(0).getIdInserzione());
+				
+				//LENGHT1_CHOICE2
+				//ricerca inserzione per parola chiave keyword='' idCategoria='7'
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("", 7);
+				//assertEquals(null ,result.get(0).getIdInserzione());
+				
+				
+				//LENGHT3_CHOICE0
+				//ricerca inserzione per parola chiave keyword='abcdfggrtedkgtrdgchjk'
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("abcdfggrtedkgtrdgchjk", 0);
+			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
+				
+				//LENGHT3_CHOICE1
+				//ricerca inserzione per parola chiave keyword='abcdfggrtedkgtrdgchjk'
+				
+				inserzioneDao = new InserzioneDaoMysqlJdbc();
+				result = new ArrayList<Inserzione>();
+				result = inserzioneDao.ricercaInserzioni("abcdfggrtedkgtrdgchjk", 7);
+			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
+							
+				
+				
+		//****FINE TEST BLACK BOX SU RICERCA INSERZIONE
+				
+				
 				
 				//ricerca avanzata inserzioni più osservate
 				

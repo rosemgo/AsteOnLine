@@ -3,12 +3,15 @@ package it.unisannio.sweng.rosariogoglia.daoImpl;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
 import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.dao.KeywordDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProdottoDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
+import it.unisannio.sweng.rosariogoglia.model.Keyword;
 import it.unisannio.sweng.rosariogoglia.model.Prodotto;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
+import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
 import it.unisannio.sweng.rosariogoglia.utility.Utility;
 import it.unisannio.sweng.rosariogoglia.daoImpl.ProdottoDaoMysqlJdbc;
 import it.unisannio.sweng.rosariogoglia.daoImpl.UtenteRegistratoDaoMysqlJdbc;
@@ -1015,12 +1018,23 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	public List<Inserzione> ricercaInserzioni(String keyword, Integer idCategoria){
 		logger.debug("in ricercaInserzioni");
 		List<Inserzione> listaInserzioni = new ArrayList<Inserzione>();
-		
+		KeywordDao keyDao = new KeywordDaoMysqlJdbc();
+				
 		Connection connection = null;
 		PreparedStatement  pstmt = null;
 		ResultSet rs = null;
-	
+			
 		try {
+			
+			//Verifica la presenza della keyword cercata nel DB
+			if(!keyword.equals("")) {
+				if(keyDao.getKeywordByWord(keyword)==null) {
+					//keywordPresente=true;
+					logger.debug("Keyword non presente nel DB");
+					//listaInserzioni viene restituito vuota
+					return listaInserzioni;
+				}
+			}
 			
 			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
@@ -1040,7 +1054,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.debug(keyword);
 			
-			if(!keyword.equals("") && !keyword.equals(null))
+			if(!keyword.equals(""))
 				sql = sql + " AND keyword.keyword LIKE ? ";
 			
 			if(idCategoria != 0)
@@ -1049,13 +1063,14 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			sql = sql + " GROUP BY idinserzione ";
 			
 			pstmt = connection.prepareStatement(sql);
-						
-			if(!keyword.equals("") && !keyword.equals(null) && idCategoria != 0){
+	
+			
+			if(!keyword.equals("") && idCategoria != 0){  
 				System.out.println("ENTRO NEL PRIMO");
 				pstmt.setString(1, "%" + keyword + "%");
 				pstmt.setInt(2, idCategoria);
 			}
-			else if(!keyword.equals("") && !keyword.equals(null) ) {
+			else if(!keyword.equals("")) {
 				System.out.println("ENTRO IN SOLO KEYWORD PRESENTE");
 				pstmt.setString(1, "%" + keyword + "%");
 			}
@@ -1107,12 +1122,20 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			logger.debug("Keyword null");
+			System.out.println("Keyword null");
+			//listaInserzioni viene restituito vuota
+			return listaInserzioni;
 		}
 		finally{
 			try {
-				rs.close();
-				pstmt.close();
-				connection.close();
+				if(rs!=null)
+					rs.close();
+				if(pstmt!=null)
+					pstmt.close();
+				if(connection!=null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

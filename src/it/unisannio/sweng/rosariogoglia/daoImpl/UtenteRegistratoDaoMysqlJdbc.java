@@ -211,7 +211,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 	}
 */
 	
-	
+/*	
 	//eliminando un utente registrato bisogna eliminare tutte le inserzioni caricate da quell'utente???? FINIREEEEEE!!!
 	 
 	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
@@ -254,7 +254,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 		return updatedRows;
 	}
-
+*/
 /*
 	public Integer deleteUtenteRegistratoTest(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException {
 		logger.info("in deleteRegistrato");
@@ -365,6 +365,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 			pstmt.setTimestamp(12, Utility.convertitoreDataUtilToTimestamp(utenteRegistrato.getDataRegistrazione()));
 			pstmt.setBoolean(13, utenteRegistrato.isFlagAbilitato());
 			pstmt.setInt(14, utenteRegistrato.getIdComune());
+			pstmt.setInt(15, utenteRegistrato.getIdUtente());
 			logger.debug("Updated Query: " + pstmt.toString());
 			updatedRows = pstmt.executeUpdate();
 					
@@ -557,6 +558,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, tipologiaCliente);
+			pstmt.setString(2, nick);
 			
 			logger.debug("Updated Query: " + pstmt.toString());
 			updatedRows = pstmt.executeUpdate();

@@ -136,12 +136,12 @@ public interface InserzioneDao {
 	
 	
 	/**
-	 * Questo metodo visualizza la lista delle inserzioni contenenti la keyword passata come parametro.	
+	 * Ricerca la lista delle inserzioni relative ad un prodotto associato alla keyword passata come parametro, nell’ambito della categoria passata come parametro.	
 	 * 
 	 * @param keyword parola chiave per la ricerca delle inserzioni
 	 * @param idCategoria numero identificativo della categoria
 	 * 
-	 * @return Restituisce la lista delle inserzioni conteneti una determinata keyword
+	 * @return Restituisce la lista delle inserzioni associate ad una determinata keyword
 	 */
 	
 	public List<Inserzione> ricercaInserzioni (String keyword, Integer idCategoria);
@@ -247,7 +247,7 @@ public interface InserzioneDao {
 	 * 
 	 * @param titoloInserzione titolo dell'inserzione da cercare
 	 * 
-	 * @return Il numero delle inserzioni che hanno un determintao titolo
+	 * @return Il numero delle inserzioni che hanno un determinto titolo
 	 */
 	public Integer getNumeroInserzioniPerTitolo(String titoloInserzione);
 		

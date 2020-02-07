@@ -40,13 +40,46 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 		utente.setIdComune(5227);
 		utente.setFlagAbilitato(true);
 		
+		//inserimento utente registrto
 		idUtente = utenteDao.insertUtenteRegistrato(utente);
 		
+		//visualizza utente by id
 		UtenteRegistrato readingUtente = new UtenteRegistratoImpl();
 		readingUtente = utenteDao.getUtenteRegistratoById(idUtente);
-		
 		assertEquals(readingUtente.getIdUtente(), utente.getIdUtente());
 		
+		//aggiorna password
+		int result = utenteDao.updatePassword("Test Nick", "TestUpdatePass");
+		assertEquals(1, result);
+		
+		//aggiorna dati utente
+		result=-1;
+		readingUtente.setCognome("TestCognomeUpdate");
+		result=utenteDao.updateUtenteRegistrato(readingUtente);
+		assertEquals(1, result);
+		
+		//aggiorna dati utente
+		result=-1;
+		result=utenteDao.updateDatiPersonali("Test Nick", "TestNomeUpdate", "TestCognomeUpdate", "GGLRSR88T07A783R", "TestUdpateIndirizzo", 5227, "82030", "3387654321", "2222222222222222", "testupdatemail@gmail.com");
+		assertEquals(1, result);
+		
+		//aggiorna stato utente
+		result=-1;
+		result=utenteDao.updateStatoUtente(readingUtente.getIdUtente(), false);
+		result=utenteDao.updateAbilitazioneUtente("Test Nick", true);
+		assertEquals(1, result);
+		
+		//aggiornamento tipologia utente
+		result=-1;
+		result=utenteDao.updateTipologiaUtente("Test Nick", "acquirente");
+		assertEquals(1, result);
+		
+		//get utente by id Test
+		UtenteRegistrato utenteTest = new UtenteRegistratoImpl();
+		UtenteRegistratoDaoMysqlJdbc utenteDaoTest = new UtenteRegistratoDaoMysqlJdbc();
+		utenteTest=utenteDaoTest.getUtenteRegistratoByIdTest(readingUtente.getIdUtente());
+		
+		//cancellazione utente registrato
 		Integer deleteRows = utenteDao.removeUtenteRegistratoTest(utente);
 		assertEquals(deleteRows, (Integer)1);
 		
@@ -199,6 +232,16 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 			result2 = utenteDao.getLimitMieAsteInCorsoByIdUtente(4, 0, 2);
 			assertEquals((Integer) 38, result2.get(0).getIdInserzione());
 
+			
+			//restituisce tutti i nickname presenti nel db
+			List<String> listaNickname = new ArrayList<String>();
+			listaNickname = utenteDao.getNick();
+			
+			
+			
+			
+			
+			
 }
 	
 	@Test
@@ -248,7 +291,10 @@ public class UtenteRegistratoDaoMysqlJdbcTest {
 				result = utenteDao.isUtenteRegistrato("BLFMRC88T28A783F","venditore");
 				assertEquals(result , true);
 				
-
+				//check utente registrato con id 6 osserva l'inserzione 28
+				result=false;
+				result = utenteDao.checkInserzioneOsservataByIdUtente(6, 28);
+				assertEquals(result , true);
 	
 	
 }

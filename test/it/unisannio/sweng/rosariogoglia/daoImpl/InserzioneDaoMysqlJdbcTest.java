@@ -11,10 +11,13 @@ import java.util.List;
 import org.junit.Test;
 
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
+import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
+import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 
 public class InserzioneDaoMysqlJdbcTest {
 	
@@ -89,7 +92,7 @@ public class InserzioneDaoMysqlJdbcTest {
 		
 				inserzioneDao = new InserzioneDaoMysqlJdbc();
 				result = new ArrayList<Inserzione>();
-				result = inserzioneDao.ricercaInserzioni("linux", 7); //per ottenere il branch giallo per il blackbox, inserire calcio
+				result = inserzioneDao.ricercaInserzioni("felpa", 7); //per ottenere il branch giallo per il blackbox, inserire calcio oppure felpa
 			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
 				
 				
@@ -223,7 +226,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result2 = -1;
 				result2 = inserzioneDao.getNumeroAsteInChiusura();
-				assertEquals((Integer) 10,result2);
+				assertEquals((Integer) 11,result2);
 
 				//numero inserzioni cercate
 				
@@ -237,7 +240,11 @@ public class InserzioneDaoMysqlJdbcTest {
 				result2 = inserzioneDao.getNumeroInserzioniPerTitolo("iphone x nuovo");
 				assertEquals(result2 , (Integer) 1);
 				
-
+				//numero inserzioni
+				result2=-1;
+				result2=inserzioneDao.getNumeroInserzioniPerTitolo("Asus vivobook pro");
+				
+				
 	}
 	
 	@Test
@@ -298,6 +305,41 @@ public class InserzioneDaoMysqlJdbcTest {
 
 		
 	}
+	
+	@Test
+	public void testInserzioni() throws ClassNotFoundException, SQLException, IOException {
+		
+		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
+		
+		//restituisce tutte le inserzioni presenti nel DB
+		List<Inserzione> listaInserzioni=new ArrayList<Inserzione>();
+		listaInserzioni=inserzioneDao.getInserzioni();
+		
+		//restituisce tutti gli utenti che osservano l'inserzione con id=37
+		List<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+		listaUtenti=inserzioneDao.getUtentiRegistratiOsservanoByIdInserzione(37);
+		
+		//restituisce tutti i titoli delle inserzioni presenti nel db
+		List<String> listaTitoli = new ArrayList<String>();
+		listaTitoli=inserzioneDao.getTitoli();
+		
+		UtenteRegistratoDao utenteDao = new UtenteRegistratoDaoMysqlJdbc();	
+		
+		//inserisci inserzione con id 44 tra le osservate dall'utente 2
+		UtenteRegistrato utente = new UtenteRegistratoImpl();
+		Inserzione inserzione = new InserzioneImpl();
+		
+		utente=utenteDao.getUtenteRegistratoById(2);
+		inserzione=inserzioneDao.getInserzioneById(44);
+		
+		utenteDao.insertOsservaInserzione(utente, inserzione);
+		
+		//rimuovi inserzione con id 44 dalle inserzioni osservate dall'utente 2
+		inserzioneDao.deleteInserzioneOsservata(44, 2);
+		
+		
+	}
+	
 	
 
 }

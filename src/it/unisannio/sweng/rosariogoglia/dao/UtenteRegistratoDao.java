@@ -60,19 +60,19 @@ public interface UtenteRegistratoDao {
 	public Integer insertOsservaInserzione(UtenteRegistrato utente, Inserzione inserzione);
 
 
-	/**
-	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
-	 * non risulta più abilitato alle funzioni di un utente registrato
-	 * 
-	 * @param utente da disabilitare nel database
-	 * 
-	 * @return Numero di righe aggiornate
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws IOException
-	 */
-	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
+//	/**
+//	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 
+//	 * non risulta più abilitato alle funzioni di un utente registrato
+//	 * 
+//	 * @param utente da disabilitare nel database
+//	 * 
+//	 * @return Numero di righe aggiornate
+//	 * 
+//	 * @throws ClassNotFoundException
+//	 * @throws SQLException
+//	 * @throws IOException
+//	 */
+//	public Integer deleteUtenteRegistrato(UtenteRegistrato utente) throws ClassNotFoundException, SQLException, IOException;
 			
 //	/**
 //	 * In realtà questo metodo non elimina l'utente, bensì ne setta solo il flag abilitato a 0, in modo tale che l'utente 

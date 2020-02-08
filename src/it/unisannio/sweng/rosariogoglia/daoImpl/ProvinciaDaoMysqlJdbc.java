@@ -14,6 +14,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import it.unisannio.sweng.rosariogoglia.dao.ComuneDao;
 import it.unisannio.sweng.rosariogoglia.dao.ProvinciaDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProvinciaImpl;
@@ -33,8 +34,9 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-			
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+						
 			Provincia provincia = null;
 			String sql = "SELECT * FROM provincia " +
 					     "ORDER BY nome_provincia ";
@@ -58,6 +60,12 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 			}
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			
@@ -87,8 +95,9 @@ public class ProvinciaDaoMysqlJdbc implements ProvinciaDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-		
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM provincia " +
 					"WHERE idprovincia = ? ";
 				

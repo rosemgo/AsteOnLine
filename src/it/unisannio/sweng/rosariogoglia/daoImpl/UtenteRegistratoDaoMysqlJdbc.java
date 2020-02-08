@@ -2749,6 +2749,7 @@ public class UtenteRegistratoDaoMysqlJdbc implements UtenteRegistratoDao{
 		return result;
 	}
 
+
 	
 
 }

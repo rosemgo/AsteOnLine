@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import it.unisannio.sweng.rosariogoglia.dao.ComuneDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.Comune;
 import it.unisannio.sweng.rosariogoglia.model.Provincia;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ComuneImpl;
@@ -29,12 +30,13 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM comune, provincia " +
 					"WHERE comune.provincia_idprovincia = provincia.idprovincia " +
-					"AND" +
-					"comune.idcomune = ? ";
+					"AND " +
+					"comune.idcomune = ?";
 			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, idComune);
@@ -76,8 +78,9 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		List<Comune> listaComuni = new ArrayList<Comune>();
 
 		try {
-				connection = ConnectionPoolTomcat.getConnection();
-			
+				//connection = ConnectionPoolTomcat.getConnection();
+				connection = DatabaseUtil.getConnection();
+				
 				Comune comune = null;
 				
 				String sql = "SELECT * FROM comune, provincia " +
@@ -107,6 +110,12 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 				
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		finally{
@@ -134,8 +143,10 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 		ResultSet rs = null;
 		
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
-						
+			//connection = ConnectionPoolTomcat.getConnection();
+				
+			connection = DatabaseUtil.getConnection();
+			
 			String sql = "SELECT * FROM comune, provincia " +
 					"WHERE comune.provincia_idprovincia = provincia.idprovincia " +
 					"AND comune.provincia_idprovincia = ? " +
@@ -166,6 +177,12 @@ public class ComuneDaoMysqlJdbc implements ComuneDao{
 					
 				
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{

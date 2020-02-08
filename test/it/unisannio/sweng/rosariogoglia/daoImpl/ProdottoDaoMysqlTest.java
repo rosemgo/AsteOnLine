@@ -12,6 +12,7 @@ import it.unisannio.sweng.rosariogoglia.modelImpl.CategoriaImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.KeywordImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProdottoImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ProduttoreImpl;
+import net.sourceforge.htmlunit.corejs.javascript.ast.KeywordLiteral;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -70,6 +71,14 @@ public class ProdottoDaoMysqlTest {
 		
 		Integer autoincrementKey =  prodottoDao.insertProdotto(prodotto);
 		
+		//controllo le parole non associate al prodotto
+		keywordList.removeAll(keywordList);
+		keywordList = prodottoDao.getKeywordMancantiByIdProdotto(prodotto.getIdProdotto());
+		assertEquals(keywordList.get(0).getKeyword(), "4k");
+		
+		//associo keywords a prodotto
+		prodottoDao.insertProdottoHasKeyword(prodotto.getIdProdotto(), keyword.getIdKeyword());
+		
 		System.out.println("AUTO INC: " + autoincrementKey);
 		prodotto.setIdProdotto(autoincrementKey);
 		
@@ -84,6 +93,24 @@ public class ProdottoDaoMysqlTest {
 		assertEquals(readingProdotto.getNome(), prodotto.getNome());
 		assertEquals(readingProdotto.getIdProdotto(), prodotto.getIdProdotto());
 		
+		//aggiorno il prodotto modificando il nome della categoria e la keywordList
+		categoria.setNome("abcdef");
+		prodotto.setCategoria(categoria);
+		keywordList.removeAll(keywordList);
+		keyword.setKeyword("abcd");
+		keywordList.add(keyword);
+		prodotto.setKeywordsList(keywordList);
+		
+		Integer updateRows = prodottoDao.updateProdotto(prodotto);
+		assertEquals(updateRows, (Integer)1);
+		
+		//disassocio parola chiave e prodotto
+		prodottoDao.deleteProdottoHasKeyword(prodotto.getIdProdotto(), keyword.getIdKeyword());
+		
+		//aggiorno il nome del prodotto
+		updateRows = -1;
+		prodotto.setNome("Apple");
+		updateRows = prodottoDao.updateNomeProdotto(prodotto);
 		
 		Integer deletedRows = prodottoDao.deleteProdotto(readingProdotto);
 		assertEquals(deletedRows, (Integer)1); //delete rows è 1 se è stata cancellata una riga
@@ -140,6 +167,13 @@ public class ProdottoDaoMysqlTest {
 				Prodotto result2 = new ProdottoImpl();
 				result2 = prodottoDao.getProdottoByName("iPhone X");
 				assertEquals(result2.getIdProdotto(), 4);
+				
+				//get prodotti
+				result.removeAll(result);
+				result = prodottoDao.getProdotti();
+				assertEquals(result.get(0).getIdProdotto(),11);
+				
+				
 				
 		
 	}

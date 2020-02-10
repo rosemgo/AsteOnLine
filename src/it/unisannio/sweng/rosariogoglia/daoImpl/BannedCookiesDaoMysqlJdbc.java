@@ -1,5 +1,6 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 
 import it.unisannio.sweng.rosariogoglia.dao.BannedCookiesDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.BannedCookies;
 
 import org.apache.log4j.Logger;
@@ -28,7 +30,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		PreparedStatement pstmt = null;		
 		try{
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 							
 			String sql = "INSERT INTO banned_cookies (idutentebannato, cookie) VALUES (?, ?)";
@@ -87,7 +90,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 			
 		try{
 			
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 							
 			String sql = "DELETE FROM banned_cookies WHERE idutentebannato = ?";
@@ -134,7 +138,8 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM banned_cookies " +
 					"WHERE idutentebannato = ? ";
@@ -146,7 +151,7 @@ public class BannedCookiesDaoMysqlJdbc implements BannedCookiesDao{
 				result = true;
 			}
 			
-		} catch (SQLException  e) {
+		} catch (SQLException | ClassNotFoundException | IOException  e) {
 			
 			e.printStackTrace();
 		}

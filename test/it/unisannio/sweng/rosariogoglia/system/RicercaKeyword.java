@@ -1,4 +1,5 @@
-package it.unisannio.sweng.rosariogoglia.integration;
+package it.unisannio.sweng.rosariogoglia.system;
+	
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -9,10 +10,12 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class VisualizzaInserzioniAdmin {
+public class RicercaKeyword{
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,35 +23,40 @@ public class VisualizzaInserzioniAdmin {
 
   @Before
   public void setUp() throws Exception {
+	//String driverPath = "C:/Users/Rosario/Desktop/geckodriver-v0.21.0-win64/";  
+	//System.setProperty("webdriver.gecko.driver", driverPath+"geckodriver.exe");
+	
+	//driver per google chrome
+//	System.setProperty("webdriver.chrome.driver","C:/Users/Rosario/Desktop/driverchrome/chromedriver.exe");
+	//driver per mozilla firefox 
 	System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
-		
+	
+	
 	driver = new FirefoxDriver();
+	  
+//	driver = new ChromeDriver();
 	baseUrl = "http://localhost:30000/AsteOnLine/index";
-	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+  
   }
 
   @Test
-  public void testVisualizzaInserzioniAdmin() throws Exception {
+  public void testPrimo() throws Exception {
+	//driver.get("http://www.google.com");
+	
     driver.get("http://localhost:30000/AsteOnLine/index");
-    driver.findElement(By.name("nick")).click();
-    driver.findElement(By.name("nick")).clear();
-    driver.findElement(By.name("nick")).sendKeys("ros7");
-    driver.findElement(By.name("password")).click();
-    driver.findElement(By.name("password")).clear();
-    driver.findElement(By.name("password")).sendKeys("rosario");
-    driver.findElement(By.id("bottone-Accedi")).click();
-    driver.findElement(By.xpath("//a[6]/strong")).click();
-    driver.findElement(By.linkText("2")).click();
-    driver.findElement(By.linkText("3")).click();
-    driver.findElement(By.xpath("//p[5]")).click();
-    driver.findElement(By.linkText("1")).click();
-    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
-    driver.findElement(By.xpath("//a[7]/strong")).click();
+    driver.findElement(By.xpath("//a[@id='logo']")).click();
+    driver.findElement(By.id("autoKeyword")).click();
+    driver.findElement(By.id("autoKeyword")).clear();
+    driver.findElement(By.id("autoKeyword")).sendKeys("Cellulare");
+    driver.findElement(By.id("bottone-Cerca")).click();
+  
   }
 
   @After
   public void tearDown() throws Exception {
-    driver.quit();
+    Thread.sleep(10000); //inserisco la pausa in modo tale da non chiudere subito la finestra di test
+	driver.quit();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
@@ -88,3 +96,9 @@ public class VisualizzaInserzioniAdmin {
     }
   }
 }
+
+
+	
+	
+
+

@@ -176,7 +176,7 @@ public class InserzioneDaoMysqlJdbcTest {
 		
 				inserzioneDao = new InserzioneDaoMysqlJdbc();
 				result = new ArrayList<Inserzione>();
-				result = inserzioneDao.ricercaInserzioni("felpa", 7); //per ottenere il branch giallo per il blackbox, inserire calcio oppure felpa
+				result = inserzioneDao.ricercaInserzioni("felpa", 7); //per ottenere il branch giallo per il blackbox, inserire calcio oppure felpa, per ottenere il 100% dei branch usare linux
 			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
 				
 				

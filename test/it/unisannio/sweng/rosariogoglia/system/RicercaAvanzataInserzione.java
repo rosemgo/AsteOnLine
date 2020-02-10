@@ -1,4 +1,4 @@
-package it.unisannio.sweng.rosariogoglia.integration;
+package it.unisannio.sweng.rosariogoglia.system;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +12,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class RicercaAvanzataProdotto {
+public class RicercaAvanzataInserzione {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,36 +20,32 @@ public class RicercaAvanzataProdotto {
 
   @Before
   public void setUp() throws Exception {
-	  System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
+	 System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
 		
-		driver = new FirefoxDriver();
-	    baseUrl = "http://localhost:30000/AsteOnLine/index";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
+	 driver = new FirefoxDriver();
+	 baseUrl = "http://localhost:30000/AsteOnLine/index";
+	 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+ }
 
   @Test
-  public void testRicercaAvanzataProdotto() throws Exception {
-    driver.get("http://localhost:30000/AsteOnLine/index");
+  public void testRicercaAvanzataInserzione() throws Exception {
+    driver.get("http://localhost:30000/AsteOnLine/ricercaAvanzata.jsp");
     driver.findElement(By.xpath("//a[@id='logo']")).click();
     driver.findElement(By.linkText("Ricerca avanzata")).click();
-    driver.findElement(By.id("categoria")).click();
-    new Select(driver.findElement(By.id("categoria"))).selectByVisibleText("Cellulari");
-    driver.findElement(By.xpath("//option[@value='3']")).click();
-    driver.findElement(By.id("produttore")).click();
-    new Select(driver.findElement(By.id("produttore"))).selectByVisibleText("Apple");
-    driver.findElement(By.xpath("(//option[@value='5'])[2]")).click();
-    driver.findElement(By.id("produttore")).click();
-    new Select(driver.findElement(By.id("produttore"))).selectByVisibleText("Samsung");
-    driver.findElement(By.xpath("//option[@value='1']")).click();
-    driver.findElement(By.id("prodotto")).click();
-    new Select(driver.findElement(By.id("prodotto"))).selectByVisibleText("Samsung Galaxy A8 2018");
-    driver.findElement(By.xpath("(//option[@value='5'])[3]")).click();
-    driver.findElement(By.id("prodotto")).click();
-    new Select(driver.findElement(By.id("prodotto"))).selectByVisibleText("Samsung Galaxy NOTE 8");
+    driver.findElement(By.xpath("//form[@action='ServletRicercaAvanzataInserzione']")).click();
+    driver.findElement(By.xpath("(//select[@name='categoria'])[2]")).click();
+    new Select(driver.findElement(By.xpath("(//select[@name='categoria'])[2]"))).selectByVisibleText("Cellulari");
     driver.findElement(By.xpath("(//option[@value='3'])[2]")).click();
-    driver.findElement(By.id("bottone-Cerca")).click();
-  //driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
-  
+    driver.findElement(By.id("campoTesto3")).click();
+    driver.findElement(By.id("campoTesto3")).clear();
+    driver.findElement(By.id("campoTesto3")).sendKeys("10");
+    driver.findElement(By.name("prezzoMax")).click();
+    driver.findElement(By.name("prezzoMax")).clear();
+    driver.findElement(By.name("prezzoMax")).sendKeys("1000");
+    driver.findElement(By.xpath("//p[14]")).click();
+    driver.findElement(By.xpath("(//input[@id='bottone-Cerca'])[3]")).click();
+    driver.findElement(By.linkText("1")).click();
+    Thread.sleep(2000);
   }
 
   @After
@@ -94,3 +90,4 @@ public class RicercaAvanzataProdotto {
     }
   }
 }
+

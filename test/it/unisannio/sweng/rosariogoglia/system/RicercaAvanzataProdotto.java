@@ -1,4 +1,4 @@
-package it.unisannio.sweng.rosariogoglia.integration;
+package it.unisannio.sweng.rosariogoglia.system;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +12,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class RicercaInserzioneKeyword {
+public class RicercaAvanzataProdotto {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -22,41 +22,36 @@ public class RicercaInserzioneKeyword {
   public void setUp() throws Exception {
 	  System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
 		
-	  driver = new FirefoxDriver();
-	  baseUrl = "http://localhost:30000/AsteOnLine/index";
-	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
+		driver = new FirefoxDriver();
+	    baseUrl = "http://localhost:30000/AsteOnLine/index";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
-/*  @Test
-  public void testRicercaInserzioneKeyword() throws Exception {
+  @Test
+  public void testRicercaAvanzataProdotto() throws Exception {
     driver.get("http://localhost:30000/AsteOnLine/index");
     driver.findElement(By.xpath("//a[@id='logo']")).click();
-    driver.findElement(By.id("autoKeyword")).click();
-    driver.findElement(By.id("autoKeyword")).clear();
-    driver.findElement(By.id("autoKeyword")).sendKeys("Calcio");
-    driver.findElement(By.id("Calcio")).click();
+    driver.findElement(By.linkText("Ricerca avanzata")).click();
+    driver.findElement(By.id("categoria")).click();
+    new Select(driver.findElement(By.id("categoria"))).selectByVisibleText("Cellulari");
+    driver.findElement(By.xpath("//option[@value='3']")).click();
+    driver.findElement(By.id("produttore")).click();
+    new Select(driver.findElement(By.id("produttore"))).selectByVisibleText("Apple");
+    driver.findElement(By.xpath("(//option[@value='5'])[2]")).click();
+    driver.findElement(By.id("produttore")).click();
+    new Select(driver.findElement(By.id("produttore"))).selectByVisibleText("Samsung");
+    driver.findElement(By.xpath("//option[@value='1']")).click();
+    driver.findElement(By.id("prodotto")).click();
+    new Select(driver.findElement(By.id("prodotto"))).selectByVisibleText("Samsung Galaxy A8 2018");
+    driver.findElement(By.xpath("(//option[@value='5'])[3]")).click();
+    driver.findElement(By.id("prodotto")).click();
+    new Select(driver.findElement(By.id("prodotto"))).selectByVisibleText("Samsung Galaxy NOTE 8");
+    driver.findElement(By.xpath("(//option[@value='3'])[2]")).click();
     driver.findElement(By.id("bottone-Cerca")).click();
-    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
-    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-  }
-*/
-  @Test
-  public void testRicercaInserzioneKeyword() throws Exception {
-	    driver.get("http://localhost:30000/AsteOnLine/index");
-	    driver.findElement(By.xpath("//a[@id='logo']")).click();
-	    driver.findElement(By.id("autoKeyword")).click();
-	    driver.findElement(By.id("autoKeyword")).clear();
-	    driver.findElement(By.id("autoKeyword")).sendKeys("Calcio");
-	    driver.findElement(By.id("bottone-Cerca")).click();
-	    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sei un nuovo utente?'])[1]/preceding::a[1]")).click();
+  //driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+  
   }
 
-  
   @After
   public void tearDown() throws Exception {
     driver.quit();

@@ -96,8 +96,10 @@ public ServletMail(){ super(); }
 	
 	  //genero una nuova password di ingresso per inviarla all'utente
 	  String passwordNuova = GenerarePasswordRandom.generate();
-	
+	  System.out.println("Password nuova: " + passwordNuova);
+	  
 	  RandomPasswordDao rpDao = new RandomPasswordDaoMysqlJdbc();
+	  
 	  //controllo se la password generata è già esistente, in caso affermativo ne viene generata un'altra
 	  while(rpDao.checkHashPassword(passwordNuova)){
 		  passwordNuova = GenerarePasswordRandom.generate();
@@ -131,7 +133,7 @@ public ServletMail(){ super(); }
     		"Nickname: " + utente.getNick() + '\n' + 
     		"Password: " + passwordNuova + '\n' + '\n' + '\n'+
     		"Accedi direttamente al sito dal link sottostante e... Buon AsteOnline!!!" + '\n' + '\n' + '\n' +
-    		"                    http://localhost:8080/AsteOnLine/index");
+    		"                    http://rosariogoglia.myqnapcloud.com:30000/AsteOnLine/index");
     
     
     response.setContentType("text/html");

@@ -34,6 +34,7 @@ public class KeywordDaoMysqlJdbcTest {
 		
 		Integer deletedRows = dao.deleteKeyword(readingKeyword.getIdKeyword());
 		assertEquals(deletedRows, (Integer)1);
+		
 		//Inserisco una lista d parole chiave
 		List<Keyword> keywordList = new ArrayList<Keyword>();
 		Keyword keyword1 = new KeywordImpl("keyTest1");
@@ -42,7 +43,8 @@ public class KeywordDaoMysqlJdbcTest {
 		keywordList.add(keyword2);
 		KeywordDao keyDao = new KeywordDaoMysqlJdbc();
 		Integer rowid = keyDao.insertListaKeyword(keywordList);
-		assertEquals(rowid, (Integer)36);
+		assertEquals(rowid, (Integer)40);
+		
 		//aggiorno una parola chiave
 		keyword1.setKeyword("UpdateKey");
 		Integer updateRows = keyDao.updateKeyword(keyword1);

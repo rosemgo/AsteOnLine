@@ -1,4 +1,4 @@
-package it.unisannio.sweng.rosariogoglia.integration;
+package it.unisannio.sweng.rosariogoglia.system;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +12,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class RimuoviInserzioneAdmin {
+public class RicercaInserzioneKeyword {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -21,28 +21,42 @@ public class RimuoviInserzioneAdmin {
   @Before
   public void setUp() throws Exception {
 	  System.setProperty("webdriver.gecko.driver", "../AsteOnLine/geckodriver-v0.21.0-win64/geckodriver.exe");
-	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost:30000/AsteOnLine/index";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+	  driver = new FirefoxDriver();
+	  baseUrl = "http://localhost:30000/AsteOnLine/index";
+	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
   }
 
-  @Test
-  public void testCancellazioneInserzioneAdmin() throws Exception {
+/*  @Test
+  public void testRicercaInserzioneKeyword() throws Exception {
     driver.get("http://localhost:30000/AsteOnLine/index");
     driver.findElement(By.xpath("//a[@id='logo']")).click();
-    driver.findElement(By.name("nick")).click();
-    driver.findElement(By.name("nick")).clear();
-    driver.findElement(By.name("nick")).sendKeys("ros7");
-    driver.findElement(By.name("password")).click();
-    driver.findElement(By.name("password")).clear();
-    driver.findElement(By.name("password")).sendKeys("rosario");
-    driver.findElement(By.id("bottone-Accedi")).click();
-    driver.findElement(By.xpath("//a[6]/strong")).click();
-    driver.findElement(By.linkText("3")).click();
-    driver.findElement(By.xpath("(//img[@alt='Elimina'])[2]")).click();
-    driver.findElement(By.xpath("//a[7]/strong")).click();
+    driver.findElement(By.id("autoKeyword")).click();
+    driver.findElement(By.id("autoKeyword")).clear();
+    driver.findElement(By.id("autoKeyword")).sendKeys("Calcio");
+    driver.findElement(By.id("Calcio")).click();
+    driver.findElement(By.id("bottone-Cerca")).click();
+    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+  }
+*/
+  @Test
+  public void testRicercaInserzioneKeyword() throws Exception {
+	    driver.get("http://localhost:30000/AsteOnLine/index");
+	    driver.findElement(By.xpath("//a[@id='logo']")).click();
+	    driver.findElement(By.id("autoKeyword")).click();
+	    driver.findElement(By.id("autoKeyword")).clear();
+	    driver.findElement(By.id("autoKeyword")).sendKeys("Calcio");
+	    driver.findElement(By.id("bottone-Cerca")).click();
+	    driver.findElement(By.xpath("//img[@alt='Dettagli']")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sei un nuovo utente?'])[1]/preceding::a[1]")).click();
   }
 
+  
   @After
   public void tearDown() throws Exception {
     driver.quit();

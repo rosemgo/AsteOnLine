@@ -286,25 +286,7 @@ public interface InserzioneDao {
 	 */
 	public Integer insertInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
 	
-//	/**
-//	 * Inserisce l'oggetto inserzione passato come parametro nel database.
-//	 * 
-//	 * Usato per test con connessione DatabaseUtil
-//	 * 	
-//	 * @param inserzione oggetto inserzione da inserire nel database
-//	 * 
-//	 * @return L'id associato all'inserzione nel database
-//	 * 
-//	 * @throws ClassNotFoundException
-//	 * @throws SQLException
-//	 * @throws IOException
-//	 */
-//	public Integer insertInserzioneTest(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException;
-	
-	
-	
-	
-	
+
 	/**
 	 * Il metodo aggiorna un'inserzione caricata precedentemente
 	 * 

@@ -1035,10 +1035,8 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					return listaInserzioni;
 				}
 			}
-			
 			//connection = ConnectionPoolTomcat.getConnection();
 			connection = DatabaseUtil.getConnection();
-			
 			String sql = "SELECT DISTINCT * FROM inserzione, categoria, prodotto, keyword, prodotto_has_keyword " +
 					"WHERE " +
 					"inserzione.prodotto_idprodotto = prodotto.idprodotto " +
@@ -1050,21 +1048,18 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					"prodotto_has_keyword.keyword_idkeyword = keyword.idkeyword " +
 					"AND " +
 					"inserzione.stato = 'in asta' ";
-					
-			
+		
 			logger.debug(keyword);
 			
 			if(!keyword.equals(""))
 				sql = sql + " AND keyword.keyword LIKE ? ";
-			
 			if(idCategoria != 0)
 				sql = sql + " AND categoria.idcategoria = ? ";
 			
 			sql = sql + " GROUP BY idinserzione ";
 			
 			pstmt = connection.prepareStatement(sql);
-	
-			
+				
 			if(!keyword.equals("") && idCategoria != 0){  
 				System.out.println("ENTRO NEL PRIMO");
 				pstmt.setString(1, "%" + keyword + "%");
@@ -1078,22 +1073,19 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 				System.out.println("ENTRO IN SOLO CATEGORIA PRESENTE");
 				pstmt.setInt(1, idCategoria);
 			}
-			
-			
-			logger.debug("Select Query:" + pstmt.toString());
+            logger.debug("Select Query:" + pstmt.toString());
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) { 
-						
+				
 				listaInserzioni = new ArrayList<Inserzione>();
-	
 				Inserzione inserzione;
 				Prodotto prodotto;
+				
 				do{
 					
 					inserzione = new InserzioneImpl();
 					prodotto = new ProdottoImpl();
-					
 					
 					inserzione.setIdInserzione(rs.getInt("inserzione.idinserzione"));
 					inserzione.setTitolo(rs.getString("inserzione.titolo"));
@@ -1109,8 +1101,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 					ImmagineDao daoI = new ImmagineDaoMysqlJdbc();
 					List<Immagine> listaImmagini = daoI.getImmaginiByIdInserzione(rs.getInt("inserzione.idinserzione"));
 					inserzione.setImmagini(listaImmagini);
-										
-					
+									
 					listaInserzioni.add(inserzione);
 					
 				}while(rs.next());	
@@ -2269,8 +2260,9 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 	
 		return inserzioneIdKey;
 	}
+
 	
-		public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
+	public Integer updateInserzione(Inserzione inserzione) throws ClassNotFoundException, SQLException, IOException{
 		logger.debug("in updateInserzione");
 		logger.info("Aggiornamento Inserzione: (" + inserzione.getIdInserzione()+ ", " + inserzione.getTitolo() + ", " + inserzione.getDescrizione() +")");
 		Integer updatedRows = -1;
@@ -2494,13 +2486,7 @@ public class InserzioneDaoMysqlJdbc implements InserzioneDao {
 			
 			logger.info("Inserzione Aggiornata");
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
 		finally {

@@ -1,5 +1,6 @@
 package it.unisannio.sweng.rosariogoglia.daoImpl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.sql.Statement;
 
 import it.unisannio.sweng.rosariogoglia.dao.RandomPasswordDao;
 import it.unisannio.sweng.rosariogoglia.dbUtil.ConnectionPoolTomcat;
+import it.unisannio.sweng.rosariogoglia.dbUtil.DatabaseUtil;
 import it.unisannio.sweng.rosariogoglia.model.RandomPassword;
 
 import org.apache.log4j.Logger;
@@ -32,7 +34,8 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM random_password " + "WHERE hashpassword = ? ";
 			
@@ -45,7 +48,7 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 			}
 						
 			
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
 		finally{
@@ -71,7 +74,8 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			
 			String sql = "SELECT * FROM random_password " +
 					"WHERE hashpassword = ? " +
@@ -85,7 +89,7 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 				result = true;
 			}		
 			
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
 		finally{
@@ -109,7 +113,8 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 		PreparedStatement pstmt = null;
 				
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "INSERT INTO random_password(hashpassword, idutente) VALUES(?, ?) ";
@@ -128,7 +133,7 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 						
 			connection.commit();
 			
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 			try {
 				connection.rollback();
@@ -159,7 +164,8 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 		PreparedStatement pstmt = null;
 				
 		try {
-			connection = ConnectionPoolTomcat.getConnection();
+			//connection = ConnectionPoolTomcat.getConnection();
+			connection = DatabaseUtil.getConnection();
 			connection.setAutoCommit(false);
 			
 			String sql = "DELETE FROM random_password WHERE hashpassword = ? ";
@@ -170,7 +176,7 @@ public class RandomPasswordDaoMysqlJdbc implements RandomPasswordDao{
 									
 			connection.commit();
 			
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 			try {
 				connection.rollback();

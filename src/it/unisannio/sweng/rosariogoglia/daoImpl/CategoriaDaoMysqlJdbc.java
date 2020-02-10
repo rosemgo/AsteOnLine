@@ -154,61 +154,6 @@ public class CategoriaDaoMysqlJdbc implements CategoriaDao{
 	}
 	
 	
-	public Categoria getCategoriaByIdTest(Integer idCategoria){
-		logger.debug("in getCategoriaByIdTest");
-		Categoria categoria = null;
-		
-		Connection connection = null;
-		PreparedStatement  pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			
-			//connection = DatabaseUtil.getConnection();
-			connection = DatabaseUtil.getConnection();
-			
-			String sql = "SELECT * FROM categoria WHERE (idcategoria = ?) ";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, idCategoria);
-			logger.debug("Select Query:" + pstmt.toString());
-			rs = pstmt.executeQuery();
-			if (rs.next()){
-				categoria = new CategoriaImpl();
-				categoria.setIdCategoria(rs.getInt("idcategoria"));
-				categoria.setNome(rs.getString("nome"));
-			
-				logger.debug("categoria: " + categoria.toString());
-			}
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally{
-			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(connection != null)
-					connection.close();
-			
-			}catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		return categoria;
-	}
-	
 	
 	public Categoria getCategoriaByNome(String nomeCategoria){
 		logger.debug("in getCategoriaByNome");

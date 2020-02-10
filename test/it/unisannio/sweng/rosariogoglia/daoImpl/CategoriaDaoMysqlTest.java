@@ -22,6 +22,7 @@ public class CategoriaDaoMysqlTest {
 		CategoriaDao categoriaDao = new CategoriaDaoMysqlJdbc();
 		Categoria categoria = new CategoriaImpl();
 		Integer idCategoria = -1;
+		Integer updateRows = -1;
 		
 		categoria.setNome("Test Categoria nuova");
 		idCategoria = categoriaDao.insertCategoria(categoria);
@@ -36,7 +37,13 @@ public class CategoriaDaoMysqlTest {
 		
 		assertEquals(readingCategoria.getIdCategoria(), categoria.getIdCategoria()); //verifico che la categoria letta con il metodo getCategoriaById è realmente quella inserita nel database
 		
+		//aggiorno il nome della categoria
+		categoria.setNome("update Categoria");
+		updateRows = categoriaDao.updateCategoria(categoria);
+		assertEquals((Integer)1, updateRows);
+		 
 		
+		//Leggo tutte le categorie presenti nel DB
 		List<Categoria> listaCategoria = categoriaDao.getCategorie();
 		
 		for(int i=0;i<listaCategoria.size();i++) {
@@ -78,10 +85,15 @@ public class CategoriaDaoMysqlTest {
 		
 		CategoriaDao categoriaDao = new CategoriaDaoMysqlJdbc(); 
 		Integer result;
+		boolean result2 = false;
 		
 		//associa un produttore ad una categoria
 		result = categoriaDao.insertCategoriaHasProduttore(3 , 9);
 		assertEquals(result, (Integer) 1) ;
+		
+		//controllo che il produttore è associato correttamente alla categoria
+		result2 = categoriaDao.checkAssociazioneCategoriaProduttore(3, 9);
+		assertEquals(true, result2);
 		
 		//disassocia un produttore ad una categoria
 		categoriaDao.deleteCategoriaHasProduttore(3 , 9);

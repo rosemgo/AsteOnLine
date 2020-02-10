@@ -77,7 +77,7 @@ CREATE TABLE `categoria` (
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`idcategoria`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `immagine` (
   PRIMARY KEY (`idimmagine`),
   KEY `fk_immagini_inserzione` (`inserzione_idinserzione`),
   CONSTRAINT `fk_immagini_inserzione` FOREIGN KEY (`inserzione_idinserzione`) REFERENCES `inserzione` (`idinserzione`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,7 @@ CREATE TABLE `inserzione` (
   CONSTRAINT `fk_inserzione_acquirente` FOREIGN KEY (`acquirente_utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_prodotto` FOREIGN KEY (`prodotto_idprodotto`) REFERENCES `prodotto` (`idprodotto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_venditore` FOREIGN KEY (`venditore_utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `keyword` (
   `keyword` varchar(45) NOT NULL,
   PRIMARY KEY (`idkeyword`),
   UNIQUE KEY `keyword_UNIQUE` (`keyword`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +272,7 @@ CREATE TABLE `keyword` (
 
 LOCK TABLES `keyword` WRITE;
 /*!40000 ALTER TABLE `keyword` DISABLE KEYS */;
-INSERT INTO `keyword` VALUES (26,'4k'),(2,'Android'),(11,'Atom'),(6,'Bridge'),(25,'Calcio'),(14,'Cellulare'),(7,'Compact'),(23,'Convertibile'),(19,'Cuffie'),(18,'Felpa'),(16,'Ferro da stiro'),(21,'Frigorifero'),(12,'i7'),(3,'IoS'),(9,'Linux'),(1,'Mp3'),(22,'Pc'),(5,'Reflex'),(20,'Scopa elettrica'),(13,'Smartphone'),(15,'SmartTV'),(17,'T-Shirt'),(8,'Touch Screen'),(24,'Tuta'),(4,'Win Mobile'),(10,'Windows');
+INSERT INTO `keyword` VALUES (26,'4k'),(37,'abcd'),(2,'Android'),(11,'Atom'),(6,'Bridge'),(25,'Calcio'),(14,'Cellulare'),(7,'Compact'),(23,'Convertibile'),(19,'Cuffie'),(18,'Felpa'),(16,'Ferro da stiro'),(21,'Frigorifero'),(12,'i7'),(3,'IoS'),(9,'Linux'),(1,'Mp3'),(22,'Pc'),(5,'Reflex'),(20,'Scopa elettrica'),(13,'Smartphone'),(15,'SmartTV'),(17,'T-Shirt'),(8,'Touch Screen'),(24,'Tuta'),(4,'Win Mobile'),(10,'Windows');
 /*!40000 ALTER TABLE `keyword` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +323,7 @@ CREATE TABLE `offerta` (
   KEY `fk_asta_inserzione` (`inserzione_idinserzione`),
   CONSTRAINT `fk_asta_inserzione` FOREIGN KEY (`inserzione_idinserzione`) REFERENCES `inserzione` (`idinserzione`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inserzione_has_utente_registrato_utente_registrato1` FOREIGN KEY (`utente_registrato_idutente`) REFERENCES `utente_registrato` (`idutente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,7 @@ CREATE TABLE `prodotto` (
   KEY `fk_prodotto_categoria` (`categoria_idcategoria`),
   CONSTRAINT `fk_prodotto_categoria` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_prodotto_produttore` FOREIGN KEY (`produttore_idproduttore`) REFERENCES `produttore` (`idproduttore`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,7 +408,7 @@ CREATE TABLE `produttore` (
   `website` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idproduttore`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -446,6 +446,31 @@ INSERT INTO `provincia` VALUES (1,'Torino'),(2,'Vercelli'),(3,'Novara'),(4,'Cune
 UNLOCK TABLES;
 
 --
+-- Table structure for table `random_password`
+--
+
+DROP TABLE IF EXISTS `random_password`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `random_password` (
+  `idrandom_password` int(11) NOT NULL AUTO_INCREMENT,
+  `hashpassword` varchar(32) NOT NULL,
+  `idutente` int(11) NOT NULL,
+  PRIMARY KEY (`idrandom_password`),
+  UNIQUE KEY `hashpassword_UNIQUE` (`hashpassword`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `random_password`
+--
+
+LOCK TABLES `random_password` WRITE;
+/*!40000 ALTER TABLE `random_password` DISABLE KEYS */;
+/*!40000 ALTER TABLE `random_password` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `utente_registrato`
 --
 
@@ -477,7 +502,7 @@ CREATE TABLE `utente_registrato` (
   UNIQUE KEY `telefono_UNIQUE` (`telefono`),
   KEY `fk_utente_registrato_comuni1` (`comune_idcomune`),
   CONSTRAINT `fk_utente_registrato_comuni1` FOREIGN KEY (`comune_idcomune`) REFERENCES `comune` (`idcomune`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -580,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-01 18:05:07
+-- Dump completed on 2020-02-10 21:27:36

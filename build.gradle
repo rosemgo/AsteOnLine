@@ -55,7 +55,8 @@ sourceSets {
         //percorso file di test
         test {
 	        java {
-	            srcDirs 'test/it/unisannio/sweng/rosariogoglia/daoImpl' 
+	        	srcDirs 'test' 
+	            //srcDirs 'test/it/unisannio/sweng/rosariogoglia/daoImpl' 
 	        }
     	}        
 }
@@ -99,6 +100,7 @@ tomcatRun.contextPath = '/'
 tomcatRunWar.contextPath = '/'
 */
 
+
 //deploy in locale del file war in Tomcat
 //la proprietà tomcatHome è stata definita nel file gradle.properties e gradlew.properties che si trovano nella cartella C:\Users\rosar\.gradle
 task deploy (dependsOn: war){
@@ -108,14 +110,6 @@ task deploy (dependsOn: war){
     	from war.archivePath
     	into "${tomcatHome}/webapps"
     }
-    
-   /* 
-    println "Copy from ${libsDir.getPath()} into " + System.env.'TOMCAT_HOME' + "//webapps"
-    copy {
-    	from war.archivePath
-    	into System.env.'TOMCAT_HOME' + "//webapps"
-    }
-    */
 }
 
 

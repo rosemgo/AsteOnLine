@@ -14,9 +14,9 @@ public interface ProdottoDao {
 	/**
 	 * Questo metodo fornisce una lista di tutti i prodotti presenti nel database
 	 * 
-	 * @param idProdotto numero identificativo del prodotto
+	 *
 	 * 
-	 * @return La li sta di tutti i prodotti presenti nel database
+	 * @return La lista di tutti i prodotti presenti nel database
 	 */
 	
 	public Prodotto getProdottoById(Integer idProdotto);

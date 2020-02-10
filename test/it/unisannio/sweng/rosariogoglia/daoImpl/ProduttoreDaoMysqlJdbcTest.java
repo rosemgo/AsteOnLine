@@ -25,6 +25,7 @@ public class ProduttoreDaoMysqlJdbcTest {
 		Produttore writingProduttore = new ProduttoreImpl();
 		Produttore readingProduttore = null;
 		Integer autoIncKey = -1;
+		Integer updateRows = -1;
 		writingProduttore.setNome("TestProduttore");
 		writingProduttore.setWebsite("Website Test");
 		autoIncKey = dao.insertProduttore(writingProduttore);
@@ -36,6 +37,13 @@ public class ProduttoreDaoMysqlJdbcTest {
 
 		assertEquals(readingProduttore.getNome(), writingProduttore.getNome());
 		assertEquals(readingProduttore.getIdProduttore(), writingProduttore.getIdProduttore());
+		
+		//aggiorno il nome e il sito web del produttore
+		writingProduttore.setNome("updatepProduttore");
+		writingProduttore.setWebsite("update website");
+		updateRows = dao.updateProduttore(writingProduttore);
+		assertEquals((Integer)1, updateRows);
+		
 		boolean result = false;
 		result = dao.checkDeleteProduttore(writingProduttore.getIdProduttore());
 		assertEquals(true, result);

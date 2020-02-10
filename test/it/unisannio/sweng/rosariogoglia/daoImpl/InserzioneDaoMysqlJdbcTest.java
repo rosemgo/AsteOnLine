@@ -5,18 +5,24 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 
+import it.unisannio.sweng.rosariogoglia.dao.ImmagineDao;
 import it.unisannio.sweng.rosariogoglia.dao.InserzioneDao;
+import it.unisannio.sweng.rosariogoglia.dao.OffertaDao;
 import it.unisannio.sweng.rosariogoglia.dao.UtenteRegistratoDao;
 import it.unisannio.sweng.rosariogoglia.model.Immagine;
 import it.unisannio.sweng.rosariogoglia.model.Inserzione;
+import it.unisannio.sweng.rosariogoglia.model.Offerta;
 import it.unisannio.sweng.rosariogoglia.model.UtenteRegistrato;
+import it.unisannio.sweng.rosariogoglia.modelImpl.Data;
 import it.unisannio.sweng.rosariogoglia.modelImpl.ImmagineImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.InserzioneImpl;
+import it.unisannio.sweng.rosariogoglia.modelImpl.OffertaImpl;
 import it.unisannio.sweng.rosariogoglia.modelImpl.UtenteRegistratoImpl;
 
 public class InserzioneDaoMysqlJdbcTest {
@@ -27,6 +33,11 @@ public class InserzioneDaoMysqlJdbcTest {
 		InserzioneDao inserzioneDao = new InserzioneDaoMysqlJdbc();
 		Inserzione inserzione = new InserzioneImpl();
 		Integer idInserzione = -1;
+		Integer updateRows = -1;
+		Integer deleteRows = -1;
+		Integer result = -1;
+		
+		
 		inserzione.setTitolo("Inserzione Test");
 		inserzione.setDescrizione("Test descrizione");
 		inserzione.setPrezzoIniziale(100.00);
@@ -38,8 +49,15 @@ public class InserzioneDaoMysqlJdbcTest {
 		inserzione.setIdProdotto(3);
 		
 		
+		Offerta offerta = new OffertaImpl();
+		OffertaDao offertaDao = new OffertaDaoMysqlJdbc();
+		Integer idOfferta = -1;
+		UtenteRegistratoDao utenteDao = new UtenteRegistratoDaoMysqlJdbc();
+		
 		Immagine immagine1 = new ImmagineImpl();
 		Immagine immagine2 = new ImmagineImpl();
+		ImmagineDao ImmagineDao = new ImmagineDaoMysqlJdbc();
+
 		
 		immagine1.setFoto("Test immagine 1");
 		immagine2.setFoto("Test immagine 2");
@@ -56,7 +74,73 @@ public class InserzioneDaoMysqlJdbcTest {
 		assertEquals(readingInserzione.getIdInserzione(), inserzione.getIdInserzione());
 		assertEquals(readingInserzione.getTitolo(), inserzione.getTitolo());
 		
-		Integer deleteRows = inserzioneDao.deleteInserzione(idInserzione);
+		//aggiorno il titolo dell'inserzione e la lista immagini
+		
+		listImmagini.clear();
+		immagine1.setFoto("updateImmagine1");
+		immagine2.setFoto("updateImmagine2");
+		listImmagini.add(immagine1);
+		listImmagini.add(immagine2);
+		inserzione.setTitolo("updateInserzione");
+		inserzione.setImmagini(listImmagini);
+		updateRows = inserzioneDao.updateInserzione(inserzione);
+		assertEquals((Integer)1, updateRows);
+		
+		//visualizzo l'immagine con l'id passato come parametro
+		Immagine immagine3 = new ImmagineImpl();
+		immagine3 = ImmagineDao.getImmagineById(inserzione.getImmagini().get(0).getIdImmagine());
+		assertEquals(immagine3.getIdImmagine(), immagine1.getIdImmagine());
+		
+		//cancello un'immagine dell'inserzione
+		deleteRows = -1;
+		deleteRows = ImmagineDao.deleteImmagine(immagine1);
+		assertEquals((Integer)1, deleteRows);
+		
+		
+		//cancello le immagini dell'inserzione
+		deleteRows = -1;
+		deleteRows = ImmagineDao.deleteImmagineByIdInserzione(inserzione.getIdInserzione());
+		assertEquals((Integer)1, deleteRows);
+		
+	
+		//aggiorno lo stato dell'asta
+		updateRows = -1;
+		updateRows = inserzioneDao.updateStatoInserzione("scaduta", inserzione.getIdInserzione());
+		assertEquals((Integer)1, updateRows);
+		
+		//aggiorno la data di scadenza e il prezzo iniziale dell'inserzione 
+		updateRows = -1;
+		Calendar c = Calendar.getInstance();
+		c.set(2020, 8, 11);
+		Date dataScadenza = new Date();
+		dataScadenza = c.getTime();
+		
+		updateRows = inserzioneDao.updateRipubblicaInserzione(10.00, dataScadenza, inserzione.getIdInserzione());
+		assertEquals((Integer)1, updateRows);
+		
+		//inserisco un'offerta all'inserzione
+		offerta.setSomma(15.00);
+		offerta.setData(new Date());
+		offerta.setIdInserzione(inserzione.getIdInserzione());
+		offerta.setInserzione(inserzione);
+		offerta.setIdUtenteRegistrato(3);
+		offerta.setUtente(utenteDao.getUtenteRegistratoById(3));
+		idOfferta = offertaDao.insertOfferta(offerta);
+		
+		
+		//aggiorno l'acquirente e il prezzo dell'inserzione
+		updateRows = -1;
+		updateRows = inserzioneDao.updateAcquirenteOffertaInserzione(3, 15.00, inserzione.getIdInserzione());
+		assertEquals((Integer)1, updateRows);
+		
+		//cancello tutte le offerte all'inserzione
+		deleteRows = -1;
+		deleteRows = offertaDao.deleteOffertaByIdInserzione(inserzione.getIdInserzione());
+		assertEquals(deleteRows, (Integer)1);
+		
+		
+		
+		deleteRows = inserzioneDao.deleteInserzione(idInserzione);
 		
 		assertEquals((Integer)1,deleteRows);
 	

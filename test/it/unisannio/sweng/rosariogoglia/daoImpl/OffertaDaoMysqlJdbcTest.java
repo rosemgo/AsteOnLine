@@ -48,6 +48,8 @@ public class OffertaDaoMysqlJdbcTest {
 		
 		assertEquals(deleteRows, (Integer)1);
 		
+		
+		
 	}
 
 }

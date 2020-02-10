@@ -19,6 +19,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
+
 //apply plugin: 'com.bmuschko.tomcat'
 
 
@@ -54,7 +55,7 @@ sourceSets {
         //percorso file di test
         test {
 	        java {
-	            srcDirs 'test' 
+	            srcDirs 'test/it/unisannio/sweng/rosariogoglia/daoImpl' 
 	        }
     	}        
 }
@@ -62,7 +63,7 @@ sourceSets {
 
 dependencies {
 
-     //dipendendenza librerie
+     //dipendendenza librerie 
      compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
      
      compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.+'
@@ -80,20 +81,43 @@ dependencies {
      
      testCompile 'org.seleniumhq.selenium:selenium-java:3.3.1'
      
-   // dependencies to run on tomcat, are mandatory for tomcat plugin
-   // def tomcatVersion = '7.0.57'
-   /*
+   
+  /*  // dependencies to run on tomcat, are mandatory for tomcat plugin
+    def tomcatVersion = '7.0.57'
+   
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
     }
-   */    
+    */   
 }
 
+/*
 // context where tomcat is deployed, by defautl localhost:8080/
-//tomcatRun.contextPath = '/'
-//tomcatRunWar.contextPath = '/'
+tomcatRun.contextPath = '/'
+tomcatRunWar.contextPath = '/'
+*/
+
+//deploy in locale del file war in Tomcat
+//la proprietà tomcatHome è stata definita nel file gradle.properties e gradlew.properties che si trovano nella cartella C:\Users\rosar\.gradle
+task deploy (dependsOn: war){
+   //def tomcatHome = "C:/Program Files/Apache Software Foundation/Tomcat 9.0"
+    println "Copy from ${libsDir.getPath()} into ${tomcatHome}/webapps"
+    copy {
+    	from war.archivePath
+    	into "${tomcatHome}/webapps"
+    }
+    
+   /* 
+    println "Copy from ${libsDir.getPath()} into " + System.env.'TOMCAT_HOME' + "//webapps"
+    copy {
+    	from war.archivePath
+    	into System.env.'TOMCAT_HOME' + "//webapps"
+    }
+    */
+}
+
 
 
 //setting del task findbug
@@ -101,7 +125,7 @@ findbugs{
 	sourceSets = [sourceSets.main]
 	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicamente gli errori non saranno mostrati nel file html
     reportsDir = file("$project.buildDir/reports/findbugsReport")
-    effort = "min" //livello di sforzo di analisi eseguito dal tool, livelli più elevati aumentano la precisione e trovano più bug a spese del tempo di esecuzione e del consumo di memoria.
+    effort = "max" //livello di sforzo di analisi eseguito dal tool, livelli più elevati aumentano la precisione e trovano più bug a spese del tempo di esecuzione e del consumo di memoria.
     reportLevel = "high"
     
 }
@@ -118,6 +142,7 @@ tasks.withType(FindBugs) {
     }
      
 }
+
 
 //setting del task Jacoco
 jacoco {

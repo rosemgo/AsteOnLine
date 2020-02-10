@@ -101,7 +101,7 @@ findbugs{
 	sourceSets = [sourceSets.main]
 	ignoreFailures = true //ignora gli errori di findbugs facendo completare la build, logicamente gli errori non saranno mostrati nel file html
     reportsDir = file("$project.buildDir/reports/findbugsReport")
-    effort = "min" //livello di sforzo di analisi eseguito dal tool, livelli piÃ¹ elevati aumentano la precisione e trovano piÃ¹ bug a spese del tempo di esecuzione e del consumo di memoria.
+    effort = "min" //livello di sforzo di analisi eseguito dal tool, livelli più elevati aumentano la precisione e trovano più bug a spese del tempo di esecuzione e del consumo di memoria.
     reportLevel = "high"
     
 }
@@ -113,7 +113,7 @@ tasks.withType(FindBugs) {
         html.enabled = true
       //xml.destination = file("$project.buildDir/reports/findbugs/findbugs-output.xml")
       //html.destination = file ("$project.buildDir/reports/findbugs/findbugs-output.html")
-      //si puÃ² anche scrivere cosÃ¬:
+      //si può anche scrivere così:
       //html.destination "$project.buildDir/reports/findbugs/findbugs-output.html"
     }
      
@@ -149,7 +149,7 @@ test {
 }
 
 //creazione e caricamente DB dal dump
-/*
+
 task createDB{
 	project.exec {
 		
@@ -171,7 +171,7 @@ task loadDB{
 loadDB.dependsOn createDB
 
 tasks.test.dependsOn loadDB
-*/
+
 
 //setting del task Javadoc
 javadoc {
@@ -185,7 +185,7 @@ javadoc {
 
 /*
 task mysql (type:Exec) {
-	commandLine 'mysql', 'ecommerce', â€˜<ecommerce.sqlâ€™
+	commandLine 'mysql', 'ecommerce', ‘<ecommerce.sql’
 }
 */
 

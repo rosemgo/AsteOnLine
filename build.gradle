@@ -208,6 +208,8 @@ loadDB.dependsOn createDB
 tasks.test.dependsOn loadDB
 tasks.systemTest.dependsOn loadDB
 
+check.dependsOn systemTest //per eseguire il task systemTest nella pipeline standard di build
+
 //deploy in locale del file war in Tomcat
 //la proprietà tomcatHome è stata definita nel file gradle.properties e gradlew.properties che si trovano nella cartella C:\Users\rosar\.gradle
 task deploy (dependsOn: war){

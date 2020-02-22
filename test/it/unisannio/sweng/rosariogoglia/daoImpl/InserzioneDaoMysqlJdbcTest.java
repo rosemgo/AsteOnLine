@@ -310,7 +310,7 @@ public class InserzioneDaoMysqlJdbcTest {
 				
 				result2 = -1;
 				result2 = inserzioneDao.getNumeroAsteInChiusura();
-				assertEquals((Integer) 11,result2);
+				assertEquals((Integer) 12,result2);
 
 				//numero inserzioni cercate
 				

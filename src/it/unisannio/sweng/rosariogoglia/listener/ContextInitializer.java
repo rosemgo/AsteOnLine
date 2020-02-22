@@ -43,7 +43,9 @@ public class ContextInitializer implements ServletContextListener {
     	   	
     	
     	
-   /*     DataSource ds = null;
+   /*     
+        //Decommentare per usare il Data source definito nel file context.xmb in META INF, necessario per usare la connection poll di Tomcat
+        DataSource ds = null;
         try {
 	    
         	initContext = new InitialContext();
@@ -69,12 +71,13 @@ public class ContextInitializer implements ServletContextListener {
         System.out.println("Nel LISTNER CONTEXTINITIALIZER ");
         
         System.out.println("Stampo il realpath: " + context.getRealPath(""));
+       
+        //La classe PropertyConfigurator è importante perchè consente di configurare un Logger usando un file .properties. I Logger definiti funzionano perchè c'è la seguente istruzione
         PropertyConfigurator.configure(fullPath);
         
         /*setto la proprietà rootPath in modo da poterla usare sempre nel sistema, e mi da il percorso in cui Tomcat deploya la mia applicazione
          * in modo tale da poterla usare nel log4j.properties per la creazione del file di log*/
-       
-        System.setProperty("rootPath", context.getRealPath("/"));
+        System.setProperty("rootPath", context.getRealPath("/")); //in realtà la proprietà rootPath non è stata più usata nel log4j.properties per un problema di deploy con Tomcat
         System.out.println("Stampo il rootPath: " + context.getRealPath("/"));
         
         

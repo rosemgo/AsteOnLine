@@ -168,7 +168,7 @@ public class InserzioneDaoMysqlJdbcTest {
 		
 				inserzioneDao = new InserzioneDaoMysqlJdbc();
 				result = new ArrayList<Inserzione>();
-				result = inserzioneDao.ricercaInserzioni("calcio", 0);
+				result = inserzioneDao.ricercaInserzioni("calcio", 0); //ottengo il ramo if(rs.next) preso, perchè trova qualche inserzione 
 			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
 				
 				//EXISTENCE2_LENGHT2_CONTENT1_CHOICE_2
@@ -176,7 +176,7 @@ public class InserzioneDaoMysqlJdbcTest {
 		
 				inserzioneDao = new InserzioneDaoMysqlJdbc();
 				result = new ArrayList<Inserzione>();
-				result = inserzioneDao.ricercaInserzioni("felpa", 7); //per ottenere il branch giallo per il blackbox, inserire calcio oppure felpa, per ottenere il 100% dei branch usare linux
+				result = inserzioneDao.ricercaInserzioni("felpa", 7); //per ottenere il branch giallo per il blackbox, inserire calcio oppure felpa e categoria 7 così trova qualche inserzione, per ottenere il 100% dei branch usare linux con categoria 7 così non trova nessuna inserzione e copre il ramo if(rs.next) NON preso
 			//	assertEquals((Integer) 35,result.get(0).getIdInserzione());
 				
 				

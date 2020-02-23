@@ -138,7 +138,7 @@ $(document).ready(function () {
 											          
 					     <input type="submit" value=" ACCEDI " id="bottone"></input>
 					     &nbsp;&nbsp;&nbsp;
-					     <input type="button" onclick ="location.href='ServletRegistrazione';" value=" REGISTRATI " id="bottone" />
+					     <input type="button" onclick ="location.href='registrazione.jsp';" value=" REGISTRATI " id="bottone" />
 					    </p>
 					</form>
 				    

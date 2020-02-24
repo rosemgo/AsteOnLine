@@ -61,6 +61,7 @@ sourceSets {
 	        java {
 	        	//srcDirs 'test' //decommentare se si vuole comprendere tutti i test (di unità e di sistema) nel sourceSet test 
 	            srcDirs 'test/it/unisannio/sweng/rosariogoglia/daoImpl' //indico a gradle di includere nel SourceSet test solo i test di unità
+	        	srcDirs 'test/it/unisannio/sweng/rosariogoglia/dbUtil'
 	        }
     	}   
     	//divisione dei casi di test di sistema

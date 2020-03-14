@@ -1,0 +1,8092 @@
+1;1;Agliè;0
+1;2;Airasca;0
+1;3;Ala di Stura;0
+1;4;Albiano d'Ivrea;0
+1;5;Alice Superiore;0
+1;6;Almese;0
+1;7;Alpette;0
+1;8;Alpignano;0
+1;9;Andezeno;0
+1;10;Andrate;0
+1;11;Angrogna;0
+1;12;Arignano;0
+1;13;Avigliana;0
+1;14;Azeglio;0
+1;15;Bairo;0
+1;16;Balangero;0
+1;17;Baldissero Canavese;0
+1;18;Baldissero Torinese;0
+1;19;Balme;0
+1;20;Banchette;0
+1;21;Barbania;0
+1;22;Bardonecchia;0
+1;23;Barone Canavese;0
+1;24;Beinasco;0
+1;25;Bibiana;0
+1;26;Bobbio Pellice;0
+1;27;Bollengo;0
+1;28;Borgaro Torinese;0
+1;29;Borgiallo;0
+1;30;Borgofranco d'Ivrea;0
+1;31;Borgomasino;0
+1;32;Borgone Susa;0
+1;33;Bosconero;0
+1;34;Brandizzo;0
+1;35;Bricherasio;0
+1;36;Brosso;0
+1;37;Brozolo;0
+1;38;Bruino;0
+1;39;Brusasco;0
+1;40;Bruzolo;0
+1;41;Buriasco;0
+1;42;Burolo;0
+1;43;Busano;0
+1;44;Bussoleno;0
+1;45;Buttigliera Alta;0
+1;46;Cafasse;0
+1;47;Caluso;0
+1;48;Cambiano;0
+1;49;Campiglione-Fenile;0
+1;50;Candia Canavese;0
+1;51;Candiolo;0
+1;52;Canischio;0
+1;53;Cantalupa;0
+1;54;Cantoira;0
+1;55;Caprie;0
+1;56;Caravino;0
+1;57;Carema;0
+1;58;Carignano;0
+1;59;Carmagnola;0
+1;60;Casalborgone;0
+1;61;Cascinette d'Ivrea;0
+1;62;Caselette;0
+1;63;Caselle Torinese;0
+1;64;Castagneto Po;0
+1;65;Castagnole Piemonte;0
+1;66;Castellamonte;0
+1;67;Castelnuovo Nigra;0
+1;68;Castiglione Torinese;0
+1;69;Cavagnolo;0
+1;70;Cavour;0
+1;71;Cercenasco;0
+1;72;Ceres;0
+1;73;Ceresole Reale;0
+1;74;Cesana Torinese;0
+1;75;Chialamberto;0
+1;76;Chianocco;0
+1;77;Chiaverano;0
+1;78;Chieri;0
+1;79;Chiesanuova;0
+1;80;Chiomonte;0
+1;81;Chiusa di San Michele;0
+1;82;Chivasso;0
+1;83;Ciconio;0
+1;84;Cintano;0
+1;85;Cinzano;0
+1;86;Ciriè;0
+1;87;Claviere;0
+1;88;Coassolo Torinese;0
+1;89;Coazze;0
+1;90;Collegno;0
+1;91;Colleretto Castelnuovo;0
+1;92;Colleretto Giacosa;0
+1;93;Condove;0
+1;94;Corio;0
+1;95;Cossano Canavese;0
+1;96;Cuceglio;0
+1;97;Cumiana;0
+1;98;Cuorgnè;0
+1;99;Druento;0
+1;100;Exilles;0
+1;101;Favria;0
+1;102;Feletto;0
+1;103;Fenestrelle;0
+1;104;Fiano;0
+1;105;Fiorano Canavese;0
+1;106;Foglizzo;0
+1;107;Forno Canavese;0
+1;108;Frassinetto;0
+1;109;Front;0
+1;110;Frossasco;0
+1;111;Garzigliana;0
+1;112;Gassino Torinese;0
+1;113;Germagnano;0
+1;114;Giaglione;0
+1;115;Giaveno;0
+1;116;Givoletto;0
+1;117;Gravere;0
+1;118;Groscavallo;0
+1;119;Grosso;0
+1;120;Grugliasco;0
+1;121;Ingria;0
+1;122;Inverso Pinasca;0
+1;123;Isolabella;0
+1;124;Issiglio;0
+1;125;Ivrea;0
+1;126;La Cassa;0
+1;127;La Loggia;0
+1;128;Lanzo Torinese;0
+1;129;Lauriano;0
+1;130;Leini;0
+1;131;Lemie;0
+1;132;Lessolo;0
+1;133;Levone;0
+1;134;Locana;0
+1;135;Lombardore;0
+1;136;Lombriasco;0
+1;137;Loranzè;0
+1;138;Lugnacco;0
+1;139;Luserna San Giovanni;0
+1;140;Lusernetta;0
+1;141;Lusigliè;0
+1;142;Macello;0
+1;143;Maglione;0
+1;144;Marentino;0
+1;145;Massello;0
+1;146;Mathi;0
+1;147;Mattie;0
+1;148;Mazzè;0
+1;149;Meana di Susa;0
+1;150;Mercenasco;0
+1;151;Meugliano;0
+1;152;Mezzenile;0
+1;153;Mombello di Torino;0
+1;154;Mompantero;0
+1;155;Monastero di Lanzo;0
+1;156;Moncalieri;0
+1;157;Moncenisio;0
+1;158;Montaldo Torinese;0
+1;159;Montalenghe;0
+1;160;Montalto Dora;0
+1;161;Montanaro;0
+1;162;Monteu da Po;0
+1;163;Moriondo Torinese;0
+1;164;Nichelino;0
+1;165;Noasca;0
+1;166;Nole;0
+1;167;Nomaglio;0
+1;168;None;0
+1;169;Novalesa;0
+1;170;Oglianico;0
+1;171;Orbassano;0
+1;172;Orio Canavese;0
+1;173;Osasco;0
+1;174;Osasio;0
+1;175;Oulx;0
+1;176;Ozegna;0
+1;177;Palazzo Canavese;0
+1;178;Pancalieri;0
+1;179;Parella;0
+1;180;Pavarolo;0
+1;181;Pavone Canavese;0
+1;182;Pecco;0
+1;183;Pecetto Torinese;0
+1;184;Perosa Argentina;0
+1;185;Perosa Canavese;0
+1;186;Perrero;0
+1;187;Pertusio;0
+1;188;Pessinetto;0
+1;189;Pianezza;0
+1;190;Pinasca;0
+1;191;Pinerolo;0
+1;192;Pino Torinese;0
+1;193;Piobesi Torinese;0
+1;194;Piossasco;0
+1;195;Piscina;0
+1;196;Piverone;0
+1;197;Poirino;0
+1;198;Pomaretto;0
+1;199;Pont-Canavese;0
+1;200;Porte;0
+1;201;Pragelato;0
+1;202;Prali;0
+1;203;Pralormo;0
+1;204;Pramollo;0
+1;205;Prarostino;0
+1;206;Prascorsano;0
+1;207;Pratiglione;0
+1;208;Quagliuzzo;0
+1;209;Quassolo;0
+1;210;Quincinetto;0
+1;211;Reano;0
+1;212;Ribordone;0
+1;213;Rivalba;0
+1;214;Rivalta di Torino;0
+1;215;Riva presso Chieri;0
+1;216;Rivara;0
+1;217;Rivarolo Canavese;0
+1;218;Rivarossa;0
+1;219;Rivoli;0
+1;220;Robassomero;0
+1;221;Rocca Canavese;0
+1;222;Roletto;0
+1;223;Romano Canavese;0
+1;224;Ronco Canavese;0
+1;225;Rondissone;0
+1;226;Rorà;0
+1;227;Roure;0
+1;228;Rosta;0
+1;229;Rubiana;0
+1;230;Rueglio;0
+1;231;Salassa;0
+1;232;Salbertrand;0
+1;233;Salerano Canavese;0
+1;234;Salza di Pinerolo;0
+1;235;Samone;0
+1;236;San Benigno Canavese;0
+1;237;San Carlo Canavese;0
+1;238;San Colombano Belmonte;0
+1;239;San Didero;0
+1;240;San Francesco al Campo;0
+1;241;Sangano;0
+1;242;San Germano Chisone;0
+1;243;San Gillio;0
+1;244;San Giorgio Canavese;0
+1;245;San Giorio di Susa;0
+1;246;San Giusto Canavese;0
+1;247;San Martino Canavese;0
+1;248;San Maurizio Canavese;0
+1;249;San Mauro Torinese;0
+1;250;San Pietro Val Lemina;0
+1;251;San Ponso;0
+1;252;San Raffaele Cimena;0
+1;253;San Sebastiano da Po;0
+1;254;San Secondo di Pinerolo;0
+1;255;Sant'Ambrogio di Torino;0
+1;256;Sant'Antonino di Susa;0
+1;257;Santena;0
+1;258;Sauze di Cesana;0
+1;259;Sauze d'Oulx;0
+1;260;Scalenghe;0
+1;261;Scarmagno;0
+1;262;Sciolze;0
+1;263;Sestriere;0
+1;264;Settimo Rottaro;0
+1;265;Settimo Torinese;0
+1;266;Settimo Vittone;0
+1;267;Sparone;0
+1;268;Strambinello;0
+1;269;Strambino;0
+1;270;Susa;0
+1;271;Tavagnasco;0
+1;272;Torino;1
+1;273;Torrazza Piemonte;0
+1;274;Torre Canavese;0
+1;275;Torre Pellice;0
+1;276;Trana;0
+1;277;Trausella;0
+1;278;Traversella;0
+1;279;Traves;0
+1;280;Trofarello;0
+1;281;Usseaux;0
+1;282;Usseglio;0
+1;283;Vaie;0
+1;284;Val della Torre;0
+1;285;Valgioie;0
+1;286;Vallo Torinese;0
+1;287;Valperga;0
+1;288;Valprato Soana;0
+1;289;Varisella;0
+1;290;Vauda Canavese;0
+1;291;Venaus;0
+1;292;Venaria Reale;0
+1;293;Verolengo;0
+1;294;Verrua Savoia;0
+1;295;Vestignè;0
+1;296;Vialfrè;0
+1;297;Vico Canavese;0
+1;298;Vidracco;0
+1;299;Vigone;0
+1;300;Villafranca Piemonte;0
+1;301;Villanova Canavese;0
+1;302;Villarbasse;0
+1;303;Villar Dora;0
+1;304;Villareggia;0
+1;305;Villar Focchiardo;0
+1;306;Villar Pellice;0
+1;307;Villar Perosa;0
+1;308;Villastellone;0
+1;309;Vinovo;0
+1;310;Virle Piemonte;0
+1;311;Vische;0
+1;312;Vistrorio;0
+1;313;Viù;0
+1;314;Volpiano;0
+1;315;Volvera;0
+2;2;Alagna Valsesia;0
+2;3;Albano Vercellese;0
+2;4;Alice Castello;0
+2;6;Arborio;0
+2;7;Asigliano Vercellese;0
+2;8;Balmuccia;0
+2;9;Balocco;0
+2;11;Bianzè;0
+2;14;Boccioleto;0
+2;15;Borgo d'Ale;0
+2;16;Borgosesia;0
+2;17;Borgo Vercelli;0
+2;19;Breia;0
+2;21;Buronzo;0
+2;25;Campertogno;0
+2;29;Carcoforo;0
+2;30;Caresana;0
+2;31;Caresanablot;0
+2;32;Carisio;0
+2;33;Casanova Elvo;0
+2;35;San Giacomo Vercellese;0
+2;38;Cellio;0
+2;41;Cervatto;0
+2;42;Cigliano;0
+2;43;Civiasco;0
+2;45;Collobiano;0
+2;47;Costanzana;0
+2;48;Cravagliana;0
+2;49;Crescentino;0
+2;52;Crova;0
+2;54;Desana;0
+2;57;Fobello;0
+2;58;Fontanetto Po;0
+2;59;Formigliana;0
+2;61;Gattinara;0
+2;62;Ghislarengo;0
+2;65;Greggio;0
+2;66;Guardabosone;0
+2;67;Lamporo;0
+2;68;Lenta;0
+2;70;Lignana;0
+2;71;Livorno Ferraris;0
+2;72;Lozzolo;0
+2;78;Mollia;0
+2;79;Moncrivello;0
+2;82;Motta de' Conti;0
+2;88;Olcenengo;0
+2;89;Oldenico;0
+2;90;Palazzolo Vercellese;0
+2;91;Pertengo;0
+2;93;Pezzana;0
+2;96;Pila;0
+2;97;Piode;0
+2;102;Postua;0
+2;104;Prarolo;0
+2;107;Quarona;0
+2;108;Quinto Vercellese;0
+2;110;Rassa;0
+2;111;Rima San Giuseppe;0
+2;112;Rimasco;0
+2;113;Rimella;0
+2;114;Riva Valdobbia;0
+2;115;Rive;0
+2;116;Roasio;0
+2;118;Ronsecco;0
+2;121;Rossa;0
+2;122;Rovasenda;0
+2;123;Sabbia;0
+2;126;Salasco;0
+2;127;Sali Vercellese;0
+2;128;Saluggia;0
+2;131;San Germano Vercellese;0
+2;133;Santhià;0
+2;134;Scopa;0
+2;135;Scopello;0
+2;137;Serravalle Sesia;0
+2;142;Stroppiana;0
+2;147;Tricerro;0
+2;148;Trino;0
+2;150;Tronzano Vercellese;0
+2;152;Valduggia;0
+2;156;Varallo;0
+2;158;Vercelli;1
+2;163;Villarboit;0
+2;164;Villata;0
+2;166;Vocca;0
+3;1;Agrate Conturbia;0
+3;2;Ameno;0
+3;6;Armeno;0
+3;8;Arona;0
+3;12;Barengo;0
+3;16;Bellinzago Novarese;0
+3;18;Biandrate;0
+3;19;Boca;0
+3;21;Bogogno;0
+3;22;Bolzano Novarese;0
+3;23;Borgolavezzaro;0
+3;24;Borgomanero;0
+3;25;Borgo Ticino;0
+3;26;Briga Novarese;0
+3;27;Briona;0
+3;30;Caltignaga;0
+3;32;Cameri;0
+3;36;Carpignano Sesia;0
+3;37;Casalbeltrame;0
+3;39;Casaleggio Novara;0
+3;40;Casalino;0
+3;41;Casalvolone;0
+3;42;Castellazzo Novarese;0
+3;43;Castelletto sopra Ticino;0
+3;44;Cavaglietto;0
+3;45;Cavaglio d'Agogna;0
+3;47;Cavallirio;0
+3;49;Cerano;0
+3;51;Colazza;0
+3;52;Comignago;0
+3;55;Cressa;0
+3;58;Cureggio;0
+3;60;Divignano;0
+3;62;Dormelletto;0
+3;65;Fara Novarese;0
+3;66;Fontaneto d'Agogna;0
+3;68;Galliate;0
+3;69;Garbagna Novarese;0
+3;70;Gargallo;0
+3;71;Gattico;0
+3;73;Ghemme;0
+3;76;Gozzano;0
+3;77;Granozzo con Monticello;0
+3;79;Grignasco;0
+3;82;Invorio;0
+3;83;Landiona;0
+3;84;Lesa;0
+3;88;Maggiora;0
+3;90;Mandello Vitta;0
+3;91;Marano Ticino;0
+3;93;Massino Visconti;0
+3;95;Meina;0
+3;97;Mezzomerico;0
+3;98;Miasino;0
+3;100;Momo;0
+3;103;Nebbiuno;0
+3;104;Nibbiola;0
+3;106;Novara;1
+3;108;Oleggio;0
+3;109;Oleggio Castello;0
+3;112;Orta San Giulio;0
+3;114;Paruzzaro;0
+3;115;Pella;0
+3;116;Pettenasco;0
+3;119;Pisano;0
+3;120;Pogno;0
+3;121;Pombia;0
+3;122;Prato Sesia;0
+3;129;Recetto;0
+3;130;Romagnano Sesia;0
+3;131;Romentino;0
+3;133;San Maurizio d'Opaglio;0
+3;134;San Nazzaro Sesia;0
+3;135;San Pietro Mosezzo;0
+3;138;Sillavengo;0
+3;139;Sizzano;0
+3;140;Soriso;0
+3;141;Sozzago;0
+3;143;Suno;0
+3;144;Terdobbiate;0
+3;146;Tornaco;0
+3;149;Trecate;0
+3;153;Vaprio d'Agogna;0
+3;154;Varallo Pombia;0
+3;157;Veruno;0
+3;158;Vespolate;0
+3;159;Vicolungo;0
+3;164;Vinzaglio;0
+4;1;Acceglio;0
+4;2;Aisone;0
+4;3;Alba;0
+4;4;Albaretto della Torre;0
+4;5;Alto;0
+4;6;Argentera;0
+4;7;Arguello;0
+4;8;Bagnasco;0
+4;9;Bagnolo Piemonte;0
+4;10;Baldissero d'Alba;0
+4;11;Barbaresco;0
+4;12;Barge;0
+4;13;Barolo;0
+4;14;Bastia Mondovì;0
+4;15;Battifollo;0
+4;16;Beinette;0
+4;17;Bellino;0
+4;18;Belvedere Langhe;0
+4;19;Bene Vagienna;0
+4;20;Benevello;0
+4;21;Bergolo;0
+4;22;Bernezzo;0
+4;23;Bonvicino;0
+4;24;Borgomale;0
+4;25;Borgo San Dalmazzo;0
+4;26;Bosia;0
+4;27;Bossolasco;0
+4;28;Boves;0
+4;29;Bra;0
+4;30;Briaglia;0
+4;31;Briga Alta;0
+4;32;Brondello;0
+4;33;Brossasco;0
+4;34;Busca;0
+4;35;Camerana;0
+4;36;Camo;0
+4;37;Canale;0
+4;38;Canosio;0
+4;39;Caprauna;0
+4;40;Caraglio;0
+4;41;Caramagna Piemonte;0
+4;42;Cardè;0
+4;43;Carrù;0
+4;44;Cartignano;0
+4;45;Casalgrasso;0
+4;46;Castagnito;0
+4;47;Casteldelfino;0
+4;48;Castellar;0
+4;49;Castelletto Stura;0
+4;50;Castelletto Uzzone;0
+4;51;Castellinaldo;0
+4;52;Castellino Tanaro;0
+4;53;Castelmagno;0
+4;54;Castelnuovo di Ceva;0
+4;55;Castiglione Falletto;0
+4;56;Castiglione Tinella;0
+4;57;Castino;0
+4;58;Cavallerleone;0
+4;59;Cavallermaggiore;0
+4;60;Celle di Macra;0
+4;61;Centallo;0
+4;62;Ceresole Alba;0
+4;63;Cerretto Langhe;0
+4;64;Cervasca;0
+4;65;Cervere;0
+4;66;Ceva;0
+4;67;Cherasco;0
+4;68;Chiusa di Pesio;0
+4;69;Cigliè;0
+4;70;Cissone;0
+4;71;Clavesana;0
+4;72;Corneliano d'Alba;0
+4;73;Cortemilia;0
+4;74;Cossano Belbo;0
+4;75;Costigliole Saluzzo;0
+4;76;Cravanzana;0
+4;77;Crissolo;0
+4;78;Cuneo;1
+4;79;Demonte;0
+4;80;Diano d'Alba;0
+4;81;Dogliani;0
+4;82;Dronero;0
+4;83;Elva;0
+4;84;Entracque;0
+4;85;Envie;0
+4;86;Farigliano;0
+4;87;Faule;0
+4;88;Feisoglio;0
+4;89;Fossano;0
+4;90;Frabosa Soprana;0
+4;91;Frabosa Sottana;0
+4;92;Frassino;0
+4;93;Gaiola;0
+4;94;Gambasca;0
+4;95;Garessio;0
+4;96;Genola;0
+4;97;Gorzegno;0
+4;98;Gottasecca;0
+4;99;Govone;0
+4;100;Grinzane Cavour;0
+4;101;Guarene;0
+4;102;Igliano;0
+4;103;Isasca;0
+4;104;Lagnasco;0
+4;105;La Morra;0
+4;106;Lequio Berria;0
+4;107;Lequio Tanaro;0
+4;108;Lesegno;0
+4;109;Levice;0
+4;110;Limone Piemonte;0
+4;111;Lisio;0
+4;112;Macra;0
+4;113;Magliano Alfieri;0
+4;114;Magliano Alpi;0
+4;115;Mango;0
+4;116;Manta;0
+4;117;Marene;0
+4;118;Margarita;0
+4;119;Marmora;0
+4;120;Marsaglia;0
+4;121;Martiniana Po;0
+4;122;Melle;0
+4;123;Moiola;0
+4;124;Mombarcaro;0
+4;125;Mombasiglio;0
+4;126;Monastero di Vasco;0
+4;127;Monasterolo Casotto;0
+4;128;Monasterolo di Savigliano;0
+4;129;Monchiero;0
+4;130;Mondovì;0
+4;131;Monesiglio;0
+4;132;Monforte d'Alba;0
+4;133;Montà;0
+4;134;Montaldo di Mondovì;0
+4;135;Montaldo Roero;0
+4;136;Montanera;0
+4;137;Montelupo Albese;0
+4;138;Montemale di Cuneo;0
+4;139;Monterosso Grana;0
+4;140;Monteu Roero;0
+4;141;Montezemolo;0
+4;142;Monticello d'Alba;0
+4;143;Moretta;0
+4;144;Morozzo;0
+4;145;Murazzano;0
+4;146;Murello;0
+4;147;Narzole;0
+4;148;Neive;0
+4;149;Neviglie;0
+4;150;Niella Belbo;0
+4;151;Niella Tanaro;0
+4;152;Novello;0
+4;153;Nucetto;0
+4;154;Oncino;0
+4;155;Ormea;0
+4;156;Ostana;0
+4;157;Paesana;0
+4;158;Pagno;0
+4;159;Pamparato;0
+4;160;Paroldo;0
+4;161;Perletto;0
+4;162;Perlo;0
+4;163;Peveragno;0
+4;164;Pezzolo Valle Uzzone;0
+4;165;Pianfei;0
+4;166;Piasco;0
+4;167;Pietraporzio;0
+4;168;Piobesi d'Alba;0
+4;169;Piozzo;0
+4;170;Pocapaglia;0
+4;171;Polonghera;0
+4;172;Pontechianale;0
+4;173;Pradleves;0
+4;174;Prazzo;0
+4;175;Priero;0
+4;176;Priocca;0
+4;177;Priola;0
+4;178;Prunetto;0
+4;179;Racconigi;0
+4;180;Revello;0
+4;181;Rifreddo;0
+4;182;Rittana;0
+4;183;Roaschia;0
+4;184;Roascio;0
+4;185;Robilante;0
+4;186;Roburent;0
+4;187;Roccabruna;0
+4;188;Rocca Cigliè;0
+4;189;Rocca de' Baldi;0
+4;190;Roccaforte Mondovì;0
+4;191;Roccasparvera;0
+4;192;Roccavione;0
+4;193;Rocchetta Belbo;0
+4;194;Roddi;0
+4;195;Roddino;0
+4;196;Rodello;0
+4;197;Rossana;0
+4;198;Ruffia;0
+4;199;Sale delle Langhe;0
+4;200;Sale San Giovanni;0
+4;201;Saliceto;0
+4;202;Salmour;0
+4;203;Saluzzo;0
+4;204;Sambuco;0
+4;205;Sampeyre;0
+4;206;San Benedetto Belbo;0
+4;207;San Damiano Macra;0
+4;208;Sanfrè;0
+4;209;Sanfront;0
+4;210;San Michele Mondovì;0
+4;211;Sant'Albano Stura;0
+4;212;Santa Vittoria d'Alba;0
+4;213;Santo Stefano Belbo;0
+4;214;Santo Stefano Roero;0
+4;215;Savigliano;0
+4;216;Scagnello;0
+4;217;Scarnafigi;0
+4;218;Serralunga d'Alba;0
+4;219;Serravalle Langhe;0
+4;220;Sinio;0
+4;221;Somano;0
+4;222;Sommariva del Bosco;0
+4;223;Sommariva Perno;0
+4;224;Stroppo;0
+4;225;Tarantasca;0
+4;226;Torre Bormida;0
+4;227;Torre Mondovì;0
+4;228;Torre San Giorgio;0
+4;229;Torresina;0
+4;230;Treiso;0
+4;231;Trezzo Tinella;0
+4;232;Trinità;0
+4;233;Valdieri;0
+4;234;Valgrana;0
+4;235;Valloriate;0
+4;236;Valmala;0
+4;237;Venasca;0
+4;238;Verduno;0
+4;239;Vernante;0
+4;240;Verzuolo;0
+4;241;Vezza d'Alba;0
+4;242;Vicoforte;0
+4;243;Vignolo;0
+4;244;Villafalletto;0
+4;245;Villanova Mondovì;0
+4;246;Villanova Solaro;0
+4;247;Villar San Costanzo;0
+4;248;Vinadio;0
+4;249;Viola;0
+4;250;Vottignasco;0
+5;1;Agliano Terme;0
+5;2;Albugnano;0
+5;3;Antignano;0
+5;4;Aramengo;0
+5;5;Asti;1
+5;6;Azzano d'Asti;0
+5;7;Baldichieri d'Asti;0
+5;8;Belveglio;0
+5;9;Berzano di San Pietro;0
+5;10;Bruno;0
+5;11;Bubbio;0
+5;12;Buttigliera d'Asti;0
+5;13;Calamandrana;0
+5;14;Calliano;0
+5;15;Calosso;0
+5;16;Camerano Casasco;0
+5;17;Canelli;0
+5;18;Cantarana;0
+5;19;Capriglio;0
+5;20;Casorzo;0
+5;21;Cassinasco;0
+5;22;Castagnole delle Lanze;0
+5;23;Castagnole Monferrato;0
+5;24;Castel Boglione;0
+5;25;Castell'Alfero;0
+5;26;Castellero;0
+5;27;Castelletto Molina;0
+5;28;Castello di Annone;0
+5;29;Castelnuovo Belbo;0
+5;30;Castelnuovo Calcea;0
+5;31;Castelnuovo Don Bosco;0
+5;32;Castel Rocchero;0
+5;33;Cellarengo;0
+5;34;Celle Enomondo;0
+5;35;Cerreto d'Asti;0
+5;36;Cerro Tanaro;0
+5;37;Cessole;0
+5;38;Chiusano d'Asti;0
+5;39;Cinaglio;0
+5;40;Cisterna d'Asti;0
+5;41;Coazzolo;0
+5;42;Cocconato;0
+5;44;Corsione;0
+5;45;Cortandone;0
+5;46;Cortanze;0
+5;47;Cortazzone;0
+5;48;Cortiglione;0
+5;49;Cossombrato;0
+5;50;Costigliole d'Asti;0
+5;51;Cunico;0
+5;52;Dusino San Michele;0
+5;53;Ferrere;0
+5;54;Fontanile;0
+5;55;Frinco;0
+5;56;Grana;0
+5;57;Grazzano Badoglio;0
+5;58;Incisa Scapaccino;0
+5;59;Isola d'Asti;0
+5;60;Loazzolo;0
+5;61;Maranzana;0
+5;62;Maretto;0
+5;63;Moasca;0
+5;64;Mombaldone;0
+5;65;Mombaruzzo;0
+5;66;Mombercelli;0
+5;67;Monale;0
+5;68;Monastero Bormida;0
+5;69;Moncalvo;0
+5;70;Moncucco Torinese;0
+5;71;Mongardino;0
+5;72;Montabone;0
+5;73;Montafia;0
+5;74;Montaldo Scarampi;0
+5;75;Montechiaro d'Asti;0
+5;76;Montegrosso d'Asti;0
+5;77;Montemagno;0
+5;79;Moransengo;0
+5;80;Nizza Monferrato;0
+5;81;Olmo Gentile;0
+5;82;Passerano Marmorito;0
+5;83;Penango;0
+5;84;Piea;0
+5;85;Pino d'Asti;0
+5;86;Piovà Massaia;0
+5;87;Portacomaro;0
+5;88;Quaranti;0
+5;89;Refrancore;0
+5;90;Revigliasco d'Asti;0
+5;91;Roatto;0
+5;92;Robella;0
+5;93;Rocca d'Arazzo;0
+5;94;Roccaverano;0
+5;95;Rocchetta Palafea;0
+5;96;Rocchetta Tanaro;0
+5;97;San Damiano d'Asti;0
+5;98;San Giorgio Scarampi;0
+5;99;San Martino Alfieri;0
+5;100;San Marzano Oliveto;0
+5;101;San Paolo Solbrito;0
+5;103;Scurzolengo;0
+5;104;Serole;0
+5;105;Sessame;0
+5;106;Settime;0
+5;107;Soglio;0
+5;108;Tigliole;0
+5;109;Tonco;0
+5;110;Tonengo;0
+5;111;Vaglio Serra;0
+5;112;Valfenera;0
+5;113;Vesime;0
+5;114;Viale;0
+5;115;Viarigi;0
+5;116;Vigliano d'Asti;0
+5;117;Villafranca d'Asti;0
+5;118;Villanova d'Asti;0
+5;119;Villa San Secondo;0
+5;120;Vinchio;0
+5;121;Montiglio Monferrato;0
+6;1;Acqui Terme;0
+6;2;Albera Ligure;0
+6;3;Alessandria;1
+6;4;Alfiano Natta;0
+6;5;Alice Bel Colle;0
+6;6;Alluvioni Cambiò;0
+6;7;Altavilla Monferrato;0
+6;8;Alzano Scrivia;0
+6;9;Arquata Scrivia;0
+6;10;Avolasca;0
+6;11;Balzola;0
+6;12;Basaluzzo;0
+6;13;Bassignana;0
+6;14;Belforte Monferrato;0
+6;15;Bergamasco;0
+6;16;Berzano di Tortona;0
+6;17;Bistagno;0
+6;18;Borghetto di Borbera;0
+6;19;Borgoratto Alessandrino;0
+6;20;Borgo San Martino;0
+6;21;Bosco Marengo;0
+6;22;Bosio;0
+6;23;Bozzole;0
+6;24;Brignano-Frascata;0
+6;25;Cabella Ligure;0
+6;26;Camagna Monferrato;0
+6;27;Camino;0
+6;28;Cantalupo Ligure;0
+6;29;Capriata d'Orba;0
+6;30;Carbonara Scrivia;0
+6;31;Carentino;0
+6;32;Carezzano;0
+6;33;Carpeneto;0
+6;34;Carrega Ligure;0
+6;35;Carrosio;0
+6;36;Cartosio;0
+6;37;Casal Cermelli;0
+6;38;Casaleggio Boiro;0
+6;39;Casale Monferrato;0
+6;40;Casalnoceto;0
+6;41;Casasco;0
+6;42;Cassano Spinola;0
+6;43;Cassine;0
+6;44;Cassinelle;0
+6;45;Castellania;0
+6;46;Castellar Guidobono;0
+6;47;Castellazzo Bormida;0
+6;48;Castelletto d'Erro;0
+6;49;Castelletto d'Orba;0
+6;50;Castelletto Merli;0
+6;51;Castelletto Monferrato;0
+6;52;Castelnuovo Bormida;0
+6;53;Castelnuovo Scrivia;0
+6;54;Castelspina;0
+6;55;Cavatore;0
+6;56;Cella Monte;0
+6;57;Cereseto;0
+6;58;Cerreto Grue;0
+6;59;Cerrina Monferrato;0
+6;60;Coniolo;0
+6;61;Conzano;0
+6;62;Costa Vescovato;0
+6;63;Cremolino;0
+6;64;Cuccaro Monferrato;0
+6;65;Denice;0
+6;66;Dernice;0
+6;67;Fabbrica Curone;0
+6;68;Felizzano;0
+6;69;Fraconalto;0
+6;70;Francavilla Bisio;0
+6;71;Frascaro;0
+6;72;Frassinello Monferrato;0
+6;73;Frassineto Po;0
+6;74;Fresonara;0
+6;75;Frugarolo;0
+6;76;Fubine;0
+6;77;Gabiano;0
+6;78;Gamalero;0
+6;79;Garbagna;0
+6;80;Gavazzana;0
+6;81;Gavi;0
+6;82;Giarole;0
+6;83;Gremiasco;0
+6;84;Grognardo;0
+6;85;Grondona;0
+6;86;Guazzora;0
+6;87;Isola Sant'Antonio;0
+6;88;Lerma;0
+6;89;Lu;0
+6;90;Malvicino;0
+6;91;Masio;0
+6;92;Melazzo;0
+6;93;Merana;0
+6;94;Mirabello Monferrato;0
+6;95;Molare;0
+6;96;Molino dei Torti;0
+6;97;Mombello Monferrato;0
+6;98;Momperone;0
+6;99;Moncestino;0
+6;100;Mongiardino Ligure;0
+6;101;Monleale;0
+6;102;Montacuto;0
+6;103;Montaldeo;0
+6;104;Montaldo Bormida;0
+6;105;Montecastello;0
+6;106;Montechiaro d'Acqui;0
+6;107;Montegioco;0
+6;108;Montemarzino;0
+6;109;Morano sul Po;0
+6;110;Morbello;0
+6;111;Mornese;0
+6;112;Morsasco;0
+6;113;Murisengo;0
+6;114;Novi Ligure;0
+6;115;Occimiano;0
+6;116;Odalengo Grande;0
+6;117;Odalengo Piccolo;0
+6;118;Olivola;0
+6;119;Orsara Bormida;0
+6;120;Ottiglio;0
+6;121;Ovada;0
+6;122;Oviglio;0
+6;123;Ozzano Monferrato;0
+6;124;Paderna;0
+6;125;Pareto;0
+6;126;Parodi Ligure;0
+6;127;Pasturana;0
+6;128;Pecetto di Valenza;0
+6;129;Pietra Marazzi;0
+6;130;Piovera;0
+6;131;Pomaro Monferrato;0
+6;132;Pontecurone;0
+6;133;Pontestura;0
+6;134;Ponti;0
+6;135;Ponzano Monferrato;0
+6;136;Ponzone;0
+6;137;Pozzol Groppo;0
+6;138;Pozzolo Formigaro;0
+6;139;Prasco;0
+6;140;Predosa;0
+6;141;Quargnento;0
+6;142;Quattordio;0
+6;143;Ricaldone;0
+6;144;Rivalta Bormida;0
+6;145;Rivarone;0
+6;146;Roccaforte Ligure;0
+6;147;Rocca Grimalda;0
+6;148;Rocchetta Ligure;0
+6;149;Rosignano Monferrato;0
+6;150;Sala Monferrato;0
+6;151;Sale;0
+6;152;San Cristoforo;0
+6;153;San Giorgio Monferrato;0
+6;154;San Salvatore Monferrato;0
+6;155;San Sebastiano Curone;0
+6;156;Sant'Agata Fossili;0
+6;157;Sardigliano;0
+6;158;Sarezzano;0
+6;159;Serralunga di Crea;0
+6;160;Serravalle Scrivia;0
+6;161;Sezzadio;0
+6;162;Silvano d'Orba;0
+6;163;Solero;0
+6;164;Solonghello;0
+6;165;Spigno Monferrato;0
+6;166;Spineto Scrivia;0
+6;167;Stazzano;0
+6;168;Strevi;0
+6;169;Tagliolo Monferrato;0
+6;170;Tassarolo;0
+6;171;Terruggia;0
+6;172;Terzo;0
+6;173;Ticineto;0
+6;174;Tortona;0
+6;175;Treville;0
+6;176;Trisobbio;0
+6;177;Valenza;0
+6;178;Valmacca;0
+6;179;Vignale Monferrato;0
+6;180;Vignole Borbera;0
+6;181;Viguzzolo;0
+6;182;Villadeati;0
+6;183;Villalvernia;0
+6;184;Villamiroglio;0
+6;185;Villanova Monferrato;0
+6;186;Villaromagnano;0
+6;187;Visone;0
+6;188;Volpedo;0
+6;189;Volpeglino;0
+6;190;Voltaggio;0
+7;1;Allein;0
+7;2;Antey-Saint-Andrè;0
+7;3;Aosta;1
+7;4;Arnad;0
+7;5;Arvier;0
+7;6;Avise;0
+7;7;Ayas;0
+7;8;Aymavilles;0
+7;9;Bard;0
+7;10;Bionaz;0
+7;11;Brissogne;0
+7;12;Brusson;0
+7;13;Challand-Saint-Anselme;0
+7;14;Challand-Saint-Victor;0
+7;15;Chambave;0
+7;16;Chamois;0
+7;17;Champdepraz;0
+7;18;Champorcher;0
+7;19;Charvensod;0
+7;20;Chatillon;0
+7;21;Cogne;0
+7;22;Courmayeur;0
+7;23;Donnas;0
+7;24;Doues;0
+7;25;Emarèse;0
+7;26;Etroubles;0
+7;27;Fénis;0
+7;28;Fontainemore;0
+7;29;Gaby;0
+7;30;Gignod;0
+7;31;Gressan;0
+7;32;Gressoney-La-Trinitè;0
+7;33;Gressoney-Saint-Jean;0
+7;34;Hone;0
+7;35;Introd;0
+7;36;Issime;0
+7;37;Issogne;0
+7;38;Jovencan;0
+7;39;La Magdeleine;0
+7;40;La Salle;0
+7;41;La Thuile;0
+7;42;Lillianes;0
+7;43;Montjovet;0
+7;44;Morgex;0
+7;45;Nus;0
+7;46;Ollomont;0
+7;47;Oyace;0
+7;48;Perloz;0
+7;49;Pollein;0
+7;50;Pontboset;0
+7;51;Pontey;0
+7;52;Pont-Saint-Martin;0
+7;53;Prè-Saint-Didier;0
+7;54;Quart;0
+7;55;Rhemes-Notre-Dame;0
+7;56;Rhemes-Saint-Georges;0
+7;57;Roisan;0
+7;58;Saint-Christophe;0
+7;59;Saint-Denis;0
+7;60;Saint-Marcel;0
+7;61;Saint-Nicolas;0
+7;62;Saint-Oyen;0
+7;63;Saint-Pierre;0
+7;64;Saint-Rhémy-en-Bosses;0
+7;65;Saint-Vincent;0
+7;66;Sarre;0
+7;67;Torgnon;0
+7;68;Valgrisenche;0
+7;69;Valpelline;0
+7;70;Valsavarenche;0
+7;71;Valtournenche;0
+7;72;Verrayes;0
+7;73;Verrès;0
+7;74;Villeneuve;0
+8;1;Airole;0
+8;2;Apricale;0
+8;3;Aquila d'Arroscia;0
+8;4;Armo;0
+8;5;Aurigo;0
+8;6;Badalucco;0
+8;7;Bajardo;0
+8;8;Bordighera;0
+8;9;Borghetto d'Arroscia;0
+8;10;Borgomaro;0
+8;11;Camporosso;0
+8;12;Caravonica;0
+8;13;Carpasio;0
+8;14;Castellaro;0
+8;15;Castel Vittorio;0
+8;16;Ceriana;0
+8;17;Cervo;0
+8;18;Cesio;0
+8;19;Chiusanico;0
+8;20;Chiusavecchia;0
+8;21;Cipressa;0
+8;22;Civezza;0
+8;23;Cosio d'Arroscia;0
+8;24;Costarainera;0
+8;25;Diano Arentino;0
+8;26;Diano Castello;0
+8;27;Diano Marina;0
+8;28;Diano San Pietro;0
+8;29;Dolceacqua;0
+8;30;Dolcedo;0
+8;31;Imperia;1
+8;32;Isolabona;0
+8;33;Lucinasco;0
+8;34;Mendatica;0
+8;35;Molini di Triora;0
+8;36;Montalto Ligure;0
+8;37;Montegrosso Pian Latte;0
+8;38;Olivetta San Michele;0
+8;39;Ospedaletti;0
+8;40;Perinaldo;0
+8;41;Pietrabruna;0
+8;42;Pieve di Teco;0
+8;43;Pigna;0
+8;44;Pompeiana;0
+8;45;Pontedassio;0
+8;46;Pornassio;0
+8;47;Prelà;0
+8;48;Ranzo;0
+8;49;Rezzo;0
+8;50;Riva Ligure;0
+8;51;Rocchetta Nervina;0
+8;52;San Bartolomeo al Mare;0
+8;53;San Biagio della Cima;0
+8;54;San Lorenzo al Mare;0
+8;55;Sanremo;0
+8;56;Santo Stefano al Mare;0
+8;57;Seborga;0
+8;58;Soldano;0
+8;59;Taggia;0
+8;60;Terzorio;0
+8;61;Triora;0
+8;62;Vallebona;0
+8;63;Vallecrosia;0
+8;64;Vasia;0
+8;65;Ventimiglia;0
+8;66;Vessalico;0
+8;67;Villa Faraldi;0
+9;1;Alassio;0
+9;2;Albenga;0
+9;3;Albissola Marina;0
+9;4;Albisola Superiore;0
+9;5;Altare;0
+9;6;Andora;0
+9;7;Arnasco;0
+9;8;Balestrino;0
+9;9;Bardineto;0
+9;10;Bergeggi;0
+9;11;Boissano;0
+9;12;Borghetto Santo Spirito;0
+9;13;Borgio Verezzi;0
+9;14;Bormida;0
+9;15;Cairo Montenotte;0
+9;16;Calice Ligure;0
+9;17;Calizzano;0
+9;18;Carcare;0
+9;19;Casanova Lerrone;0
+9;20;Castelbianco;0
+9;21;Castelvecchio di Rocca Barbena;0
+9;22;Celle Ligure;0
+9;23;Cengio;0
+9;24;Ceriale;0
+9;25;Cisano sul Neva;0
+9;26;Cosseria;0
+9;27;Dego;0
+9;28;Erli;0
+9;29;Finale Ligure;0
+9;30;Garlenda;0
+9;31;Giustenice;0
+9;32;Giusvalla;0
+9;33;Laigueglia;0
+9;34;Loano;0
+9;35;Magliolo;0
+9;36;Mallare;0
+9;37;Massimino;0
+9;38;Millesimo;0
+9;39;Mioglia;0
+9;40;Murialdo;0
+9;41;Nasino;0
+9;42;Noli;0
+9;43;Onzo;0
+9;44;Orco Feglino;0
+9;45;Ortovero;0
+9;46;Osiglia;0
+9;47;Pallare;0
+9;48;Piana Crixia;0
+9;49;Pietra Ligure;0
+9;50;Plodio;0
+9;51;Pontinvrea;0
+9;52;Quiliano;0
+9;53;Rialto;0
+9;54;Roccavignale;0
+9;55;Sassello;0
+9;56;Savona;1
+9;57;Spotorno;0
+9;58;Stella;0
+9;59;Stellanello;0
+9;60;Testico;0
+9;61;Toirano;0
+9;62;Tovo San Giacomo;0
+9;63;Urbe;0
+9;64;Vado Ligure;0
+9;65;Varazze;0
+9;66;Vendone;0
+9;67;Vezzi Portio;0
+9;68;Villanova d'Albenga;0
+9;69;Zuccarello;0
+10;1;Arenzano;0
+10;2;Avegno;0
+10;3;Bargagli;0
+10;4;Bogliasco;0
+10;5;Borzonasca;0
+10;6;Busalla;0
+10;7;Camogli;0
+10;8;Campo Ligure;0
+10;9;Campomorone;0
+10;10;Carasco;0
+10;11;Casarza Ligure;0
+10;12;Casella;0
+10;13;Castiglione Chiavarese;0
+10;14;Ceranesi;0
+10;15;Chiavari;0
+10;16;Cicagna;0
+10;17;Cogoleto;0
+10;18;Cogorno;0
+10;19;Coreglia Ligure;0
+10;20;Crocefieschi;0
+10;21;Davagna;0
+10;22;Fascia;0
+10;23;Favale di Malvaro;0
+10;24;Fontanigorda;0
+10;25;Genova;1
+10;26;Gorreto;0
+10;27;Isola del Cantone;0
+10;28;Lavagna;0
+10;29;Leivi;0
+10;30;Lorsica;0
+10;31;Lumarzo;0
+10;32;Masone;0
+10;33;Mele;0
+10;34;Mezzanego;0
+10;35;Mignanego;0
+10;36;Moconesi;0
+10;37;Moneglia;0
+10;38;Montebruno;0
+10;39;Montoggio;0
+10;40;Ne;0
+10;41;Neirone;0
+10;42;Orero;0
+10;43;Pieve Ligure;0
+10;44;Portofino;0
+10;45;Propata;0
+10;46;Rapallo;0
+10;47;Recco;0
+10;48;Rezzoaglio;0
+10;49;Ronco Scrivia;0
+10;50;Rondanina;0
+10;51;Rossiglione;0
+10;52;Rovegno;0
+10;53;San Colombano Certenoli;0
+10;54;Santa Margherita Ligure;0
+10;55;Sant'Olcese;0
+10;56;Santo Stefano d'Aveto;0
+10;57;Savignone;0
+10;58;Serra Riccò;0
+10;59;Sestri Levante;0
+10;60;Sori;0
+10;61;Tiglieto;0
+10;62;Torriglia;0
+10;63;Tribogna;0
+10;64;Uscio;0
+10;65;Valbrevenna;0
+10;66;Vobbia;0
+10;67;Zoagli;0
+11;1;Ameglia;0
+11;2;Arcola;0
+11;3;Beverino;0
+11;4;Bolano;0
+11;5;Bonassola;0
+11;6;Borghetto di Vara;0
+11;7;Brugnato;0
+11;8;Calice al Cornoviglio;0
+11;9;Carro;0
+11;10;Carrodano;0
+11;11;Castelnuovo Magra;0
+11;12;Deiva Marina;0
+11;13;Follo;0
+11;14;Framura;0
+11;15;La Spezia;1
+11;16;Lerici;0
+11;17;Levanto;0
+11;18;Maissana;0
+11;19;Monterosso al Mare;0
+11;20;Ortonovo;0
+11;21;Pignone;0
+11;22;Portovenere;0
+11;23;Riccò del Golfo di Spezia;0
+11;24;Riomaggiore;0
+11;25;Rocchetta di Vara;0
+11;26;Santo Stefano di Magra;0
+11;27;Sarzana;0
+11;28;Sesta Godano;0
+11;29;Varese Ligure;0
+11;30;Vernazza;0
+11;31;Vezzano Ligure;0
+11;32;Zignago;0
+12;1;Agra;0
+12;2;Albizzate;0
+12;3;Angera;0
+12;4;Arcisate;0
+12;5;Arsago Seprio;0
+12;6;Azzate;0
+12;7;Azzio;0
+12;8;Barasso;0
+12;9;Bardello;0
+12;10;Bedero Valcuvia;0
+12;11;Besano;0
+12;12;Besnate;0
+12;13;Besozzo;0
+12;14;Biandronno;0
+12;15;Bisuschio;0
+12;16;Bodio Lomnago;0
+12;17;Brebbia;0
+12;18;Bregano;0
+12;19;Brenta;0
+12;20;Brezzo di Bedero;0
+12;21;Brinzio;0
+12;22;Brissago-Valtravaglia;0
+12;23;Brunello;0
+12;24;Brusimpiano;0
+12;25;Buguggiate;0
+12;26;Busto Arsizio;0
+12;27;Cadegliano-Viconago;0
+12;28;Cadrezzate;0
+12;29;Cairate;0
+12;30;Cantello;0
+12;31;Caravate;0
+12;32;Cardano al Campo;0
+12;33;Carnago;0
+12;34;Caronno Pertusella;0
+12;35;Caronno Varesino;0
+12;36;Casale Litta;0
+12;37;Casalzuigno;0
+12;38;Casciago;0
+12;39;Casorate Sempione;0
+12;40;Cassano Magnago;0
+12;41;Cassano Valcuvia;0
+12;42;Castellanza;0
+12;43;Castello Cabiaglio;0
+12;44;Castelseprio;0
+12;45;Castelveccana;0
+12;46;Castiglione Olona;0
+12;47;Castronno;0
+12;48;Cavaria con Premezzo;0
+12;49;Cazzago Brabbia;0
+12;50;Cislago;0
+12;51;Cittiglio;0
+12;52;Clivio;0
+12;53;Cocquio-Trevisago;0
+12;54;Comabbio;0
+12;55;Comerio;0
+12;56;Cremenaga;0
+12;57;Crosio della Valle;0
+12;58;Cuasso al Monte;0
+12;59;Cugliate-Fabiasco;0
+12;60;Cunardo;0
+12;61;Curiglia con Monteviasco;0
+12;62;Cuveglio;0
+12;63;Cuvio;0
+12;64;Daverio;0
+12;65;Dumenza;0
+12;66;Duno;0
+12;67;Fagnano Olona;0
+12;68;Ferno;0
+12;69;Ferrera di Varese;0
+12;70;Gallarate;0
+12;71;Galliate Lombardo;0
+12;72;Gavirate;0
+12;73;Gazzada Schianno;0
+12;74;Gemonio;0
+12;75;Gerenzano;0
+12;76;Germignaga;0
+12;77;Golasecca;0
+12;78;Gorla Maggiore;0
+12;79;Gorla Minore;0
+12;80;Gornate-Olona;0
+12;81;Grantola;0
+12;82;Inarzo;0
+12;83;Induno Olona;0
+12;84;Ispra;0
+12;85;Jerago con Orago;0
+12;86;Lavena Ponte Tresa;0
+12;87;Laveno-Mombello;0
+12;88;Leggiuno;0
+12;89;Lonate Ceppino;0
+12;90;Lonate Pozzolo;0
+12;91;Lozza;0
+12;92;Luino;0
+12;93;Luvinate;0
+12;94;Maccagno;0
+12;95;Malgesso;0
+12;96;Malnate;0
+12;97;Marchirolo;0
+12;98;Marnate;0
+12;99;Marzio;0
+12;100;Masciago Primo;0
+12;101;Mercallo;0
+12;102;Mesenzana;0
+12;103;Montegrino Valtravaglia;0
+12;104;Monvalle;0
+12;105;Morazzone;0
+12;106;Mornago;0
+12;107;Oggiona con Santo Stefano;0
+12;108;Olgiate Olona;0
+12;109;Origgio;0
+12;110;Orino;0
+12;111;Osmate;0
+12;112;Pino sulla Sponda del Lago Maggiore;0
+12;113;Porto Ceresio;0
+12;114;Porto Valtravaglia;0
+12;115;Rancio Valcuvia;0
+12;116;Ranco;0
+12;117;Saltrio;0
+12;118;Samarate;0
+12;119;Saronno;0
+12;120;Sesto Calende;0
+12;121;Solbiate Arno;0
+12;122;Solbiate Olona;0
+12;123;Somma Lombardo;0
+12;124;Sumirago;0
+12;125;Taino;0
+12;126;Ternate;0
+12;127;Tradate;0
+12;128;Travedona-Monate;0
+12;129;Tronzano Lago Maggiore;0
+12;130;Uboldo;0
+12;131;Valganna;0
+12;132;Varano Borghi;0
+12;133;Varese;1
+12;134;Vedano Olona;0
+12;135;Veddasca;0
+12;136;Venegono Inferiore;0
+12;137;Venegono Superiore;0
+12;138;Vergiate;0
+12;139;Viggiù;0
+12;140;Vizzola Ticino;0
+12;141;Sangiano;0
+13;3;Albavilla;0
+13;4;Albese con Cassano;0
+13;5;Albiolo;0
+13;6;Alserio;0
+13;7;Alzate Brianza;0
+13;9;Anzano del Parco;0
+13;10;Appiano Gentile;0
+13;11;Argegno;0
+13;12;Arosio;0
+13;13;Asso;0
+13;15;Barni;0
+13;19;Bellagio;0
+13;21;Bene Lario;0
+13;22;Beregazzo con Figliaro;0
+13;23;Binago;0
+13;24;Bizzarone;0
+13;25;Blessagno;0
+13;26;Blevio;0
+13;28;Bregnano;0
+13;29;Brenna;0
+13;30;Brienno;0
+13;32;Brunate;0
+13;34;Bulgarograsso;0
+13;35;Cabiate;0
+13;36;Cadorago;0
+13;37;Caglio;0
+13;38;Cagno;0
+13;40;Campione d'Italia;0
+13;41;Cantù;0
+13;42;Canzo;0
+13;43;Capiago Intimiano;0
+13;44;Carate Urio;0
+13;45;Carbonate;0
+13;46;Carimate;0
+13;47;Carlazzo;0
+13;48;Carugo;0
+13;50;Casasco d'Intelvi;0
+13;52;Caslino d'Erba;0
+13;53;Casnate con Bernate;0
+13;55;Cassina Rizzardi;0
+13;58;Castelmarte;0
+13;59;Castelnuovo Bozzente;0
+13;60;Castiglione d'Intelvi;0
+13;61;Cavallasca;0
+13;62;Cavargna;0
+13;63;Cerano d'Intelvi;0
+13;64;Cermenate;0
+13;65;Cernobbio;0
+13;68;Cirimido;0
+13;70;Civenna;0
+13;71;Claino con Osteno;0
+13;74;Colonno;0
+13;75;Como;1
+13;77;Corrido;0
+13;83;Cremia;0
+13;84;Cucciago;0
+13;85;Cusino;0
+13;87;Dizzasco;0
+13;89;Domaso;0
+13;90;Dongo;0
+13;92;Dosso del Liro;0
+13;93;Drezzo;0
+13;95;Erba;0
+13;97;Eupilio;0
+13;98;Faggeto Lario;0
+13;99;Faloppio;0
+13;100;Fenegrò;0
+13;101;Figino Serenza;0
+13;102;Fino Mornasco;0
+13;106;Garzeno;0
+13;107;Gera Lario;0
+13;109;Gironico;0
+13;110;Grandate;0
+13;111;Grandola ed Uniti;0
+13;113;Griante;0
+13;114;Guanzate;0
+13;118;Inverigo;0
+13;119;Laglio;0
+13;120;Laino;0
+13;121;Lambrugo;0
+13;122;Lanzo d'Intelvi;0
+13;123;Lasnigo;0
+13;125;Lenno;0
+13;126;Lezzeno;0
+13;128;Limido Comasco;0
+13;129;Lipomo;0
+13;130;Livo;0
+13;131;Locate Varesino;0
+13;133;Lomazzo;0
+13;134;Longone al Segrino;0
+13;135;Luisago;0
+13;136;Lurago d'Erba;0
+13;137;Lurago Marinone;0
+13;138;Lurate Caccivio;0
+13;139;Magreglio;0
+13;143;Mariano Comense;0
+13;144;Maslianico;0
+13;145;Menaggio;0
+13;147;Merone;0
+13;148;Mezzegra;0
+13;152;Moltrasio;0
+13;153;Monguzzo;0
+13;154;Montano Lucino;0
+13;155;Montemezzo;0
+13;157;Montorfano;0
+13;159;Mozzate;0
+13;160;Musso;0
+13;161;Nesso;0
+13;163;Novedrate;0
+13;165;Olgiate Comasco;0
+13;169;Oltrona di San Mamette;0
+13;170;Orsenigo;0
+13;172;Ossuccio;0
+13;175;Parè;0
+13;178;Peglio;0
+13;179;Pellio Intelvi;0
+13;183;Pianello del Lario;0
+13;184;Pigra;0
+13;185;Plesio;0
+13;186;Pognana Lario;0
+13;187;Ponna;0
+13;188;Ponte Lambro;0
+13;189;Porlezza;0
+13;192;Proserpio;0
+13;193;Pusiano;0
+13;194;Ramponio Verna;0
+13;195;Rezzago;0
+13;197;Rodero;0
+13;199;Ronago;0
+13;201;Rovellasca;0
+13;202;Rovello Porro;0
+13;203;Sala Comacina;0
+13;204;San Bartolomeo Val Cavargna;0
+13;205;San Fedele Intelvi;0
+13;206;San Fermo della Battaglia;0
+13;207;San Nazzaro Val Cavargna;0
+13;211;Schignano;0
+13;212;Senna Comasco;0
+13;215;Solbiate;0
+13;216;Sorico;0
+13;217;Sormano;0
+13;218;Stazzona;0
+13;222;Tavernerio;0
+13;223;Torno;0
+13;225;Tremezzo;0
+13;226;Trezzone;0
+13;227;Turate;0
+13;228;Uggiate-Trevano;0
+13;229;Valbrona;0
+13;232;Valmorea;0
+13;233;Val Rezzo;0
+13;234;Valsolda;0
+13;236;Veleso;0
+13;238;Veniano;0
+13;239;Vercana;0
+13;242;Vertemate con Minoprio;0
+13;245;Villa Guardia;0
+13;246;Zelbio;0
+13;248;San Siro;0
+13;249;Gravedona ed Uniti;0
+14;1;Albaredo per San Marco;0
+14;2;Albosaggia;0
+14;3;Andalo Valtellino;0
+14;4;Aprica;0
+14;5;Ardenno;0
+14;6;Bema;0
+14;7;Berbenno di Valtellina;0
+14;8;Bianzone;0
+14;9;Bormio;0
+14;10;Buglio in Monte;0
+14;11;Caiolo;0
+14;12;Campodolcino;0
+14;13;Caspoggio;0
+14;14;Castello dell'Acqua;0
+14;15;Castione Andevenno;0
+14;16;Cedrasco;0
+14;17;Cercino;0
+14;18;Chiavenna;0
+14;19;Chiesa in Valmalenco;0
+14;20;Chiuro;0
+14;21;Cino;0
+14;22;Civo;0
+14;23;Colorina;0
+14;24;Cosio Valtellino;0
+14;25;Dazio;0
+14;26;Delebio;0
+14;27;Dubino;0
+14;28;Faedo Valtellino;0
+14;29;Forcola;0
+14;30;Fusine;0
+14;31;Gerola Alta;0
+14;32;Gordona;0
+14;33;Grosio;0
+14;34;Grosotto;0
+14;35;Madesimo;0
+14;36;Lanzada;0
+14;37;Livigno;0
+14;38;Lovero;0
+14;39;Mantello;0
+14;40;Mazzo di Valtellina;0
+14;41;Mello;0
+14;42;Menarola;0
+14;43;Mese;0
+14;44;Montagna in Valtellina;0
+14;45;Morbegno;0
+14;46;Novate Mezzola;0
+14;47;Pedesina;0
+14;48;Piantedo;0
+14;49;Piateda;0
+14;50;Piuro;0
+14;51;Poggiridenti;0
+14;52;Ponte in Valtellina;0
+14;53;Postalesio;0
+14;54;Prata Camportaccio;0
+14;55;Rasura;0
+14;56;Rogolo;0
+14;57;Samolaco;0
+14;58;San Giacomo Filippo;0
+14;59;Sernio;0
+14;60;Sondalo;0
+14;61;Sondrio;1
+14;62;Spriana;0
+14;63;Talamona;0
+14;64;Tartano;0
+14;65;Teglio;0
+14;66;Tirano;0
+14;67;Torre di Santa Maria;0
+14;68;Tovo di Sant'Agata;0
+14;69;Traona;0
+14;70;Tresivio;0
+14;71;Valdidentro;0
+14;72;Valdisotto;0
+14;73;Valfurva;0
+14;74;Val Masino;0
+14;75;Verceia;0
+14;76;Vervio;0
+14;77;Villa di Chiavenna;0
+14;78;Villa di Tirano;0
+15;2;Abbiategrasso;0
+15;5;Albairate;0
+15;7;Arconate;0
+15;9;Arese;0
+15;10;Arluno;0
+15;11;Assago;0
+15;12;Bareggio;0
+15;14;Basiano;0
+15;15;Basiglio;0
+15;16;Bellinzago Lombardo;0
+15;19;Bernate Ticino;0
+15;22;Besate;0
+15;24;Binasco;0
+15;26;Boffalora sopra Ticino;0
+15;27;Bollate;0
+15;32;Bresso;0
+15;35;Bubbiano;0
+15;36;Buccinasco;0
+15;38;Buscate;0
+15;40;Bussero;0
+15;41;Busto Garolfo;0
+15;42;Calvignasco;0
+15;44;Cambiago;0
+15;46;Canegrate;0
+15;50;Carpiano;0
+15;51;Carugate;0
+15;55;Casarile;0
+15;58;Casorezzo;0
+15;59;Cassano d'Adda;0
+15;60;Cassina de' Pecchi;0
+15;61;Cassinetta di Lugagnano;0
+15;62;Castano Primo;0
+15;70;Cernusco sul Naviglio;0
+15;71;Cerro al Lambro;0
+15;72;Cerro Maggiore;0
+15;74;Cesano Boscone;0
+15;76;Cesate;0
+15;77;Cinisello Balsamo;0
+15;78;Cisliano;0
+15;81;Cologno Monzese;0
+15;82;Colturano;0
+15;85;Corbetta;0
+15;86;Cormano;0
+15;87;Cornaredo;0
+15;93;Corsico;0
+15;96;Cuggiono;0
+15;97;Cusago;0
+15;98;Cusano Milanino;0
+15;99;Dairago;0
+15;101;Dresano;0
+15;103;Gaggiano;0
+15;105;Garbagnate Milanese;0
+15;106;Gessate;0
+15;108;Gorgonzola;0
+15;110;Grezzago;0
+15;112;Gudo Visconti;0
+15;113;Inveruno;0
+15;114;Inzago;0
+15;115;Lacchiarella;0
+15;116;Lainate;0
+15;118;Legnano;0
+15;122;Liscate;0
+15;125;Locate di Triulzi;0
+15;130;Magenta;0
+15;131;Magnago;0
+15;134;Marcallo con Casone;0
+15;136;Masate;0
+15;139;Mediglia;0
+15;140;Melegnano;0
+15;142;Melzo;0
+15;144;Mesero;0
+15;146;Milano;1
+15;150;Morimondo;0
+15;151;Motta Visconti;0
+15;154;Nerviano;0
+15;155;Nosate;0
+15;157;Novate Milanese;0
+15;158;Noviglio;0
+15;159;Opera;0
+15;164;Ossona;0
+15;165;Ozzero;0
+15;166;Paderno Dugnano;0
+15;167;Pantigliate;0
+15;168;Parabiago;0
+15;169;Paullo;0
+15;170;Pero;0
+15;171;Peschiera Borromeo;0
+15;172;Pessano con Bornago;0
+15;173;Pieve Emanuele;0
+15;175;Pioltello;0
+15;176;Pogliano Milanese;0
+15;177;Pozzo d'Adda;0
+15;178;Pozzuolo Martesana;0
+15;179;Pregnana Milanese;0
+15;181;Rescaldina;0
+15;182;Rho;0
+15;183;Robecchetto con Induno;0
+15;184;Robecco sul Naviglio;0
+15;185;Rodano;0
+15;188;Rosate;0
+15;189;Rozzano;0
+15;191;San Colombano al Lambro;0
+15;192;San Donato Milanese;0
+15;194;San Giorgio su Legnano;0
+15;195;San Giuliano Milanese;0
+15;200;Santo Stefano Ticino;0
+15;201;San Vittore Olona;0
+15;202;San Zenone al Lambro;0
+15;204;Sedriano;0
+15;205;Segrate;0
+15;206;Senago;0
+15;209;Sesto San Giovanni;0
+15;210;Settala;0
+15;211;Settimo Milanese;0
+15;213;Solaro;0
+15;219;Trezzano Rosa;0
+15;220;Trezzano sul Naviglio;0
+15;221;Trezzo sull'Adda;0
+15;222;Tribiano;0
+15;224;Truccazzano;0
+15;226;Turbigo;0
+15;229;Vanzago;0
+15;230;Vaprio d'Adda;0
+15;235;Vermezzo;0
+15;236;Vernate;0
+15;237;Vignate;0
+15;242;Vimodrone;0
+15;243;Vittuone;0
+15;244;Vizzolo Predabissi;0
+15;246;Zelo Surrigone;0
+15;247;Zibido San Giacomo;0
+15;248;Villa Cortese;0
+15;249;Vanzaghello;0
+15;250;Baranzate;0
+16;1;Adrara San Martino;0
+16;2;Adrara San Rocco;0
+16;3;Albano Sant'Alessandro;0
+16;4;Albino;0
+16;5;Almè;0
+16;6;Almenno San Bartolomeo;0
+16;7;Almenno San Salvatore;0
+16;8;Alzano Lombardo;0
+16;9;Ambivere;0
+16;10;Antegnate;0
+16;11;Arcene;0
+16;12;Ardesio;0
+16;13;Arzago d'Adda;0
+16;14;Averara;0
+16;15;Aviatico;0
+16;16;Azzano San Paolo;0
+16;17;Azzone;0
+16;18;Bagnatica;0
+16;19;Barbata;0
+16;20;Bariano;0
+16;21;Barzana;0
+16;22;Bedulita;0
+16;23;Berbenno;0
+16;24;Bergamo;1
+16;25;Berzo San Fermo;0
+16;26;Bianzano;0
+16;27;Blello;0
+16;28;Bolgare;0
+16;29;Boltiere;0
+16;30;Bonate Sopra;0
+16;31;Bonate Sotto;0
+16;32;Borgo di Terzo;0
+16;33;Bossico;0
+16;34;Bottanuco;0
+16;35;Bracca;0
+16;36;Branzi;0
+16;37;Brembate;0
+16;38;Brembate di Sopra;0
+16;39;Brembilla;0
+16;40;Brignano Gera d'Adda;0
+16;41;Brumano;0
+16;42;Brusaporto;0
+16;43;Calcinate;0
+16;44;Calcio;0
+16;46;Calusco d'Adda;0
+16;47;Calvenzano;0
+16;48;Camerata Cornello;0
+16;49;Canonica d'Adda;0
+16;50;Capizzone;0
+16;51;Capriate San Gervasio;0
+16;52;Caprino Bergamasco;0
+16;53;Caravaggio;0
+16;55;Carobbio degli Angeli;0
+16;56;Carona;0
+16;57;Carvico;0
+16;58;Casazza;0
+16;59;Casirate d'Adda;0
+16;60;Casnigo;0
+16;61;Cassiglio;0
+16;62;Castelli Calepio;0
+16;63;Castel Rozzone;0
+16;64;Castione della Presolana;0
+16;65;Castro;0
+16;66;Cavernago;0
+16;67;Cazzano Sant'Andrea;0
+16;68;Cenate Sopra;0
+16;69;Cenate Sotto;0
+16;70;Cene;0
+16;71;Cerete;0
+16;72;Chignolo d'Isola;0
+16;73;Chiuduno;0
+16;74;Cisano Bergamasco;0
+16;75;Ciserano;0
+16;76;Cividate al Piano;0
+16;77;Clusone;0
+16;78;Colere;0
+16;79;Cologno al Serio;0
+16;80;Colzate;0
+16;81;Comun Nuovo;0
+16;82;Corna Imagna;0
+16;83;Cortenuova;0
+16;84;Costa di Mezzate;0
+16;85;Costa Valle Imagna;0
+16;86;Costa Volpino;0
+16;87;Covo;0
+16;88;Credaro;0
+16;89;Curno;0
+16;90;Cusio;0
+16;91;Dalmine;0
+16;92;Dossena;0
+16;93;Endine Gaiano;0
+16;94;Entratico;0
+16;96;Fara Gera d'Adda;0
+16;97;Fara Olivana con Sola;0
+16;98;Filago;0
+16;99;Fino del Monte;0
+16;100;Fiorano al Serio;0
+16;101;Fontanella;0
+16;102;Fonteno;0
+16;103;Foppolo;0
+16;104;Foresto Sparso;0
+16;105;Fornovo San Giovanni;0
+16;106;Fuipiano Valle Imagna;0
+16;107;Gandellino;0
+16;108;Gandino;0
+16;109;Gandosso;0
+16;110;Gaverina Terme;0
+16;111;Gazzaniga;0
+16;112;Gerosa;0
+16;113;Ghisalba;0
+16;114;Gorlago;0
+16;115;Gorle;0
+16;116;Gorno;0
+16;117;Grassobbio;0
+16;118;Gromo;0
+16;119;Grone;0
+16;120;Grumello del Monte;0
+16;121;Isola di Fondra;0
+16;122;Isso;0
+16;123;Lallio;0
+16;124;Leffe;0
+16;125;Lenna;0
+16;126;Levate;0
+16;127;Locatello;0
+16;128;Lovere;0
+16;129;Lurano;0
+16;130;Luzzana;0
+16;131;Madone;0
+16;132;Mapello;0
+16;133;Martinengo;0
+16;134;Mezzoldo;0
+16;135;Misano di Gera d'Adda;0
+16;136;Moio de' Calvi;0
+16;137;Monasterolo del Castello;0
+16;139;Montello;0
+16;140;Morengo;0
+16;141;Mornico al Serio;0
+16;142;Mozzanica;0
+16;143;Mozzo;0
+16;144;Nembro;0
+16;145;Olmo al Brembo;0
+16;146;Oltre il Colle;0
+16;147;Oltressenda Alta;0
+16;148;Oneta;0
+16;149;Onore;0
+16;150;Orio al Serio;0
+16;151;Ornica;0
+16;152;Osio Sopra;0
+16;153;Osio Sotto;0
+16;154;Pagazzano;0
+16;155;Paladina;0
+16;156;Palazzago;0
+16;157;Palosco;0
+16;158;Parre;0
+16;159;Parzanica;0
+16;160;Pedrengo;0
+16;161;Peia;0
+16;162;Pianico;0
+16;163;Piario;0
+16;164;Piazza Brembana;0
+16;165;Piazzatorre;0
+16;166;Piazzolo;0
+16;167;Pognano;0
+16;168;Ponte Nossa;0
+16;169;Ponteranica;0
+16;170;Ponte San Pietro;0
+16;171;Pontida;0
+16;172;Pontirolo Nuovo;0
+16;173;Pradalunga;0
+16;174;Predore;0
+16;175;Premolo;0
+16;176;Presezzo;0
+16;177;Pumenengo;0
+16;178;Ranica;0
+16;179;Ranzanico;0
+16;180;Riva di Solto;0
+16;182;Rogno;0
+16;183;Romano di Lombardia;0
+16;184;Roncobello;0
+16;185;Roncola;0
+16;186;Rota d'Imagna;0
+16;187;Rovetta;0
+16;188;San Giovanni Bianco;0
+16;189;San Paolo d'Argon;0
+16;190;San Pellegrino Terme;0
+16;191;Santa Brigida;0
+16;192;Sant'Omobono Terme;0
+16;193;Sarnico;0
+16;194;Scanzorosciate;0
+16;195;Schilpario;0
+16;196;Sedrina;0
+16;197;Selvino;0
+16;198;Seriate;0
+16;199;Serina;0
+16;200;Solto Collina;0
+16;201;Songavazzo;0
+16;202;Sorisole;0
+16;203;Sotto il Monte Giovanni XXIII;0
+16;204;Sovere;0
+16;205;Spinone al Lago;0
+16;206;Spirano;0
+16;207;Stezzano;0
+16;208;Strozza;0
+16;209;Suisio;0
+16;210;Taleggio;0
+16;211;Tavernola Bergamasca;0
+16;212;Telgate;0
+16;213;Terno d'Isola;0
+16;214;Torre Boldone;0
+16;216;Torre de' Roveri;0
+16;217;Torre Pallavicina;0
+16;218;Trescore Balneario;0
+16;219;Treviglio;0
+16;220;Treviolo;0
+16;221;Ubiale Clanezzo;0
+16;222;Urgnano;0
+16;223;Valbondione;0
+16;224;Valbrembo;0
+16;225;Valgoglio;0
+16;226;Valleve;0
+16;227;Valnegra;0
+16;228;Valsecca;0
+16;229;Valtorta;0
+16;230;Vedeseta;0
+16;232;Verdellino;0
+16;233;Verdello;0
+16;234;Vertova;0
+16;235;Viadanica;0
+16;236;Vigano San Martino;0
+16;237;Vigolo;0
+16;238;Villa d'Adda;0
+16;239;Villa d'Almè;0
+16;240;Villa di Serio;0
+16;241;Villa d'Ogna;0
+16;242;Villongo;0
+16;243;Vilminore di Scalve;0
+16;244;Zandobbio;0
+16;245;Zanica;0
+16;246;Zogno;0
+16;247;Costa Serina;0
+16;248;Algua;0
+16;249;Cornalba;0
+16;250;Medolago;0
+16;251;Solza;0
+17;1;Acquafredda;0
+17;2;Adro;0
+17;3;Agnosine;0
+17;4;Alfianello;0
+17;5;Anfo;0
+17;6;Angolo Terme;0
+17;7;Artogne;0
+17;8;Azzano Mella;0
+17;9;Bagnolo Mella;0
+17;10;Bagolino;0
+17;11;Barbariga;0
+17;12;Barghe;0
+17;13;Bassano Bresciano;0
+17;14;Bedizzole;0
+17;15;Berlingo;0
+17;16;Berzo Demo;0
+17;17;Berzo Inferiore;0
+17;18;Bienno;0
+17;19;Bione;0
+17;20;Borgo San Giacomo;0
+17;21;Borgosatollo;0
+17;22;Borno;0
+17;23;Botticino;0
+17;24;Bovegno;0
+17;25;Bovezzo;0
+17;26;Brandico;0
+17;27;Braone;0
+17;28;Breno;0
+17;29;Brescia;1
+17;30;Brione;0
+17;31;Caino;0
+17;32;Calcinato;0
+17;33;Calvagese della Riviera;0
+17;34;Calvisano;0
+17;35;Capo di Ponte;0
+17;36;Capovalle;0
+17;37;Capriano del Colle;0
+17;38;Capriolo;0
+17;39;Carpenedolo;0
+17;40;Castegnato;0
+17;41;Castelcovati;0
+17;42;Castel Mella;0
+17;43;Castenedolo;0
+17;44;Casto;0
+17;45;Castrezzato;0
+17;46;Cazzago San Martino;0
+17;47;Cedegolo;0
+17;48;Cellatica;0
+17;49;Cerveno;0
+17;50;Ceto;0
+17;51;Cevo;0
+17;52;Chiari;0
+17;53;Cigole;0
+17;54;Cimbergo;0
+17;55;Cividate Camuno;0
+17;56;Coccaglio;0
+17;57;Collebeato;0
+17;58;Collio;0
+17;59;Cologne;0
+17;60;Comezzano-Cizzago;0
+17;61;Concesio;0
+17;62;Corte Franca;0
+17;63;Corteno Golgi;0
+17;64;Corzano;0
+17;65;Darfo Boario Terme;0
+17;66;Dello;0
+17;67;Desenzano del Garda;0
+17;68;Edolo;0
+17;69;Erbusco;0
+17;70;Esine;0
+17;71;Fiesse;0
+17;72;Flero;0
+17;73;Gambara;0
+17;74;Gardone Riviera;0
+17;75;Gardone Val Trompia;0
+17;76;Gargnano;0
+17;77;Gavardo;0
+17;78;Ghedi;0
+17;79;Gianico;0
+17;80;Gottolengo;0
+17;81;Gussago;0
+17;82;Idro;0
+17;83;Incudine;0
+17;84;Irma;0
+17;85;Iseo;0
+17;86;Isorella;0
+17;87;Lavenone;0
+17;88;Leno;0
+17;89;Limone sul Garda;0
+17;90;Lodrino;0
+17;91;Lograto;0
+17;92;Lonato del Garda;0
+17;93;Longhena;0
+17;94;Losine;0
+17;95;Lozio;0
+17;96;Lumezzane;0
+17;97;Maclodio;0
+17;98;Magasa;0
+17;99;Mairano;0
+17;100;Malegno;0
+17;101;Malonno;0
+17;102;Manerba del Garda;0
+17;103;Manerbio;0
+17;104;Marcheno;0
+17;105;Marmentino;0
+17;106;Marone;0
+17;107;Mazzano;0
+17;108;Milzano;0
+17;109;Moniga del Garda;0
+17;110;Monno;0
+17;111;Monte Isola;0
+17;112;Monticelli Brusati;0
+17;113;Montichiari;0
+17;114;Montirone;0
+17;115;Mura;0
+17;116;Muscoline;0
+17;117;Nave;0
+17;118;Niardo;0
+17;119;Nuvolento;0
+17;120;Nuvolera;0
+17;121;Odolo;0
+17;122;Offlaga;0
+17;123;Ome;0
+17;124;Ono San Pietro;0
+17;125;Orzinuovi;0
+17;126;Orzivecchi;0
+17;127;Ospitaletto;0
+17;128;Ossimo;0
+17;129;Padenghe sul Garda;0
+17;130;Paderno Franciacorta;0
+17;131;Paisco Loveno;0
+17;132;Paitone;0
+17;133;Palazzolo sull'Oglio;0
+17;134;Paratico;0
+17;135;Paspardo;0
+17;136;Passirano;0
+17;137;Pavone del Mella;0
+17;138;San Paolo;0
+17;139;Pertica Alta;0
+17;140;Pertica Bassa;0
+17;141;Pezzaze;0
+17;142;Pian Camuno;0
+17;143;Pisogne;0
+17;144;Polaveno;0
+17;145;Polpenazze del Garda;0
+17;146;Pompiano;0
+17;147;Poncarale;0
+17;148;Ponte di Legno;0
+17;149;Pontevico;0
+17;150;Pontoglio;0
+17;151;Pozzolengo;0
+17;152;Pralboino;0
+17;153;Preseglie;0
+17;154;Prestine;0
+17;155;Prevalle;0
+17;156;Provaglio d'Iseo;0
+17;157;Provaglio Val Sabbia;0
+17;158;Puegnago sul Garda;0
+17;159;Quinzano d'Oglio;0
+17;160;Remedello;0
+17;161;Rezzato;0
+17;162;Roccafranca;0
+17;163;Rodengo Saiano;0
+17;164;Roè Volciano;0
+17;165;Roncadelle;0
+17;166;Rovato;0
+17;167;Rudiano;0
+17;168;Sabbio Chiese;0
+17;169;Sale Marasino;0
+17;170;Salò;0
+17;171;San Felice del Benaco;0
+17;172;San Gervasio Bresciano;0
+17;173;San Zeno Naviglio;0
+17;174;Sarezzo;0
+17;175;Saviore dell'Adamello;0
+17;176;Sellero;0
+17;177;Seniga;0
+17;178;Serle;0
+17;179;Sirmione;0
+17;180;Soiano del Lago;0
+17;181;Sonico;0
+17;182;Sulzano;0
+17;183;Tavernole sul Mella;0
+17;184;Temù;0
+17;185;Tignale;0
+17;186;Torbole Casaglia;0
+17;187;Toscolano-Maderno;0
+17;188;Travagliato;0
+17;189;Tremosine;0
+17;190;Trenzano;0
+17;191;Treviso Bresciano;0
+17;192;Urago d'Oglio;0
+17;193;Vallio Terme;0
+17;194;Valvestino;0
+17;195;Verolanuova;0
+17;196;Verolavecchia;0
+17;197;Vestone;0
+17;198;Vezza d'Oglio;0
+17;199;Villa Carcina;0
+17;200;Villachiara;0
+17;201;Villanuova sul Clisi;0
+17;202;Vione;0
+17;203;Visano;0
+17;204;Vobarno;0
+17;205;Zone;0
+17;206;Piancogno;0
+18;1;Alagna;0
+18;2;Albaredo Arnaboldi;0
+18;3;Albonese;0
+18;4;Albuzzano;0
+18;5;Arena Po;0
+18;6;Badia Pavese;0
+18;7;Bagnaria;0
+18;8;Barbianello;0
+18;9;Bascapè;0
+18;10;Bastida de' Dossi;0
+18;11;Bastida Pancarana;0
+18;12;Battuda;0
+18;13;Belgioioso;0
+18;14;Bereguardo;0
+18;15;Borgarello;0
+18;16;Borgo Priolo;0
+18;17;Borgoratto Mormorolo;0
+18;18;Borgo San Siro;0
+18;19;Bornasco;0
+18;20;Bosnasco;0
+18;21;Brallo di Pregola;0
+18;22;Breme;0
+18;23;Bressana Bottarone;0
+18;24;Broni;0
+18;25;Calvignano;0
+18;26;Campospinoso;0
+18;27;Candia Lomellina;0
+18;28;Canevino;0
+18;29;Canneto Pavese;0
+18;30;Carbonara al Ticino;0
+18;31;Casanova Lonati;0
+18;32;Casatisma;0
+18;33;Casei Gerola;0
+18;34;Casorate Primo;0
+18;35;Cassolnovo;0
+18;36;Castana;0
+18;37;Casteggio;0
+18;38;Castelletto di Branduzzo;0
+18;39;Castello d'Agogna;0
+18;40;Castelnovetto;0
+18;41;Cava Manara;0
+18;42;Cecima;0
+18;43;Ceranova;0
+18;44;Ceretto Lomellina;0
+18;45;Cergnago;0
+18;46;Certosa di Pavia;0
+18;47;Cervesina;0
+18;48;Chignolo Po;0
+18;49;Cigognola;0
+18;50;Cilavegna;0
+18;51;Codevilla;0
+18;52;Confienza;0
+18;53;Copiano;0
+18;54;Corana;0
+18;55;Cornale;0
+18;56;Corteolona;0
+18;57;Corvino San Quirico;0
+18;58;Costa de' Nobili;0
+18;59;Cozzo;0
+18;60;Cura Carpignano;0
+18;61;Dorno;0
+18;62;Ferrera Erbognone;0
+18;63;Filighera;0
+18;64;Fortunago;0
+18;65;Frascarolo;0
+18;66;Galliavola;0
+18;67;Gambarana;0
+18;68;Gambolò;0
+18;69;Garlasco;0
+18;70;Genzone;0
+18;71;Gerenzago;0
+18;72;Giussago;0
+18;73;Godiasco;0
+18;74;Golferenzo;0
+18;75;Gravellona Lomellina;0
+18;76;Gropello Cairoli;0
+18;77;Inverno e Monteleone;0
+18;78;Landriano;0
+18;79;Langosco;0
+18;80;Lardirago;0
+18;81;Linarolo;0
+18;82;Lirio;0
+18;83;Lomello;0
+18;84;Lungavilla;0
+18;85;Magherno;0
+18;86;Marcignago;0
+18;87;Marzano;0
+18;88;Mede;0
+18;89;Menconico;0
+18;90;Mezzana Bigli;0
+18;91;Mezzana Rabattone;0
+18;92;Mezzanino;0
+18;93;Miradolo Terme;0
+18;94;Montalto Pavese;0
+18;95;Montebello della Battaglia;0
+18;96;Montecalvo Versiggia;0
+18;97;Montescano;0
+18;98;Montesegale;0
+18;99;Monticelli Pavese;0
+18;100;Montù Beccaria;0
+18;101;Mornico Losana;0
+18;102;Mortara;0
+18;103;Nicorvo;0
+18;104;Olevano di Lomellina;0
+18;105;Oliva Gessi;0
+18;106;Ottobiano;0
+18;107;Palestro;0
+18;108;Pancarana;0
+18;109;Parona;0
+18;110;Pavia;1
+18;111;Pietra de' Giorgi;0
+18;112;Pieve Albignola;0
+18;113;Pieve del Cairo;0
+18;114;Pieve Porto Morone;0
+18;115;Pinarolo Po;0
+18;116;Pizzale;0
+18;117;Ponte Nizza;0
+18;118;Portalbera;0
+18;119;Rea;0
+18;120;Redavalle;0
+18;121;Retorbido;0
+18;122;Rivanazzano Terme;0
+18;123;Robbio;0
+18;124;Robecco Pavese;0
+18;125;Rocca de' Giorgi;0
+18;126;Rocca Susella;0
+18;127;Rognano;0
+18;128;Romagnese;0
+18;129;Roncaro;0
+18;130;Rosasco;0
+18;131;Rovescala;0
+18;132;Ruino;0
+18;133;San Cipriano Po;0
+18;134;San Damiano al Colle;0
+18;135;San Genesio ed Uniti;0
+18;136;San Giorgio di Lomellina;0
+18;137;San Martino Siccomario;0
+18;138;Sannazzaro de' Burgondi;0
+18;139;Santa Cristina e Bissone;0
+18;140;Santa Giuletta;0
+18;141;Sant'Alessio con Vialone;0
+18;142;Santa Margherita di Staffora;0
+18;143;Santa Maria della Versa;0
+18;144;Sant'Angelo Lomellina;0
+18;145;San Zenone al Po;0
+18;146;Sartirana Lomellina;0
+18;147;Scaldasole;0
+18;148;Semiana;0
+18;149;Silvano Pietra;0
+18;150;Siziano;0
+18;151;Sommo;0
+18;152;Spessa;0
+18;153;Stradella;0
+18;154;Suardi;0
+18;155;Torrazza Coste;0
+18;156;Torre Beretti e Castellaro;0
+18;157;Torre d'Arese;0
+18;158;Torre de' Negri;0
+18;159;Torre d'Isola;0
+18;160;Torrevecchia Pia;0
+18;161;Torricella Verzate;0
+18;162;Travacò Siccomario;0
+18;163;Trivolzio;0
+18;164;Tromello;0
+18;165;Trovo;0
+18;166;Val di Nizza;0
+18;167;Valeggio;0
+18;168;Valle Lomellina;0
+18;169;Valle Salimbene;0
+18;170;Valverde;0
+18;171;Varzi;0
+18;172;Velezzo Lomellina;0
+18;173;Vellezzo Bellini;0
+18;174;Verretto;0
+18;175;Verrua Po;0
+18;176;Vidigulfo;0
+18;177;Vigevano;0
+18;178;Villa Biscossi;0
+18;179;Villanova d'Ardenghi;0
+18;180;Villanterio;0
+18;181;Vistarino;0
+18;182;Voghera;0
+18;183;Volpara;0
+18;184;Zavattarello;0
+18;185;Zeccone;0
+18;186;Zeme;0
+18;187;Zenevredo;0
+18;188;Zerbo;0
+18;189;Zerbolò;0
+18;190;Zinasco;0
+19;1;Acquanegra Cremonese;0
+19;2;Agnadello;0
+19;3;Annicco;0
+19;4;Azzanello;0
+19;5;Bagnolo Cremasco;0
+19;6;Bonemerse;0
+19;7;Bordolano;0
+19;8;Ca' d'Andrea;0
+19;9;Calvatone;0
+19;10;Camisano;0
+19;11;Campagnola Cremasca;0
+19;12;Capergnanica;0
+19;13;Cappella Cantone;0
+19;14;Cappella de' Picenardi;0
+19;15;Capralba;0
+19;16;Casalbuttano ed Uniti;0
+19;17;Casale Cremasco-Vidolasco;0
+19;18;Casaletto Ceredano;0
+19;19;Casaletto di Sopra;0
+19;20;Casaletto Vaprio;0
+19;21;Casalmaggiore;0
+19;22;Casalmorano;0
+19;23;Casteldidone;0
+19;24;Castel Gabbiano;0
+19;25;Castelleone;0
+19;26;Castelverde;0
+19;27;Castelvisconti;0
+19;28;Cella Dati;0
+19;29;Chieve;0
+19;30;Cicognolo;0
+19;31;Cingia de' Botti;0
+19;32;Corte de' Cortesi con Cignone;0
+19;33;Corte de' Frati;0
+19;34;Credera Rubbiano;0
+19;35;Crema;0
+19;36;Cremona;1
+19;37;Cremosano;0
+19;38;Crotta d'Adda;0
+19;39;Cumignano sul Naviglio;0
+19;40;Derovere;0
+19;41;Dovera;0
+19;42;Drizzona;0
+19;43;Fiesco;0
+19;44;Formigara;0
+19;45;Gabbioneta-Binanuova;0
+19;46;Gadesco-Pieve Delmona;0
+19;47;Genivolta;0
+19;48;Gerre de' Caprioli;0
+19;49;Gombito;0
+19;50;Grontardo;0
+19;51;Grumello Cremonese ed Uniti;0
+19;52;Gussola;0
+19;53;Isola Dovarese;0
+19;54;Izano;0
+19;55;Madignano;0
+19;56;Malagnino;0
+19;57;Martignana di Po;0
+19;58;Monte Cremasco;0
+19;59;Montodine;0
+19;60;Moscazzano;0
+19;61;Motta Baluffi;0
+19;62;Offanengo;0
+19;63;Olmeneta;0
+19;64;Ostiano;0
+19;65;Paderno Ponchielli;0
+19;66;Palazzo Pignano;0
+19;67;Pandino;0
+19;68;Persico Dosimo;0
+19;69;Pescarolo ed Uniti;0
+19;70;Pessina Cremonese;0
+19;71;Piadena;0
+19;72;Pianengo;0
+19;73;Pieranica;0
+19;74;Pieve d'Olmi;0
+19;75;Pieve San Giacomo;0
+19;76;Pizzighettone;0
+19;77;Pozzaglio ed Uniti;0
+19;78;Quintano;0
+19;79;Ricengo;0
+19;80;Ripalta Arpina;0
+19;81;Ripalta Cremasca;0
+19;82;Ripalta Guerina;0
+19;83;Rivarolo del Re ed Uniti;0
+19;84;Rivolta d'Adda;0
+19;85;Robecco d'Oglio;0
+19;86;Romanengo;0
+19;87;Salvirola;0
+19;88;San Bassano;0
+19;89;San Daniele Po;0
+19;90;San Giovanni in Croce;0
+19;91;San Martino del Lago;0
+19;92;Scandolara Ravara;0
+19;93;Scandolara Ripa d'Oglio;0
+19;94;Sergnano;0
+19;95;Sesto ed Uniti;0
+19;96;Solarolo Rainerio;0
+19;97;Soncino;0
+19;98;Soresina;0
+19;99;Sospiro;0
+19;100;Spinadesco;0
+19;101;Spineda;0
+19;102;Spino d'Adda;0
+19;103;Stagno Lombardo;0
+19;104;Ticengo;0
+19;105;Torlino Vimercati;0
+19;106;Tornata;0
+19;107;Torre de' Picenardi;0
+19;108;Torricella del Pizzo;0
+19;109;Trescore Cremasco;0
+19;110;Trigolo;0
+19;111;Vaiano Cremasco;0
+19;112;Vailate;0
+19;113;Vescovato;0
+19;114;Volongo;0
+19;115;Voltido;0
+20;1;Acquanegra sul Chiese;0
+20;2;Asola;0
+20;3;Bagnolo San Vito;0
+20;4;Bigarello;0
+20;5;Borgoforte;0
+20;6;Borgofranco sul Po;0
+20;7;Bozzolo;0
+20;8;Canneto sull'Oglio;0
+20;9;Carbonara di Po;0
+20;10;Casalmoro;0
+20;11;Casaloldo;0
+20;12;Casalromano;0
+20;13;Castelbelforte;0
+20;14;Castel d'Ario;0
+20;15;Castel Goffredo;0
+20;16;Castellucchio;0
+20;17;Castiglione delle Stiviere;0
+20;18;Cavriana;0
+20;19;Ceresara;0
+20;20;Commessaggio;0
+20;21;Curtatone;0
+20;22;Dosolo;0
+20;23;Felonica;0
+20;24;Gazoldo degli Ippoliti;0
+20;25;Gazzuolo;0
+20;26;Goito;0
+20;27;Gonzaga;0
+20;28;Guidizzolo;0
+20;29;Magnacavallo;0
+20;30;Mantova;1
+20;31;Marcaria;0
+20;32;Mariana Mantovana;0
+20;33;Marmirolo;0
+20;34;Medole;0
+20;35;Moglia;0
+20;36;Monzambano;0
+20;37;Motteggiana;0
+20;38;Ostiglia;0
+20;39;Pegognaga;0
+20;40;Pieve di Coriano;0
+20;41;Piubega;0
+20;42;Poggio Rusco;0
+20;43;Pomponesco;0
+20;44;Ponti sul Mincio;0
+20;45;Porto Mantovano;0
+20;46;Quingentole;0
+20;47;Quistello;0
+20;48;Redondesco;0
+20;49;Revere;0
+20;50;Rivarolo Mantovano;0
+20;51;Rodigo;0
+20;52;Roncoferraro;0
+20;53;Roverbella;0
+20;54;Sabbioneta;0
+20;55;San Benedetto Po;0
+20;56;San Giacomo delle Segnate;0
+20;57;San Giorgio di Mantova;0
+20;58;San Giovanni del Dosso;0
+20;59;San Martino dall'Argine;0
+20;60;Schivenoglia;0
+20;61;Sermide;0
+20;62;Serravalle a Po;0
+20;63;Solferino;0
+20;64;Sustinente;0
+20;65;Suzzara;0
+20;66;Viadana;0
+20;67;Villa Poma;0
+20;68;Villimpenta;0
+20;69;Virgilio;0
+20;70;Volta Mantovana;0
+21;1;Aldino;0
+21;2;Andriano;0
+21;3;Anterivo;0
+21;4;Appiano sulla strada del vino;0
+21;5;Avelengo;0
+21;6;Badia;0
+21;7;Barbiano;0
+21;8;Bolzano;1
+21;9;Braies;0
+21;10;Brennero;0
+21;11;Bressanone;0
+21;12;Bronzolo;0
+21;13;Brunico;0
+21;14;Caines;0
+21;15;Caldaro sulla strada del vino;0
+21;16;Campo di Trens;0
+21;17;Campo Tures;0
+21;18;Castelbello-Ciardes;0
+21;19;Castelrotto;0
+21;20;Cermes;0
+21;21;Chienes;0
+21;22;Chiusa;0
+21;23;Cornedo all'Isarco;0
+21;24;Cortaccia sulla strada del vino;0
+21;25;Cortina sulla strada del vino;0
+21;26;Corvara in Badia;0
+21;27;Curon Venosta;0
+21;28;Dobbiaco;0
+21;29;Egna;0
+21;30;Falzes;0
+21;31;Fiè allo Sciliar;0
+21;32;Fortezza;0
+21;33;Funes;0
+21;34;Gais;0
+21;35;Gargazzone;0
+21;36;Glorenza;0
+21;37;Laces;0
+21;38;Lagundo;0
+21;39;Laion;0
+21;40;Laives;0
+21;41;Lana;0
+21;42;Lasa;0
+21;43;Lauregno;0
+21;44;Luson;0
+21;45;Magrè sulla strada del vino;0
+21;46;Malles Venosta;0
+21;47;Marebbe;0
+21;48;Marlengo;0
+21;49;Martello;0
+21;50;Meltina;0
+21;51;Merano;0
+21;52;Monguelfo-Tesido;0
+21;53;Montagna;0
+21;54;Moso in Passiria;0
+21;55;Nalles;0
+21;56;Naturno;0
+21;57;Naz-Sciaves;0
+21;58;Nova Levante;0
+21;59;Nova Ponente;0
+21;60;Ora;0
+21;61;Ortisei;0
+21;62;Parcines;0
+21;63;Perca;0
+21;64;Plaus;0
+21;65;Ponte Gardena;0
+21;66;Postal;0
+21;67;Prato allo Stelvio;0
+21;68;Predoi;0
+21;69;Proves;0
+21;70;Racines;0
+21;71;Rasun-Anterselva;0
+21;72;Renon;0
+21;73;Rifiano;0
+21;74;Rio di Pusteria;0
+21;75;Rodengo;0
+21;76;Salorno;0
+21;77;San Candido;0
+21;79;San Genesio Atesino;0
+21;80;San Leonardo in Passiria;0
+21;81;San Lorenzo di Sebato;0
+21;82;San Martino in Badia;0
+21;83;San Martino in Passiria;0
+21;84;San Pancrazio;0
+21;85;Santa Cristina Valgardena;0
+21;86;Sarentino;0
+21;87;Scena;0
+21;88;Selva dei Molini;0
+21;89;Selva di Val Gardena;0
+21;91;Senales;0
+21;92;Sesto;0
+21;93;Silandro;0
+21;94;Sluderno;0
+21;95;Stelvio;0
+21;96;Terento;0
+21;97;Terlano;0
+21;98;Termeno sulla strada del vino;0
+21;99;Tesimo;0
+21;100;Tires;0
+21;101;Tirolo;0
+21;102;Trodena nel parco naturale;0
+21;103;Tubre;0
+21;104;Ultimo;0
+21;105;Vadena;0
+21;106;Valdaora;0
+21;107;Val di Vizze;0
+21;108;Valle Aurina;0
+21;109;Valle di Casies;0
+21;110;Vandoies;0
+21;111;Varna;0
+21;112;Verano;0
+21;113;Villabassa;0
+21;114;Villandro;0
+21;115;Vipiteno;0
+21;116;Velturno;0
+21;117;La Valle;0
+21;118;Senale-San Felice;0
+22;1;Ala;0
+22;2;Albiano;0
+22;3;Aldeno;0
+22;4;Amblar;0
+22;5;Andalo;0
+22;6;Arco;0
+22;7;Avio;0
+22;9;Baselga di Pinè;0
+22;11;Bedollo;0
+22;12;Bersone;0
+22;13;Besenello;0
+22;15;Bieno;0
+22;17;Bleggio Superiore;0
+22;18;Bocenago;0
+22;19;Bolbeno;0
+22;20;Bondo;0
+22;21;Bondone;0
+22;22;Borgo Valsugana;0
+22;23;Bosentino;0
+22;24;Breguzzo;0
+22;25;Brentonico;0
+22;26;Bresimo;0
+22;27;Brez;0
+22;28;Brione;0
+22;29;Caderzone Terme;0
+22;30;Cagnò;0
+22;31;Calavino;0
+22;32;Calceranica al Lago;0
+22;33;Caldes;0
+22;34;Caldonazzo;0
+22;35;Calliano;0
+22;36;Campitello di Fassa;0
+22;37;Campodenno;0
+22;38;Canal San Bovo;0
+22;39;Canazei;0
+22;40;Capriana;0
+22;41;Carano;0
+22;42;Carisolo;0
+22;43;Carzano;0
+22;45;Castel Condino;0
+22;46;Castelfondo;0
+22;47;Castello-Molina di Fiemme;0
+22;48;Castello Tesino;0
+22;49;Castelnuovo;0
+22;50;Cavalese;0
+22;51;Cavareno;0
+22;52;Cavedago;0
+22;53;Cavedine;0
+22;54;Cavizzana;0
+22;55;Cembra;0
+22;56;Centa San Nicolò;0
+22;57;Cimego;0
+22;58;Cimone;0
+22;59;Cinte Tesino;0
+22;60;Cis;0
+22;61;Civezzano;0
+22;62;Cles;0
+22;63;Cloz;0
+22;64;Commezzadura;0
+22;66;Condino;0
+22;67;Coredo;0
+22;68;Croviana;0
+22;69;Cunevo;0
+22;70;Daiano;0
+22;71;Dambel;0
+22;72;Daone;0
+22;73;Darè;0
+22;74;Denno;0
+22;75;Dimaro;0
+22;76;Don;0
+22;77;Dorsino;0
+22;78;Drena;0
+22;79;Dro;0
+22;80;Faedo;0
+22;81;Fai della Paganella;0
+22;82;Faver;0
+22;83;Fiavè;0
+22;84;Fiera di Primiero;0
+22;85;Fierozzo;0
+22;86;Flavon;0
+22;87;Folgaria;0
+22;88;Fondo;0
+22;89;Fornace;0
+22;90;Frassilongo;0
+22;91;Garniga Terme;0
+22;92;Giovo;0
+22;93;Giustino;0
+22;94;Grauno;0
+22;95;Grigno;0
+22;96;Grumes;0
+22;97;Imer;0
+22;98;Isera;0
+22;99;Ivano-Fracena;0
+22;100;Lardaro;0
+22;101;Lasino;0
+22;102;Lavarone;0
+22;103;Lavis;0
+22;104;Levico Terme;0
+22;105;Lisignago;0
+22;106;Livo;0
+22;108;Lona-Lases;0
+22;109;Luserna;0
+22;110;Malè;0
+22;111;Malosco;0
+22;112;Massimeno;0
+22;113;Mazzin;0
+22;114;Mezzana;0
+22;115;Mezzano;0
+22;116;Mezzocorona;0
+22;117;Mezzolombardo;0
+22;118;Moena;0
+22;120;Molveno;0
+22;121;Monclassico;0
+22;122;Montagne;0
+22;123;Mori;0
+22;124;Nago-Torbole;0
+22;125;Nanno;0
+22;126;Nave San Rocco;0
+22;127;Nogaredo;0
+22;128;Nomi;0
+22;129;Novaledo;0
+22;130;Ospedaletto;0
+22;131;Ossana;0
+22;132;Padergnone;0
+22;133;Palù del Fersina;0
+22;134;Panchià;0
+22;135;Ronzo-Chienis;0
+22;136;Peio;0
+22;137;Pellizzano;0
+22;138;Pelugo;0
+22;139;Pergine Valsugana;0
+22;140;Pieve di Bono;0
+22;142;Pieve Tesino;0
+22;143;Pinzolo;0
+22;144;Pomarolo;0
+22;145;Pozza di Fassa;0
+22;146;Praso;0
+22;147;Predazzo;0
+22;148;Preore;0
+22;149;Prezzo;0
+22;150;Rabbi;0
+22;151;Ragoli;0
+22;152;Revò;0
+22;153;Riva del Garda;0
+22;154;Romallo;0
+22;155;Romeno;0
+22;156;Roncegno Terme;0
+22;157;Ronchi Valsugana;0
+22;158;Roncone;0
+22;159;Ronzone;0
+22;160;Roverè della Luna;0
+22;161;Rovereto;0
+22;162;Ruffrè-Mendola;0
+22;163;Rumo;0
+22;164;Sagron Mis;0
+22;165;Samone;0
+22;166;San Lorenzo in Banale;0
+22;167;San Michele all'Adige;0
+22;168;Sant'Orsola Terme;0
+22;169;Sanzeno;0
+22;170;Sarnonico;0
+22;171;Scurelle;0
+22;172;Segonzano;0
+22;173;Sfruz;0
+22;174;Siror;0
+22;175;Smarano;0
+22;176;Soraga;0
+22;177;Sover;0
+22;178;Spera;0
+22;179;Spiazzo;0
+22;180;Spormaggiore;0
+22;181;Sporminore;0
+22;182;Stenico;0
+22;183;Storo;0
+22;184;Strembo;0
+22;185;Strigno;0
+22;186;Taio;0
+22;187;Tassullo;0
+22;188;Telve;0
+22;189;Telve di Sopra;0
+22;190;Tenna;0
+22;191;Tenno;0
+22;192;Terlago;0
+22;193;Terragnolo;0
+22;194;Terres;0
+22;195;Terzolas;0
+22;196;Tesero;0
+22;199;Tione di Trento;0
+22;200;Ton;0
+22;201;Tonadico;0
+22;202;Torcegno;0
+22;203;Trambileno;0
+22;204;Transacqua;0
+22;205;Trento;1
+22;206;Tres;0
+22;207;Tuenno;0
+22;208;Valda;0
+22;209;Valfloriana;0
+22;210;Vallarsa;0
+22;211;Varena;0
+22;212;Vattaro;0
+22;213;Vermiglio;0
+22;214;Vervò;0
+22;215;Vezzano;0
+22;216;Vignola-Falesina;0
+22;217;Vigo di Fassa;0
+22;219;Vigolo Vattaro;0
+22;220;Vigo Rendena;0
+22;221;Villa Agnedo;0
+22;222;Villa Lagarina;0
+22;223;Villa Rendena;0
+22;224;Volano;0
+22;225;Zambana;0
+22;226;Ziano di Fiemme;0
+22;227;Zuclo;0
+22;228;Comano Terme;0
+22;229;Ledro;0
+23;1;Affi;0
+23;2;Albaredo d'Adige;0
+23;3;Angiari;0
+23;4;Arcole;0
+23;5;Badia Calavena;0
+23;6;Bardolino;0
+23;7;Belfiore;0
+23;8;Bevilacqua;0
+23;9;Bonavigo;0
+23;10;Boschi Sant'Anna;0
+23;11;Bosco Chiesanuova;0
+23;12;Bovolone;0
+23;13;Brentino Belluno;0
+23;14;Brenzone;0
+23;15;Bussolengo;0
+23;16;Buttapietra;0
+23;17;Caldiero;0
+23;18;Caprino Veronese;0
+23;19;Casaleone;0
+23;20;Castagnaro;0
+23;21;Castel d'Azzano;0
+23;22;Castelnuovo del Garda;0
+23;23;Cavaion Veronese;0
+23;24;Cazzano di Tramigna;0
+23;25;Cerea;0
+23;26;Cerro Veronese;0
+23;27;Cologna Veneta;0
+23;28;Colognola ai Colli;0
+23;29;Concamarise;0
+23;30;Costermano;0
+23;31;Dolcè;0
+23;32;Erbè;0
+23;33;Erbezzo;0
+23;34;Ferrara di Monte Baldo;0
+23;35;Fumane;0
+23;36;Garda;0
+23;37;Gazzo Veronese;0
+23;38;Grezzana;0
+23;39;Illasi;0
+23;40;Isola della Scala;0
+23;41;Isola Rizza;0
+23;42;Lavagno;0
+23;43;Lazise;0
+23;44;Legnago;0
+23;45;Malcesine;0
+23;46;Marano di Valpolicella;0
+23;47;Mezzane di Sotto;0
+23;48;Minerbe;0
+23;49;Montecchia di Crosara;0
+23;50;Monteforte d'Alpone;0
+23;51;Mozzecane;0
+23;52;Negrar;0
+23;53;Nogara;0
+23;54;Nogarole Rocca;0
+23;55;Oppeano;0
+23;56;Palù;0
+23;57;Pastrengo;0
+23;58;Pescantina;0
+23;59;Peschiera del Garda;0
+23;60;Povegliano Veronese;0
+23;61;Pressana;0
+23;62;Rivoli Veronese;0
+23;63;Roncà;0
+23;64;Ronco all'Adige;0
+23;65;Roverchiara;0
+23;66;Roveredo di Guà;0
+23;67;Roverè Veronese;0
+23;68;Salizzole;0
+23;69;San Bonifacio;0
+23;70;San Giovanni Ilarione;0
+23;71;San Giovanni Lupatoto;0
+23;72;Sanguinetto;0
+23;73;San Martino Buon Albergo;0
+23;74;San Mauro di Saline;0
+23;75;San Pietro di Morubio;0
+23;76;San Pietro in Cariano;0
+23;77;Sant'Ambrogio di Valpolicella;0
+23;78;Sant'Anna d'Alfaedo;0
+23;79;San Zeno di Montagna;0
+23;80;Selva di Progno;0
+23;81;Soave;0
+23;82;Sommacampagna;0
+23;83;Sona;0
+23;84;Sorgà;0
+23;85;Terrazzo;0
+23;86;Torri del Benaco;0
+23;87;Tregnago;0
+23;88;Trevenzuolo;0
+23;89;Valeggio sul Mincio;0
+23;90;Velo Veronese;0
+23;91;Verona;1
+23;92;Veronella;0
+23;93;Vestenanova;0
+23;94;Vigasio;0
+23;95;Villa Bartolomea;0
+23;96;Villafranca di Verona;0
+23;97;Zevio;0
+23;98;Zimella;0
+24;1;Agugliaro;0
+24;2;Albettone;0
+24;3;Alonte;0
+24;4;Altavilla Vicentina;0
+24;5;Altissimo;0
+24;6;Arcugnano;0
+24;7;Arsiero;0
+24;8;Arzignano;0
+24;9;Asiago;0
+24;10;Asigliano Veneto;0
+24;11;Barbarano Vicentino;0
+24;12;Bassano del Grappa;0
+24;13;Bolzano Vicentino;0
+24;14;Breganze;0
+24;15;Brendola;0
+24;16;Bressanvido;0
+24;17;Brogliano;0
+24;18;Caldogno;0
+24;19;Caltrano;0
+24;20;Calvene;0
+24;21;Camisano Vicentino;0
+24;22;Campiglia dei Berici;0
+24;23;Campolongo sul Brenta;0
+24;24;Carrè;0
+24;25;Cartigliano;0
+24;26;Cassola;0
+24;27;Castegnero;0
+24;28;Castelgomberto;0
+24;29;Chiampo;0
+24;30;Chiuppano;0
+24;31;Cismon del Grappa;0
+24;32;Cogollo del Cengio;0
+24;33;Conco;0
+24;34;Cornedo Vicentino;0
+24;35;Costabissara;0
+24;36;Creazzo;0
+24;37;Crespadoro;0
+24;38;Dueville;0
+24;39;Enego;0
+24;40;Fara Vicentino;0
+24;41;Foza;0
+24;42;Gallio;0
+24;43;Gambellara;0
+24;44;Gambugliano;0
+24;45;Grancona;0
+24;46;Grisignano di Zocco;0
+24;47;Grumolo delle Abbadesse;0
+24;48;Isola Vicentina;0
+24;49;Laghi;0
+24;50;Lastebasse;0
+24;51;Longare;0
+24;52;Lonigo;0
+24;53;Lugo di Vicenza;0
+24;54;Lusiana;0
+24;55;Malo;0
+24;56;Marano Vicentino;0
+24;57;Marostica;0
+24;58;Mason Vicentino;0
+24;59;Molvena;0
+24;60;Montebello Vicentino;0
+24;61;Montecchio Maggiore;0
+24;62;Montecchio Precalcino;0
+24;63;Monte di Malo;0
+24;64;Montegalda;0
+24;65;Montegaldella;0
+24;66;Monteviale;0
+24;67;Monticello Conte Otto;0
+24;68;Montorso Vicentino;0
+24;69;Mossano;0
+24;70;Mussolente;0
+24;71;Nanto;0
+24;72;Nogarole Vicentino;0
+24;73;Nove;0
+24;74;Noventa Vicentina;0
+24;75;Orgiano;0
+24;76;Pedemonte;0
+24;77;Pianezze;0
+24;78;Piovene Rocchette;0
+24;79;Pojana Maggiore;0
+24;80;Posina;0
+24;81;Pove del Grappa;0
+24;82;Pozzoleone;0
+24;83;Quinto Vicentino;0
+24;84;Recoaro Terme;0
+24;85;Roana;0
+24;86;Romano d'Ezzelino;0
+24;87;Rosà;0
+24;88;Rossano Veneto;0
+24;89;Rotzo;0
+24;90;Salcedo;0
+24;91;Sandrigo;0
+24;92;San Germano dei Berici;0
+24;93;San Nazario;0
+24;94;San Pietro Mussolino;0
+24;95;Santorso;0
+24;96;San Vito di Leguzzano;0
+24;97;Sarcedo;0
+24;98;Sarego;0
+24;99;Schiavon;0
+24;100;Schio;0
+24;101;Solagna;0
+24;102;Sossano;0
+24;103;Sovizzo;0
+24;104;Tezze sul Brenta;0
+24;105;Thiene;0
+24;106;Tonezza del Cimone;0
+24;107;Torrebelvicino;0
+24;108;Torri di Quartesolo;0
+24;110;Trissino;0
+24;111;Valdagno;0
+24;112;Valdastico;0
+24;113;Valli del Pasubio;0
+24;114;Valstagna;0
+24;115;Velo d'Astico;0
+24;116;Vicenza;1
+24;117;Villaga;0
+24;118;Villaverla;0
+24;119;Zanè;0
+24;120;Zermeghedo;0
+24;121;Zovencedo;0
+24;122;Zugliano;0
+25;1;Agordo;0
+25;2;Alano di Piave;0
+25;3;Alleghe;0
+25;4;Arsiè;0
+25;5;Auronzo di Cadore;0
+25;6;Belluno;1
+25;7;Borca di Cadore;0
+25;8;Calalzo di Cadore;0
+25;9;Castellavazzo;0
+25;10;Cencenighe Agordino;0
+25;11;Cesiomaggiore;0
+25;12;Chies d'Alpago;0
+25;13;Cibiana di Cadore;0
+25;14;Colle Santa Lucia;0
+25;15;Comelico Superiore;0
+25;16;Cortina d'Ampezzo;0
+25;17;Danta di Cadore;0
+25;18;Domegge di Cadore;0
+25;19;Falcade;0
+25;20;Farra d'Alpago;0
+25;21;Feltre;0
+25;22;Fonzaso;0
+25;23;Canale d'Agordo;0
+25;24;Forno di Zoldo;0
+25;25;Gosaldo;0
+25;26;Lamon;0
+25;27;La Valle Agordina;0
+25;28;Lentiai;0
+25;29;Limana;0
+25;30;Livinallongo del Col di Lana;0
+25;31;Longarone;0
+25;32;Lorenzago di Cadore;0
+25;33;Lozzo di Cadore;0
+25;34;Mel;0
+25;35;Ospitale di Cadore;0
+25;36;Pedavena;0
+25;37;Perarolo di Cadore;0
+25;38;Pieve d'Alpago;0
+25;39;Pieve di Cadore;0
+25;40;Ponte nelle Alpi;0
+25;41;Puos d'Alpago;0
+25;42;Quero;0
+25;43;Rivamonte Agordino;0
+25;44;Rocca Pietore;0
+25;45;San Gregorio nelle Alpi;0
+25;46;San Nicolò di Comelico;0
+25;47;San Pietro di Cadore;0
+25;48;Santa Giustina;0
+25;49;San Tomaso Agordino;0
+25;50;Santo Stefano di Cadore;0
+25;51;San Vito di Cadore;0
+25;52;Sappada;0
+25;53;Sedico;0
+25;54;Selva di Cadore;0
+25;55;Seren del Grappa;0
+25;56;Sospirolo;0
+25;57;Soverzene;0
+25;58;Sovramonte;0
+25;59;Taibon Agordino;0
+25;60;Tambre;0
+25;61;Trichiana;0
+25;62;Vallada Agordina;0
+25;63;Valle di Cadore;0
+25;64;Vas;0
+25;65;Vigo di Cadore;0
+25;66;Vodo Cadore;0
+25;67;Voltago Agordino;0
+25;68;Zoldo Alto;0
+25;69;Zoppè di Cadore;0
+26;1;Altivole;0
+26;2;Arcade;0
+26;3;Asolo;0
+26;4;Borso del Grappa;0
+26;5;Breda di Piave;0
+26;6;Caerano di San Marco;0
+26;7;Cappella Maggiore;0
+26;8;Carbonera;0
+26;9;Casale sul Sile;0
+26;10;Casier;0
+26;11;Castelcucco;0
+26;12;Castelfranco Veneto;0
+26;13;Castello di Godego;0
+26;14;Cavaso del Tomba;0
+26;15;Cessalto;0
+26;16;Chiarano;0
+26;17;Cimadolmo;0
+26;18;Cison di Valmarino;0
+26;19;Codognè;0
+26;20;Colle Umberto;0
+26;21;Conegliano;0
+26;22;Cordignano;0
+26;23;Cornuda;0
+26;24;Crespano del Grappa;0
+26;25;Crocetta del Montello;0
+26;26;Farra di Soligo;0
+26;27;Follina;0
+26;28;Fontanelle;0
+26;29;Fonte;0
+26;30;Fregona;0
+26;31;Gaiarine;0
+26;32;Giavera del Montello;0
+26;33;Godega di Sant'Urbano;0
+26;34;Gorgo al Monticano;0
+26;35;Istrana;0
+26;36;Loria;0
+26;37;Mansuè;0
+26;38;Mareno di Piave;0
+26;39;Maser;0
+26;40;Maserada sul Piave;0
+26;41;Meduna di Livenza;0
+26;42;Miane;0
+26;43;Mogliano Veneto;0
+26;44;Monastier di Treviso;0
+26;45;Monfumo;0
+26;46;Montebelluna;0
+26;47;Morgano;0
+26;48;Moriago della Battaglia;0
+26;49;Motta di Livenza;0
+26;50;Nervesa della Battaglia;0
+26;51;Oderzo;0
+26;52;Ormelle;0
+26;53;Orsago;0
+26;54;Paderno del Grappa;0
+26;55;Paese;0
+26;56;Pederobba;0
+26;57;Pieve di Soligo;0
+26;58;Ponte di Piave;0
+26;59;Ponzano Veneto;0
+26;60;Portobuffolè;0
+26;61;Possagno;0
+26;62;Povegliano;0
+26;63;Preganziol;0
+26;64;Quinto di Treviso;0
+26;65;Refrontolo;0
+26;66;Resana;0
+26;67;Revine Lago;0
+26;68;Riese Pio X;0
+26;69;Roncade;0
+26;70;Salgareda;0
+26;71;San Biagio di Callalta;0
+26;72;San Fior;0
+26;73;San Pietro di Feletto;0
+26;74;San Polo di Piave;0
+26;75;Santa Lucia di Piave;0
+26;76;San Vendemiano;0
+26;77;San Zenone degli Ezzelini;0
+26;78;Sarmede;0
+26;79;Segusino;0
+26;80;Sernaglia della Battaglia;0
+26;81;Silea;0
+26;82;Spresiano;0
+26;83;Susegana;0
+26;84;Tarzo;0
+26;85;Trevignano;0
+26;86;Treviso;1
+26;87;Valdobbiadene;0
+26;88;Vazzola;0
+26;89;Vedelago;0
+26;90;Vidor;0
+26;91;Villorba;0
+26;92;Vittorio Veneto;0
+26;93;Volpago del Montello;0
+26;94;Zenson di Piave;0
+26;95;Zero Branco;0
+27;1;Annone Veneto;0
+27;2;Campagna Lupia;0
+27;3;Campolongo Maggiore;0
+27;4;Camponogara;0
+27;5;Caorle;0
+27;6;Cavarzere;0
+27;7;Ceggia;0
+27;8;Chioggia;0
+27;9;Cinto Caomaggiore;0
+27;10;Cona;0
+27;11;Concordia Sagittaria;0
+27;12;Dolo;0
+27;13;Eraclea;0
+27;14;Fiesso d'Artico;0
+27;15;Fossalta di Piave;0
+27;16;Fossalta di Portogruaro;0
+27;17;Fossò;0
+27;18;Gruaro;0
+27;19;Jesolo;0
+27;20;Marcon;0
+27;21;Martellago;0
+27;22;Meolo;0
+27;23;Mira;0
+27;24;Mirano;0
+27;25;Musile di Piave;0
+27;26;Noale;0
+27;27;Noventa di Piave;0
+27;28;Pianiga;0
+27;29;Portogruaro;0
+27;30;Pramaggiore;0
+27;31;Quarto d'Altino;0
+27;32;Salzano;0
+27;33;San Donà di Piave;0
+27;34;San Michele al Tagliamento;0
+27;35;Santa Maria di Sala;0
+27;36;San Stino di Livenza;0
+27;37;Scorzè;0
+27;38;Spinea;0
+27;39;Stra;0
+27;40;Teglio Veneto;0
+27;41;Torre di Mosto;0
+27;42;Venezia;1
+27;43;Vigonovo;0
+27;44;Cavallino-Treporti;0
+28;1;Abano Terme;0
+28;2;Agna;0
+28;3;Albignasego;0
+28;4;Anguillara Veneta;0
+28;5;Arquà Petrarca;0
+28;6;Arre;0
+28;7;Arzergrande;0
+28;8;Bagnoli di Sopra;0
+28;9;Baone;0
+28;10;Barbona;0
+28;11;Battaglia Terme;0
+28;12;Boara Pisani;0
+28;13;Borgoricco;0
+28;14;Bovolenta;0
+28;15;Brugine;0
+28;16;Cadoneghe;0
+28;17;Campodarsego;0
+28;18;Campodoro;0
+28;19;Camposampiero;0
+28;20;Campo San Martino;0
+28;21;Candiana;0
+28;22;Carceri;0
+28;23;Carmignano di Brenta;0
+28;26;Cartura;0
+28;27;Casale di Scodosia;0
+28;28;Casalserugo;0
+28;29;Castelbaldo;0
+28;30;Cervarese Santa Croce;0
+28;31;Cinto Euganeo;0
+28;32;Cittadella;0
+28;33;Codevigo;0
+28;34;Conselve;0
+28;35;Correzzola;0
+28;36;Curtarolo;0
+28;37;Este;0
+28;38;Fontaniva;0
+28;39;Galliera Veneta;0
+28;40;Galzignano Terme;0
+28;41;Gazzo;0
+28;42;Grantorto;0
+28;43;Granze;0
+28;44;Legnaro;0
+28;45;Limena;0
+28;46;Loreggia;0
+28;47;Lozzo Atestino;0
+28;48;Maserà di Padova;0
+28;49;Masi;0
+28;50;Massanzago;0
+28;51;Megliadino San Fidenzio;0
+28;52;Megliadino San Vitale;0
+28;53;Merlara;0
+28;54;Mestrino;0
+28;55;Monselice;0
+28;56;Montagnana;0
+28;57;Montegrotto Terme;0
+28;58;Noventa Padovana;0
+28;59;Ospedaletto Euganeo;0
+28;60;Padova;1
+28;61;Pernumia;0
+28;62;Piacenza d'Adige;0
+28;63;Piazzola sul Brenta;0
+28;64;Piombino Dese;0
+28;65;Piove di Sacco;0
+28;66;Polverara;0
+28;67;Ponso;0
+28;68;Pontelongo;0
+28;69;Ponte San Nicolò;0
+28;70;Pozzonovo;0
+28;71;Rovolon;0
+28;72;Rubano;0
+28;73;Saccolongo;0
+28;74;Saletto;0
+28;75;San Giorgio delle Pertiche;0
+28;76;San Giorgio in Bosco;0
+28;77;San Martino di Lupari;0
+28;78;San Pietro in Gu;0
+28;79;San Pietro Viminario;0
+28;80;Santa Giustina in Colle;0
+28;81;Santa Margherita d'Adige;0
+28;82;Sant'Angelo di Piove di Sacco;0
+28;83;Sant'Elena;0
+28;84;Sant'Urbano;0
+28;85;Saonara;0
+28;86;Selvazzano Dentro;0
+28;87;Solesino;0
+28;88;Stanghella;0
+28;89;Teolo;0
+28;90;Terrassa Padovana;0
+28;91;Tombolo;0
+28;92;Torreglia;0
+28;93;Trebaseleghe;0
+28;94;Tribano;0
+28;95;Urbana;0
+28;96;Veggiano;0
+28;97;Vescovana;0
+28;98;Vighizzolo d'Este;0
+28;99;Vigodarzere;0
+28;100;Vigonza;0
+28;101;Villa del Conte;0
+28;102;Villa Estense;0
+28;103;Villafranca Padovana;0
+28;104;Villanova di Camposampiero;0
+28;105;Vo';0
+28;106;Due Carrare;0
+29;1;Adria;0
+29;2;Ariano nel Polesine;0
+29;3;Arquà Polesine;0
+29;4;Badia Polesine;0
+29;5;Bagnolo di Po;0
+29;6;Bergantino;0
+29;7;Bosaro;0
+29;8;Calto;0
+29;9;Canaro;0
+29;10;Canda;0
+29;11;Castelguglielmo;0
+29;12;Castelmassa;0
+29;13;Castelnovo Bariano;0
+29;14;Ceneselli;0
+29;15;Ceregnano;0
+29;17;Corbola;0
+29;18;Costa di Rovigo;0
+29;19;Crespino;0
+29;21;Ficarolo;0
+29;22;Fiesso Umbertiano;0
+29;23;Frassinelle Polesine;0
+29;24;Fratta Polesine;0
+29;25;Gaiba;0
+29;26;Gavello;0
+29;27;Giacciano con Baruchella;0
+29;28;Guarda Veneta;0
+29;29;Lendinara;0
+29;30;Loreo;0
+29;31;Lusia;0
+29;32;Melara;0
+29;33;Occhiobello;0
+29;34;Papozze;0
+29;35;Pettorazza Grimani;0
+29;36;Pincara;0
+29;37;Polesella;0
+29;38;Pontecchio Polesine;0
+29;39;Porto Tolle;0
+29;40;Rosolina;0
+29;41;Rovigo;1
+29;42;Salara;0
+29;43;San Bellino;0
+29;44;San Martino di Venezze;0
+29;45;Stienta;0
+29;46;Taglio di Po;0
+29;47;Trecenta;0
+29;48;Villadose;0
+29;49;Villamarzana;0
+29;50;Villanova del Ghebbo;0
+29;51;Villanova Marchesana;0
+29;52;Porto Viro;0
+30;1;Aiello del Friuli;0
+30;2;Amaro;0
+30;3;Ampezzo;0
+30;4;Aquileia;0
+30;5;Arta Terme;0
+30;6;Artegna;0
+30;7;Attimis;0
+30;8;Bagnaria Arsa;0
+30;9;Basiliano;0
+30;10;Bertiolo;0
+30;11;Bicinicco;0
+30;12;Bordano;0
+30;13;Buja;0
+30;14;Buttrio;0
+30;15;Camino al Tagliamento;0
+30;16;Campoformido;0
+30;18;Carlino;0
+30;19;Cassacco;0
+30;20;Castions di Strada;0
+30;21;Cavazzo Carnico;0
+30;22;Cercivento;0
+30;23;Cervignano del Friuli;0
+30;24;Chiopris-Viscone;0
+30;25;Chiusaforte;0
+30;26;Cividale del Friuli;0
+30;27;Codroipo;0
+30;28;Colloredo di Monte Albano;0
+30;29;Comeglians;0
+30;30;Corno di Rosazzo;0
+30;31;Coseano;0
+30;32;Dignano;0
+30;33;Dogna;0
+30;34;Drenchia;0
+30;35;Enemonzo;0
+30;36;Faedis;0
+30;37;Fagagna;0
+30;38;Fiumicello;0
+30;39;Flaibano;0
+30;40;Forni Avoltri;0
+30;41;Forni di Sopra;0
+30;42;Forni di Sotto;0
+30;43;Gemona del Friuli;0
+30;44;Gonars;0
+30;45;Grimacco;0
+30;46;Latisana;0
+30;47;Lauco;0
+30;48;Lestizza;0
+30;49;Lignano Sabbiadoro;0
+30;50;Ligosullo;0
+30;51;Lusevera;0
+30;52;Magnano in Riviera;0
+30;53;Majano;0
+30;54;Malborghetto Valbruna;0
+30;55;Manzano;0
+30;56;Marano Lagunare;0
+30;57;Martignacco;0
+30;58;Mereto di Tomba;0
+30;59;Moggio Udinese;0
+30;60;Moimacco;0
+30;61;Montenars;0
+30;62;Mortegliano;0
+30;63;Moruzzo;0
+30;64;Muzzana del Turgnano;0
+30;65;Nimis;0
+30;66;Osoppo;0
+30;67;Ovaro;0
+30;68;Pagnacco;0
+30;69;Palazzolo dello Stella;0
+30;70;Palmanova;0
+30;71;Paluzza;0
+30;72;Pasian di Prato;0
+30;73;Paularo;0
+30;74;Pavia di Udine;0
+30;75;Pocenia;0
+30;76;Pontebba;0
+30;77;Porpetto;0
+30;78;Povoletto;0
+30;79;Pozzuolo del Friuli;0
+30;80;Pradamano;0
+30;81;Prato Carnico;0
+30;82;Precenicco;0
+30;83;Premariacco;0
+30;84;Preone;0
+30;85;Prepotto;0
+30;86;Pulfero;0
+30;87;Ragogna;0
+30;88;Ravascletto;0
+30;89;Raveo;0
+30;90;Reana del Rojale;0
+30;91;Remanzacco;0
+30;92;Resia;0
+30;93;Resiutta;0
+30;94;Rigolato;0
+30;95;Rive d'Arcano;0
+30;96;Rivignano;0
+30;97;Ronchis;0
+30;98;Ruda;0
+30;99;San Daniele del Friuli;0
+30;100;San Giorgio di Nogaro;0
+30;101;San Giovanni al Natisone;0
+30;102;San Leonardo;0
+30;103;San Pietro al Natisone;0
+30;104;Santa Maria la Longa;0
+30;105;San Vito al Torre;0
+30;106;San Vito di Fagagna;0
+30;107;Sauris;0
+30;108;Savogna;0
+30;109;Sedegliano;0
+30;110;Socchieve;0
+30;111;Stregna;0
+30;112;Sutrio;0
+30;113;Taipana;0
+30;114;Talmassons;0
+30;116;Tarcento;0
+30;117;Tarvisio;0
+30;118;Tavagnacco;0
+30;119;Teor;0
+30;120;Terzo d'Aquileia;0
+30;121;Tolmezzo;0
+30;122;Torreano;0
+30;123;Torviscosa;0
+30;124;Trasaghis;0
+30;125;Treppo Carnico;0
+30;126;Treppo Grande;0
+30;127;Tricesimo;0
+30;128;Trivignano Udinese;0
+30;129;Udine;1
+30;130;Varmo;0
+30;131;Venzone;0
+30;132;Verzegnis;0
+30;133;Villa Santina;0
+30;134;Villa Vicentina;0
+30;135;Visco;0
+30;136;Zuglio;0
+30;137;Forgaria nel Friuli;0
+30;138;Campolongo Tapogliano;0
+31;1;Capriva del Friuli;0
+31;2;Cormons;0
+31;3;Doberdò del Lago;0
+31;4;Dolegna del Collio;0
+31;5;Farra d'Isonzo;0
+31;6;Fogliano Redipuglia;0
+31;7;Gorizia;1
+31;8;Gradisca d'Isonzo;0
+31;9;Grado;0
+31;10;Mariano del Friuli;0
+31;11;Medea;0
+31;12;Monfalcone;0
+31;13;Moraro;0
+31;14;Mossa;0
+31;15;Romans d'Isonzo;0
+31;16;Ronchi dei Legionari;0
+31;17;Sagrado;0
+31;18;San Canzian d'Isonzo;0
+31;19;San Floriano del Collio;0
+31;20;San Lorenzo Isontino;0
+31;21;San Pier d'Isonzo;0
+31;22;Savogna d'Isonzo;0
+31;23;Staranzano;0
+31;24;Turriaco;0
+31;25;Villesse;0
+32;1;Duino-Aurisina;0
+32;2;Monrupino;0
+32;3;Muggia;0
+32;4;San Dorligo della Valle - Dolina;0
+32;5;Sgonico;0
+32;6;Trieste;1
+33;1;Agazzano;0
+33;2;Alseno;0
+33;3;Besenzone;0
+33;4;Bettola;0
+33;5;Bobbio;0
+33;6;Borgonovo Val Tidone;0
+33;7;Cadeo;0
+33;8;Calendasco;0
+33;9;Caminata;0
+33;10;Caorso;0
+33;11;Carpaneto Piacentino;0
+33;12;Castell'Arquato;0
+33;13;Castel San Giovanni;0
+33;14;Castelvetro Piacentino;0
+33;15;Cerignale;0
+33;16;Coli;0
+33;17;Corte Brugnatella;0
+33;18;Cortemaggiore;0
+33;19;Farini;0
+33;20;Ferriere;0
+33;21;Fiorenzuola d'Arda;0
+33;22;Gazzola;0
+33;23;Gossolengo;0
+33;24;Gragnano Trebbiense;0
+33;25;Gropparello;0
+33;26;Lugagnano Val d'Arda;0
+33;27;Monticelli d'Ongina;0
+33;28;Morfasso;0
+33;29;Nibbiano;0
+33;30;Ottone;0
+33;31;Pecorara;0
+33;32;Piacenza;1
+33;33;Pianello Val Tidone;0
+33;34;Piozzano;0
+33;35;Podenzano;0
+33;36;Ponte dell'Olio;0
+33;37;Pontenure;0
+33;38;Rivergaro;0
+33;39;Rottofreno;0
+33;40;San Giorgio Piacentino;0
+33;41;San Pietro in Cerro;0
+33;42;Sarmato;0
+33;43;Travo;0
+33;44;Vernasca;0
+33;45;Vigolzone;0
+33;46;Villanova sull'Arda;0
+33;47;Zerba;0
+33;48;Ziano Piacentino;0
+34;1;Albareto;0
+34;2;Bardi;0
+34;3;Bedonia;0
+34;4;Berceto;0
+34;5;Bore;0
+34;6;Borgo Val di Taro;0
+34;7;Busseto;0
+34;8;Calestano;0
+34;9;Collecchio;0
+34;10;Colorno;0
+34;11;Compiano;0
+34;12;Corniglio;0
+34;13;Felino;0
+34;14;Fidenza;0
+34;15;Fontanellato;0
+34;16;Fontevivo;0
+34;17;Fornovo di Taro;0
+34;18;Langhirano;0
+34;19;Lesignano de' Bagni;0
+34;20;Medesano;0
+34;21;Mezzani;0
+34;22;Monchio delle Corti;0
+34;23;Montechiarugolo;0
+34;24;Neviano degli Arduini;0
+34;25;Noceto;0
+34;26;Palanzano;0
+34;27;Parma;1
+34;28;Pellegrino Parmense;0
+34;29;Polesine Parmense;0
+34;30;Roccabianca;0
+34;31;Sala Baganza;0
+34;32;Salsomaggiore Terme;0
+34;33;San Secondo Parmense;0
+34;34;Sissa;0
+34;35;Solignano;0
+34;36;Soragna;0
+34;37;Sorbolo;0
+34;38;Terenzo;0
+34;39;Tizzano Val Parma;0
+34;40;Tornolo;0
+34;41;Torrile;0
+34;42;Traversetolo;0
+34;43;Trecasali;0
+34;44;Valmozzola;0
+34;45;Varano de' Melegari;0
+34;46;Varsi;0
+34;48;Zibello;0
+35;1;Albinea;0
+35;2;Bagnolo in Piano;0
+35;3;Baiso;0
+35;4;Bibbiano;0
+35;5;Boretto;0
+35;6;Brescello;0
+35;7;Busana;0
+35;8;Cadelbosco di Sopra;0
+35;9;Campagnola Emilia;0
+35;10;Campegine;0
+35;11;Carpineti;0
+35;12;Casalgrande;0
+35;13;Casina;0
+35;14;Castellarano;0
+35;15;Castelnovo di Sotto;0
+35;16;Castelnovo ne' Monti;0
+35;17;Cavriago;0
+35;18;Canossa;0
+35;19;Collagna;0
+35;20;Correggio;0
+35;21;Fabbrico;0
+35;22;Gattatico;0
+35;23;Gualtieri;0
+35;24;Guastalla;0
+35;25;Ligonchio;0
+35;26;Luzzara;0
+35;27;Montecchio Emilia;0
+35;28;Novellara;0
+35;29;Poviglio;0
+35;30;Quattro Castella;0
+35;31;Ramiseto;0
+35;32;Reggiolo;0
+35;33;Reggio nell'Emilia;1
+35;34;Rio Saliceto;0
+35;35;Rolo;0
+35;36;Rubiera;0
+35;37;San Martino in Rio;0
+35;38;San Polo d'Enza;0
+35;39;Sant'Ilario d'Enza;0
+35;40;Scandiano;0
+35;41;Toano;0
+35;42;Vetto;0
+35;43;Vezzano sul Crostolo;0
+35;44;Viano;0
+35;45;Villa Minozzo;0
+36;1;Bastiglia;0
+36;2;Bomporto;0
+36;3;Campogalliano;0
+36;4;Camposanto;0
+36;5;Carpi;0
+36;6;Castelfranco Emilia;0
+36;7;Castelnuovo Rangone;0
+36;8;Castelvetro di Modena;0
+36;9;Cavezzo;0
+36;10;Concordia sulla Secchia;0
+36;11;Fanano;0
+36;12;Finale Emilia;0
+36;13;Fiorano Modenese;0
+36;14;Fiumalbo;0
+36;15;Formigine;0
+36;16;Frassinoro;0
+36;17;Guiglia;0
+36;18;Lama Mocogno;0
+36;19;Maranello;0
+36;20;Marano sul Panaro;0
+36;21;Medolla;0
+36;22;Mirandola;0
+36;23;Modena;1
+36;24;Montecreto;0
+36;25;Montefiorino;0
+36;26;Montese;0
+36;27;Nonantola;0
+36;28;Novi di Modena;0
+36;29;Palagano;0
+36;30;Pavullo nel Frignano;0
+36;31;Pievepelago;0
+36;32;Polinago;0
+36;33;Prignano sulla Secchia;0
+36;34;Ravarino;0
+36;35;Riolunato;0
+36;36;San Cesario sul Panaro;0
+36;37;San Felice sul Panaro;0
+36;38;San Possidonio;0
+36;39;San Prospero;0
+36;40;Sassuolo;0
+36;41;Savignano sul Panaro;0
+36;42;Serramazzoni;0
+36;43;Sestola;0
+36;44;Soliera;0
+36;45;Spilamberto;0
+36;46;Vignola;0
+36;47;Zocca;0
+37;1;Anzola dell'Emilia;0
+37;2;Argelato;0
+37;3;Baricella;0
+37;4;Bazzano;0
+37;5;Bentivoglio;0
+37;6;Bologna;1
+37;7;Borgo Tossignano;0
+37;8;Budrio;0
+37;9;Calderara di Reno;0
+37;10;Camugnano;0
+37;11;Casalecchio di Reno;0
+37;12;Casalfiumanese;0
+37;13;Castel d'Aiano;0
+37;14;Castel del Rio;0
+37;15;Castel di Casio;0
+37;16;Castel Guelfo di Bologna;0
+37;17;Castello d'Argile;0
+37;18;Castello di Serravalle;0
+37;19;Castel Maggiore;0
+37;20;Castel San Pietro Terme;0
+37;21;Castenaso;0
+37;22;Castiglione dei Pepoli;0
+37;23;Crespellano;0
+37;24;Crevalcore;0
+37;25;Dozza;0
+37;26;Fontanelice;0
+37;27;Gaggio Montano;0
+37;28;Galliera;0
+37;29;Granaglione;0
+37;30;Granarolo dell'Emilia;0
+37;31;Grizzana Morandi;0
+37;32;Imola;0
+37;33;Lizzano in Belvedere;0
+37;34;Loiano;0
+37;35;Malalbergo;0
+37;36;Marzabotto;0
+37;37;Medicina;0
+37;38;Minerbio;0
+37;39;Molinella;0
+37;40;Monghidoro;0
+37;41;Monterenzio;0
+37;42;Monte San Pietro;0
+37;43;Monteveglio;0
+37;44;Monzuno;0
+37;45;Mordano;0
+37;46;Ozzano dell'Emilia;0
+37;47;Pianoro;0
+37;48;Pieve di Cento;0
+37;49;Porretta Terme;0
+37;50;Sala Bolognese;0
+37;51;San Benedetto Val di Sambro;0
+37;52;San Giorgio di Piano;0
+37;53;San Giovanni in Persiceto;0
+37;54;San Lazzaro di Savena;0
+37;55;San Pietro in Casale;0
+37;56;Sant'Agata Bolognese;0
+37;57;Sasso Marconi;0
+37;58;Savigno;0
+37;59;Vergato;0
+37;60;Zola Predosa;0
+38;1;Argenta;0
+38;2;Berra;0
+38;3;Bondeno;0
+38;4;Cento;0
+38;5;Codigoro;0
+38;6;Comacchio;0
+38;7;Copparo;0
+38;8;Ferrara;1
+38;9;Formignana;0
+38;10;Jolanda di Savoia;0
+38;11;Lagosanto;0
+38;12;Masi Torello;0
+38;13;Massa Fiscaglia;0
+38;14;Mesola;0
+38;15;Migliarino;0
+38;16;Mirabello;0
+38;17;Ostellato;0
+38;18;Poggio Renatico;0
+38;19;Portomaggiore;0
+38;20;Ro;0
+38;21;Sant'Agostino;0
+38;22;Vigarano Mainarda;0
+38;23;Voghiera;0
+38;24;Tresigallo;0
+38;25;Goro;0
+38;26;Migliaro;0
+39;1;Alfonsine;0
+39;2;Bagnacavallo;0
+39;3;Bagnara di Romagna;0
+39;4;Brisighella;0
+39;5;Casola Valsenio;0
+39;6;Castel Bolognese;0
+39;7;Cervia;0
+39;8;Conselice;0
+39;9;Cotignola;0
+39;10;Faenza;0
+39;11;Fusignano;0
+39;12;Lugo;0
+39;13;Massa Lombarda;0
+39;14;Ravenna;1
+39;15;Riolo Terme;0
+39;16;Russi;0
+39;17;Sant'Agata sul Santerno;0
+39;18;Solarolo;0
+40;1;Bagno di Romagna;0
+40;3;Bertinoro;0
+40;4;Borghi;0
+40;5;Castrocaro Terme e Terra del Sole;0
+40;7;Cesena;0
+40;8;Cesenatico;0
+40;9;Civitella di Romagna;0
+40;11;Dovadola;0
+40;12;Forlì;1
+40;13;Forlimpopoli;0
+40;14;Galeata;0
+40;15;Gambettola;0
+40;16;Gatteo;0
+40;18;Longiano;0
+40;19;Meldola;0
+40;20;Mercato Saraceno;0
+40;22;Modigliana;0
+40;28;Montiano;0
+40;31;Portico e San Benedetto;0
+40;32;Predappio;0
+40;33;Premilcuore;0
+40;36;Rocca San Casciano;0
+40;37;Roncofreddo;0
+40;41;San Mauro Pascoli;0
+40;43;Santa Sofia;0
+40;44;Sarsina;0
+40;45;Savignano sul Rubicone;0
+40;46;Sogliano al Rubicone;0
+40;49;Tredozio;0
+40;50;Verghereto;0
+41;1;Acqualagna;0
+41;2;Apecchio;0
+41;3;Auditore;0
+41;4;Barchi;0
+41;5;Belforte all'Isauro;0
+41;6;Borgo Pace;0
+41;7;Cagli;0
+41;8;Cantiano;0
+41;9;Carpegna;0
+41;10;Cartoceto;0
+41;12;Colbordolo;0
+41;13;Fano;0
+41;14;Fermignano;0
+41;15;Fossombrone;0
+41;16;Fratte Rosa;0
+41;17;Frontino;0
+41;18;Frontone;0
+41;19;Gabicce Mare;0
+41;20;Gradara;0
+41;21;Isola del Piano;0
+41;22;Lunano;0
+41;23;Macerata Feltria;0
+41;25;Mercatello sul Metauro;0
+41;26;Mercatino Conca;0
+41;27;Mombaroccio;0
+41;28;Mondavio;0
+41;29;Mondolfo;0
+41;30;Montecalvo in Foglia;0
+41;31;Monte Cerignone;0
+41;32;Monteciccardo;0
+41;33;Montecopiolo;0
+41;34;Montefelcino;0
+41;35;Monte Grimano Terme;0
+41;36;Montelabbate;0
+41;37;Montemaggiore al Metauro;0
+41;38;Monte Porzio;0
+41;40;Orciano di Pesaro;0
+41;41;Peglio;0
+41;43;Pergola;0
+41;44;Pesaro;1
+41;45;Petriano;0
+41;46;Piagge;0
+41;47;Piandimeleto;0
+41;48;Pietrarubbia;0
+41;49;Piobbico;0
+41;50;Saltara;0
+41;51;San Costanzo;0
+41;52;San Giorgio di Pesaro;0
+41;54;San Lorenzo in Campo;0
+41;56;Sant'Angelo in Lizzola;0
+41;57;Sant'Angelo in Vado;0
+41;58;Sant'Ippolito;0
+41;59;Sassocorvaro;0
+41;60;Sassofeltrio;0
+41;61;Serra Sant'Abbondio;0
+41;62;Serrungarina;0
+41;64;Tavoleto;0
+41;65;Tavullia;0
+41;66;Urbania;0
+41;67;Urbino;0
+42;1;Agugliano;0
+42;2;Ancona;1
+42;3;Arcevia;0
+42;4;Barbara;0
+42;5;Belvedere Ostrense;0
+42;6;Camerano;0
+42;7;Camerata Picena;0
+42;8;Castelbellino;0
+42;9;Castel Colonna;0
+42;10;Castelfidardo;0
+42;11;Castelleone di Suasa;0
+42;12;Castelplanio;0
+42;13;Cerreto d'Esi;0
+42;14;Chiaravalle;0
+42;15;Corinaldo;0
+42;16;Cupramontana;0
+42;17;Fabriano;0
+42;18;Falconara Marittima;0
+42;19;Filottrano;0
+42;20;Genga;0
+42;21;Jesi;0
+42;22;Loreto;0
+42;23;Maiolati Spontini;0
+42;24;Mergo;0
+42;25;Monsano;0
+42;26;Montecarotto;0
+42;27;Montemarciano;0
+42;28;Monterado;0
+42;29;Monte Roberto;0
+42;30;Monte San Vito;0
+42;31;Morro d'Alba;0
+42;32;Numana;0
+42;33;Offagna;0
+42;34;Osimo;0
+42;35;Ostra;0
+42;36;Ostra Vetere;0
+42;37;Poggio San Marcello;0
+42;38;Polverigi;0
+42;39;Ripe;0
+42;40;Rosora;0
+42;41;San Marcello;0
+42;42;San Paolo di Jesi;0
+42;43;Santa Maria Nuova;0
+42;44;Sassoferrato;0
+42;45;Senigallia;0
+42;46;Serra de' Conti;0
+42;47;Serra San Quirico;0
+42;48;Sirolo;0
+42;49;Staffolo;0
+43;1;Acquacanina;0
+43;2;Apiro;0
+43;3;Appignano;0
+43;4;Belforte del Chienti;0
+43;5;Bolognola;0
+43;6;Caldarola;0
+43;7;Camerino;0
+43;8;Camporotondo di Fiastrone;0
+43;9;Castelraimondo;0
+43;10;Castelsantangelo sul Nera;0
+43;11;Cessapalombo;0
+43;12;Cingoli;0
+43;13;Civitanova Marche;0
+43;14;Colmurano;0
+43;15;Corridonia;0
+43;16;Esanatoglia;0
+43;17;Fiastra;0
+43;18;Fiordimonte;0
+43;19;Fiuminata;0
+43;20;Gagliole;0
+43;21;Gualdo;0
+43;22;Loro Piceno;0
+43;23;Macerata;1
+43;24;Matelica;0
+43;25;Mogliano;0
+43;26;Montecassiano;0
+43;27;Monte Cavallo;0
+43;28;Montecosaro;0
+43;29;Montefano;0
+43;30;Montelupone;0
+43;31;Monte San Giusto;0
+43;32;Monte San Martino;0
+43;33;Morrovalle;0
+43;34;Muccia;0
+43;35;Penna San Giovanni;0
+43;36;Petriolo;0
+43;37;Pievebovigliana;0
+43;38;Pieve Torina;0
+43;39;Pioraco;0
+43;40;Poggio San Vicino;0
+43;41;Pollenza;0
+43;42;Porto Recanati;0
+43;43;Potenza Picena;0
+43;44;Recanati;0
+43;45;Ripe San Ginesio;0
+43;46;San Ginesio;0
+43;47;San Severino Marche;0
+43;48;Sant'Angelo in Pontano;0
+43;49;Sarnano;0
+43;50;Sefro;0
+43;51;Serrapetrona;0
+43;52;Serravalle di Chienti;0
+43;53;Tolentino;0
+43;54;Treia;0
+43;55;Urbisaglia;0
+43;56;Ussita;0
+43;57;Visso;0
+44;1;Acquasanta Terme;0
+44;2;Acquaviva Picena;0
+44;5;Appignano del Tronto;0
+44;6;Arquata del Tronto;0
+44;7;Ascoli Piceno;1
+44;10;Carassai;0
+44;11;Castel di Lama;0
+44;12;Castignano;0
+44;13;Castorano;0
+44;14;Colli del Tronto;0
+44;15;Comunanza;0
+44;16;Cossignano;0
+44;17;Cupra Marittima;0
+44;20;Folignano;0
+44;21;Force;0
+44;23;Grottammare;0
+44;27;Maltignano;0
+44;29;Massignano;0
+44;31;Monsampolo del Tronto;0
+44;32;Montalto delle Marche;0
+44;34;Montedinove;0
+44;36;Montefiore dell'Aso;0
+44;38;Montegallo;0
+44;44;Montemonaco;0
+44;45;Monteprandone;0
+44;54;Offida;0
+44;56;Palmiano;0
+44;63;Ripatransone;0
+44;64;Roccafluvione;0
+44;65;Rotella;0
+44;66;San Benedetto del Tronto;0
+44;71;Spinetoli;0
+44;73;Venarotta;0
+45;1;Aulla;0
+45;2;Bagnone;0
+45;3;Carrara;0
+45;4;Casola in Lunigiana;0
+45;5;Comano;0
+45;6;Filattiera;0
+45;7;Fivizzano;0
+45;8;Fosdinovo;0
+45;9;Licciana Nardi;0
+45;10;Massa;1
+45;11;Montignoso;0
+45;12;Mulazzo;0
+45;13;Podenzana;0
+45;14;Pontremoli;0
+45;15;Tresana;0
+45;16;Villafranca in Lunigiana;0
+45;17;Zeri;0
+46;1;Altopascio;0
+46;2;Bagni di Lucca;0
+46;3;Barga;0
+46;4;Borgo a Mozzano;0
+46;5;Camaiore;0
+46;6;Camporgiano;0
+46;7;Capannori;0
+46;8;Careggine;0
+46;9;Castelnuovo di Garfagnana;0
+46;10;Castiglione di Garfagnana;0
+46;11;Coreglia Antelminelli;0
+46;12;Fabbriche di Vallico;0
+46;13;Forte dei Marmi;0
+46;14;Fosciandora;0
+46;15;Gallicano;0
+46;16;Giuncugnano;0
+46;17;Lucca;1
+46;18;Massarosa;0
+46;19;Minucciano;0
+46;20;Molazzana;0
+46;21;Montecarlo;0
+46;22;Pescaglia;0
+46;23;Piazza al Serchio;0
+46;24;Pietrasanta;0
+46;25;Pieve Fosciana;0
+46;26;Porcari;0
+46;27;San Romano in Garfagnana;0
+46;28;Seravezza;0
+46;29;Sillano;0
+46;30;Stazzema;0
+46;31;Vagli Sotto;0
+46;32;Vergemoli;0
+46;33;Viareggio;0
+46;34;Villa Basilica;0
+46;35;Villa Collemandina;0
+47;1;Abetone;0
+47;2;Agliana;0
+47;3;Buggiano;0
+47;4;Cutigliano;0
+47;5;Lamporecchio;0
+47;6;Larciano;0
+47;7;Marliana;0
+47;8;Massa e Cozzile;0
+47;9;Monsummano Terme;0
+47;10;Montale;0
+47;11;Montecatini-Terme;0
+47;12;Pescia;0
+47;13;Pieve a Nievole;0
+47;14;Pistoia;1
+47;15;Piteglio;0
+47;16;Ponte Buggianese;0
+47;17;Quarrata;0
+47;18;Sambuca Pistoiese;0
+47;19;San Marcello Pistoiese;0
+47;20;Serravalle Pistoiese;0
+47;21;Uzzano;0
+47;22;Chiesina Uzzanese;0
+48;1;Bagno a Ripoli;0
+48;2;Barberino di Mugello;0
+48;3;Barberino Val d'Elsa;0
+48;4;Borgo San Lorenzo;0
+48;5;Calenzano;0
+48;6;Campi Bisenzio;0
+48;8;Capraia e Limite;0
+48;10;Castelfiorentino;0
+48;11;Cerreto Guidi;0
+48;12;Certaldo;0
+48;13;Dicomano;0
+48;14;Empoli;0
+48;15;Fiesole;0
+48;16;Figline Valdarno;0
+48;17;Firenze;1
+48;18;Firenzuola;0
+48;19;Fucecchio;0
+48;20;Gambassi Terme;0
+48;21;Greve in Chianti;0
+48;22;Impruneta;0
+48;23;Incisa in Val d'Arno;0
+48;24;Lastra a Signa;0
+48;25;Londa;0
+48;26;Marradi;0
+48;27;Montaione;0
+48;28;Montelupo Fiorentino;0
+48;30;Montespertoli;0
+48;31;Palazzuolo sul Senio;0
+48;32;Pelago;0
+48;33;Pontassieve;0
+48;35;Reggello;0
+48;36;Rignano sull'Arno;0
+48;37;Rufina;0
+48;38;San Casciano in Val di Pesa;0
+48;39;San Godenzo;0
+48;40;San Piero a Sieve;0
+48;41;Scandicci;0
+48;42;Scarperia;0
+48;43;Sesto Fiorentino;0
+48;44;Signa;0
+48;45;Tavarnelle Val di Pesa;0
+48;46;Vaglia;0
+48;49;Vicchio;0
+48;50;Vinci;0
+49;1;Bibbona;0
+49;2;Campiglia Marittima;0
+49;3;Campo nell'Elba;0
+49;4;Capoliveri;0
+49;5;Capraia Isola;0
+49;6;Castagneto Carducci;0
+49;7;Cecina;0
+49;8;Collesalvetti;0
+49;9;Livorno;1
+49;10;Marciana;0
+49;11;Marciana Marina;0
+49;12;Piombino;0
+49;13;Porto Azzurro;0
+49;14;Portoferraio;0
+49;15;Rio Marina;0
+49;16;Rio nell'Elba;0
+49;17;Rosignano Marittimo;0
+49;18;San Vincenzo;0
+49;19;Sassetta;0
+49;20;Suvereto;0
+50;1;Bientina;0
+50;2;Buti;0
+50;3;Calci;0
+50;4;Calcinaia;0
+50;5;Capannoli;0
+50;6;Casale Marittimo;0
+50;7;Casciana Terme;0
+50;8;Cascina;0
+50;9;Castelfranco di Sotto;0
+50;10;Castellina Marittima;0
+50;11;Castelnuovo di Val di Cecina;0
+50;12;Chianni;0
+50;13;Crespina;0
+50;14;Fauglia;0
+50;15;Guardistallo;0
+50;16;Lajatico;0
+50;17;Lari;0
+50;18;Lorenzana;0
+50;19;Montecatini Val di Cecina;0
+50;20;Montescudaio;0
+50;21;Monteverdi Marittimo;0
+50;22;Montopoli in Val d'Arno;0
+50;23;Orciano Pisano;0
+50;24;Palaia;0
+50;25;Peccioli;0
+50;26;Pisa;1
+50;27;Pomarance;0
+50;28;Ponsacco;0
+50;29;Pontedera;0
+50;30;Riparbella;0
+50;31;San Giuliano Terme;0
+50;32;San Miniato;0
+50;33;Santa Croce sull'Arno;0
+50;34;Santa Luce;0
+50;35;Santa Maria a Monte;0
+50;36;Terricciola;0
+50;37;Vecchiano;0
+50;38;Vicopisano;0
+50;39;Volterra;0
+51;1;Anghiari;0
+51;2;Arezzo;1
+51;3;Badia Tedalda;0
+51;4;Bibbiena;0
+51;5;Bucine;0
+51;6;Capolona;0
+51;7;Caprese Michelangelo;0
+51;8;Castel Focognano;0
+51;9;Castelfranco di Sopra;0
+51;10;Castel San Niccolò;0
+51;11;Castiglion Fibocchi;0
+51;12;Castiglion Fiorentino;0
+51;13;Cavriglia;0
+51;14;Chitignano;0
+51;15;Chiusi della Verna;0
+51;16;Civitella in Val di Chiana;0
+51;17;Cortona;0
+51;18;Foiano della Chiana;0
+51;19;Laterina;0
+51;20;Loro Ciuffenna;0
+51;21;Lucignano;0
+51;22;Marciano della Chiana;0
+51;23;Montemignaio;0
+51;24;Monterchi;0
+51;25;Monte San Savino;0
+51;26;Montevarchi;0
+51;27;Ortignano Raggiolo;0
+51;28;Pergine Valdarno;0
+51;29;Pian di Sco;0
+51;30;Pieve Santo Stefano;0
+51;31;Poppi;0
+51;32;Pratovecchio;0
+51;33;San Giovanni Valdarno;0
+51;34;Sansepolcro;0
+51;35;Sestino;0
+51;36;Stia;0
+51;37;Subbiano;0
+51;38;Talla;0
+51;39;Terranuova Bracciolini;0
+52;1;Abbadia San Salvatore;0
+52;2;Asciano;0
+52;3;Buonconvento;0
+52;4;Casole d'Elsa;0
+52;5;Castellina in Chianti;0
+52;6;Castelnuovo Berardenga;0
+52;7;Castiglione d'Orcia;0
+52;8;Cetona;0
+52;9;Chianciano Terme;0
+52;10;Chiusdino;0
+52;11;Chiusi;0
+52;12;Colle di Val d'Elsa;0
+52;13;Gaiole in Chianti;0
+52;14;Montalcino;0
+52;15;Montepulciano;0
+52;16;Monteriggioni;0
+52;17;Monteroni d'Arbia;0
+52;18;Monticiano;0
+52;19;Murlo;0
+52;20;Piancastagnaio;0
+52;21;Pienza;0
+52;22;Poggibonsi;0
+52;23;Radda in Chianti;0
+52;24;Radicofani;0
+52;25;Radicondoli;0
+52;26;Rapolano Terme;0
+52;27;San Casciano dei Bagni;0
+52;28;San Gimignano;0
+52;29;San Giovanni d'Asso;0
+52;30;San Quirico d'Orcia;0
+52;31;Sarteano;0
+52;32;Siena;1
+52;33;Sinalunga;0
+52;34;Sovicille;0
+52;35;Torrita di Siena;0
+52;36;Trequanda;0
+53;1;Arcidosso;0
+53;2;Campagnatico;0
+53;3;Capalbio;0
+53;4;Castel del Piano;0
+53;5;Castell'Azzara;0
+53;6;Castiglione della Pescaia;0
+53;7;Cinigiano;0
+53;8;Civitella Paganico;0
+53;9;Follonica;0
+53;10;Gavorrano;0
+53;11;Grosseto;1
+53;12;Isola del Giglio;0
+53;13;Magliano in Toscana;0
+53;14;Manciano;0
+53;15;Massa Marittima;0
+53;16;Monte Argentario;0
+53;17;Montieri;0
+53;18;Orbetello;0
+53;19;Pitigliano;0
+53;20;Roccalbegna;0
+53;21;Roccastrada;0
+53;22;Santa Fiora;0
+53;23;Scansano;0
+53;24;Scarlino;0
+53;25;Seggiano;0
+53;26;Sorano;0
+53;27;Monterotondo Marittimo;0
+53;28;Semproniano;0
+54;1;Assisi;0
+54;2;Bastia Umbra;0
+54;3;Bettona;0
+54;4;Bevagna;0
+54;5;Campello sul Clitunno;0
+54;6;Cannara;0
+54;7;Cascia;0
+54;8;Castel Ritaldi;0
+54;9;Castiglione del Lago;0
+54;10;Cerreto di Spoleto;0
+54;11;Citerna;0
+54;12;Città della Pieve;0
+54;13;Città di Castello;0
+54;14;Collazzone;0
+54;15;Corciano;0
+54;16;Costacciaro;0
+54;17;Deruta;0
+54;18;Foligno;0
+54;19;Fossato di Vico;0
+54;20;Fratta Todina;0
+54;21;Giano dell'Umbria;0
+54;22;Gualdo Cattaneo;0
+54;23;Gualdo Tadino;0
+54;24;Gubbio;0
+54;25;Lisciano Niccone;0
+54;26;Magione;0
+54;27;Marsciano;0
+54;28;Massa Martana;0
+54;29;Monte Castello di Vibio;0
+54;30;Montefalco;0
+54;31;Monteleone di Spoleto;0
+54;32;Monte Santa Maria Tiberina;0
+54;33;Montone;0
+54;34;Nocera Umbra;0
+54;35;Norcia;0
+54;36;Paciano;0
+54;37;Panicale;0
+54;38;Passignano sul Trasimeno;0
+54;39;Perugia;1
+54;40;Piegaro;0
+54;41;Pietralunga;0
+54;42;Poggiodomo;0
+54;43;Preci;0
+54;44;San Giustino;0
+54;45;Sant'Anatolia di Narco;0
+54;46;Scheggia e Pascelupo;0
+54;47;Scheggino;0
+54;48;Sellano;0
+54;49;Sigillo;0
+54;50;Spello;0
+54;51;Spoleto;0
+54;52;Todi;0
+54;53;Torgiano;0
+54;54;Trevi;0
+54;55;Tuoro sul Trasimeno;0
+54;56;Umbertide;0
+54;57;Valfabbrica;0
+54;58;Vallo di Nera;0
+54;59;Valtopina;0
+55;1;Acquasparta;0
+55;2;Allerona;0
+55;3;Alviano;0
+55;4;Amelia;0
+55;5;Arrone;0
+55;6;Attigliano;0
+55;7;Baschi;0
+55;8;Calvi dell'Umbria;0
+55;9;Castel Giorgio;0
+55;10;Castel Viscardo;0
+55;11;Fabro;0
+55;12;Ferentillo;0
+55;13;Ficulle;0
+55;14;Giove;0
+55;15;Guardea;0
+55;16;Lugnano in Teverina;0
+55;17;Montecastrilli;0
+55;18;Montecchio;0
+55;19;Montefranco;0
+55;20;Montegabbione;0
+55;21;Monteleone d'Orvieto;0
+55;22;Narni;0
+55;23;Orvieto;0
+55;24;Otricoli;0
+55;25;Parrano;0
+55;26;Penna in Teverina;0
+55;27;Polino;0
+55;28;Porano;0
+55;29;San Gemini;0
+55;30;San Venanzo;0
+55;31;Stroncone;0
+55;32;Terni;1
+55;33;Avigliano Umbro;0
+56;1;Acquapendente;0
+56;2;Arlena di Castro;0
+56;3;Bagnoregio;0
+56;4;Barbarano Romano;0
+56;5;Bassano Romano;0
+56;6;Bassano in Teverina;0
+56;7;Blera;0
+56;8;Bolsena;0
+56;9;Bomarzo;0
+56;10;Calcata;0
+56;11;Canepina;0
+56;12;Canino;0
+56;13;Capodimonte;0
+56;14;Capranica;0
+56;15;Caprarola;0
+56;16;Carbognano;0
+56;17;Castel Sant'Elia;0
+56;18;Castiglione in Teverina;0
+56;19;Celleno;0
+56;20;Cellere;0
+56;21;Civita Castellana;0
+56;22;Civitella d'Agliano;0
+56;23;Corchiano;0
+56;24;Fabrica di Roma;0
+56;25;Faleria;0
+56;26;Farnese;0
+56;27;Gallese;0
+56;28;Gradoli;0
+56;29;Graffignano;0
+56;30;Grotte di Castro;0
+56;31;Ischia di Castro;0
+56;32;Latera;0
+56;33;Lubriano;0
+56;34;Marta;0
+56;35;Montalto di Castro;0
+56;36;Montefiascone;0
+56;37;Monte Romano;0
+56;38;Monterosi;0
+56;39;Nepi;0
+56;40;Onano;0
+56;41;Oriolo Romano;0
+56;42;Orte;0
+56;43;Piansano;0
+56;44;Proceno;0
+56;45;Ronciglione;0
+56;46;Villa San Giovanni in Tuscia;0
+56;47;San Lorenzo Nuovo;0
+56;48;Soriano nel Cimino;0
+56;49;Sutri;0
+56;50;Tarquinia;0
+56;51;Tessennano;0
+56;52;Tuscania;0
+56;53;Valentano;0
+56;54;Vallerano;0
+56;55;Vasanello;0
+56;56;Vejano;0
+56;57;Vetralla;0
+56;58;Vignanello;0
+56;59;Viterbo;1
+56;60;Vitorchiano;0
+57;1;Accumoli;0
+57;2;Amatrice;0
+57;3;Antrodoco;0
+57;4;Ascrea;0
+57;5;Belmonte in Sabina;0
+57;6;Borbona;0
+57;7;Borgorose;0
+57;8;Borgo Velino;0
+57;9;Cantalice;0
+57;10;Cantalupo in Sabina;0
+57;11;Casaprota;0
+57;12;Casperia;0
+57;13;Castel di Tora;0
+57;14;Castelnuovo di Farfa;0
+57;15;Castel Sant'Angelo;0
+57;16;Cittaducale;0
+57;17;Cittareale;0
+57;18;Collalto Sabino;0
+57;19;Colle di Tora;0
+57;20;Collegiove;0
+57;21;Collevecchio;0
+57;22;Colli sul Velino;0
+57;23;Concerviano;0
+57;24;Configni;0
+57;25;Contigliano;0
+57;26;Cottanello;0
+57;27;Fara in Sabina;0
+57;28;Fiamignano;0
+57;29;Forano;0
+57;30;Frasso Sabino;0
+57;31;Greccio;0
+57;32;Labro;0
+57;33;Leonessa;0
+57;34;Longone Sabino;0
+57;35;Magliano Sabina;0
+57;36;Marcetelli;0
+57;37;Micigliano;0
+57;38;Mompeo;0
+57;39;Montasola;0
+57;40;Montebuono;0
+57;41;Monteleone Sabino;0
+57;42;Montenero Sabino;0
+57;43;Monte San Giovanni in Sabina;0
+57;44;Montopoli di Sabina;0
+57;45;Morro Reatino;0
+57;46;Nespolo;0
+57;47;Orvinio;0
+57;48;Paganico Sabino;0
+57;49;Pescorocchiano;0
+57;50;Petrella Salto;0
+57;51;Poggio Bustone;0
+57;52;Poggio Catino;0
+57;53;Poggio Mirteto;0
+57;54;Poggio Moiano;0
+57;55;Poggio Nativo;0
+57;56;Poggio San Lorenzo;0
+57;57;Posta;0
+57;58;Pozzaglia Sabina;0
+57;59;Rieti;1
+57;60;Rivodutri;0
+57;61;Roccantica;0
+57;62;Rocca Sinibalda;0
+57;63;Salisano;0
+57;64;Scandriglia;0
+57;65;Selci;0
+57;66;Stimigliano;0
+57;67;Tarano;0
+57;68;Toffia;0
+57;69;Torricella in Sabina;0
+57;70;Torri in Sabina;0
+57;71;Turania;0
+57;72;Vacone;0
+57;73;Varco Sabino;0
+58;1;Affile;0
+58;2;Agosta;0
+58;3;Albano Laziale;0
+58;4;Allumiere;0
+58;5;Anguillara Sabazia;0
+58;6;Anticoli Corrado;0
+58;7;Anzio;0
+58;8;Arcinazzo Romano;0
+58;9;Ariccia;0
+58;10;Arsoli;0
+58;11;Artena;0
+58;12;Bellegra;0
+58;13;Bracciano;0
+58;14;Camerata Nuova;0
+58;15;Campagnano di Roma;0
+58;16;Canale Monterano;0
+58;17;Canterano;0
+58;18;Capena;0
+58;19;Capranica Prenestina;0
+58;20;Carpineto Romano;0
+58;21;Casape;0
+58;22;Castel Gandolfo;0
+58;23;Castel Madama;0
+58;24;Castelnuovo di Porto;0
+58;25;Castel San Pietro Romano;0
+58;26;Cave;0
+58;27;Cerreto Laziale;0
+58;28;Cervara di Roma;0
+58;29;Cerveteri;0
+58;30;Ciciliano;0
+58;31;Cineto Romano;0
+58;32;Civitavecchia;0
+58;33;Civitella San Paolo;0
+58;34;Colleferro;0
+58;35;Colonna;0
+58;36;Fiano Romano;0
+58;37;Filacciano;0
+58;38;Formello;0
+58;39;Frascati;0
+58;40;Gallicano nel Lazio;0
+58;41;Gavignano;0
+58;42;Genazzano;0
+58;43;Genzano di Roma;0
+58;44;Gerano;0
+58;45;Gorga;0
+58;46;Grottaferrata;0
+58;47;Guidonia Montecelio;0
+58;48;Jenne;0
+58;49;Labico;0
+58;50;Lanuvio;0
+58;51;Licenza;0
+58;52;Magliano Romano;0
+58;53;Mandela;0
+58;54;Manziana;0
+58;55;Marano Equo;0
+58;56;Marcellina;0
+58;57;Marino;0
+58;58;Mazzano Romano;0
+58;59;Mentana;0
+58;60;Monte Compatri;0
+58;61;Monteflavio;0
+58;62;Montelanico;0
+58;63;Montelibretti;0
+58;64;Monte Porzio Catone;0
+58;65;Monterotondo;0
+58;66;Montorio Romano;0
+58;67;Moricone;0
+58;68;Morlupo;0
+58;69;Nazzano;0
+58;70;Nemi;0
+58;71;Nerola;0
+58;72;Nettuno;0
+58;73;Olevano Romano;0
+58;74;Palestrina;0
+58;75;Palombara Sabina;0
+58;76;Percile;0
+58;77;Pisoniano;0
+58;78;Poli;0
+58;79;Pomezia;0
+58;80;Ponzano Romano;0
+58;81;Riano;0
+58;82;Rignano Flaminio;0
+58;83;Riofreddo;0
+58;84;Rocca Canterano;0
+58;85;Rocca di Cave;0
+58;86;Rocca di Papa;0
+58;87;Roccagiovine;0
+58;88;Rocca Priora;0
+58;89;Rocca Santo Stefano;0
+58;90;Roiate;0
+58;91;Roma;1
+58;92;Roviano;0
+58;93;Sacrofano;0
+58;94;Sambuci;0
+58;95;San Gregorio da Sassola;0
+58;96;San Polo dei Cavalieri;0
+58;97;Santa Marinella;0
+58;98;Sant'Angelo Romano;0
+58;99;Sant'Oreste;0
+58;100;San Vito Romano;0
+58;101;Saracinesco;0
+58;102;Segni;0
+58;103;Subiaco;0
+58;104;Tivoli;0
+58;105;Tolfa;0
+58;106;Torrita Tiberina;0
+58;107;Trevignano Romano;0
+58;108;Vallepietra;0
+58;109;Vallinfreda;0
+58;110;Valmontone;0
+58;111;Velletri;0
+58;112;Vicovaro;0
+58;113;Vivaro Romano;0
+58;114;Zagarolo;0
+58;115;Lariano;0
+58;116;Ladispoli;0
+58;117;Ardea;0
+58;118;Ciampino;0
+58;119;San Cesareo;0
+58;120;Fiumicino;0
+58;122;Fonte Nuova;0
+59;1;Aprilia;0
+59;2;Bassiano;0
+59;3;Campodimele;0
+59;4;Castelforte;0
+59;5;Cisterna di Latina;0
+59;6;Cori;0
+59;7;Fondi;0
+59;8;Formia;0
+59;9;Gaeta;0
+59;10;Itri;0
+59;11;Latina;1
+59;12;Lenola;0
+59;13;Maenza;0
+59;14;Minturno;0
+59;15;Monte San Biagio;0
+59;16;Norma;0
+59;17;Pontinia;0
+59;18;Ponza;0
+59;19;Priverno;0
+59;20;Prossedi;0
+59;21;Roccagorga;0
+59;22;Rocca Massima;0
+59;23;Roccasecca dei Volsci;0
+59;24;Sabaudia;0
+59;25;San Felice Circeo;0
+59;26;Santi Cosma e Damiano;0
+59;27;Sermoneta;0
+59;28;Sezze;0
+59;29;Sonnino;0
+59;30;Sperlonga;0
+59;31;Spigno Saturnia;0
+59;32;Terracina;0
+59;33;Ventotene;0
+60;1;Acquafondata;0
+60;2;Acuto;0
+60;3;Alatri;0
+60;4;Alvito;0
+60;5;Amaseno;0
+60;6;Anagni;0
+60;7;Aquino;0
+60;8;Arce;0
+60;9;Arnara;0
+60;10;Arpino;0
+60;11;Atina;0
+60;12;Ausonia;0
+60;13;Belmonte Castello;0
+60;14;Boville Ernica;0
+60;15;Broccostella;0
+60;16;Campoli Appennino;0
+60;17;Casalattico;0
+60;18;Casalvieri;0
+60;19;Cassino;0
+60;20;Castelliri;0
+60;21;Castelnuovo Parano;0
+60;22;Castrocielo;0
+60;23;Castro dei Volsci;0
+60;24;Ceccano;0
+60;25;Ceprano;0
+60;26;Cervaro;0
+60;27;Colfelice;0
+60;28;Collepardo;0
+60;29;Colle San Magno;0
+60;30;Coreno Ausonio;0
+60;31;Esperia;0
+60;32;Falvaterra;0
+60;33;Ferentino;0
+60;34;Filettino;0
+60;35;Fiuggi;0
+60;36;Fontana Liri;0
+60;37;Fontechiari;0
+60;38;Frosinone;1
+60;39;Fumone;0
+60;40;Gallinaro;0
+60;41;Giuliano di Roma;0
+60;42;Guarcino;0
+60;43;Isola del Liri;0
+60;44;Monte San Giovanni Campano;0
+60;45;Morolo;0
+60;46;Paliano;0
+60;47;Pastena;0
+60;48;Patrica;0
+60;49;Pescosolido;0
+60;50;Picinisco;0
+60;51;Pico;0
+60;52;Piedimonte San Germano;0
+60;53;Piglio;0
+60;54;Pignataro Interamna;0
+60;55;Pofi;0
+60;56;Pontecorvo;0
+60;57;Posta Fibreno;0
+60;58;Ripi;0
+60;59;Rocca d'Arce;0
+60;60;Roccasecca;0
+60;61;San Biagio Saracinisco;0
+60;62;San Donato Val di Comino;0
+60;63;San Giorgio a Liri;0
+60;64;San Giovanni Incarico;0
+60;65;Sant'Ambrogio sul Garigliano;0
+60;66;Sant'Andrea del Garigliano;0
+60;67;Sant'Apollinare;0
+60;68;Sant'Elia Fiumerapido;0
+60;69;Santopadre;0
+60;70;San Vittore del Lazio;0
+60;71;Serrone;0
+60;72;Settefrati;0
+60;73;Sgurgola;0
+60;74;Sora;0
+60;75;Strangolagalli;0
+60;76;Supino;0
+60;77;Terelle;0
+60;78;Torre Cajetani;0
+60;79;Torrice;0
+60;80;Trevi nel Lazio;0
+60;81;Trivigliano;0
+60;82;Vallecorsa;0
+60;83;Vallemaio;0
+60;84;Vallerotonda;0
+60;85;Veroli;0
+60;86;Vicalvi;0
+60;87;Vico nel Lazio;0
+60;88;Villa Latina;0
+60;89;Villa Santa Lucia;0
+60;90;Villa Santo Stefano;0
+60;91;Viticuso;0
+61;1;Ailano;0
+61;2;Alife;0
+61;3;Alvignano;0
+61;4;Arienzo;0
+61;5;Aversa;0
+61;6;Baia e Latina;0
+61;7;Bellona;0
+61;8;Caianello;0
+61;9;Caiazzo;0
+61;10;Calvi Risorta;0
+61;11;Camigliano;0
+61;12;Cancello ed Arnone;0
+61;13;Capodrise;0
+61;14;Capriati a Volturno;0
+61;15;Capua;0
+61;16;Carinaro;0
+61;17;Carinola;0
+61;18;Casagiove;0
+61;19;Casal di Principe;0
+61;20;Casaluce;0
+61;21;Casapulla;0
+61;22;Caserta;1
+61;23;Castel Campagnano;0
+61;24;Castel di Sasso;0
+61;25;Castello del Matese;0
+61;26;Castel Morrone;0
+61;27;Castel Volturno;0
+61;28;Cervino;0
+61;29;Cesa;0
+61;30;Ciorlano;0
+61;31;Conca della Campania;0
+61;32;Curti;0
+61;33;Dragoni;0
+61;34;Fontegreca;0
+61;35;Formicola;0
+61;36;Francolise;0
+61;37;Frignano;0
+61;38;Gallo Matese;0
+61;39;Galluccio;0
+61;40;Giano Vetusto;0
+61;41;Gioia Sannitica;0
+61;42;Grazzanise;0
+61;43;Gricignano di Aversa;0
+61;44;Letino;0
+61;45;Liberi;0
+61;46;Lusciano;0
+61;47;Macerata Campania;0
+61;48;Maddaloni;0
+61;49;Marcianise;0
+61;50;Marzano Appio;0
+61;51;Mignano Monte Lungo;0
+61;52;Mondragone;0
+61;53;Orta di Atella;0
+61;54;Parete;0
+61;55;Pastorano;0
+61;56;Piana di Monte Verna;0
+61;57;Piedimonte Matese;0
+61;58;Pietramelara;0
+61;59;Pietravairano;0
+61;60;Pignataro Maggiore;0
+61;61;Pontelatone;0
+61;62;Portico di Caserta;0
+61;63;Prata Sannita;0
+61;64;Pratella;0
+61;65;Presenzano;0
+61;66;Raviscanina;0
+61;67;Recale;0
+61;68;Riardo;0
+61;69;Rocca d'Evandro;0
+61;70;Roccamonfina;0
+61;71;Roccaromana;0
+61;72;Rocchetta e Croce;0
+61;73;Ruviano;0
+61;74;San Cipriano d'Aversa;0
+61;75;San Felice a Cancello;0
+61;76;San Gregorio Matese;0
+61;77;San Marcellino;0
+61;78;San Nicola la Strada;0
+61;79;San Pietro Infine;0
+61;80;San Potito Sannitico;0
+61;81;San Prisco;0
+61;82;Santa Maria a Vico;0
+61;83;Santa Maria Capua Vetere;0
+61;84;Santa Maria la Fossa;0
+61;85;San Tammaro;0
+61;86;Sant'Angelo d'Alife;0
+61;87;Sant'Arpino;0
+61;88;Sessa Aurunca;0
+61;89;Sparanise;0
+61;90;Succivo;0
+61;91;Teano;0
+61;92;Teverola;0
+61;93;Tora e Piccilli;0
+61;94;Trentola-Ducenta;0
+61;95;Vairano Patenora;0
+61;96;Valle Agricola;0
+61;97;Valle di Maddaloni;0
+61;98;Villa di Briano;0
+61;99;Villa Literno;0
+61;100;Vitulazio;0
+61;101;Falciano del Massico;0
+61;102;Cellole;0
+61;103;Casapesenna;0
+61;104;San Marco Evangelista;0
+62;1;Airola;0
+62;2;Amorosi;0
+62;3;Apice;0
+62;4;Apollosa;0
+62;5;Arpaia;0
+62;6;Arpaise;0
+62;7;Baselice;0
+62;8;Benevento;1
+62;9;Bonea;0
+62;10;Bucciano;0
+62;11;Buonalbergo;0
+62;12;Calvi;0
+62;13;Campolattaro;0
+62;14;Campoli del Monte Taburno;0
+62;15;Casalduni;0
+62;16;Castelfranco in Miscano;0
+62;17;Castelpagano;0
+62;18;Castelpoto;0
+62;19;Castelvenere;0
+62;20;Castelvetere in Val Fortore;0
+62;21;Cautano;0
+62;22;Ceppaloni;0
+62;23;Cerreto Sannita;0
+62;24;Circello;0
+62;25;Colle Sannita;0
+62;26;Cusano Mutri;0
+62;27;Dugenta;0
+62;28;Durazzano;0
+62;29;Faicchio;0
+62;30;Foglianise;0
+62;31;Foiano di Val Fortore;0
+62;32;Forchia;0
+62;33;Fragneto l'Abate;0
+62;34;Fragneto Monforte;0
+62;35;Frasso Telesino;0
+62;36;Ginestra degli Schiavoni;0
+62;37;Guardia Sanframondi;0
+62;38;Limatola;0
+62;39;Melizzano;0
+62;40;Moiano;0
+62;41;Molinara;0
+62;42;Montefalcone di Val Fortore;0
+62;43;Montesarchio;0
+62;44;Morcone;0
+62;45;Paduli;0
+62;46;Pago Veiano;0
+62;47;Pannarano;0
+62;48;Paolisi;0
+62;49;Paupisi;0
+62;50;Pesco Sannita;0
+62;51;Pietraroja;0
+62;52;Pietrelcina;0
+62;53;Ponte;0
+62;54;Pontelandolfo;0
+62;55;Puglianello;0
+62;56;Reino;0
+62;57;San Bartolomeo in Galdo;0
+62;58;San Giorgio del Sannio;0
+62;59;San Giorgio La Molara;0
+62;60;San Leucio del Sannio;0
+62;61;San Lorenzello;0
+62;62;San Lorenzo Maggiore;0
+62;63;San Lupo;0
+62;64;San Marco dei Cavoti;0
+62;65;San Martino Sannita;0
+62;66;San Nazzaro;0
+62;67;San Nicola Manfredi;0
+62;68;San Salvatore Telesino;0
+62;69;Santa Croce del Sannio;0
+62;70;Sant'Agata de' Goti;0
+62;71;Sant'Angelo a Cupolo;0
+62;72;Sassinoro;0
+62;73;Solopaca;0
+62;74;Telese Terme;0
+62;75;Tocco Caudio;0
+62;76;Torrecuso;0
+62;77;Vitulano;0
+62;78;Sant'Arcangelo Trimonte;0
+63;1;Acerra;0
+63;2;Afragola;0
+63;3;Agerola;0
+63;4;Anacapri;0
+63;5;Arzano;0
+63;6;Bacoli;0
+63;7;Barano d'Ischia;0
+63;8;Boscoreale;0
+63;9;Boscotrecase;0
+63;10;Brusciano;0
+63;11;Caivano;0
+63;12;Calvizzano;0
+63;13;Camposano;0
+63;14;Capri;0
+63;15;Carbonara di Nola;0
+63;16;Cardito;0
+63;17;Casalnuovo di Napoli;0
+63;18;Casamarciano;0
+63;19;Casamicciola Terme;0
+63;20;Casandrino;0
+63;21;Casavatore;0
+63;22;Casola di Napoli;0
+63;23;Casoria;0
+63;24;Castellammare di Stabia;0
+63;25;Castello di Cisterna;0
+63;26;Cercola;0
+63;27;Cicciano;0
+63;28;Cimitile;0
+63;29;Comiziano;0
+63;30;Crispano;0
+63;31;Forio;0
+63;32;Frattamaggiore;0
+63;33;Frattaminore;0
+63;34;Giugliano in Campania;0
+63;35;Gragnano;0
+63;36;Grumo Nevano;0
+63;37;Ischia;0
+63;38;Lacco Ameno;0
+63;39;Lettere;0
+63;40;Liveri;0
+63;41;Marano di Napoli;0
+63;42;Mariglianella;0
+63;43;Marigliano;0
+63;44;Massa Lubrense;0
+63;45;Melito di Napoli;0
+63;46;Meta;0
+63;47;Monte di Procida;0
+63;48;Mugnano di Napoli;0
+63;49;Napoli;1
+63;50;Nola;0
+63;51;Ottaviano;0
+63;52;Palma Campania;0
+63;53;Piano di Sorrento;0
+63;54;Pimonte;0
+63;55;Poggiomarino;0
+63;56;Pollena Trocchia;0
+63;57;Pomigliano d'Arco;0
+63;58;Pompei;0
+63;59;Portici;0
+63;60;Pozzuoli;0
+63;61;Procida;0
+63;62;Qualiano;0
+63;63;Quarto;0
+63;64;Ercolano;0
+63;65;Roccarainola;0
+63;66;San Gennaro Vesuviano;0
+63;67;San Giorgio a Cremano;0
+63;68;San Giuseppe Vesuviano;0
+63;69;San Paolo Bel Sito;0
+63;70;San Sebastiano al Vesuvio;0
+63;71;Sant'Agnello;0
+63;72;Sant'Anastasia;0
+63;73;Sant'Antimo;0
+63;74;Sant'Antonio Abate;0
+63;75;San Vitaliano;0
+63;76;Saviano;0
+63;77;Scisciano;0
+63;78;Serrara Fontana;0
+63;79;Somma Vesuviana;0
+63;80;Sorrento;0
+63;81;Striano;0
+63;82;Terzigno;0
+63;83;Torre Annunziata;0
+63;84;Torre del Greco;0
+63;85;Tufino;0
+63;86;Vico Equense;0
+63;87;Villaricca;0
+63;88;Visciano;0
+63;89;Volla;0
+63;90;Santa Maria la Carità;0
+63;91;Trecase;0
+63;92;Massa di Somma;0
+64;1;Aiello del Sabato;0
+64;2;Altavilla Irpina;0
+64;3;Andretta;0
+64;4;Aquilonia;0
+64;5;Ariano Irpino;0
+64;6;Atripalda;0
+64;7;Avella;0
+64;8;Avellino;1
+64;9;Bagnoli Irpino;0
+64;10;Baiano;0
+64;11;Bisaccia;0
+64;12;Bonito;0
+64;13;Cairano;0
+64;14;Calabritto;0
+64;15;Calitri;0
+64;16;Candida;0
+64;17;Caposele;0
+64;18;Capriglia Irpina;0
+64;19;Carife;0
+64;20;Casalbore;0
+64;21;Cassano Irpino;0
+64;22;Castel Baronia;0
+64;23;Castelfranci;0
+64;24;Castelvetere sul Calore;0
+64;25;Cervinara;0
+64;26;Cesinali;0
+64;27;Chianche;0
+64;28;Chiusano di San Domenico;0
+64;29;Contrada;0
+64;30;Conza della Campania;0
+64;31;Domicella;0
+64;32;Flumeri;0
+64;33;Fontanarosa;0
+64;34;Forino;0
+64;35;Frigento;0
+64;36;Gesualdo;0
+64;37;Greci;0
+64;38;Grottaminarda;0
+64;39;Grottolella;0
+64;40;Guardia Lombardi;0
+64;41;Lacedonia;0
+64;42;Lapio;0
+64;43;Lauro;0
+64;44;Lioni;0
+64;45;Luogosano;0
+64;46;Manocalzati;0
+64;47;Marzano di Nola;0
+64;48;Melito Irpino;0
+64;49;Mercogliano;0
+64;50;Mirabella Eclano;0
+64;51;Montaguto;0
+64;52;Montecalvo Irpino;0
+64;53;Montefalcione;0
+64;54;Monteforte Irpino;0
+64;55;Montefredane;0
+64;56;Montefusco;0
+64;57;Montella;0
+64;58;Montemarano;0
+64;59;Montemiletto;0
+64;60;Monteverde;0
+64;61;Montoro Inferiore;0
+64;62;Montoro Superiore;0
+64;63;Morra De Sanctis;0
+64;64;Moschiano;0
+64;65;Mugnano del Cardinale;0
+64;66;Nusco;0
+64;67;Ospedaletto d'Alpinolo;0
+64;68;Pago del Vallo di Lauro;0
+64;69;Parolise;0
+64;70;Paternopoli;0
+64;71;Petruro Irpino;0
+64;72;Pietradefusi;0
+64;73;Pietrastornina;0
+64;74;Prata di Principato Ultra;0
+64;75;Pratola Serra;0
+64;76;Quadrelle;0
+64;77;Quindici;0
+64;78;Roccabascerana;0
+64;79;Rocca San Felice;0
+64;80;Rotondi;0
+64;81;Salza Irpina;0
+64;82;San Mango sul Calore;0
+64;83;San Martino Valle Caudina;0
+64;84;San Michele di Serino;0
+64;85;San Nicola Baronia;0
+64;86;San Potito Ultra;0
+64;87;San Sossio Baronia;0
+64;88;Santa Lucia di Serino;0
+64;89;Sant'Andrea di Conza;0
+64;90;Sant'Angelo all'Esca;0
+64;91;Sant'Angelo a Scala;0
+64;92;Sant'Angelo dei Lombardi;0
+64;93;Santa Paolina;0
+64;95;Santo Stefano del Sole;0
+64;96;Savignano Irpino;0
+64;97;Scampitella;0
+64;98;Senerchia;0
+64;99;Serino;0
+64;100;Sirignano;0
+64;101;Solofra;0
+64;102;Sorbo Serpico;0
+64;103;Sperone;0
+64;104;Sturno;0
+64;105;Summonte;0
+64;106;Taurano;0
+64;107;Taurasi;0
+64;108;Teora;0
+64;109;Torella dei Lombardi;0
+64;110;Torre Le Nocelle;0
+64;111;Torrioni;0
+64;112;Trevico;0
+64;113;Tufo;0
+64;114;Vallata;0
+64;115;Vallesaccarda;0
+64;116;Venticano;0
+64;117;Villamaina;0
+64;118;Villanova del Battista;0
+64;119;Volturara Irpina;0
+64;120;Zungoli;0
+65;1;Acerno;0
+65;2;Agropoli;0
+65;3;Albanella;0
+65;4;Alfano;0
+65;5;Altavilla Silentina;0
+65;6;Amalfi;0
+65;7;Angri;0
+65;8;Aquara;0
+65;9;Ascea;0
+65;10;Atena Lucana;0
+65;11;Atrani;0
+65;12;Auletta;0
+65;13;Baronissi;0
+65;14;Battipaglia;0
+65;15;Bellosguardo;0
+65;16;Bracigliano;0
+65;17;Buccino;0
+65;18;Buonabitacolo;0
+65;19;Caggiano;0
+65;20;Calvanico;0
+65;21;Camerota;0
+65;22;Campagna;0
+65;23;Campora;0
+65;24;Cannalonga;0
+65;25;Capaccio;0
+65;26;Casalbuono;0
+65;27;Casaletto Spartano;0
+65;28;Casal Velino;0
+65;29;Caselle in Pittari;0
+65;30;Castelcivita;0
+65;31;Castellabate;0
+65;32;Castelnuovo Cilento;0
+65;33;Castelnuovo di Conza;0
+65;34;Castel San Giorgio;0
+65;35;Castel San Lorenzo;0
+65;36;Castiglione del Genovesi;0
+65;37;Cava de' Tirreni;0
+65;38;Celle di Bulgheria;0
+65;39;Centola;0
+65;40;Ceraso;0
+65;41;Cetara;0
+65;42;Cicerale;0
+65;43;Colliano;0
+65;44;Conca dei Marini;0
+65;45;Controne;0
+65;46;Contursi Terme;0
+65;47;Corbara;0
+65;48;Corleto Monforte;0
+65;49;Cuccaro Vetere;0
+65;50;Eboli;0
+65;51;Felitto;0
+65;52;Fisciano;0
+65;53;Furore;0
+65;54;Futani;0
+65;55;Giffoni Sei Casali;0
+65;56;Giffoni Valle Piana;0
+65;57;Gioi;0
+65;58;Giungano;0
+65;59;Ispani;0
+65;60;Laureana Cilento;0
+65;61;Laurino;0
+65;62;Laurito;0
+65;63;Laviano;0
+65;64;Lustra;0
+65;65;Magliano Vetere;0
+65;66;Maiori;0
+65;67;Mercato San Severino;0
+65;68;Minori;0
+65;69;Moio della Civitella;0
+65;70;Montano Antilia;0
+65;71;Montecorice;0
+65;72;Montecorvino Pugliano;0
+65;73;Montecorvino Rovella;0
+65;74;Monteforte Cilento;0
+65;75;Monte San Giacomo;0
+65;76;Montesano sulla Marcellana;0
+65;77;Morigerati;0
+65;78;Nocera Inferiore;0
+65;79;Nocera Superiore;0
+65;80;Novi Velia;0
+65;81;Ogliastro Cilento;0
+65;82;Olevano sul Tusciano;0
+65;83;Oliveto Citra;0
+65;84;Omignano;0
+65;85;Orria;0
+65;86;Ottati;0
+65;87;Padula;0
+65;88;Pagani;0
+65;89;Palomonte;0
+65;90;Pellezzano;0
+65;91;Perdifumo;0
+65;92;Perito;0
+65;93;Pertosa;0
+65;94;Petina;0
+65;95;Piaggine;0
+65;96;Pisciotta;0
+65;97;Polla;0
+65;98;Pollica;0
+65;99;Pontecagnano Faiano;0
+65;100;Positano;0
+65;101;Postiglione;0
+65;102;Praiano;0
+65;103;Prignano Cilento;0
+65;104;Ravello;0
+65;105;Ricigliano;0
+65;106;Roccadaspide;0
+65;107;Roccagloriosa;0
+65;108;Roccapiemonte;0
+65;109;Rofrano;0
+65;110;Romagnano al Monte;0
+65;111;Roscigno;0
+65;112;Rutino;0
+65;113;Sacco;0
+65;114;Sala Consilina;0
+65;115;Salento;0
+65;116;Salerno;1
+65;117;Salvitelle;0
+65;118;San Cipriano Picentino;0
+65;119;San Giovanni a Piro;0
+65;120;San Gregorio Magno;0
+65;121;San Mango Piemonte;0
+65;122;San Marzano sul Sarno;0
+65;123;San Mauro Cilento;0
+65;124;San Mauro la Bruca;0
+65;125;San Pietro al Tanagro;0
+65;126;San Rufo;0
+65;127;Santa Marina;0
+65;128;Sant'Angelo a Fasanella;0
+65;129;Sant'Arsenio;0
+65;130;Sant'Egidio del Monte Albino;0
+65;131;Santomenna;0
+65;132;San Valentino Torio;0
+65;133;Sanza;0
+65;134;Sapri;0
+65;135;Sarno;0
+65;136;Sassano;0
+65;137;Scafati;0
+65;138;Scala;0
+65;139;Serramezzana;0
+65;140;Serre;0
+65;141;Sessa Cilento;0
+65;142;Siano;0
+65;143;Sicignano degli Alburni;0
+65;144;Stella Cilento;0
+65;145;Stio;0
+65;146;Teggiano;0
+65;147;Torchiara;0
+65;148;Torraca;0
+65;149;Torre Orsaia;0
+65;150;Tortorella;0
+65;151;Tramonti;0
+65;152;Trentinara;0
+65;153;Valle dell'Angelo;0
+65;154;Vallo della Lucania;0
+65;155;Valva;0
+65;156;Vibonati;0
+65;157;Vietri sul Mare;0
+65;158;Bellizzi;0
+66;1;Acciano;0
+66;2;Aielli;0
+66;3;Alfedena;0
+66;4;Anversa degli Abruzzi;0
+66;5;Ateleta;0
+66;6;Avezzano;0
+66;7;Balsorano;0
+66;8;Barete;0
+66;9;Barisciano;0
+66;10;Barrea;0
+66;11;Bisegna;0
+66;12;Bugnara;0
+66;13;Cagnano Amiterno;0
+66;14;Calascio;0
+66;15;Campo di Giove;0
+66;16;Campotosto;0
+66;17;Canistro;0
+66;18;Cansano;0
+66;19;Capestrano;0
+66;20;Capistrello;0
+66;21;Capitignano;0
+66;22;Caporciano;0
+66;23;Cappadocia;0
+66;24;Carapelle Calvisio;0
+66;25;Carsoli;0
+66;26;Castel del Monte;0
+66;27;Castel di Ieri;0
+66;28;Castel di Sangro;0
+66;29;Castellafiume;0
+66;30;Castelvecchio Calvisio;0
+66;31;Castelvecchio Subequo;0
+66;32;Celano;0
+66;33;Cerchio;0
+66;34;Civita d'Antino;0
+66;35;Civitella Alfedena;0
+66;36;Civitella Roveto;0
+66;37;Cocullo;0
+66;38;Collarmele;0
+66;39;Collelongo;0
+66;40;Collepietro;0
+66;41;Corfinio;0
+66;42;Fagnano Alto;0
+66;43;Fontecchio;0
+66;44;Fossa;0
+66;45;Gagliano Aterno;0
+66;46;Gioia dei Marsi;0
+66;47;Goriano Sicoli;0
+66;48;Introdacqua;0
+66;49;L'Aquila;1
+66;50;Lecce nei Marsi;0
+66;51;Luco dei Marsi;0
+66;52;Lucoli;0
+66;53;Magliano de' Marsi;0
+66;54;Massa d'Albe;0
+66;55;Molina Aterno;0
+66;56;Montereale;0
+66;57;Morino;0
+66;58;Navelli;0
+66;59;Ocre;0
+66;60;Ofena;0
+66;61;Opi;0
+66;62;Oricola;0
+66;63;Ortona dei Marsi;0
+66;64;Ortucchio;0
+66;65;Ovindoli;0
+66;66;Pacentro;0
+66;67;Pereto;0
+66;68;Pescasseroli;0
+66;69;Pescina;0
+66;70;Pescocostanzo;0
+66;71;Pettorano sul Gizio;0
+66;72;Pizzoli;0
+66;73;Poggio Picenze;0
+66;74;Prata d'Ansidonia;0
+66;75;Pratola Peligna;0
+66;76;Prezza;0
+66;77;Raiano;0
+66;78;Rivisondoli;0
+66;79;Roccacasale;0
+66;80;Rocca di Botte;0
+66;81;Rocca di Cambio;0
+66;82;Rocca di Mezzo;0
+66;83;Rocca Pia;0
+66;84;Roccaraso;0
+66;85;San Benedetto dei Marsi;0
+66;86;San Benedetto in Perillis;0
+66;87;San Demetrio ne' Vestini;0
+66;88;San Pio delle Camere;0
+66;89;Sante Marie;0
+66;90;Sant'Eusanio Forconese;0
+66;91;Santo Stefano di Sessanio;0
+66;92;San Vincenzo Valle Roveto;0
+66;93;Scanno;0
+66;94;Scontrone;0
+66;95;Scoppito;0
+66;96;Scurcola Marsicana;0
+66;97;Secinaro;0
+66;98;Sulmona;0
+66;99;Tagliacozzo;0
+66;100;Tione degli Abruzzi;0
+66;101;Tornimparte;0
+66;102;Trasacco;0
+66;103;Villalago;0
+66;104;Villa Santa Lucia degli Abruzzi;0
+66;105;Villa Sant'Angelo;0
+66;106;Villavallelonga;0
+66;107;Villetta Barrea;0
+66;108;Vittorito;0
+67;1;Alba Adriatica;0
+67;2;Ancarano;0
+67;3;Arsita;0
+67;4;Atri;0
+67;5;Basciano;0
+67;6;Bellante;0
+67;7;Bisenti;0
+67;8;Campli;0
+67;9;Canzano;0
+67;10;Castel Castagna;0
+67;11;Castellalto;0
+67;12;Castelli;0
+67;13;Castiglione Messer Raimondo;0
+67;14;Castilenti;0
+67;15;Cellino Attanasio;0
+67;16;Cermignano;0
+67;17;Civitella del Tronto;0
+67;18;Colledara;0
+67;19;Colonnella;0
+67;20;Controguerra;0
+67;21;Corropoli;0
+67;22;Cortino;0
+67;23;Crognaleto;0
+67;24;Fano Adriano;0
+67;25;Giulianova;0
+67;26;Isola del Gran Sasso d'Italia;0
+67;27;Montefino;0
+67;28;Montorio al Vomano;0
+67;29;Morro d'Oro;0
+67;30;Mosciano Sant'Angelo;0
+67;31;Nereto;0
+67;32;Notaresco;0
+67;33;Penna Sant'Andrea;0
+67;34;Pietracamela;0
+67;35;Pineto;0
+67;36;Rocca Santa Maria;0
+67;37;Roseto degli Abruzzi;0
+67;38;Sant'Egidio alla Vibrata;0
+67;39;Sant'Omero;0
+67;40;Silvi;0
+67;41;Teramo;1
+67;42;Torano Nuovo;0
+67;43;Torricella Sicura;0
+67;44;Tortoreto;0
+67;45;Tossicia;0
+67;46;Valle Castellana;0
+67;47;Martinsicuro;0
+68;1;Abbateggio;0
+68;2;Alanno;0
+68;3;Bolognano;0
+68;4;Brittoli;0
+68;5;Bussi sul Tirino;0
+68;6;Cappelle sul Tavo;0
+68;7;Caramanico Terme;0
+68;8;Carpineto della Nora;0
+68;9;Castiglione a Casauria;0
+68;10;Catignano;0
+68;11;Cepagatti;0
+68;12;Città Sant'Angelo;0
+68;13;Civitaquana;0
+68;14;Civitella Casanova;0
+68;15;Collecorvino;0
+68;16;Corvara;0
+68;17;Cugnoli;0
+68;18;Elice;0
+68;19;Farindola;0
+68;20;Lettomanoppello;0
+68;21;Loreto Aprutino;0
+68;22;Manoppello;0
+68;23;Montebello di Bertona;0
+68;24;Montesilvano;0
+68;25;Moscufo;0
+68;26;Nocciano;0
+68;27;Penne;0
+68;28;Pescara;1
+68;29;Pescosansonesco;0
+68;30;Pianella;0
+68;31;Picciano;0
+68;32;Pietranico;0
+68;33;Popoli;0
+68;34;Roccamorice;0
+68;35;Rosciano;0
+68;36;Salle;0
+68;37;Sant'Eufemia a Maiella;0
+68;38;San Valentino in Abruzzo Citeriore;0
+68;39;Scafa;0
+68;40;Serramonacesca;0
+68;41;Spoltore;0
+68;42;Tocco da Casauria;0
+68;43;Torre de' Passeri;0
+68;44;Turrivalignani;0
+68;45;Vicoli;0
+68;46;Villa Celiera;0
+69;1;Altino;0
+69;2;Archi;0
+69;3;Ari;0
+69;4;Arielli;0
+69;5;Atessa;0
+69;6;Bomba;0
+69;7;Borrello;0
+69;8;Bucchianico;0
+69;9;Montebello sul Sangro;0
+69;10;Canosa Sannita;0
+69;11;Carpineto Sinello;0
+69;12;Carunchio;0
+69;13;Casacanditella;0
+69;14;Casalanguida;0
+69;15;Casalbordino;0
+69;16;Casalincontrada;0
+69;17;Casoli;0
+69;18;Castel Frentano;0
+69;19;Castelguidone;0
+69;20;Castiglione Messer Marino;0
+69;21;Celenza sul Trigno;0
+69;22;Chieti;1
+69;23;Civitaluparella;0
+69;24;Civitella Messer Raimondo;0
+69;25;Colledimacine;0
+69;26;Colledimezzo;0
+69;27;Crecchio;0
+69;28;Cupello;0
+69;29;Dogliola;0
+69;30;Fara Filiorum Petri;0
+69;31;Fara San Martino;0
+69;32;Filetto;0
+69;33;Fossacesia;0
+69;34;Fraine;0
+69;35;Francavilla al Mare;0
+69;36;Fresagrandinaria;0
+69;37;Frisa;0
+69;38;Furci;0
+69;39;Gamberale;0
+69;40;Gessopalena;0
+69;41;Gissi;0
+69;42;Giuliano Teatino;0
+69;43;Guardiagrele;0
+69;44;Guilmi;0
+69;45;Lama dei Peligni;0
+69;46;Lanciano;0
+69;47;Lentella;0
+69;48;Lettopalena;0
+69;49;Liscia;0
+69;50;Miglianico;0
+69;51;Montazzoli;0
+69;52;Monteferrante;0
+69;53;Montelapiano;0
+69;54;Montenerodomo;0
+69;55;Monteodorisio;0
+69;56;Mozzagrogna;0
+69;57;Orsogna;0
+69;58;Ortona;0
+69;59;Paglieta;0
+69;60;Palena;0
+69;61;Palmoli;0
+69;62;Palombaro;0
+69;63;Pennadomo;0
+69;64;Pennapiedimonte;0
+69;65;Perano;0
+69;66;Pizzoferrato;0
+69;67;Poggiofiorito;0
+69;68;Pollutri;0
+69;69;Pretoro;0
+69;70;Quadri;0
+69;71;Rapino;0
+69;72;Ripa Teatina;0
+69;73;Roccamontepiano;0
+69;74;Rocca San Giovanni;0
+69;75;Roccascalegna;0
+69;76;Roccaspinalveti;0
+69;77;Roio del Sangro;0
+69;78;Rosello;0
+69;79;San Buono;0
+69;80;San Giovanni Lipioni;0
+69;81;San Giovanni Teatino;0
+69;82;San Martino sulla Marrucina;0
+69;83;San Salvo;0
+69;84;Santa Maria Imbaro;0
+69;85;Sant'Eusanio del Sangro;0
+69;86;San Vito Chietino;0
+69;87;Scerni;0
+69;88;Schiavi di Abruzzo;0
+69;89;Taranta Peligna;0
+69;90;Tollo;0
+69;91;Torino di Sangro;0
+69;92;Tornareccio;0
+69;93;Torrebruna;0
+69;94;Torrevecchia Teatina;0
+69;95;Torricella Peligna;0
+69;96;Treglio;0
+69;97;Tufillo;0
+69;98;Vacri;0
+69;99;Vasto;0
+69;100;Villalfonsina;0
+69;101;Villamagna;0
+69;102;Villa Santa Maria;0
+69;103;Pietraferrazzana;0
+69;104;Fallo;0
+70;1;Acquaviva Collecroce;0
+70;2;Baranello;0
+70;3;Bojano;0
+70;4;Bonefro;0
+70;5;Busso;0
+70;6;Campobasso;1
+70;7;Campochiaro;0
+70;8;Campodipietra;0
+70;9;Campolieto;0
+70;10;Campomarino;0
+70;11;Casacalenda;0
+70;12;Casalciprano;0
+70;13;Castelbottaccio;0
+70;14;Castellino del Biferno;0
+70;15;Castelmauro;0
+70;16;Castropignano;0
+70;17;Cercemaggiore;0
+70;18;Cercepiccola;0
+70;19;Civitacampomarano;0
+70;20;Colle d'Anchise;0
+70;21;Colletorto;0
+70;22;Duronia;0
+70;23;Ferrazzano;0
+70;24;Fossalto;0
+70;25;Gambatesa;0
+70;26;Gildone;0
+70;27;Guardialfiera;0
+70;28;Guardiaregia;0
+70;29;Guglionesi;0
+70;30;Jelsi;0
+70;31;Larino;0
+70;32;Limosano;0
+70;33;Lucito;0
+70;34;Lupara;0
+70;35;Macchia Valfortore;0
+70;36;Mafalda;0
+70;37;Matrice;0
+70;38;Mirabello Sannitico;0
+70;39;Molise;0
+70;40;Monacilioni;0
+70;41;Montagano;0
+70;42;Montecilfone;0
+70;43;Montefalcone nel Sannio;0
+70;44;Montelongo;0
+70;45;Montemitro;0
+70;46;Montenero di Bisaccia;0
+70;47;Montorio nei Frentani;0
+70;48;Morrone del Sannio;0
+70;49;Oratino;0
+70;50;Palata;0
+70;51;Petacciato;0
+70;52;Petrella Tifernina;0
+70;53;Pietracatella;0
+70;54;Pietracupa;0
+70;55;Portocannone;0
+70;56;Provvidenti;0
+70;57;Riccia;0
+70;58;Ripabottoni;0
+70;59;Ripalimosani;0
+70;60;Roccavivara;0
+70;61;Rotello;0
+70;62;Salcito;0
+70;63;San Biase;0
+70;64;San Felice del Molise;0
+70;65;San Giacomo degli Schiavoni;0
+70;66;San Giovanni in Galdo;0
+70;67;San Giuliano del Sannio;0
+70;68;San Giuliano di Puglia;0
+70;69;San Martino in Pensilis;0
+70;70;San Massimo;0
+70;71;San Polo Matese;0
+70;72;Santa Croce di Magliano;0
+70;73;Sant'Angelo Limosano;0
+70;74;Sant'Elia a Pianisi;0
+70;75;Sepino;0
+70;76;Spinete;0
+70;77;Tavenna;0
+70;78;Termoli;0
+70;79;Torella del Sannio;0
+70;80;Toro;0
+70;81;Trivento;0
+70;82;Tufara;0
+70;83;Ururi;0
+70;84;Vinchiaturo;0
+71;1;Accadia;0
+71;2;Alberona;0
+71;3;Anzano di Puglia;0
+71;4;Apricena;0
+71;5;Ascoli Satriano;0
+71;6;Biccari;0
+71;7;Bovino;0
+71;8;Cagnano Varano;0
+71;9;Candela;0
+71;10;Carapelle;0
+71;11;Carlantino;0
+71;12;Carpino;0
+71;13;Casalnuovo Monterotaro;0
+71;14;Casalvecchio di Puglia;0
+71;15;Castelluccio dei Sauri;0
+71;16;Castelluccio Valmaggiore;0
+71;17;Castelnuovo della Daunia;0
+71;18;Celenza Valfortore;0
+71;19;Celle di San Vito;0
+71;20;Cerignola;0
+71;21;Chieuti;0
+71;22;Deliceto;0
+71;23;Faeto;0
+71;24;Foggia;1
+71;25;Ischitella;0
+71;26;Isole Tremiti;0
+71;27;Lesina;0
+71;28;Lucera;0
+71;29;Manfredonia;0
+71;31;Mattinata;0
+71;32;Monteleone di Puglia;0
+71;33;Monte Sant'Angelo;0
+71;34;Motta Montecorvino;0
+71;35;Orsara di Puglia;0
+71;36;Orta Nova;0
+71;37;Panni;0
+71;38;Peschici;0
+71;39;Pietramontecorvino;0
+71;40;Poggio Imperiale;0
+71;41;Rignano Garganico;0
+71;42;Rocchetta Sant'Antonio;0
+71;43;Rodi Garganico;0
+71;44;Roseto Valfortore;0
+71;46;San Giovanni Rotondo;0
+71;47;San Marco in Lamis;0
+71;48;San Marco la Catola;0
+71;49;San Nicandro Garganico;0
+71;50;San Paolo di Civitate;0
+71;51;San Severo;0
+71;52;Sant'Agata di Puglia;0
+71;53;Serracapriola;0
+71;54;Stornara;0
+71;55;Stornarella;0
+71;56;Torremaggiore;0
+71;58;Troia;0
+71;59;Vico del Gargano;0
+71;60;Vieste;0
+71;61;Volturara Appula;0
+71;62;Volturino;0
+71;63;Ordona;0
+71;64;Zapponeta;0
+72;1;Acquaviva delle Fonti;0
+72;2;Adelfia;0
+72;3;Alberobello;0
+72;4;Altamura;0
+72;6;Bari;1
+72;8;Binetto;0
+72;10;Bitetto;0
+72;11;Bitonto;0
+72;12;Bitritto;0
+72;14;Capurso;0
+72;15;Casamassima;0
+72;16;Cassano delle Murge;0
+72;17;Castellana Grotte;0
+72;18;Cellamare;0
+72;19;Conversano;0
+72;20;Corato;0
+72;21;Gioia del Colle;0
+72;22;Giovinazzo;0
+72;23;Gravina in Puglia;0
+72;24;Grumo Appula;0
+72;25;Locorotondo;0
+72;27;Modugno;0
+72;28;Mola di Bari;0
+72;29;Molfetta;0
+72;30;Monopoli;0
+72;31;Noci;0
+72;32;Noicattaro;0
+72;33;Palo del Colle;0
+72;34;Poggiorsini;0
+72;35;Polignano a Mare;0
+72;36;Putignano;0
+72;37;Rutigliano;0
+72;38;Ruvo di Puglia;0
+72;39;Sammichele di Bari;0
+72;40;Sannicandro di Bari;0
+72;41;Santeramo in Colle;0
+72;43;Terlizzi;0
+72;44;Toritto;0
+72;46;Triggiano;0
+72;47;Turi;0
+72;48;Valenzano;0
+73;1;Avetrana;0
+73;2;Carosino;0
+73;3;Castellaneta;0
+73;4;Crispiano;0
+73;5;Faggiano;0
+73;6;Fragagnano;0
+73;7;Ginosa;0
+73;8;Grottaglie;0
+73;9;Laterza;0
+73;10;Leporano;0
+73;11;Lizzano;0
+73;12;Manduria;0
+73;13;Martina Franca;0
+73;14;Maruggio;0
+73;15;Massafra;0
+73;16;Monteiasi;0
+73;17;Montemesola;0
+73;18;Monteparano;0
+73;19;Mottola;0
+73;20;Palagianello;0
+73;21;Palagiano;0
+73;22;Pulsano;0
+73;23;Roccaforzata;0
+73;24;San Giorgio Ionico;0
+73;25;San Marzano di San Giuseppe;0
+73;26;Sava;0
+73;27;Taranto;1
+73;28;Torricella;0
+73;29;Statte;0
+74;1;Brindisi;1
+74;2;Carovigno;0
+74;3;Ceglie Messapica;0
+74;4;Cellino San Marco;0
+74;5;Cisternino;0
+74;6;Erchie;0
+74;7;Fasano;0
+74;8;Francavilla Fontana;0
+74;9;Latiano;0
+74;10;Mesagne;0
+74;11;Oria;0
+74;12;Ostuni;0
+74;13;San Donaci;0
+74;14;San Michele Salentino;0
+74;15;San Pancrazio Salentino;0
+74;16;San Pietro Vernotico;0
+74;17;San Vito dei Normanni;0
+74;18;Torchiarolo;0
+74;19;Torre Santa Susanna;0
+74;20;Villa Castelli;0
+75;1;Acquarica del Capo;0
+75;2;Alessano;0
+75;3;Alezio;0
+75;4;Alliste;0
+75;5;Andrano;0
+75;6;Aradeo;0
+75;7;Arnesano;0
+75;8;Bagnolo del Salento;0
+75;9;Botrugno;0
+75;10;Calimera;0
+75;11;Campi Salentina;0
+75;12;Cannole;0
+75;13;Caprarica di Lecce;0
+75;14;Carmiano;0
+75;15;Carpignano Salentino;0
+75;16;Casarano;0
+75;17;Castri di Lecce;0
+75;18;Castrignano de' Greci;0
+75;19;Castrignano del Capo;0
+75;20;Cavallino;0
+75;21;Collepasso;0
+75;22;Copertino;0
+75;23;Corigliano d'Otranto;0
+75;24;Corsano;0
+75;25;Cursi;0
+75;26;Cutrofiano;0
+75;27;Diso;0
+75;28;Gagliano del Capo;0
+75;29;Galatina;0
+75;30;Galatone;0
+75;31;Gallipoli;0
+75;32;Giuggianello;0
+75;33;Giurdignano;0
+75;34;Guagnano;0
+75;35;Lecce;1
+75;36;Lequile;0
+75;37;Leverano;0
+75;38;Lizzanello;0
+75;39;Maglie;0
+75;40;Martano;0
+75;41;Martignano;0
+75;42;Matino;0
+75;43;Melendugno;0
+75;44;Melissano;0
+75;45;Melpignano;0
+75;46;Miggiano;0
+75;47;Minervino di Lecce;0
+75;48;Monteroni di Lecce;0
+75;49;Montesano Salentino;0
+75;50;Morciano di Leuca;0
+75;51;Muro Leccese;0
+75;52;Nardò;0
+75;53;Neviano;0
+75;54;Nociglia;0
+75;55;Novoli;0
+75;56;Ortelle;0
+75;57;Otranto;0
+75;58;Palmariggi;0
+75;59;Parabita;0
+75;60;Patù;0
+75;61;Poggiardo;0
+75;62;Presicce;0
+75;63;Racale;0
+75;64;Ruffano;0
+75;65;Salice Salentino;0
+75;66;Salve;0
+75;67;Sanarica;0
+75;68;San Cesario di Lecce;0
+75;69;San Donato di Lecce;0
+75;70;Sannicola;0
+75;71;San Pietro in Lama;0
+75;72;Santa Cesarea Terme;0
+75;73;Scorrano;0
+75;74;Seclì;0
+75;75;Sogliano Cavour;0
+75;76;Soleto;0
+75;77;Specchia;0
+75;78;Spongano;0
+75;79;Squinzano;0
+75;80;Sternatia;0
+75;81;Supersano;0
+75;82;Surano;0
+75;83;Surbo;0
+75;84;Taurisano;0
+75;85;Taviano;0
+75;86;Tiggiano;0
+75;87;Trepuzzi;0
+75;88;Tricase;0
+75;89;Tuglie;0
+75;90;Ugento;0
+75;91;Uggiano la Chiesa;0
+75;92;Veglie;0
+75;93;Vernole;0
+75;94;Zollino;0
+75;95;San Cassiano;0
+75;96;Castro;0
+75;97;Porto Cesareo;0
+76;1;Abriola;0
+76;2;Acerenza;0
+76;3;Albano di Lucania;0
+76;4;Anzi;0
+76;5;Armento;0
+76;6;Atella;0
+76;7;Avigliano;0
+76;8;Balvano;0
+76;9;Banzi;0
+76;10;Baragiano;0
+76;11;Barile;0
+76;12;Bella;0
+76;13;Brienza;0
+76;14;Brindisi Montagna;0
+76;15;Calvello;0
+76;16;Calvera;0
+76;17;Campomaggiore;0
+76;18;Cancellara;0
+76;19;Carbone;0
+76;20;San Paolo Albanese;0
+76;21;Castelgrande;0
+76;22;Castelluccio Inferiore;0
+76;23;Castelluccio Superiore;0
+76;24;Castelmezzano;0
+76;25;Castelsaraceno;0
+76;26;Castronuovo di Sant'Andrea;0
+76;27;Cersosimo;0
+76;28;Chiaromonte;0
+76;29;Corleto Perticara;0
+76;30;Episcopia;0
+76;31;Fardella;0
+76;32;Filiano;0
+76;33;Forenza;0
+76;34;Francavilla in Sinni;0
+76;35;Gallicchio;0
+76;36;Genzano di Lucania;0
+76;37;Grumento Nova;0
+76;38;Guardia Perticara;0
+76;39;Lagonegro;0
+76;40;Latronico;0
+76;41;Laurenzana;0
+76;42;Lauria;0
+76;43;Lavello;0
+76;44;Maratea;0
+76;45;Marsico Nuovo;0
+76;46;Marsicovetere;0
+76;47;Maschito;0
+76;48;Melfi;0
+76;49;Missanello;0
+76;50;Moliterno;0
+76;51;Montemilone;0
+76;52;Montemurro;0
+76;53;Muro Lucano;0
+76;54;Nemoli;0
+76;55;Noepoli;0
+76;56;Oppido Lucano;0
+76;57;Palazzo San Gervasio;0
+76;58;Pescopagano;0
+76;59;Picerno;0
+76;60;Pietragalla;0
+76;61;Pietrapertosa;0
+76;62;Pignola;0
+76;63;Potenza;1
+76;64;Rapolla;0
+76;65;Rapone;0
+76;66;Rionero in Vulture;0
+76;67;Ripacandida;0
+76;68;Rivello;0
+76;69;Roccanova;0
+76;70;Rotonda;0
+76;71;Ruoti;0
+76;72;Ruvo del Monte;0
+76;73;San Chirico Nuovo;0
+76;74;San Chirico Raparo;0
+76;75;San Costantino Albanese;0
+76;76;San Fele;0
+76;77;San Martino d'Agri;0
+76;78;San Severino Lucano;0
+76;79;Sant'Angelo Le Fratte;0
+76;80;Sant'Arcangelo;0
+76;81;Sarconi;0
+76;82;Sasso di Castalda;0
+76;83;Satriano di Lucania;0
+76;84;Savoia di Lucania;0
+76;85;Senise;0
+76;86;Spinoso;0
+76;87;Teana;0
+76;88;Terranova di Pollino;0
+76;89;Tito;0
+76;90;Tolve;0
+76;91;Tramutola;0
+76;92;Trecchina;0
+76;93;Trivigno;0
+76;94;Vaglio Basilicata;0
+76;95;Venosa;0
+76;96;Vietri di Potenza;0
+76;97;Viggianello;0
+76;98;Viggiano;0
+76;99;Ginestra;0
+76;100;Paterno;0
+77;1;Accettura;0
+77;2;Aliano;0
+77;3;Bernalda;0
+77;4;Calciano;0
+77;5;Cirigliano;0
+77;6;Colobraro;0
+77;7;Craco;0
+77;8;Ferrandina;0
+77;9;Garaguso;0
+77;10;Gorgoglione;0
+77;11;Grassano;0
+77;12;Grottole;0
+77;13;Irsina;0
+77;14;Matera;1
+77;15;Miglionico;0
+77;16;Montalbano Jonico;0
+77;17;Montescaglioso;0
+77;18;Nova Siri;0
+77;19;Oliveto Lucano;0
+77;20;Pisticci;0
+77;21;Policoro;0
+77;22;Pomarico;0
+77;23;Rotondella;0
+77;24;Salandra;0
+77;25;San Giorgio Lucano;0
+77;26;San Mauro Forte;0
+77;27;Stigliano;0
+77;28;Tricarico;0
+77;29;Tursi;0
+77;30;Valsinni;0
+77;31;Scanzano Jonico;0
+78;1;Acquaformosa;0
+78;2;Acquappesa;0
+78;3;Acri;0
+78;4;Aiello Calabro;0
+78;5;Aieta;0
+78;6;Albidona;0
+78;7;Alessandria del Carretto;0
+78;8;Altilia;0
+78;9;Altomonte;0
+78;10;Amantea;0
+78;11;Amendolara;0
+78;12;Aprigliano;0
+78;13;Belmonte Calabro;0
+78;14;Belsito;0
+78;15;Belvedere Marittimo;0
+78;16;Bianchi;0
+78;17;Bisignano;0
+78;18;Bocchigliero;0
+78;19;Bonifati;0
+78;20;Buonvicino;0
+78;21;Calopezzati;0
+78;22;Caloveto;0
+78;23;Campana;0
+78;24;Canna;0
+78;25;Cariati;0
+78;26;Carolei;0
+78;27;Carpanzano;0
+78;28;Casole Bruzio;0
+78;29;Cassano all'Ionio;0
+78;30;Castiglione Cosentino;0
+78;31;Castrolibero;0
+78;32;Castroregio;0
+78;33;Castrovillari;0
+78;34;Celico;0
+78;35;Cellara;0
+78;36;Cerchiara di Calabria;0
+78;37;Cerisano;0
+78;38;Cervicati;0
+78;39;Cerzeto;0
+78;40;Cetraro;0
+78;41;Civita;0
+78;42;Cleto;0
+78;43;Colosimi;0
+78;44;Corigliano Calabro;0
+78;45;Cosenza;1
+78;46;Cropalati;0
+78;47;Crosia;0
+78;48;Diamante;0
+78;49;Dipignano;0
+78;50;Domanico;0
+78;51;Fagnano Castello;0
+78;52;Falconara Albanese;0
+78;53;Figline Vegliaturo;0
+78;54;Firmo;0
+78;55;Fiumefreddo Bruzio;0
+78;56;Francavilla Marittima;0
+78;57;Frascineto;0
+78;58;Fuscaldo;0
+78;59;Grimaldi;0
+78;60;Grisolia;0
+78;61;Guardia Piemontese;0
+78;62;Lago;0
+78;63;Laino Borgo;0
+78;64;Laino Castello;0
+78;65;Lappano;0
+78;66;Lattarico;0
+78;67;Longobardi;0
+78;68;Longobucco;0
+78;69;Lungro;0
+78;70;Luzzi;0
+78;71;Maierà;0
+78;72;Malito;0
+78;73;Malvito;0
+78;74;Mandatoriccio;0
+78;75;Mangone;0
+78;76;Marano Marchesato;0
+78;77;Marano Principato;0
+78;78;Marzi;0
+78;79;Mendicino;0
+78;80;Mongrassano;0
+78;81;Montalto Uffugo;0
+78;82;Montegiordano;0
+78;83;Morano Calabro;0
+78;84;Mormanno;0
+78;85;Mottafollone;0
+78;86;Nocara;0
+78;87;Oriolo;0
+78;88;Orsomarso;0
+78;89;Paludi;0
+78;90;Panettieri;0
+78;91;Paola;0
+78;92;Papasidero;0
+78;93;Parenti;0
+78;94;Paterno Calabro;0
+78;95;Pedace;0
+78;96;Pedivigliano;0
+78;97;Piane Crati;0
+78;98;Pietrafitta;0
+78;99;Pietrapaola;0
+78;100;Plataci;0
+78;101;Praia a Mare;0
+78;102;Rende;0
+78;103;Rocca Imperiale;0
+78;104;Roggiano Gravina;0
+78;105;Rogliano;0
+78;106;Rose;0
+78;107;Roseto Capo Spulico;0
+78;108;Rossano;0
+78;109;Rota Greca;0
+78;110;Rovito;0
+78;111;San Basile;0
+78;112;San Benedetto Ullano;0
+78;113;San Cosmo Albanese;0
+78;114;San Demetrio Corone;0
+78;115;San Donato di Ninea;0
+78;116;San Fili;0
+78;117;Sangineto;0
+78;118;San Giorgio Albanese;0
+78;119;San Giovanni in Fiore;0
+78;120;San Lorenzo Bellizzi;0
+78;121;San Lorenzo del Vallo;0
+78;122;San Lucido;0
+78;123;San Marco Argentano;0
+78;124;San Martino di Finita;0
+78;125;San Nicola Arcella;0
+78;126;San Pietro in Amantea;0
+78;127;San Pietro in Guarano;0
+78;128;San Sosti;0
+78;129;Santa Caterina Albanese;0
+78;130;Santa Domenica Talao;0
+78;131;Sant'Agata di Esaro;0
+78;132;Santa Maria del Cedro;0
+78;133;Santa Sofia d'Epiro;0
+78;134;Santo Stefano di Rogliano;0
+78;135;San Vincenzo La Costa;0
+78;136;Saracena;0
+78;137;Scala Coeli;0
+78;138;Scalea;0
+78;139;Scigliano;0
+78;140;Serra d'Aiello;0
+78;141;Serra Pedace;0
+78;142;Spezzano Albanese;0
+78;143;Spezzano della Sila;0
+78;144;Spezzano Piccolo;0
+78;145;Tarsia;0
+78;146;Terranova da Sibari;0
+78;147;Terravecchia;0
+78;148;Torano Castello;0
+78;149;Tortora;0
+78;150;Trebisacce;0
+78;151;Trenta;0
+78;152;Vaccarizzo Albanese;0
+78;153;Verbicaro;0
+78;154;Villapiana;0
+78;155;Zumpano;0
+79;2;Albi;0
+79;3;Amaroni;0
+79;4;Amato;0
+79;5;Andali;0
+79;7;Argusto;0
+79;8;Badolato;0
+79;9;Belcastro;0
+79;11;Borgia;0
+79;12;Botricello;0
+79;17;Caraffa di Catanzaro;0
+79;18;Cardinale;0
+79;20;Carlopoli;0
+79;23;Catanzaro;1
+79;24;Cenadi;0
+79;25;Centrache;0
+79;27;Cerva;0
+79;29;Chiaravalle Centrale;0
+79;30;Cicala;0
+79;33;Conflenti;0
+79;34;Cortale;0
+79;36;Cropani;0
+79;39;Curinga;0
+79;42;Davoli;0
+79;43;Decollatura;0
+79;47;Falerna;0
+79;48;Feroleto Antico;0
+79;52;Fossato Serralta;0
+79;55;Gagliato;0
+79;56;Gasperina;0
+79;58;Gimigliano;0
+79;59;Girifalco;0
+79;60;Gizzeria;0
+79;61;Guardavalle;0
+79;63;Isca sullo Ionio;0
+79;65;Jacurso;0
+79;68;Magisano;0
+79;69;Maida;0
+79;71;Marcedusa;0
+79;72;Marcellinara;0
+79;73;Martirano;0
+79;74;Martirano Lombardo;0
+79;77;Miglierina;0
+79;80;Montauro;0
+79;81;Montepaone;0
+79;83;Motta Santa Lucia;0
+79;87;Nocera Terinese;0
+79;88;Olivadi;0
+79;89;Palermiti;0
+79;92;Pentone;0
+79;94;Petrizzi;0
+79;95;Petronà;0
+79;96;Pianopoli;0
+79;99;Platania;0
+79;108;San Floro;0
+79;110;San Mango d'Aquino;0
+79;114;San Pietro a Maida;0
+79;115;San Pietro Apostolo;0
+79;116;San Sostene;0
+79;117;Santa Caterina dello Ionio;0
+79;118;Sant'Andrea Apostolo dello Ionio;0
+79;122;San Vito sullo Ionio;0
+79;123;Satriano;0
+79;126;Sellia;0
+79;127;Sellia Marina;0
+79;129;Serrastretta;0
+79;130;Sersale;0
+79;131;Settingiano;0
+79;133;Simeri Crichi;0
+79;134;Sorbo San Basile;0
+79;137;Soverato;0
+79;138;Soveria Mannelli;0
+79;139;Soveria Simeri;0
+79;142;Squillace;0
+79;143;Stalettì;0
+79;146;Taverna;0
+79;147;Tiriolo;0
+79;148;Torre di Ruggiero;0
+79;151;Vallefiorita;0
+79;157;Zagarise;0
+79;160;Lamezia Terme;0
+80;1;Africo;0
+80;2;Agnana Calabra;0
+80;3;Anoia;0
+80;4;Antonimina;0
+80;5;Ardore;0
+80;6;Bagaladi;0
+80;7;Bagnara Calabra;0
+80;8;Benestare;0
+80;9;Bianco;0
+80;10;Bivongi;0
+80;11;Bova;0
+80;12;Bovalino;0
+80;13;Bova Marina;0
+80;14;Brancaleone;0
+80;15;Bruzzano Zeffirio;0
+80;16;Calanna;0
+80;17;Camini;0
+80;18;Campo Calabro;0
+80;19;Candidoni;0
+80;20;Canolo;0
+80;21;Caraffa del Bianco;0
+80;22;Cardeto;0
+80;23;Careri;0
+80;24;Casignana;0
+80;25;Caulonia;0
+80;26;Ciminà;0
+80;27;Cinquefrondi;0
+80;28;Cittanova;0
+80;29;Condofuri;0
+80;30;Cosoleto;0
+80;31;Delianuova;0
+80;32;Feroleto della Chiesa;0
+80;33;Ferruzzano;0
+80;34;Fiumara;0
+80;35;Galatro;0
+80;36;Gerace;0
+80;37;Giffone;0
+80;38;Gioia Tauro;0
+80;39;Gioiosa Ionica;0
+80;40;Grotteria;0
+80;41;Laganadi;0
+80;42;Laureana di Borrello;0
+80;43;Locri;0
+80;44;Mammola;0
+80;45;Marina di Gioiosa Ionica;0
+80;46;Maropati;0
+80;47;Martone;0
+80;48;Melicuccà;0
+80;49;Melicucco;0
+80;50;Melito di Porto Salvo;0
+80;51;Molochio;0
+80;52;Monasterace;0
+80;53;Montebello Ionico;0
+80;54;Motta San Giovanni;0
+80;55;Oppido Mamertina;0
+80;56;Palizzi;0
+80;57;Palmi;0
+80;58;Pazzano;0
+80;59;Placanica;0
+80;60;Platì;0
+80;61;Polistena;0
+80;62;Portigliola;0
+80;63;Reggio di Calabria;1
+80;64;Riace;0
+80;65;Rizziconi;0
+80;66;Roccaforte del Greco;0
+80;67;Roccella Ionica;0
+80;68;Roghudi;0
+80;69;Rosarno;0
+80;70;Samo;0
+80;71;San Giorgio Morgeto;0
+80;72;San Giovanni di Gerace;0
+80;73;San Lorenzo;0
+80;74;San Luca;0
+80;75;San Pietro di Caridà;0
+80;76;San Procopio;0
+80;77;San Roberto;0
+80;78;Santa Cristina d'Aspromonte;0
+80;79;Sant'Agata del Bianco;0
+80;80;Sant'Alessio in Aspromonte;0
+80;81;Sant'Eufemia d'Aspromonte;0
+80;82;Sant'Ilario dello Ionio;0
+80;83;Santo Stefano in Aspromonte;0
+80;84;Scido;0
+80;85;Scilla;0
+80;86;Seminara;0
+80;87;Serrata;0
+80;88;Siderno;0
+80;89;Sinopoli;0
+80;90;Staiti;0
+80;91;Stignano;0
+80;92;Stilo;0
+80;93;Taurianova;0
+80;94;Terranova Sappo Minulio;0
+80;95;Varapodio;0
+80;96;Villa San Giovanni;0
+80;97;San Ferdinando;0
+81;1;Alcamo;0
+81;2;Buseto Palizzolo;0
+81;3;Calatafimi-Segesta;0
+81;4;Campobello di Mazara;0
+81;5;Castellammare del Golfo;0
+81;6;Castelvetrano;0
+81;7;Custonaci;0
+81;8;Erice;0
+81;9;Favignana;0
+81;10;Gibellina;0
+81;11;Marsala;0
+81;12;Mazara del Vallo;0
+81;13;Paceco;0
+81;14;Pantelleria;0
+81;15;Partanna;0
+81;16;Poggioreale;0
+81;17;Salaparuta;0
+81;18;Salemi;0
+81;19;Santa Ninfa;0
+81;20;San Vito Lo Capo;0
+81;21;Trapani;1
+81;22;Valderice;0
+81;23;Vita;0
+81;24;Petrosino;0
+82;1;Alia;0
+82;2;Alimena;0
+82;3;Aliminusa;0
+82;4;Altavilla Milicia;0
+82;5;Altofonte;0
+82;6;Bagheria;0
+82;7;Balestrate;0
+82;8;Baucina;0
+82;9;Belmonte Mezzagno;0
+82;10;Bisacquino;0
+82;11;Bolognetta;0
+82;12;Bompietro;0
+82;13;Borgetto;0
+82;14;Caccamo;0
+82;15;Caltavuturo;0
+82;16;Campofelice di Fitalia;0
+82;17;Campofelice di Roccella;0
+82;18;Campofiorito;0
+82;19;Camporeale;0
+82;20;Capaci;0
+82;21;Carini;0
+82;22;Castelbuono;0
+82;23;Casteldaccia;0
+82;24;Castellana Sicula;0
+82;25;Castronovo di Sicilia;0
+82;26;Cefalà Diana;0
+82;27;Cefalù;0
+82;28;Cerda;0
+82;29;Chiusa Sclafani;0
+82;30;Ciminna;0
+82;31;Cinisi;0
+82;32;Collesano;0
+82;33;Contessa Entellina;0
+82;34;Corleone;0
+82;35;Ficarazzi;0
+82;36;Gangi;0
+82;37;Geraci Siculo;0
+82;38;Giardinello;0
+82;39;Giuliana;0
+82;40;Godrano;0
+82;41;Gratteri;0
+82;42;Isnello;0
+82;43;Isola delle Femmine;0
+82;44;Lascari;0
+82;45;Lercara Friddi;0
+82;46;Marineo;0
+82;47;Mezzojuso;0
+82;48;Misilmeri;0
+82;49;Monreale;0
+82;50;Montelepre;0
+82;51;Montemaggiore Belsito;0
+82;52;Palazzo Adriano;0
+82;53;Palermo;1
+82;54;Partinico;0
+82;55;Petralia Soprana;0
+82;56;Petralia Sottana;0
+82;57;Piana degli Albanesi;0
+82;58;Polizzi Generosa;0
+82;59;Pollina;0
+82;60;Prizzi;0
+82;61;Roccamena;0
+82;62;Roccapalumba;0
+82;63;San Cipirello;0
+82;64;San Giuseppe Jato;0
+82;65;San Mauro Castelverde;0
+82;66;Santa Cristina Gela;0
+82;67;Santa Flavia;0
+82;68;Sciara;0
+82;69;Sclafani Bagni;0
+82;70;Termini Imerese;0
+82;71;Terrasini;0
+82;72;Torretta;0
+82;73;Trabia;0
+82;74;Trappeto;0
+82;75;Ustica;0
+82;76;Valledolmo;0
+82;77;Ventimiglia di Sicilia;0
+82;78;Vicari;0
+82;79;Villabate;0
+82;80;Villafrati;0
+82;81;Scillato;0
+82;82;Blufi;0
+83;1;Alcara li Fusi;0
+83;2;Alì;0
+83;3;Alì Terme;0
+83;4;Antillo;0
+83;5;Barcellona Pozzo di Gotto;0
+83;6;Basicò;0
+83;7;Brolo;0
+83;8;Capizzi;0
+83;9;Capo d'Orlando;0
+83;10;Capri Leone;0
+83;11;Caronia;0
+83;12;Casalvecchio Siculo;0
+83;13;Castel di Lucio;0
+83;14;Castell'Umberto;0
+83;15;Castelmola;0
+83;16;Castroreale;0
+83;17;Cesarò;0
+83;18;Condrò;0
+83;19;Falcone;0
+83;20;Ficarra;0
+83;21;Fiumedinisi;0
+83;22;Floresta;0
+83;23;Fondachelli-Fantina;0
+83;24;Forza d'Agrò;0
+83;25;Francavilla di Sicilia;0
+83;26;Frazzanò;0
+83;27;Furci Siculo;0
+83;28;Furnari;0
+83;29;Gaggi;0
+83;30;Galati Mamertino;0
+83;31;Gallodoro;0
+83;32;Giardini-Naxos;0
+83;33;Gioiosa Marea;0
+83;34;Graniti;0
+83;35;Gualtieri Sicaminò;0
+83;36;Itala;0
+83;37;Leni;0
+83;38;Letojanni;0
+83;39;Librizzi;0
+83;40;Limina;0
+83;41;Lipari;0
+83;42;Longi;0
+83;43;Malfa;0
+83;44;Malvagna;0
+83;45;Mandanici;0
+83;46;Mazzarrà Sant'Andrea;0
+83;47;Merì;0
+83;48;Messina;1
+83;49;Milazzo;0
+83;50;Militello Rosmarino;0
+83;51;Mirto;0
+83;52;Mistretta;0
+83;53;Moio Alcantara;0
+83;54;Monforte San Giorgio;0
+83;55;Mongiuffi Melia;0
+83;56;Montagnareale;0
+83;57;Montalbano Elicona;0
+83;58;Motta Camastra;0
+83;59;Motta d'Affermo;0
+83;60;Naso;0
+83;61;Nizza di Sicilia;0
+83;62;Novara di Sicilia;0
+83;63;Oliveri;0
+83;64;Pace del Mela;0
+83;65;Pagliara;0
+83;66;Patti;0
+83;67;Pettineo;0
+83;68;Piraino;0
+83;69;Raccuja;0
+83;70;Reitano;0
+83;71;Roccafiorita;0
+83;72;Roccalumera;0
+83;73;Roccavaldina;0
+83;74;Roccella Valdemone;0
+83;75;Rodì Milici;0
+83;76;Rometta;0
+83;77;San Filippo del Mela;0
+83;78;San Fratello;0
+83;79;San Marco d'Alunzio;0
+83;80;San Pier Niceto;0
+83;81;San Piero Patti;0
+83;82;San Salvatore di Fitalia;0
+83;83;Santa Domenica Vittoria;0
+83;84;Sant'Agata di Militello;0
+83;85;Sant'Alessio Siculo;0
+83;86;Santa Lucia del Mela;0
+83;87;Santa Marina Salina;0
+83;88;Sant'Angelo di Brolo;0
+83;89;Santa Teresa di Riva;0
+83;90;San Teodoro;0
+83;91;Santo Stefano di Camastra;0
+83;92;Saponara;0
+83;93;Savoca;0
+83;94;Scaletta Zanclea;0
+83;95;Sinagra;0
+83;96;Spadafora;0
+83;97;Taormina;0
+83;98;Torregrotta;0
+83;99;Tortorici;0
+83;100;Tripi;0
+83;101;Tusa;0
+83;102;Ucria;0
+83;103;Valdina;0
+83;104;Venetico;0
+83;105;Villafranca Tirrena;0
+83;106;Terme Vigliatore;0
+83;107;Acquedolci;0
+83;108;Torrenova;0
+84;1;Agrigento;1
+84;2;Alessandria della Rocca;0
+84;3;Aragona;0
+84;4;Bivona;0
+84;5;Burgio;0
+84;6;Calamonaci;0
+84;7;Caltabellotta;0
+84;8;Camastra;0
+84;9;Cammarata;0
+84;10;Campobello di Licata;0
+84;11;Canicattì;0
+84;12;Casteltermini;0
+84;13;Castrofilippo;0
+84;14;Cattolica Eraclea;0
+84;15;Cianciana;0
+84;16;Comitini;0
+84;17;Favara;0
+84;18;Grotte;0
+84;19;Joppolo Giancaxio;0
+84;20;Lampedusa e Linosa;0
+84;21;Licata;0
+84;22;Lucca Sicula;0
+84;23;Menfi;0
+84;24;Montallegro;0
+84;25;Montevago;0
+84;26;Naro;0
+84;27;Palma di Montechiaro;0
+84;28;Porto Empedocle;0
+84;29;Racalmuto;0
+84;30;Raffadali;0
+84;31;Ravanusa;0
+84;32;Realmonte;0
+84;33;Ribera;0
+84;34;Sambuca di Sicilia;0
+84;35;San Biagio Platani;0
+84;36;San Giovanni Gemini;0
+84;37;Santa Elisabetta;0
+84;38;Santa Margherita di Belice;0
+84;39;Sant'Angelo Muxaro;0
+84;40;Santo Stefano Quisquina;0
+84;41;Sciacca;0
+84;42;Siculiana;0
+84;43;Villafranca Sicula;0
+85;1;Acquaviva Platani;0
+85;2;Bompensiere;0
+85;3;Butera;0
+85;4;Caltanissetta;1
+85;5;Campofranco;0
+85;6;Delia;0
+85;7;Gela;0
+85;8;Marianopoli;0
+85;9;Mazzarino;0
+85;10;Milena;0
+85;11;Montedoro;0
+85;12;Mussomeli;0
+85;13;Niscemi;0
+85;14;Resuttano;0
+85;15;Riesi;0
+85;16;San Cataldo;0
+85;17;Santa Caterina Villarmosa;0
+85;18;Serradifalco;0
+85;19;Sommatino;0
+85;20;Sutera;0
+85;21;Vallelunga Pratameno;0
+85;22;Villalba;0
+86;1;Agira;0
+86;2;Aidone;0
+86;3;Assoro;0
+86;4;Barrafranca;0
+86;5;Calascibetta;0
+86;6;Catenanuova;0
+86;7;Centuripe;0
+86;8;Cerami;0
+86;9;Enna;1
+86;10;Gagliano Castelferrato;0
+86;11;Leonforte;0
+86;12;Nicosia;0
+86;13;Nissoria;0
+86;14;Piazza Armerina;0
+86;15;Pietraperzia;0
+86;16;Regalbuto;0
+86;17;Sperlinga;0
+86;18;Troina;0
+86;19;Valguarnera Caropepe;0
+86;20;Villarosa;0
+87;1;Aci Bonaccorsi;0
+87;2;Aci Castello;0
+87;3;Aci Catena;0
+87;4;Acireale;0
+87;5;Aci Sant'Antonio;0
+87;6;Adrano;0
+87;7;Belpasso;0
+87;8;Biancavilla;0
+87;9;Bronte;0
+87;10;Calatabiano;0
+87;11;Caltagirone;0
+87;12;Camporotondo Etneo;0
+87;13;Castel di Iudica;0
+87;14;Castiglione di Sicilia;0
+87;15;Catania;1
+87;16;Fiumefreddo di Sicilia;0
+87;17;Giarre;0
+87;18;Grammichele;0
+87;19;Gravina di Catania;0
+87;20;Licodia Eubea;0
+87;21;Linguaglossa;0
+87;22;Maletto;0
+87;23;Mascali;0
+87;24;Mascalucia;0
+87;25;Militello in Val di Catania;0
+87;26;Milo;0
+87;27;Mineo;0
+87;28;Mirabella Imbaccari;0
+87;29;Misterbianco;0
+87;30;Motta Sant'Anastasia;0
+87;31;Nicolosi;0
+87;32;Palagonia;0
+87;33;Paternò;0
+87;34;Pedara;0
+87;35;Piedimonte Etneo;0
+87;36;Raddusa;0
+87;37;Ramacca;0
+87;38;Randazzo;0
+87;39;Riposto;0
+87;40;San Cono;0
+87;41;San Giovanni la Punta;0
+87;42;San Gregorio di Catania;0
+87;43;San Michele di Ganzaria;0
+87;44;San Pietro Clarenza;0
+87;45;Sant'Agata li Battiati;0
+87;46;Sant'Alfio;0
+87;47;Santa Maria di Licodia;0
+87;48;Santa Venerina;0
+87;49;Scordia;0
+87;50;Trecastagni;0
+87;51;Tremestieri Etneo;0
+87;52;Valverde;0
+87;53;Viagrande;0
+87;54;Vizzini;0
+87;55;Zafferana Etnea;0
+87;56;Mazzarrone;0
+87;57;Maniace;0
+87;58;Ragalna;0
+88;1;Acate;0
+88;2;Chiaramonte Gulfi;0
+88;3;Comiso;0
+88;4;Giarratana;0
+88;5;Ispica;0
+88;6;Modica;0
+88;7;Monterosso Almo;0
+88;8;Pozzallo;0
+88;9;Ragusa;1
+88;10;Santa Croce Camerina;0
+88;11;Scicli;0
+88;12;Vittoria;0
+89;1;Augusta;0
+89;2;Avola;0
+89;3;Buccheri;0
+89;4;Buscemi;0
+89;5;Canicattini Bagni;0
+89;6;Carlentini;0
+89;7;Cassaro;0
+89;8;Ferla;0
+89;9;Floridia;0
+89;10;Francofonte;0
+89;11;Lentini;0
+89;12;Melilli;0
+89;13;Noto;0
+89;14;Pachino;0
+89;15;Palazzolo Acreide;0
+89;16;Rosolini;0
+89;17;Siracusa;1
+89;18;Solarino;0
+89;19;Sortino;0
+89;20;Portopalo di Capo Passero;0
+89;21;Priolo Gargallo;0
+90;3;Alghero;0
+90;4;Anela;0
+90;5;Ardara;0
+90;7;Banari;0
+90;8;Benetutti;0
+90;10;Bessude;0
+90;11;Bonnanaro;0
+90;12;Bono;0
+90;13;Bonorva;0
+90;15;Borutta;0
+90;16;Bottidda;0
+90;18;Bultei;0
+90;19;Bulzi;0
+90;20;Burgos;0
+90;22;Cargeghe;0
+90;23;Castelsardo;0
+90;24;Cheremule;0
+90;25;Chiaramonti;0
+90;26;Codrongianos;0
+90;27;Cossoine;0
+90;28;Esporlatu;0
+90;29;Florinas;0
+90;30;Giave;0
+90;31;Illorai;0
+90;32;Ittireddu;0
+90;33;Ittiri;0
+90;34;Laerru;0
+90;38;Mara;0
+90;39;Martis;0
+90;40;Monteleone Rocca Doria;0
+90;42;Mores;0
+90;43;Muros;0
+90;44;Nughedu San Nicolò;0
+90;45;Nule;0
+90;46;Nulvi;0
+90;48;Olmedo;0
+90;50;Osilo;0
+90;51;Ossi;0
+90;52;Ozieri;0
+90;53;Padria;0
+90;55;Pattada;0
+90;56;Perfugas;0
+90;57;Ploaghe;0
+90;58;Porto Torres;0
+90;59;Pozzomaggiore;0
+90;60;Putifigari;0
+90;61;Romana;0
+90;64;Sassari;1
+90;65;Sedini;0
+90;66;Semestene;0
+90;67;Sennori;0
+90;68;Siligo;0
+90;69;Sorso;0
+90;71;Thiesi;0
+90;72;Tissi;0
+90;73;Torralba;0
+90;75;Tula;0
+90;76;Uri;0
+90;77;Usini;0
+90;78;Villanova Monteleone;0
+90;79;Valledoria;0
+90;82;Viddalba;0
+90;86;Tergu;0
+90;87;Santa Maria Coghinas;0
+90;88;Erula;0
+90;89;Stintino;0
+91;1;Aritzo;0
+91;3;Atzara;0
+91;4;Austis;0
+91;7;Belvì;0
+91;8;Birori;0
+91;9;Bitti;0
+91;10;Bolotana;0
+91;11;Borore;0
+91;12;Bortigali;0
+91;16;Desulo;0
+91;17;Dorgali;0
+91;18;Dualchi;0
+91;24;Fonni;0
+91;25;Gadoni;0
+91;27;Galtellì;0
+91;28;Gavoi;0
+91;33;Irgoli;0
+91;38;Lei;0
+91;40;Loculi;0
+91;41;Lodè;0
+91;43;Lula;0
+91;44;Macomer;0
+91;46;Mamoiada;0
+91;47;Meana Sardo;0
+91;50;Noragugume;0
+91;51;Nuoro;1
+91;55;Oliena;0
+91;56;Ollolai;0
+91;57;Olzai;0
+91;58;Onanì;0
+91;59;Onifai;0
+91;60;Oniferi;0
+91;61;Orani;0
+91;62;Orgosolo;0
+91;63;Orosei;0
+91;64;Orotelli;0
+91;66;Ortueri;0
+91;67;Orune;0
+91;68;Osidda;0
+91;70;Ottana;0
+91;71;Ovodda;0
+91;73;Posada;0
+91;77;Sarule;0
+91;83;Silanus;0
+91;84;Sindia;0
+91;85;Siniscola;0
+91;86;Sorgono;0
+91;90;Teti;0
+91;91;Tiana;0
+91;93;Tonara;0
+91;94;Torpè;0
+91;104;Lodine;0
+92;2;Armungia;0
+92;3;Assemini;0
+92;4;Ballao;0
+92;5;Barrali;0
+92;8;Burcei;0
+92;9;Cagliari;1
+92;11;Capoterra;0
+92;15;Decimomannu;0
+92;16;Decimoputzu;0
+92;17;Dolianova;0
+92;18;Domus de Maria;0
+92;20;Donori;0
+92;24;Gesico;0
+92;27;Goni;0
+92;30;Guamaggiore;0
+92;31;Guasila;0
+92;36;Mandas;0
+92;37;Maracalagonis;0
+92;38;Monastir;0
+92;39;Muravera;0
+92;42;Nuraminis;0
+92;44;Ortacesus;0
+92;48;Pimentel;0
+92;50;Pula;0
+92;51;Quartu Sant'Elena;0
+92;53;Samatzai;0
+92;54;San Basilio;0
+92;58;San Nicolò Gerrei;0
+92;59;San Sperate;0
+92;61;Sant'Andrea Frius;0
+92;64;San Vito;0
+92;66;Sarroch;0
+92;68;Selargius;0
+92;69;Selegas;0
+92;70;Senorbì;0
+92;71;Serdiana;0
+92;74;Sestu;0
+92;75;Settimo San Pietro;0
+92;78;Siliqua;0
+92;79;Silius;0
+92;80;Sinnai;0
+92;81;Siurgus Donigala;0
+92;82;Soleminis;0
+92;83;Suelli;0
+92;84;Teulada;0
+92;88;Ussana;0
+92;90;Uta;0
+92;91;Vallermosa;0
+92;97;Villaputzu;0
+92;98;Villasalto;0
+92;99;Villa San Pietro;0
+92;100;Villasimius;0
+92;101;Villasor;0
+92;102;Villaspeciosa;0
+92;105;Quartucciu;0
+92;106;Castiadas;0
+92;108;Elmas;0
+92;109;Monserrato;0
+92;110;Escalaplano;0
+92;111;Escolca;0
+92;112;Esterzili;0
+92;113;Gergei;0
+92;114;Isili;0
+92;115;Nuragus;0
+92;116;Nurallao;0
+92;117;Nurri;0
+92;118;Orroli;0
+92;119;Sadali;0
+92;120;Serri;0
+92;121;Seulo;0
+92;122;Villanova Tulo;0
+93;1;Andreis;0
+93;2;Arba;0
+93;3;Arzene;0
+93;4;Aviano;0
+93;5;Azzano Decimo;0
+93;6;Barcis;0
+93;7;Brugnera;0
+93;8;Budoia;0
+93;9;Caneva;0
+93;10;Casarsa della Delizia;0
+93;11;Castelnovo del Friuli;0
+93;12;Cavasso Nuovo;0
+93;13;Chions;0
+93;14;Cimolais;0
+93;15;Claut;0
+93;16;Clauzetto;0
+93;17;Cordenons;0
+93;18;Cordovado;0
+93;19;Erto e Casso;0
+93;20;Fanna;0
+93;21;Fiume Veneto;0
+93;22;Fontanafredda;0
+93;24;Frisanco;0
+93;25;Maniago;0
+93;26;Meduno;0
+93;27;Montereale Valcellina;0
+93;28;Morsano al Tagliamento;0
+93;29;Pasiano di Pordenone;0
+93;30;Pinzano al Tagliamento;0
+93;31;Polcenigo;0
+93;32;Porcia;0
+93;33;Pordenone;1
+93;34;Prata di Pordenone;0
+93;35;Pravisdomini;0
+93;36;Roveredo in Piano;0
+93;37;Sacile;0
+93;38;San Giorgio della Richinvelda;0
+93;39;San Martino al Tagliamento;0
+93;40;San Quirino;0
+93;41;San Vito al Tagliamento;0
+93;42;Sequals;0
+93;43;Sesto al Reghena;0
+93;44;Spilimbergo;0
+93;45;Tramonti di Sopra;0
+93;46;Tramonti di Sotto;0
+93;47;Travesio;0
+93;48;Valvasone;0
+93;49;Vito d'Asio;0
+93;50;Vivaro;0
+93;51;Zoppola;0
+93;52;Vajont;0
+94;1;Acquaviva d'Isernia;0
+94;2;Agnone;0
+94;3;Bagnoli del Trigno;0
+94;4;Belmonte del Sannio;0
+94;5;Cantalupo nel Sannio;0
+94;6;Capracotta;0
+94;7;Carovilli;0
+94;8;Carpinone;0
+94;9;Castel del Giudice;0
+94;10;Castelpetroso;0
+94;11;Castelpizzuto;0
+94;12;Castel San Vincenzo;0
+94;13;Castelverrino;0
+94;14;Cerro al Volturno;0
+94;15;Chiauci;0
+94;16;Civitanova del Sannio;0
+94;17;Colli a Volturno;0
+94;18;Conca Casale;0
+94;19;Filignano;0
+94;20;Forlì del Sannio;0
+94;21;Fornelli;0
+94;22;Frosolone;0
+94;23;Isernia;1
+94;24;Longano;0
+94;25;Macchia d'Isernia;0
+94;26;Macchiagodena;0
+94;27;Miranda;0
+94;28;Montaquila;0
+94;29;Montenero Val Cocchiara;0
+94;30;Monteroduni;0
+94;31;Pesche;0
+94;32;Pescolanciano;0
+94;33;Pescopennataro;0
+94;34;Pettoranello del Molise;0
+94;35;Pietrabbondante;0
+94;36;Pizzone;0
+94;37;Poggio Sannita;0
+94;38;Pozzilli;0
+94;39;Rionero Sannitico;0
+94;40;Roccamandolfi;0
+94;41;Roccasicura;0
+94;42;Rocchetta a Volturno;0
+94;43;San Pietro Avellana;0
+94;44;Sant'Agapito;0
+94;45;Santa Maria del Molise;0
+94;46;Sant'Angelo del Pesco;0
+94;47;Sant'Elena Sannita;0
+94;48;Scapoli;0
+94;49;Sessano del Molise;0
+94;50;Sesto Campano;0
+94;51;Vastogirardi;0
+94;52;Venafro;0
+95;1;Abbasanta;0
+95;2;Aidomaggiore;0
+95;3;Albagiara;0
+95;4;Ales;0
+95;5;Allai;0
+95;6;Arborea;0
+95;7;Ardauli;0
+95;8;Assolo;0
+95;9;Asuni;0
+95;10;Baradili;0
+95;11;Baratili San Pietro;0
+95;12;Baressa;0
+95;13;Bauladu;0
+95;14;Bidonì;0
+95;15;Bonarcado;0
+95;16;Boroneddu;0
+95;17;Busachi;0
+95;18;Cabras;0
+95;19;Cuglieri;0
+95;20;Fordongianus;0
+95;21;Ghilarza;0
+95;22;Gonnoscodina;0
+95;23;Gonnosnò;0
+95;24;Gonnostramatza;0
+95;25;Marrubiu;0
+95;26;Masullas;0
+95;27;Milis;0
+95;28;Mogorella;0
+95;29;Mogoro;0
+95;30;Morgongiori;0
+95;31;Narbolia;0
+95;32;Neoneli;0
+95;33;Norbello;0
+95;34;Nughedu Santa Vittoria;0
+95;35;Nurachi;0
+95;36;Nureci;0
+95;37;Ollastra;0
+95;38;Oristano;1
+95;39;Palmas Arborea;0
+95;40;Pau;0
+95;41;Paulilatino;0
+95;42;Pompu;0
+95;43;Riola Sardo;0
+95;44;Ruinas;0
+95;45;Samugheo;0
+95;46;San Nicolò d'Arcidano;0
+95;47;Santa Giusta;0
+95;48;Villa Sant'Antonio;0
+95;49;Santu Lussurgiu;0
+95;50;San Vero Milis;0
+95;51;Scano di Montiferro;0
+95;52;Sedilo;0
+95;53;Seneghe;0
+95;54;Senis;0
+95;55;Sennariolo;0
+95;56;Siamaggiore;0
+95;57;Siamanna;0
+95;58;Simala;0
+95;59;Simaxis;0
+95;60;Sini;0
+95;61;Siris;0
+95;62;Solarussa;0
+95;63;Sorradile;0
+95;64;Tadasuni;0
+95;65;Terralba;0
+95;66;Tramatza;0
+95;67;Tresnuraghes;0
+95;68;Ulà Tirso;0
+95;69;Uras;0
+95;70;Usellus;0
+95;71;Villanova Truschedu;0
+95;72;Villaurbana;0
+95;73;Villa Verde;0
+95;74;Zeddiani;0
+95;75;Zerfaliu;0
+95;76;Siapiccia;0
+95;77;Curcuris;0
+95;78;Soddì;0
+95;79;Bosa;0
+95;80;Flussio;0
+95;81;Genoni;0
+95;82;Laconi;0
+95;83;Magomadas;0
+95;84;Modolo;0
+95;85;Montresta;0
+95;86;Sagama;0
+95;87;Suni;0
+95;88;Tinnura;0
+96;1;Ailoche;0
+96;2;Andorno Micca;0
+96;3;Benna;0
+96;4;Biella;1
+96;5;Bioglio;0
+96;6;Borriana;0
+96;7;Brusnengo;0
+96;8;Callabiana;0
+96;9;Camandona;0
+96;10;Camburzano;0
+96;11;Campiglia Cervo;0
+96;12;Candelo;0
+96;13;Caprile;0
+96;14;Casapinta;0
+96;15;Castelletto Cervo;0
+96;16;Cavaglià;0
+96;17;Cerreto Castello;0
+96;18;Cerrione;0
+96;19;Coggiola;0
+96;20;Cossato;0
+96;21;Crevacuore;0
+96;22;Crosa;0
+96;23;Curino;0
+96;24;Donato;0
+96;25;Dorzano;0
+96;26;Gaglianico;0
+96;27;Gifflenga;0
+96;28;Graglia;0
+96;29;Lessona;0
+96;30;Magnano;0
+96;31;Massazza;0
+96;32;Masserano;0
+96;33;Mezzana Mortigliengo;0
+96;34;Miagliano;0
+96;35;Mongrando;0
+96;37;Mottalciata;0
+96;38;Muzzano;0
+96;39;Netro;0
+96;40;Occhieppo Inferiore;0
+96;41;Occhieppo Superiore;0
+96;42;Pettinengo;0
+96;43;Piatto;0
+96;44;Piedicavallo;0
+96;46;Pollone;0
+96;47;Ponderano;0
+96;48;Portula;0
+96;49;Pralungo;0
+96;50;Pray;0
+96;51;Quaregna;0
+96;52;Quittengo;0
+96;53;Ronco Biellese;0
+96;54;Roppolo;0
+96;55;Rosazza;0
+96;56;Sagliano Micca;0
+96;57;Sala Biellese;0
+96;58;Salussola;0
+96;59;Sandigliano;0
+96;60;San Paolo Cervo;0
+96;61;Selve Marcone;0
+96;62;Soprana;0
+96;63;Sordevolo;0
+96;64;Sostegno;0
+96;65;Strona;0
+96;66;Tavigliano;0
+96;67;Ternengo;0
+96;68;Tollegno;0
+96;69;Torrazzo;0
+96;70;Trivero;0
+96;71;Valdengo;0
+96;72;Vallanzengo;0
+96;73;Valle Mosso;0
+96;74;Valle San Nicolao;0
+96;75;Veglio;0
+96;76;Verrone;0
+96;77;Vigliano Biellese;0
+96;78;Villa del Bosco;0
+96;79;Villanova Biellese;0
+96;80;Viverone;0
+96;81;Zimone;0
+96;82;Zubiena;0
+96;83;Zumaglia;0
+96;84;Mosso;0
+97;1;Abbadia Lariana;0
+97;2;Airuno;0
+97;3;Annone di Brianza;0
+97;4;Ballabio;0
+97;5;Barzago;0
+97;6;Barzanò;0
+97;7;Barzio;0
+97;8;Bellano;0
+97;9;Bosisio Parini;0
+97;10;Brivio;0
+97;11;Bulciago;0
+97;12;Calco;0
+97;13;Calolziocorte;0
+97;14;Carenno;0
+97;15;Casargo;0
+97;16;Casatenovo;0
+97;17;Cassago Brianza;0
+97;18;Cassina Valsassina;0
+97;19;Castello di Brianza;0
+97;20;Cernusco Lombardone;0
+97;21;Cesana Brianza;0
+97;22;Civate;0
+97;23;Colico;0
+97;24;Colle Brianza;0
+97;25;Cortenova;0
+97;26;Costa Masnaga;0
+97;27;Crandola Valsassina;0
+97;28;Cremella;0
+97;29;Cremeno;0
+97;30;Dervio;0
+97;31;Dolzago;0
+97;32;Dorio;0
+97;33;Ello;0
+97;34;Erve;0
+97;35;Esino Lario;0
+97;36;Galbiate;0
+97;37;Garbagnate Monastero;0
+97;38;Garlate;0
+97;39;Imbersago;0
+97;40;Introbio;0
+97;41;Introzzo;0
+97;42;Lecco;1
+97;43;Lierna;0
+97;44;Lomagna;0
+97;45;Malgrate;0
+97;46;Mandello del Lario;0
+97;47;Margno;0
+97;48;Merate;0
+97;49;Missaglia;0
+97;50;Moggio;0
+97;51;Molteno;0
+97;52;Monte Marenzo;0
+97;53;Montevecchia;0
+97;54;Monticello Brianza;0
+97;55;Morterone;0
+97;56;Nibionno;0
+97;57;Oggiono;0
+97;58;Olgiate Molgora;0
+97;59;Olginate;0
+97;60;Oliveto Lario;0
+97;61;Osnago;0
+97;62;Paderno d'Adda;0
+97;63;Pagnona;0
+97;64;Parlasco;0
+97;65;Pasturo;0
+97;66;Perego;0
+97;67;Perledo;0
+97;68;Pescate;0
+97;69;Premana;0
+97;70;Primaluna;0
+97;71;Robbiate;0
+97;72;Rogeno;0
+97;73;Rovagnate;0
+97;74;Santa Maria Hoè;0
+97;75;Sirone;0
+97;76;Sirtori;0
+97;77;Sueglio;0
+97;78;Suello;0
+97;79;Taceno;0
+97;80;Torre de' Busi;0
+97;81;Tremenico;0
+97;82;Valgreghentino;0
+97;83;Valmadrera;0
+97;84;Varenna;0
+97;85;Vendrogno;0
+97;86;Vercurago;0
+97;87;Verderio Inferiore;0
+97;88;Verderio Superiore;0
+97;89;Vestreno;0
+97;90;Viganò;0
+98;1;Abbadia Cerreto;0
+98;2;Bertonico;0
+98;3;Boffalora d'Adda;0
+98;4;Borghetto Lodigiano;0
+98;5;Borgo San Giovanni;0
+98;6;Brembio;0
+98;7;Camairago;0
+98;8;Casaletto Lodigiano;0
+98;9;Casalmaiocco;0
+98;10;Casalpusterlengo;0
+98;11;Caselle Landi;0
+98;12;Caselle Lurani;0
+98;13;Castelnuovo Bocca d'Adda;0
+98;14;Castiglione d'Adda;0
+98;15;Castiraga Vidardo;0
+98;16;Cavacurta;0
+98;17;Cavenago d'Adda;0
+98;18;Cervignano d'Adda;0
+98;19;Codogno;0
+98;20;Comazzo;0
+98;21;Cornegliano Laudense;0
+98;22;Corno Giovine;0
+98;23;Cornovecchio;0
+98;24;Corte Palasio;0
+98;25;Crespiatica;0
+98;26;Fombio;0
+98;27;Galgagnano;0
+98;28;Graffignana;0
+98;29;Guardamiglio;0
+98;30;Livraga;0
+98;31;Lodi;1
+98;32;Lodi Vecchio;0
+98;33;Maccastorna;0
+98;34;Mairago;0
+98;35;Maleo;0
+98;36;Marudo;0
+98;37;Massalengo;0
+98;38;Meleti;0
+98;39;Merlino;0
+98;40;Montanaso Lombardo;0
+98;41;Mulazzano;0
+98;42;Orio Litta;0
+98;43;Ospedaletto Lodigiano;0
+98;44;Ossago Lodigiano;0
+98;45;Pieve Fissiraga;0
+98;46;Salerano sul Lambro;0
+98;47;San Fiorano;0
+98;48;San Martino in Strada;0
+98;49;San Rocco al Porto;0
+98;50;Sant'Angelo Lodigiano;0
+98;51;Santo Stefano Lodigiano;0
+98;52;Secugnago;0
+98;53;Senna Lodigiana;0
+98;54;Somaglia;0
+98;55;Sordio;0
+98;56;Tavazzano con Villavesco;0
+98;57;Terranova dei Passerini;0
+98;58;Turano Lodigiano;0
+98;59;Valera Fratta;0
+98;60;Villanova del Sillaro;0
+98;61;Zelo Buon Persico;0
+99;1;Bellaria-Igea Marina;0
+99;2;Cattolica;0
+99;3;Coriano;0
+99;4;Gemmano;0
+99;5;Misano Adriatico;0
+99;6;Mondaino;0
+99;7;Monte Colombo;0
+99;8;Montefiore Conca;0
+99;9;Montegridolfo;0
+99;10;Montescudo;0
+99;11;Morciano di Romagna;0
+99;12;Poggio Berni;0
+99;13;Riccione;0
+99;14;Rimini;1
+99;15;Saludecio;0
+99;16;San Clemente;0
+99;17;San Giovanni in Marignano;0
+99;18;Santarcangelo di Romagna;0
+99;19;Torriana;0
+99;20;Verucchio;0
+99;21;Casteldelci;0
+99;22;Maiolo;0
+99;23;Novafeltria;0
+99;24;Pennabilli;0
+99;25;San Leo;0
+99;26;Sant'Agata Feltria;0
+99;27;Talamello;0
+100;1;Cantagallo;0
+100;2;Carmignano;0
+100;3;Montemurlo;0
+100;4;Poggio a Caiano;0
+100;5;Prato;1
+100;6;Vaiano;0
+100;7;Vernio;0
+101;1;Belvedere di Spinello;0
+101;2;Caccuri;0
+101;3;Carfizzi;0
+101;4;Casabona;0
+101;5;Castelsilano;0
+101;6;Cerenzia;0
+101;7;Cirò;0
+101;8;Cirò Marina;0
+101;9;Cotronei;0
+101;10;Crotone;1
+101;11;Crucoli;0
+101;12;Cutro;0
+101;13;Isola di Capo Rizzuto;0
+101;14;Melissa;0
+101;15;Mesoraca;0
+101;16;Pallagorio;0
+101;17;Petilia Policastro;0
+101;18;Roccabernarda;0
+101;19;Rocca di Neto;0
+101;20;San Mauro Marchesato;0
+101;21;San Nicola dell'Alto;0
+101;22;Santa Severina;0
+101;23;Savelli;0
+101;24;Scandale;0
+101;25;Strongoli;0
+101;26;Umbriatico;0
+101;27;Verzino;0
+102;1;Acquaro;0
+102;2;Arena;0
+102;3;Briatico;0
+102;4;Brognaturo;0
+102;5;Capistrano;0
+102;6;Cessaniti;0
+102;7;Dasà;0
+102;8;Dinami;0
+102;9;Drapia;0
+102;10;Fabrizia;0
+102;11;Filadelfia;0
+102;12;Filandari;0
+102;13;Filogaso;0
+102;14;Francavilla Angitola;0
+102;15;Francica;0
+102;16;Gerocarne;0
+102;17;Ionadi;0
+102;18;Joppolo;0
+102;19;Limbadi;0
+102;20;Maierato;0
+102;21;Mileto;0
+102;22;Mongiana;0
+102;23;Monterosso Calabro;0
+102;24;Nardodipace;0
+102;25;Nicotera;0
+102;26;Parghelia;0
+102;27;Pizzo;0
+102;28;Pizzoni;0
+102;29;Polia;0
+102;30;Ricadi;0
+102;31;Rombiolo;0
+102;32;San Calogero;0
+102;33;San Costantino Calabro;0
+102;34;San Gregorio d'Ippona;0
+102;35;San Nicola da Crissa;0
+102;36;Sant'Onofrio;0
+102;37;Serra San Bruno;0
+102;38;Simbario;0
+102;39;Sorianello;0
+102;40;Soriano Calabro;0
+102;41;Spadola;0
+102;42;Spilinga;0
+102;43;Stefanaconi;0
+102;44;Tropea;0
+102;45;Vallelonga;0
+102;46;Vazzano;0
+102;47;Vibo Valentia;1
+102;48;Zaccanopoli;0
+102;49;Zambrone;0
+102;50;Zungri;0
+103;1;Antrona Schieranco;0
+103;2;Anzola d'Ossola;0
+103;3;Arizzano;0
+103;4;Arola;0
+103;5;Aurano;0
+103;6;Baceno;0
+103;7;Bannio Anzino;0
+103;8;Baveno;0
+103;9;Bee;0
+103;10;Belgirate;0
+103;11;Beura-Cardezza;0
+103;12;Bognanco;0
+103;13;Brovello-Carpugnino;0
+103;14;Calasca-Castiglione;0
+103;15;Cambiasca;0
+103;16;Cannero Riviera;0
+103;17;Cannobio;0
+103;18;Caprezzo;0
+103;19;Casale Corte Cerro;0
+103;20;Cavaglio-Spoccia;0
+103;21;Ceppo Morelli;0
+103;22;Cesara;0
+103;23;Cossogno;0
+103;24;Craveggia;0
+103;25;Crevoladossola;0
+103;26;Crodo;0
+103;27;Cursolo-Orasso;0
+103;28;Domodossola;0
+103;29;Druogno;0
+103;30;Falmenta;0
+103;31;Formazza;0
+103;32;Germagno;0
+103;33;Ghiffa;0
+103;34;Gignese;0
+103;35;Gravellona Toce;0
+103;36;Gurro;0
+103;37;Intragna;0
+103;38;Loreglia;0
+103;39;Macugnaga;0
+103;40;Madonna del Sasso;0
+103;41;Malesco;0
+103;42;Masera;0
+103;43;Massiola;0
+103;44;Mergozzo;0
+103;45;Miazzina;0
+103;46;Montecrestese;0
+103;47;Montescheno;0
+103;48;Nonio;0
+103;49;Oggebbio;0
+103;50;Omegna;0
+103;51;Ornavasso;0
+103;52;Pallanzeno;0
+103;53;Piedimulera;0
+103;54;Pieve Vergonte;0
+103;55;Premeno;0
+103;56;Premia;0
+103;57;Premosello-Chiovenda;0
+103;58;Quarna Sopra;0
+103;59;Quarna Sotto;0
+103;60;Re;0
+103;61;San Bernardino Verbano;0
+103;62;Santa Maria Maggiore;0
+103;63;Seppiana;0
+103;64;Stresa;0
+103;65;Toceno;0
+103;66;Trarego Viggiona;0
+103;67;Trasquera;0
+103;68;Trontano;0
+103;69;Valstrona;0
+103;70;Vanzone con San Carlo;0
+103;71;Varzo;0
+103;72;Verbania;1
+103;73;Viganella;0
+103;74;Vignone;0
+103;75;Villadossola;0
+103;76;Villette;0
+103;77;Vogogna;0
+104;1;Aggius;0
+104;2;Aglientu;0
+104;3;Alà dei Sardi;0
+104;4;Arzachena;0
+104;5;Badesi;0
+104;6;Berchidda;0
+104;7;Bortigiadas;0
+104;8;Buddusò;0
+104;9;Budoni;0
+104;10;Calangianus;0
+104;11;Golfo Aranci;0
+104;12;La Maddalena;0
+104;13;Loiri Porto San Paolo;0
+104;14;Luogosanto;0
+104;15;Luras;0
+104;16;Monti;0
+104;17;Olbia;1
+104;18;Oschiri;0
+104;19;Padru;0
+104;20;Palau;0
+104;21;Sant'Antonio di Gallura;0
+104;22;Santa Teresa Gallura;0
+104;23;San Teodoro;0
+104;24;Telti;0
+104;25;Tempio Pausania;0
+104;26;Trinità d'Agultu e Vignola;0
+105;1;Arzana;0
+105;2;Bari Sardo;0
+105;3;Baunei;0
+105;4;Cardedu;0
+105;5;Elini;0
+105;6;Gairo;0
+105;7;Girasole;0
+105;8;Ilbono;0
+105;9;Jerzu;0
+105;10;Lanusei;0
+105;11;Loceri;0
+105;12;Lotzorai;0
+105;13;Osini;0
+105;14;Perdasdefogu;0
+105;15;Seui;0
+105;16;Talana;0
+105;17;Tertenia;0
+105;18;Tortolì;1
+105;19;Triei;0
+105;20;Ulassai;0
+105;21;Urzulei;0
+105;22;Ussassai;0
+105;23;Villagrande Strisaili;0
+106;1;Arbus;0
+106;2;Barumini;0
+106;3;Collinas;0
+106;4;Furtei;0
+106;5;Genuri;0
+106;6;Gesturi;0
+106;7;Gonnosfanadiga;0
+106;8;Guspini;0
+106;9;Las Plassas;0
+106;10;Lunamatrona;0
+106;11;Pabillonis;0
+106;12;Pauli Arbarei;0
+106;13;Samassi;0
+106;14;San Gavino Monreale;0
+106;15;Sanluri;1
+106;16;Sardara;0
+106;17;Segariu;0
+106;18;Serramanna;0
+106;19;Serrenti;0
+106;20;Setzu;0
+106;21;Siddi;0
+106;22;Tuili;0
+106;23;Turri;0
+106;24;Ussaramanna;0
+106;25;Villacidro;0
+106;26;Villamar;0
+106;27;Villanovaforru;0
+106;28;Villanovafranca;0
+107;1;Buggerru;0
+107;2;Calasetta;0
+107;3;Carbonia;1
+107;4;Carloforte;0
+107;5;Domusnovas;0
+107;6;Fluminimaggiore;0
+107;7;Giba;0
+107;8;Gonnesa;0
+107;9;Iglesias;0
+107;10;Masainas;0
+107;11;Musei;0
+107;12;Narcao;0
+107;13;Nuxis;0
+107;14;Perdaxius;0
+107;15;Piscinas;0
+107;16;Portoscuso;0
+107;17;San Giovanni Suergiu;0
+107;18;Santadi;0
+107;19;Sant'Anna Arresi;0
+107;20;Sant'Antioco;0
+107;21;Tratalias;0
+107;22;Villamassargia;0
+107;23;Villaperuccio;0
+108;1;Agrate Brianza;0
+108;2;Aicurzio;0
+108;3;Albiate;0
+108;4;Arcore;0
+108;5;Barlassina;0
+108;6;Bellusco;0
+108;7;Bernareggio;0
+108;8;Besana in Brianza;0
+108;9;Biassono;0
+108;10;Bovisio-Masciago;0
+108;11;Briosco;0
+108;12;Brugherio;0
+108;13;Burago di Molgora;0
+108;14;Camparada;0
+108;15;Carate Brianza;0
+108;16;Carnate;0
+108;17;Cavenago di Brianza;0
+108;18;Ceriano Laghetto;0
+108;19;Cesano Maderno;0
+108;20;Cogliate;0
+108;21;Concorezzo;0
+108;22;Correzzana;0
+108;23;Desio;0
+108;24;Giussano;0
+108;25;Lazzate;0
+108;26;Lesmo;0
+108;27;Limbiate;0
+108;28;Lissone;0
+108;29;Macherio;0
+108;30;Meda;0
+108;31;Mezzago;0
+108;32;Misinto;0
+108;33;Monza;1
+108;34;Muggiò;0
+108;35;Nova Milanese;0
+108;36;Ornago;0
+108;37;Renate;0
+108;38;Ronco Briantino;0
+108;39;Seregno;0
+108;40;Seveso;0
+108;41;Sovico;0
+108;42;Sulbiate;0
+108;43;Triuggio;0
+108;44;Usmate Velate;0
+108;45;Varedo;0
+108;46;Vedano al Lambro;0
+108;47;Veduggio con Colzano;0
+108;48;Verano Brianza;0
+108;49;Villasanta;0
+108;50;Vimercate;0
+108;51;Busnago;0
+108;52;Caponago;0
+108;53;Cornate d'Adda;0
+108;54;Lentate sul Seveso;0
+108;55;Roncello;0
+109;1;Altidona;0
+109;2;Amandola;0
+109;3;Belmonte Piceno;0
+109;4;Campofilone;0
+109;5;Falerone;0
+109;6;Fermo;1
+109;7;Francavilla d'Ete;0
+109;8;Grottazzolina;0
+109;9;Lapedona;0
+109;10;Magliano di Tenna;0
+109;11;Massa Fermana;0
+109;12;Monsampietro Morico;0
+109;13;Montappone;0
+109;14;Montefalcone Appennino;0
+109;15;Montefortino;0
+109;16;Monte Giberto;0
+109;17;Montegiorgio;0
+109;18;Montegranaro;0
+109;19;Monteleone di Fermo;0
+109;20;Montelparo;0
+109;21;Monte Rinaldo;0
+109;22;Monterubbiano;0
+109;23;Monte San Pietrangeli;0
+109;24;Monte Urano;0
+109;25;Monte Vidon Combatte;0
+109;26;Monte Vidon Corrado;0
+109;27;Montottone;0
+109;28;Moresco;0
+109;29;Ortezzano;0
+109;30;Pedaso;0
+109;31;Petritoli;0
+109;32;Ponzano di Fermo;0
+109;33;Porto San Giorgio;0
+109;34;Porto Sant'Elpidio;0
+109;35;Rapagnano;0
+109;36;Santa Vittoria in Matenano;0
+109;37;Sant'Elpidio a Mare;0
+109;38;Servigliano;0
+109;39;Smerillo;0
+109;40;Torre San Patrizio;0
+110;1;Andria;1
+110;2;Barletta;0
+110;3;Bisceglie;0
+110;4;Canosa di Puglia;0
+110;5;Margherita di Savoia;0
+110;6;Minervino Murge;0
+110;7;San Ferdinando di Puglia;0
+110;8;Spinazzola;0
+110;9;Trani;0
+110;10;Trinitapoli;0
